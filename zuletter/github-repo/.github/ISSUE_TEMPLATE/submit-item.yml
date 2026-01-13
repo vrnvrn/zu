@@ -1,0 +1,87 @@
+name: Submit Newsletter Item
+description: Submit an item for consideration in the community newsletter
+title: "[Item] "
+labels: ["state:submitted"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for contributing to the community newsletter! All submissions are tracked transparently on GitHub.
+        
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: Brief, descriptive title for the item
+      placeholder: "e.g., Community Meetup Announcement"
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: What type of item is this?
+      options:
+        - events
+        - wins
+        - updates
+        - requests
+        - jobs
+        - research
+        - media
+    validations:
+      required: true
+      
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: 1-3 sentences describing the item
+      placeholder: "Brief summary..."
+    validations:
+      required: true
+      
+  - type: input
+    id: source_link
+    attributes:
+      label: Source Link (optional)
+      description: URL to original source, article, or related content
+      placeholder: "https://..."
+    validations:
+      required: false
+      
+  - type: textarea
+    id: relevance
+    attributes:
+      label: Relevance to Community
+      description: Why is this relevant to our community?
+      placeholder: "Explain why this matters to our community..."
+    validations:
+      required: true
+      
+  - type: input
+    id: time_sensitivity
+    attributes:
+      label: Time Sensitivity
+      description: Date (YYYY-MM-DD) or "evergreen"
+      placeholder: "2025-12-18 or evergreen"
+    validations:
+      required: false
+      
+  - type: input
+    id: attribution
+    attributes:
+      label: Attribution
+      description: Your name or GitHub handle
+      placeholder: "@yourhandle or Your Name"
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Consent
+      options:
+        - label: I consent to this being published publicly
+          required: true

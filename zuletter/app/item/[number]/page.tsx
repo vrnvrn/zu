@@ -1,5 +1,6 @@
 import Nav from '@/components/Nav'
 import Link from 'next/link'
+import Image from 'next/image'
 import { fetchIssue, fetchIssueComments, processIssuesIntoItems } from '@/lib/github'
 import { format } from 'date-fns'
 import ReactMarkdown from 'react-markdown'
@@ -144,10 +145,12 @@ export default async function ItemDetailPage({
               <div key={comment.id} className="card" style={{ marginBottom: '16px' }}>
                 <div className="flex-between mb-12">
                   <div className="flex gap-12" style={{ alignItems: 'center' }}>
-                    <img 
+                    <Image 
                       src={comment.user.avatar_url} 
                       alt={comment.user.login}
-                      style={{ width: '32px', height: '32px', borderRadius: '50%' }}
+                      width={32}
+                      height={32}
+                      style={{ borderRadius: '50%' }}
                     />
                     <div>
                       <a 

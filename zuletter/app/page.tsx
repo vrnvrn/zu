@@ -11,8 +11,6 @@ export default async function HomePage() {
   const issues = await fetchIssuesForCycle(cycle)
   const items = await processIssuesIntoItems(issues)
   
-  const shortlisted = items.filter(item => item.state === 'shortlisted')
-  const accepted = items.filter(item => item.state === 'accepted')
   const submitted = items.filter(item => item.state === 'submitted')
   
   return (
@@ -29,14 +27,24 @@ export default async function HomePage() {
           </p>
           <div style={{ 
             marginTop: '24px', 
-            padding: '16px 24px', 
-            background: 'var(--accent-light)', 
-            borderRadius: 'var(--radius)', 
-            display: 'inline-block',
-            fontSize: '14px',
-            color: 'var(--text-primary)'
+            display: 'flex',
+            gap: '16px',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexWrap: 'wrap'
           }}>
-            <strong>Current Cycle:</strong> {cycle}
+            <div style={{ 
+              padding: '16px 24px', 
+              background: 'var(--accent-light)', 
+              borderRadius: 'var(--radius)', 
+              fontSize: '14px',
+              color: 'var(--text-primary)'
+            }}>
+              <strong>Current Cycle:</strong> {cycle}
+            </div>
+            <Link href="/editor" className="btn btn-primary" style={{ fontSize: '16px', padding: '14px 28px' }}>
+              🔐 Editor Login
+            </Link>
           </div>
         </header>
 
@@ -117,56 +125,6 @@ export default async function HomePage() {
             </div>
           </div>
         </section>
-        
-        <div className="grid-two-col">
-          <section>
-            <h2 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              ⭐ Shortlisted 
-              <span style={{ 
-                fontSize: '18px', 
-                fontWeight: 'normal', 
-                color: 'var(--text-secondary)' 
-              }}>
-                ({shortlisted.length})
-              </span>
-            </h2>
-            {shortlisted.length > 0 ? (
-              shortlisted.map(item => (
-                <ItemCard key={item.issue.id} item={item} />
-              ))
-            ) : (
-              <div className="card" style={{ textAlign: 'center', padding: '40px' }}>
-                <p className="text-secondary" style={{ fontSize: '16px' }}>
-                  ✨ No items shortlisted yet. Check back soon!
-                </p>
-              </div>
-            )}
-          </section>
-          
-          <section>
-            <h2 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              ✅ Accepted 
-              <span style={{ 
-                fontSize: '18px', 
-                fontWeight: 'normal', 
-                color: 'var(--text-secondary)' 
-              }}>
-                ({accepted.length})
-              </span>
-            </h2>
-            {accepted.length > 0 ? (
-              accepted.map(item => (
-                <ItemCard key={item.issue.id} item={item} />
-              ))
-            ) : (
-              <div className="card" style={{ textAlign: 'center', padding: '40px' }}>
-                <p className="text-secondary" style={{ fontSize: '16px' }}>
-                  🎉 No items accepted yet. Check back soon!
-                </p>
-              </div>
-            )}
-          </section>
-        </div>
         
         {submitted.length > 0 && (
           <section style={{ marginTop: '48px' }}>

@@ -129,7 +129,7 @@ Section: Events`}
           </p>
           <ul>
             <li>
-              <a href={`https://github.com/${repoPath}`} target="_blank" rel="noopener noreferrer">
+              <a href={`https://github.com/${repoPath}/blob/main/README.md`} target="_blank" rel="noopener noreferrer">
                 Repository README
               </a>
             </li>

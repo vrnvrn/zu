@@ -2,9 +2,10 @@
 
 import { useState } from 'react'
 import Nav from '@/components/Nav'
-import { getNewIssueWithTemplateUrl } from '@/lib/github'
+import { getNewIssueWithTemplateUrl, getRepoPath } from '@/lib/github'
 
 export default function SubmitPage() {
+  const repoPath = getRepoPath()
   const [formData, setFormData] = useState({
     title: '',
     category: '',
@@ -180,6 +181,28 @@ export default function SubmitPage() {
                 💡 You&#39;ll be redirected to GitHub to complete your submission. 
                 Don&#39;t worry—it&#39;s quick and easy! This helps us keep everything organized and transparent.
               </p>
+              <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid var(--border)' }}>
+                <p className="text-secondary" style={{ fontSize: '13px', marginBottom: '8px' }}>
+                  <strong>Need help?</strong> Check out:
+                </p>
+                <ul style={{ fontSize: '13px', color: 'var(--text-secondary)', marginLeft: '20px', lineHeight: '1.8' }}>
+                  <li>
+                    <a href={`https://github.com/${repoPath}/blob/main/CONTRIBUTING.md`} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}>
+                      Submission Guidelines
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`https://github.com/${repoPath}/blob/main/.github/ISSUE_TEMPLATE/submit-item.yml`} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}>
+                      Issue Template
+                    </a>
+                  </li>
+                  <li>
+                    <a href={`https://github.com/${repoPath}/issues`} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}>
+                      View All Submissions
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </form>
         </div>

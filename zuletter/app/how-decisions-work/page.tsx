@@ -13,7 +13,7 @@ export default function HowDecisionsWorkPage() {
             🤔 How Decisions Work
           </h1>
           <p style={{ fontSize: '18px', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-            We believe in transparency! Here&apos;s how we decide what makes it into ZuLetter 💚.
+            We believe in transparency! Here&#39;s how we decide what makes it into ZuLetter 💚.
             Everything is open and auditable so you can see exactly how we curate content.
           </p>
         </header>

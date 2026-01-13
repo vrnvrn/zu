@@ -24,7 +24,7 @@ export default async function HomePage() {
             💚 ZuLetter 💚
           </h1>
           <p style={{ fontSize: '18px', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-            Welcome! Here&apos;s what&apos;s happening in our community this cycle. 
+            Welcome! Here&#39;s what&#39;s happening in our community this cycle. 
             Every item is transparently tracked and open for everyone to see.
           </p>
           <div style={{ 

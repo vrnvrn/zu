@@ -21,10 +21,10 @@ export default async function HomePage() {
       <div className="container">
         <header style={{ marginBottom: '40px', textAlign: 'center' }}>
           <h1 style={{ fontSize: '48px', marginBottom: '12px' }}>
-            📬 Community Newsletter
+            💚 ZuLetter 💚
           </h1>
           <p style={{ fontSize: '18px', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-            Welcome! Here's what's happening in our community this cycle. 
+            Welcome! Here&apos;s what&apos;s happening in our community this cycle. 
             Every item is transparently tracked and open for everyone to see.
           </p>
           <div style={{ 
@@ -112,7 +112,7 @@ export default async function HomePage() {
                 📖 Read the Full Retrospective
               </Link>
               <p className="text-secondary" style={{ marginTop: '12px', fontSize: '14px' }}>
-                View the complete newsletter with all photos and original formatting
+                View the complete 💚 ZuLetter 💚 with all photos and original formatting
               </p>
             </div>
           </div>

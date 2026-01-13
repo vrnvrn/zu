@@ -44,7 +44,7 @@ export default function SubmitPage() {
             ✨ Share Your Story
           </h1>
           <p style={{ fontSize: '18px', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-            Have something exciting to share with the community? We'd love to hear about it! 
+            Have something exciting to share with the community? We&apos;d love to hear about it! 
             Your submission helps keep everyone connected and informed.
           </p>
         </header>
@@ -177,8 +177,8 @@ export default function SubmitPage() {
                 🚀 Submit Your Item
               </button>
               <p className="text-secondary" style={{ marginTop: '16px', fontSize: '14px', lineHeight: '1.6' }}>
-                💡 You'll be redirected to GitHub to complete your submission. 
-                Don't worry—it's quick and easy! This helps us keep everything organized and transparent.
+                💡 You&apos;ll be redirected to GitHub to complete your submission. 
+                Don&apos;t worry—it&apos;s quick and easy! This helps us keep everything organized and transparent.
               </p>
             </div>
           </form>

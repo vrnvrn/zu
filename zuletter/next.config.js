@@ -4,10 +4,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Enable ISR for GitHub API data
-  experimental: {
-    isrMemoryCacheSize: 0, // Disable in-memory cache for edge
-  },
 }
 
 module.exports = nextConfig

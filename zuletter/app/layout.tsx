@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Community Newsletter',
+  title: '💚 ZuLetter 💚',
   description: 'A transparent, GitHub-native newsletter system',
 }
 

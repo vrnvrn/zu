@@ -1,4 +1,4 @@
-# Community Newsletter POC
+# ZuLetter 💚 POC
 
 A GitHub-native, fully auditable newsletter system with no servers/databases beyond GitHub + Vercel.
 

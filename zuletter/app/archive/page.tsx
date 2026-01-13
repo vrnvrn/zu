@@ -24,17 +24,17 @@ export default async function ArchivePage() {
       <div className="container">
         <header style={{ marginBottom: '40px', textAlign: 'center' }}>
           <h1 style={{ fontSize: '48px', marginBottom: '12px' }}>
-            📚 Newsletter Archive
+            💚 ZuLetter Archive 💚
           </h1>
           <p style={{ fontSize: '18px', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-            Take a trip down memory lane! Browse our past newsletters and see how our community has grown.
-            Every newsletter is preserved and verifiable.
+            Take a trip down memory lane! Browse our past ZuLetters and see how our community has grown.
+            Every ZuLetter is preserved and verifiable.
           </p>
         </header>
         
         {allNewsletters.length === 0 ? (
           <div className="card">
-            <p className="text-secondary">No newsletters published yet.</p>
+            <p className="text-secondary">No ZuLetters published yet.</p>
           </div>
         ) : (
           <div>

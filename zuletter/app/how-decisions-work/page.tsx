@@ -13,7 +13,7 @@ export default function HowDecisionsWorkPage() {
             🤔 How Decisions Work
           </h1>
           <p style={{ fontSize: '18px', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-            We believe in transparency! Here's how we decide what makes it into our newsletter.
+            We believe in transparency! Here&apos;s how we decide what makes it into ZuLetter 💚.
             Everything is open and auditable so you can see exactly how we curate content.
           </p>
         </header>
@@ -30,7 +30,7 @@ export default function HowDecisionsWorkPage() {
           <h3>2. ⭐ Shortlist</h3>
           <p>
             Our editors review all submissions and highlight items that look promising. 
-            These shortlisted items are being actively considered for the newsletter.
+            These shortlisted items are being actively considered for ZuLetter 💚.
           </p>
           
           <h3>3. ✅ Decide</h3>
@@ -38,9 +38,9 @@ export default function HowDecisionsWorkPage() {
             Editors make thoughtful decisions about each item:
           </p>
           <ul>
-            <li><strong>Accepted</strong> — Will be included in the newsletter! 🎉</li>
+            <li><strong>Accepted</strong> — Will be included in ZuLetter 💚! 🎉</li>
             <li><strong>Rejected</strong> — Not a fit for this cycle, but we appreciate the submission</li>
-            <li><strong>Deferred</strong> — Great idea, but better suited for a future newsletter</li>
+            <li><strong>Deferred</strong> — Great idea, but better suited for a future ZuLetter 💚</li>
           </ul>
           <p>
             Every decision includes a comment explaining the reasoning, so you always know why.
@@ -63,15 +63,15 @@ Section: Events`}
           
           <h3>4. 📤 Publish</h3>
           <p>
-            Once items are accepted, editors compile them into a beautiful newsletter:
+            Once items are accepted, editors compile them into a beautiful ZuLetter 💚:
           </p>
           <ul>
             <li>All accepted items are organized into sections</li>
-            <li>The newsletter is published and archived permanently</li>
+            <li>ZuLetter 💚 is published and archived permanently</li>
             <li>You can always go back and see what was included</li>
           </ul>
           <p>
-            Every newsletter is preserved forever, so you can always reference past issues!
+            Every ZuLetter 💚 is preserved forever, so you can always reference past issues!
           </p>
         </div>
         
@@ -83,7 +83,7 @@ Section: Events`}
           <ul>
             <li>The original Issue URL (immutable record)</li>
             <li>A decision comment URL</li>
-            <li>A commit that includes it in the newsletter file</li>
+            <li>A commit that includes it in the ZuLetter 💚 file</li>
             <li>An optional release tag for the published snapshot</li>
           </ul>
           <p>
@@ -100,14 +100,14 @@ Section: Events`}
           <ul>
             <li><code>state:submitted</code> - Initial state when an item is submitted</li>
             <li><code>state:shortlisted</code> - Item is being considered</li>
-            <li><code>state:accepted</code> - Item will be included in the newsletter</li>
+            <li><code>state:accepted</code> - Item will be included in ZuLetter 💚</li>
             <li><code>state:rejected</code> - Item will not be included</li>
             <li><code>state:deferred</code> - Item is postponed to a future cycle</li>
           </ul>
           
           <h3>Cycle Labels</h3>
           <ul>
-            <li><code>cycle:YYYY-MM-DD</code> - Associates an item with a specific newsletter cycle</li>
+            <li><code>cycle:YYYY-MM-DD</code> - Associates an item with a specific ZuLetter 💚 cycle</li>
           </ul>
           
           <h3>Category Labels</h3>

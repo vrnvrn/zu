@@ -6,7 +6,7 @@ export default function Nav() {
       <div className="container">
         <div className="nav-content">
           <Link href="/" style={{ fontSize: '20px', fontWeight: '700', color: 'var(--accent)', letterSpacing: '-0.3px' }}>
-            📬 Community Newsletter
+            💚 ZuLetter 💚
           </Link>
           <div className="nav-links">
             <Link href="/" className="nav-link">

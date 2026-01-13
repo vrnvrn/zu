@@ -68,7 +68,7 @@ export default function ItemCard({ item }: ItemCardProps) {
           borderLeft: '4px solid var(--accent)'
         }}>
           <div style={{ fontSize: '12px', fontWeight: '600', marginBottom: '6px', color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-            💬 Editor&apos;s Note
+            💬 Editor&#39;s Note
             {decidedBy && ` from @${decidedBy}`}
           </div>
           <div style={{ fontSize: '14px', color: 'var(--text-primary)', lineHeight: '1.6' }}>

@@ -40,33 +40,6 @@ export default async function HomePage() {
           </div>
         </header>
 
-        {/* Featured Newsletter */}
-        <section style={{ marginBottom: '48px' }}>
-          <div className="card" style={{ 
-            background: 'linear-gradient(135deg, #fff 0%, var(--bg-tertiary) 100%)',
-            border: '2px solid var(--accent)',
-            padding: '32px'
-          }}>
-            <div style={{ marginBottom: '24px', textAlign: 'center' }}>
-              <h2 style={{ fontSize: '36px', marginBottom: '8px', color: 'var(--accent)' }}>
-                ✨ Featured: 2024 Retrospective
-              </h2>
-              <p className="text-secondary" style={{ fontSize: '16px' }}>
-                A look back at an incredible year in the Zu-niverse
-              </p>
-            </div>
-            
-            <div style={{ marginTop: '24px', textAlign: 'center' }}>
-              <Link href="/retrospective" className="btn btn-primary" style={{ fontSize: '18px', padding: '14px 28px' }}>
-                📖 Read the Full Retrospective
-              </Link>
-              <p className="text-secondary" style={{ marginTop: '12px', fontSize: '14px' }}>
-                View the complete newsletter with all photos and original formatting
-              </p>
-            </div>
-          </div>
-        </section>
-
         {/* Luma Calendar */}
         <section style={{ marginBottom: '48px' }}>
           <div className="card" style={{ 
@@ -115,6 +88,33 @@ export default async function HomePage() {
             <p className="text-secondary" style={{ fontSize: '14px', marginTop: '16px' }}>
               Calendar hosted on <a href="https://luma.com/zuzalutownhall" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}>Luma</a>
             </p>
+          </div>
+        </section>
+
+        {/* Last Issue */}
+        <section style={{ marginBottom: '48px' }}>
+          <div className="card" style={{ 
+            background: 'linear-gradient(135deg, #fff 0%, var(--bg-tertiary) 100%)',
+            border: '2px solid var(--accent)',
+            padding: '32px'
+          }}>
+            <div style={{ marginBottom: '24px', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '36px', marginBottom: '8px', color: 'var(--accent)' }}>
+                Last Issue: 2024 Retrospective
+              </h2>
+              <p className="text-secondary" style={{ fontSize: '16px' }}>
+                A look back at an incredible year in the Zu-niverse
+              </p>
+            </div>
+            
+            <div style={{ marginTop: '24px', textAlign: 'center' }}>
+              <Link href="/retrospective" className="btn btn-primary" style={{ fontSize: '18px', padding: '14px 28px' }}>
+                📖 Read the Full Retrospective
+              </Link>
+              <p className="text-secondary" style={{ marginTop: '12px', fontSize: '14px' }}>
+                View the complete newsletter with all photos and original formatting
+              </p>
+            </div>
           </div>
         </section>
         

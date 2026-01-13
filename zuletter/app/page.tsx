@@ -66,6 +66,57 @@ export default async function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* Luma Calendar */}
+        <section style={{ marginBottom: '48px' }}>
+          <div className="card" style={{ 
+            background: 'linear-gradient(135deg, #fff 0%, var(--bg-tertiary) 100%)',
+            border: '2px solid var(--accent)',
+            padding: '40px',
+            textAlign: 'center'
+          }}>
+            <div style={{ marginBottom: '32px' }}>
+              <h2 style={{ fontSize: '36px', marginBottom: '12px', color: 'var(--accent)' }}>
+                📅 Zuzalu Town Halls & Events
+              </h2>
+              <p className="text-secondary" style={{ fontSize: '18px', maxWidth: '600px', margin: '0 auto' }}>
+                Stay up to date with upcoming events and adventures in the Zuzalu community. 
+                This space makes it easier to keep up with various events and adventures happening related to Zuzalu.
+              </p>
+            </div>
+            
+            <div style={{ 
+              marginTop: '32px',
+              padding: '32px',
+              background: 'var(--bg-primary)',
+              borderRadius: 'var(--radius)',
+              border: '1px solid var(--border)',
+              marginBottom: '24px'
+            }}>
+              <p style={{ fontSize: '16px', marginBottom: '24px', color: 'var(--text-secondary)' }}>
+                Explore upcoming and past events, submit new events, and subscribe to the calendar.
+              </p>
+              <a 
+                href="https://luma.com/zuzalutownhall" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+                style={{ 
+                  fontSize: '18px', 
+                  padding: '16px 32px',
+                  display: 'inline-block',
+                  textDecoration: 'none'
+                }}
+              >
+                📅 View Calendar on Luma →
+              </a>
+            </div>
+            
+            <p className="text-secondary" style={{ fontSize: '14px', marginTop: '16px' }}>
+              Calendar hosted on <a href="https://luma.com/zuzalutownhall" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}>Luma</a>
+            </p>
+          </div>
+        </section>
         
         <div className="grid-two-col">
           <section>

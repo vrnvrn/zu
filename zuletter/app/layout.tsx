@@ -3,8 +3,8 @@ import Link from 'next/link'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: '💚 ZuLetter 💚',
-  description: 'A transparent, GitHub-native newsletter system',
+  title: 'ZuLetter — Zuzalu Community Newsletter',
+  description: 'A transparent, community-driven newsletter for the Zuzalu ecosystem',
 }
 
 export default function RootLayout({
@@ -18,7 +18,7 @@ export default function RootLayout({
         <div className="deadline-banner">
           <div className="container">
             <Link href="/submit" style={{ display: 'block', textAlign: 'center', color: 'inherit', textDecoration: 'none' }}>
-              Submission Deadline for January 2026 Newsletter: January 23rd.
+              Submissions for the January 2026 issue close January 23rd
             </Link>
           </div>
         </div>
@@ -27,4 +27,3 @@ export default function RootLayout({
     </html>
   )
 }
-

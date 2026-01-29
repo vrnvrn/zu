@@ -17,130 +17,111 @@ export default async function HomePage() {
     <>
       <Nav />
       <div className="container">
-        <header style={{ marginBottom: '40px', textAlign: 'center' }}>
-          <h1 style={{ fontSize: '48px', marginBottom: '12px' }}>
-            💚 ZuLetter 💚
+        <header style={{ marginBottom: '3rem', maxWidth: '640px' }}>
+          <h1 style={{ fontSize: '2.75rem', marginBottom: '1rem' }}>
+            ZuLetter
           </h1>
-          <p style={{ fontSize: '18px', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-            Welcome! Here&#39;s what&#39;s happening in our community this cycle. 
-            Every item is transparently tracked and open for everyone to see.
+          <p style={{ fontSize: '1.125rem', color: 'var(--text-secondary)', lineHeight: '1.7' }}>
+            A transparent, community-curated newsletter for the Zuzalu ecosystem. 
+            All submissions and editorial decisions are publicly tracked.
           </p>
           <div style={{ 
-            marginTop: '24px', 
+            marginTop: '1.5rem', 
             display: 'flex',
-            gap: '16px',
-            justifyContent: 'center',
+            gap: '1rem',
             alignItems: 'center',
             flexWrap: 'wrap'
           }}>
-            <div style={{ 
-              padding: '16px 24px', 
-              background: 'var(--accent-light)', 
-              borderRadius: 'var(--radius)', 
-              fontSize: '14px',
-              color: 'var(--text-primary)'
-            }}>
-              <strong>Current Cycle:</strong> {cycle}
+            <div className="info-box">
+              <span style={{ color: 'var(--text-tertiary)' }}>Current Cycle:</span>{' '}
+              <span style={{ fontWeight: '500' }}>{cycle}</span>
             </div>
-            <Link href="/editor" className="btn btn-primary" style={{ fontSize: '16px', padding: '14px 28px' }}>
-              🔐 Editor Login
+            <Link href="/editor" className="btn btn-primary">
+              Editor Dashboard
             </Link>
           </div>
         </header>
 
-        {/* Luma Calendar */}
-        <section style={{ marginBottom: '48px' }}>
-          <div className="card" style={{ 
-            background: 'linear-gradient(135deg, #fff 0%, var(--bg-tertiary) 100%)',
-            border: '2px solid var(--accent)',
-            padding: '40px',
-            textAlign: 'center'
-          }}>
-            <div style={{ marginBottom: '32px' }}>
-              <h2 style={{ fontSize: '36px', marginBottom: '12px', color: 'var(--accent)' }}>
-                📅 Zuzalu Town Halls & Events
-              </h2>
-              <p className="text-secondary" style={{ fontSize: '18px', maxWidth: '600px', margin: '0 auto' }}>
-                Stay up to date with upcoming events and adventures in the Zuzalu community. 
-                This space makes it easier to keep up with various events and adventures happening related to Zuzalu.
-              </p>
-            </div>
-            
-            <div style={{ 
-              marginTop: '32px',
-              padding: '32px',
-              background: 'var(--bg-primary)',
-              borderRadius: 'var(--radius)',
-              border: '1px solid var(--border)',
-              marginBottom: '24px'
-            }}>
-              <p style={{ fontSize: '16px', marginBottom: '24px', color: 'var(--text-secondary)' }}>
-                Explore upcoming and past events, submit new events, and subscribe to the calendar.
-              </p>
-              <a 
-                href="https://luma.com/zuzalutownhall" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="btn btn-primary"
-                style={{ 
-                  fontSize: '18px', 
-                  padding: '16px 32px',
-                  display: 'inline-block',
-                  textDecoration: 'none'
-                }}
-              >
-                📅 View Calendar on Luma →
-              </a>
-            </div>
-            
-            <p className="text-secondary" style={{ fontSize: '14px', marginTop: '16px' }}>
-              Calendar hosted on <a href="https://luma.com/zuzalutownhall" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}>Luma</a>
+        {/* Events Calendar */}
+        <section style={{ marginBottom: '3rem' }}>
+          <div className="feature-card">
+            <h2 style={{ fontSize: '1.5rem', marginTop: 0, marginBottom: '0.75rem' }}>
+              Community Events
+            </h2>
+            <p className="text-secondary" style={{ marginBottom: '1.5rem', maxWidth: '540px' }}>
+              Stay informed about upcoming town halls, workshops, and gatherings 
+              across the Zuzalu network.
             </p>
+            
+            <a 
+              href="https://luma.com/zuzalutownhall" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="btn btn-accent"
+              style={{ textDecoration: 'none' }}
+            >
+              View Calendar on Luma
+            </a>
           </div>
         </section>
 
         {/* Last Issue */}
-        <section style={{ marginBottom: '48px' }}>
-          <div className="card" style={{ 
-            background: 'linear-gradient(135deg, #fff 0%, var(--bg-tertiary) 100%)',
-            border: '2px solid var(--accent)',
-            padding: '32px'
-          }}>
-            <div style={{ marginBottom: '24px', textAlign: 'center' }}>
-              <h2 style={{ fontSize: '36px', marginBottom: '8px', color: 'var(--accent)' }}>
-                Last Issue: 2024 Retrospective
-              </h2>
-              <p className="text-secondary" style={{ fontSize: '16px' }}>
-                A look back at an incredible year in the Zu-niverse
-              </p>
+        <section style={{ marginBottom: '3rem' }}>
+          <div className="feature-card">
+            <div style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '0.5rem', 
+              marginBottom: '0.5rem' 
+            }}>
+              <span className="status-dot status-dot-active"></span>
+              <span className="text-small" style={{ 
+                color: 'var(--success)', 
+                fontWeight: '500',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em'
+              }}>
+                Latest Issue
+              </span>
             </div>
+            <h2 style={{ fontSize: '1.5rem', marginTop: 0, marginBottom: '0.5rem' }}>
+              2024 Retrospective
+            </h2>
+            <p className="text-secondary" style={{ marginBottom: '1.5rem' }}>
+              A comprehensive review of the Zuzalu ecosystem&apos;s developments, 
+              milestones, and community achievements throughout 2024.
+            </p>
             
-            <div style={{ marginTop: '24px', textAlign: 'center' }}>
-              <Link href="/retrospective" className="btn btn-primary" style={{ fontSize: '18px', padding: '14px 28px' }}>
-                📖 Read the Full Retrospective
-              </Link>
-              <p className="text-secondary" style={{ marginTop: '12px', fontSize: '14px' }}>
-                View the complete 💚 ZuLetter 💚 with all photos and original formatting
-              </p>
-            </div>
+            <Link href="/retrospective" className="btn btn-secondary">
+              Read the Retrospective
+            </Link>
           </div>
         </section>
         
         {submitted.length > 0 && (
-          <section style={{ marginTop: '48px' }}>
-            <h2 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              📝 New Submissions 
-              <span style={{ 
-                fontSize: '18px', 
-                fontWeight: 'normal', 
-                color: 'var(--text-secondary)' 
+          <section style={{ marginTop: '3rem' }}>
+            <div style={{ marginBottom: '1.5rem' }}>
+              <h2 style={{ 
+                display: 'flex', 
+                alignItems: 'baseline', 
+                gap: '0.75rem',
+                marginTop: 0,
+                marginBottom: '0.5rem'
               }}>
-                ({submitted.length})
-              </span>
-            </h2>
-            <p className="text-secondary" style={{ marginBottom: '20px' }}>
-              These items are waiting to be reviewed by our editors.
-            </p>
+                Pending Submissions
+                <span style={{ 
+                  fontSize: '1rem', 
+                  fontWeight: '400', 
+                  color: 'var(--text-tertiary)',
+                  fontFamily: 'inherit'
+                }}>
+                  {submitted.length}
+                </span>
+              </h2>
+              <p className="text-secondary" style={{ margin: 0 }}>
+                Items awaiting editorial review for the upcoming issue.
+              </p>
+            </div>
             {submitted.map(item => (
               <ItemCard key={item.issue.id} item={item} />
             ))}
@@ -150,4 +131,3 @@ export default async function HomePage() {
     </>
   )
 }
-

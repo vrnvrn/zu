@@ -122,6 +122,44 @@
 3. Commit and push to main
 4. Verify it appears in `/archive`
 
+## Adding Historical Newsletters
+
+Every newsletter in the archive is **verifiable on GitHub**: each edition links to its source file in the repo, and when loaded from the repo the commit SHA is shown.
+
+To add **past newsletters** (e.g. from the last few years):
+
+1. **Ensure the repo has a `newsletters/` folder** (create it in the repo root if needed).
+
+2. **Add one Markdown file per edition** in that folder. Use the cycle date as the filename:
+   - `newsletters/2024-12-18.md`
+   - `newsletters/2024-06-01.md`
+   - `newsletters/2023-11-15.md`
+   - etc.
+
+3. **Use this frontmatter** at the top of each file (then your markdown body below):
+   ```yaml
+   ---
+   title: "ZuLetter — December 18, 2024"
+   cycle: "2024-12-18"
+   editors: ["@editor1", "@editor2"]
+   source_repo: "your-org/your-repo"
+   ---
+   ```
+
+4. **Paste or write the newsletter content** below the frontmatter (standard Markdown).
+
+5. **Commit and push** to the default branch (e.g. `main`). The app fetches the list from the GitHub API, so new files appear in the Archive within a few minutes (cache is 5 minutes). Each edition will show:
+   - **Verify on GitHub** – links to the file in the repo
+   - **SHA** – commit hash for that file (proves it’s in the repo)
+
+**Tips:**
+
+- `cycle` should match the filename date (e.g. `2024-12-18` for `2024-12-18.md`) so sorting is correct.
+- `source_repo` is the GitHub `owner/repo` where the file lives; the "View on GitHub" link uses it. Use your actual repo (e.g. `vrnvrn/zu`).
+- You can add a line in the body like: *This newsletter is verifiable on GitHub. [View source](https://github.com/your-org/your-repo/blob/main/newsletters/YYYY-MM-DD.md)*
+
+See `templates/newsletter.md` for a blank template and `HISTORICAL_NEWSLETTERS.md` in this folder for a quick reference.
+
 ## Troubleshooting
 
 ### GitHub API Rate Limits

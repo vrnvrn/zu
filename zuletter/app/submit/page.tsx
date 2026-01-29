@@ -20,41 +20,30 @@ export default function SubmitPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     
-    // Build GitHub issue URL with prefilled data
-    // Note: GitHub Issue Forms have limited prefill support, so we'll use query params
-    // which may not work perfectly, but provides a good UX
-    const params = new URLSearchParams()
-    
-    // For Issue Forms, we can't easily prefill, so we'll redirect to the template
-    // and show instructions
     const issueUrl = getNewIssueWithTemplateUrl('submit-item.yml')
-    
-    // Open in new tab
     window.open(issueUrl, '_blank')
-    
-    // Show success message
     alert('Opening GitHub issue form. Please complete the form there to submit your item.')
   }
 
   return (
     <>
       <Nav />
-      <div className="container" style={{ maxWidth: '800px' }}>
-        <header style={{ marginBottom: '40px', textAlign: 'center' }}>
-          <h1 style={{ fontSize: '48px', marginBottom: '12px' }}>
-            ✨ Share Your Story
+      <div className="container" style={{ maxWidth: '680px' }}>
+        <header style={{ marginBottom: '2.5rem' }}>
+          <h1 style={{ marginBottom: '0.75rem' }}>
+            Submit an Item
           </h1>
-          <p style={{ fontSize: '18px', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-            Have something exciting to share with the community? We&#39;d love to hear about it! 
-            Your submission helps keep everyone connected and informed.
+          <p style={{ fontSize: '1.0625rem', color: 'var(--text-secondary)', lineHeight: '1.7' }}>
+            Contribute to the next issue of ZuLetter. Submissions are reviewed by 
+            our editorial team and all decisions are publicly documented.
           </p>
         </header>
         
-        <div className="card">
+        <div className="card" style={{ padding: '2rem' }}>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label className="form-label" htmlFor="title">
-                Title *
+                Title <span style={{ color: 'var(--text-tertiary)' }}>*</span>
               </label>
               <input
                 type="text"
@@ -62,14 +51,14 @@ export default function SubmitPage() {
                 className="form-input"
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                placeholder="Brief, descriptive title"
+                placeholder="A clear, descriptive title"
                 required
               />
             </div>
             
             <div className="form-group">
               <label className="form-label" htmlFor="category">
-                Category *
+                Category <span style={{ color: 'var(--text-tertiary)' }}>*</span>
               </label>
               <select
                 id="category"
@@ -80,10 +69,10 @@ export default function SubmitPage() {
               >
                 <option value="">Select a category</option>
                 <option value="events">Events</option>
-                <option value="wins">Wins</option>
+                <option value="wins">Community Wins</option>
                 <option value="updates">Updates</option>
                 <option value="requests">Requests</option>
-                <option value="jobs">Jobs</option>
+                <option value="jobs">Opportunities</option>
                 <option value="research">Research</option>
                 <option value="media">Media</option>
               </select>
@@ -91,21 +80,21 @@ export default function SubmitPage() {
             
             <div className="form-group">
               <label className="form-label" htmlFor="summary">
-                Summary (1-3 sentences) *
+                Summary <span style={{ color: 'var(--text-tertiary)' }}>*</span>
               </label>
               <textarea
                 id="summary"
                 className="form-textarea"
                 value={formData.summary}
                 onChange={(e) => setFormData({ ...formData, summary: e.target.value })}
-                placeholder="Brief summary of the item..."
+                placeholder="A concise summary in 1–3 sentences"
                 required
               />
             </div>
             
             <div className="form-group">
               <label className="form-label" htmlFor="sourceLink">
-                Source Link (optional)
+                Source URL <span style={{ color: 'var(--text-tertiary)', fontWeight: '400' }}>(optional)</span>
               </label>
               <input
                 type="url"
@@ -119,21 +108,21 @@ export default function SubmitPage() {
             
             <div className="form-group">
               <label className="form-label" htmlFor="relevance">
-                Relevance to Community *
+                Community Relevance <span style={{ color: 'var(--text-tertiary)' }}>*</span>
               </label>
               <textarea
                 id="relevance"
                 className="form-textarea"
                 value={formData.relevance}
                 onChange={(e) => setFormData({ ...formData, relevance: e.target.value })}
-                placeholder="Why is this relevant to our community?"
+                placeholder="Explain why this is relevant to the Zuzalu community"
                 required
               />
             </div>
             
             <div className="form-group">
               <label className="form-label" htmlFor="timeSensitivity">
-                Time Sensitivity
+                Time Sensitivity <span style={{ color: 'var(--text-tertiary)', fontWeight: '400' }}>(optional)</span>
               </label>
               <input
                 type="text"
@@ -141,13 +130,13 @@ export default function SubmitPage() {
                 className="form-input"
                 value={formData.timeSensitivity}
                 onChange={(e) => setFormData({ ...formData, timeSensitivity: e.target.value })}
-                placeholder="Date (YYYY-MM-DD) or 'evergreen'"
+                placeholder="YYYY-MM-DD or 'evergreen'"
               />
             </div>
             
             <div className="form-group">
               <label className="form-label" htmlFor="attribution">
-                Attribution (your name/handle) *
+                Attribution <span style={{ color: 'var(--text-tertiary)' }}>*</span>
               </label>
               <input
                 type="text"
@@ -155,59 +144,82 @@ export default function SubmitPage() {
                 className="form-input"
                 value={formData.attribution}
                 onChange={(e) => setFormData({ ...formData, attribution: e.target.value })}
-                placeholder="@yourhandle or Your Name"
+                placeholder="Your name or handle (@username)"
                 required
               />
             </div>
             
             <div className="form-group">
-              <label style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+              <label style={{ display: 'flex', alignItems: 'flex-start', cursor: 'pointer', gap: '0.5rem' }}>
                 <input
                   type="checkbox"
                   className="form-checkbox"
                   checked={formData.consent}
                   onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
                   required
+                  style={{ marginTop: '0.25rem' }}
                 />
-                <span>I consent to this being published publicly *</span>
+                <span style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)' }}>
+                  I consent to this submission being published publicly
+                </span>
               </label>
             </div>
             
-            <div style={{ marginTop: '32px', paddingTop: '24px', borderTop: '2px solid var(--border)' }}>
-              <button type="submit" className="btn btn-primary" style={{ fontSize: '16px', padding: '12px 24px' }}>
-                🚀 Submit Your Item
+            <div style={{ 
+              marginTop: '2rem', 
+              paddingTop: '1.5rem', 
+              borderTop: '1px solid var(--border)' 
+            }}>
+              <button type="submit" className="btn btn-primary" style={{ padding: '0.75rem 1.5rem' }}>
+                Continue to GitHub
               </button>
-              <p className="text-secondary" style={{ marginTop: '16px', fontSize: '14px', lineHeight: '1.6' }}>
-                💡 You&#39;ll be redirected to GitHub to complete your submission. 
-                Don&#39;t worry—it&#39;s quick and easy! This helps us keep everything organized and transparent.
+              <p className="text-secondary" style={{ marginTop: '1rem', fontSize: '0.875rem', lineHeight: '1.6' }}>
+                You will be redirected to GitHub to complete your submission. 
+                This ensures all submissions are publicly tracked and verifiable.
               </p>
-              <div style={{ marginTop: '20px', paddingTop: '20px', borderTop: '1px solid var(--border)' }}>
-                <p className="text-secondary" style={{ fontSize: '13px', marginBottom: '8px' }}>
-                  <strong>Need help?</strong> Check out:
-                </p>
-                <ul style={{ fontSize: '13px', color: 'var(--text-secondary)', marginLeft: '20px', lineHeight: '1.8' }}>
-                  <li>
-                    <a href={`https://github.com/${repoPath}/blob/main/CONTRIBUTING.md`} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}>
-                      Submission Guidelines
-                    </a>
-                  </li>
-                  <li>
-                    <a href={`https://github.com/${repoPath}/blob/main/.github/ISSUE_TEMPLATE/submit-item.yml`} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}>
-                      Issue Template
-                    </a>
-                  </li>
-                  <li>
-                    <a href={`https://github.com/${repoPath}/issues`} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)' }}>
-                      View All Submissions
-                    </a>
-                  </li>
-                </ul>
-              </div>
             </div>
           </form>
+        </div>
+        
+        <div style={{ 
+          marginTop: '2rem', 
+          padding: '1.25rem',
+          background: 'var(--bg-secondary)',
+          borderRadius: 'var(--radius)',
+          border: '1px solid var(--border)'
+        }}>
+          <p style={{ 
+            fontSize: '0.875rem', 
+            fontWeight: '500',
+            color: 'var(--text-primary)',
+            marginBottom: '0.75rem' 
+          }}>
+            Resources
+          </p>
+          <ul style={{ 
+            fontSize: '0.875rem', 
+            color: 'var(--text-secondary)', 
+            marginLeft: '1.25rem', 
+            lineHeight: '2' 
+          }}>
+            <li>
+              <a href={`https://github.com/${repoPath}/blob/main/CONTRIBUTING.md`} target="_blank" rel="noopener noreferrer">
+                Submission Guidelines
+              </a>
+            </li>
+            <li>
+              <a href={`https://github.com/${repoPath}/issues`} target="_blank" rel="noopener noreferrer">
+                View All Submissions
+              </a>
+            </li>
+            <li>
+              <a href="/how-decisions-work">
+                Editorial Process
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </>
   )
 }
-

@@ -5,21 +5,30 @@ export default function Nav() {
     <nav className="nav">
       <div className="container">
         <div className="nav-content">
-          <Link href="/" style={{ fontSize: '20px', fontWeight: '700', color: 'var(--accent)', letterSpacing: '-0.3px' }}>
-            💚 ZuLetter 💚
+          <Link 
+            href="/" 
+            style={{ 
+              fontSize: '1.125rem', 
+              fontWeight: '500', 
+              color: 'var(--text-primary)', 
+              letterSpacing: '-0.02em',
+              fontFamily: 'Georgia, serif'
+            }}
+          >
+            ZuLetter
           </Link>
           <div className="nav-links">
             <Link href="/" className="nav-link">
               Current Cycle
             </Link>
             <Link href="/submit" className="nav-link">
-              Submit Item
+              Submit
             </Link>
             <Link href="/archive" className="nav-link">
               Archive
             </Link>
             <Link href="/how-decisions-work" className="nav-link">
-              How Decisions Work
+              Process
             </Link>
           </div>
         </div>
@@ -27,4 +36,3 @@ export default function Nav() {
     </nav>
   )
 }
-

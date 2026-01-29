@@ -1,7 +1,6 @@
 import Nav from '@/components/Nav'
-import { fetchNewsletters } from '@/lib/github'
+import { fetchNewsletters, getRepoPath } from '@/lib/github'
 import { localNewsletter } from '@/lib/newsletter-content'
-import { format } from 'date-fns'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
@@ -9,14 +8,20 @@ export const revalidate = 300 // Cache for 5 minutes
 
 export default async function ArchivePage() {
   const newsletters = await fetchNewsletters()
-  
-  // Add local newsletter to the list if it's not already there
-  const allNewsletters = newsletters.length > 0 
-    ? newsletters 
-    : [{
-        ...localNewsletter,
-        sha: undefined,
-      }]
+  const repoPath = getRepoPath()
+
+  // When repo has no newsletters yet, show local fallback with verify link to this repo
+  const allNewsletters =
+    newsletters.length > 0
+      ? newsletters
+      : [
+          {
+            ...localNewsletter,
+            sha: undefined,
+            sourceRepo: repoPath,
+            htmlUrl: `https://github.com/${repoPath}/blob/main/newsletters/${localNewsletter.cycle}.md`,
+          },
+        ]
   
   return (
     <>
@@ -65,14 +70,16 @@ export default async function ArchivePage() {
                     </div>
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'flex-end' }}>
-                    <a 
-                      href={newsletter.htmlUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-secondary"
-                    >
-                      Verify on GitHub
-                    </a>
+                    {newsletter.htmlUrl && (
+                      <a
+                        href={newsletter.htmlUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-secondary"
+                      >
+                        Verify on GitHub
+                      </a>
+                    )}
                     {newsletter.sha && (
                       <span className="text-tertiary" style={{ fontSize: '11px' }}>
                         SHA: {newsletter.sha.substring(0, 7)}
@@ -86,6 +93,17 @@ export default async function ArchivePage() {
                     {newsletter.content}
                   </ReactMarkdown>
                 </div>
+                {newsletter.htmlUrl && (
+                  <p className="text-tertiary" style={{ marginTop: '24px', fontSize: '13px', borderTop: '1px solid var(--border)', paddingTop: '16px' }}>
+                    This edition is stored in the repository for verification.{' '}
+                    <a href={newsletter.htmlUrl} target="_blank" rel="noopener noreferrer">
+                      View on GitHub
+                    </a>
+                    {newsletter.sha && (
+                      <> · Commit: <code style={{ fontSize: '12px' }}>{newsletter.sha.substring(0, 7)}</code></>
+                    )}
+                  </p>
+                )}
               </div>
             ))}
           </div>

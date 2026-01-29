@@ -30,10 +30,33 @@ export default function SubmitPage() {
       <Nav />
       <div className="container" style={{ maxWidth: '680px' }}>
         <header style={{ marginBottom: '2.5rem' }}>
-          <h1 style={{ marginBottom: '0.75rem' }}>
+          <div style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '0.5rem', 
+            marginBottom: '1rem' 
+          }}>
+            <div style={{
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
+              background: 'var(--yellow)',
+              boxShadow: '0 0 8px rgba(232, 213, 86, 0.5)'
+            }} />
+            <span style={{ 
+              fontSize: '0.75rem', 
+              fontWeight: '500', 
+              color: 'var(--accent)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em'
+            }}>
+              Contribute
+            </span>
+          </div>
+          <h1 style={{ marginBottom: '0.75rem', letterSpacing: '0.02em' }}>
             Submit an Item
           </h1>
-          <p style={{ fontSize: '1.0625rem', color: 'var(--text-secondary)', lineHeight: '1.7' }}>
+          <p style={{ fontSize: '1.0625rem', color: 'var(--text-secondary)', lineHeight: '1.75' }}>
             Contribute to the next issue of ZuLetter. Submissions are reviewed by 
             our editorial team and all decisions are publicly documented.
           </p>
@@ -170,10 +193,19 @@ export default function SubmitPage() {
               paddingTop: '1.5rem', 
               borderTop: '1px solid var(--border)' 
             }}>
-              <button type="submit" className="btn btn-primary" style={{ padding: '0.75rem 1.5rem' }}>
+              <button type="submit" className="btn btn-accent" style={{ 
+                padding: '0.75rem 1.5rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}>
                 Continue to GitHub
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
               </button>
-              <p className="text-secondary" style={{ marginTop: '1rem', fontSize: '0.875rem', lineHeight: '1.6' }}>
+              <p className="text-secondary" style={{ marginTop: '1rem', fontSize: '0.875rem', lineHeight: '1.65' }}>
                 You will be redirected to GitHub to complete your submission. 
                 This ensures all submissions are publicly tracked and verifiable.
               </p>
@@ -183,16 +215,18 @@ export default function SubmitPage() {
         
         <div style={{ 
           marginTop: '2rem', 
-          padding: '1.25rem',
-          background: 'var(--bg-secondary)',
+          padding: '1.25rem 1.5rem',
+          background: 'linear-gradient(135deg, var(--accent-subtle) 0%, var(--bg-secondary) 100%)',
           borderRadius: 'var(--radius)',
-          border: '1px solid var(--border)'
+          border: '1px solid var(--accent-muted)'
         }}>
           <p style={{ 
-            fontSize: '0.875rem', 
-            fontWeight: '500',
-            color: 'var(--text-primary)',
-            marginBottom: '0.75rem' 
+            fontSize: '0.75rem', 
+            fontWeight: '600',
+            color: 'var(--accent)',
+            marginBottom: '0.875rem',
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em'
           }}>
             Resources
           </p>
@@ -200,7 +234,7 @@ export default function SubmitPage() {
             fontSize: '0.875rem', 
             color: 'var(--text-secondary)', 
             marginLeft: '1.25rem', 
-            lineHeight: '2' 
+            lineHeight: '2.25' 
           }}>
             <li>
               <a href={`https://github.com/${repoPath}/blob/main/CONTRIBUTING.md`} target="_blank" rel="noopener noreferrer">

@@ -9,36 +9,77 @@ export default function HowDecisionsWorkPage() {
       <Nav />
       <div className="container" style={{ maxWidth: '720px' }}>
         <header style={{ marginBottom: '3rem' }}>
-          <h1 style={{ marginBottom: '0.75rem' }}>
+          <div style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '0.5rem', 
+            marginBottom: '1rem' 
+          }}>
+            <div style={{
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
+              background: 'var(--yellow)',
+              boxShadow: '0 0 8px rgba(232, 213, 86, 0.5)'
+            }} />
+            <span style={{ 
+              fontSize: '0.75rem', 
+              fontWeight: '500', 
+              color: 'var(--accent)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em'
+            }}>
+              Transparency
+            </span>
+          </div>
+          <h1 style={{ marginBottom: '0.75rem', letterSpacing: '0.02em' }}>
             Editorial Process
           </h1>
-          <p style={{ fontSize: '1.0625rem', color: 'var(--text-secondary)', lineHeight: '1.7' }}>
+          <p style={{ fontSize: '1.0625rem', color: 'var(--text-secondary)', lineHeight: '1.75' }}>
             ZuLetter operates with full transparency. Every submission, editorial decision, 
             and published issue is publicly documented and verifiable.
           </p>
         </header>
         
-        <section className="card" style={{ marginBottom: '1.5rem', padding: '2rem' }}>
-          <h2 style={{ marginTop: 0 }}>Workflow</h2>
+        <section className="feature-card" style={{ marginBottom: '1.5rem', padding: '2rem' }}>
+          <h2 style={{ marginTop: 0, letterSpacing: '0.02em' }}>Workflow</h2>
           
-          <div className="accent-border-card" style={{ margin: '1.5rem 0' }}>
-            <h3 style={{ marginTop: 0, fontSize: '1.1rem' }}>1. Collection</h3>
+          <div style={{ 
+            margin: '1.5rem 0',
+            padding: '1.25rem',
+            background: 'white',
+            borderRadius: 'var(--radius)',
+            borderLeft: '3px solid var(--accent)'
+          }}>
+            <h3 style={{ marginTop: 0, fontSize: '1.1rem', color: 'var(--accent)' }}>1. Collection</h3>
             <p className="text-secondary" style={{ margin: 0 }}>
               Community members submit items through the submission form. Each submission 
               is automatically tracked as a GitHub issue with appropriate labels.
             </p>
           </div>
           
-          <div className="accent-border-card" style={{ margin: '1.5rem 0' }}>
-            <h3 style={{ marginTop: 0, fontSize: '1.1rem' }}>2. Review</h3>
+          <div style={{ 
+            margin: '1.5rem 0',
+            padding: '1.25rem',
+            background: 'white',
+            borderRadius: 'var(--radius)',
+            borderLeft: '3px solid var(--yellow)'
+          }}>
+            <h3 style={{ marginTop: 0, fontSize: '1.1rem', color: 'var(--accent)' }}>2. Review</h3>
             <p className="text-secondary" style={{ margin: 0 }}>
               Editors review submissions and may shortlist items for further consideration. 
               The review process considers relevance, timeliness, and community value.
             </p>
           </div>
           
-          <div className="accent-border-card" style={{ margin: '1.5rem 0' }}>
-            <h3 style={{ marginTop: 0, fontSize: '1.1rem' }}>3. Decision</h3>
+          <div style={{ 
+            margin: '1.5rem 0',
+            padding: '1.25rem',
+            background: 'white',
+            borderRadius: 'var(--radius)',
+            borderLeft: '3px solid var(--accent)'
+          }}>
+            <h3 style={{ marginTop: 0, fontSize: '1.1rem', color: 'var(--accent)' }}>3. Decision</h3>
             <p className="text-secondary" style={{ marginBottom: '1rem' }}>
               Each item receives a documented decision:
             </p>
@@ -57,8 +98,14 @@ export default function HowDecisionsWorkPage() {
             </p>
           </div>
           
-          <div className="accent-border-card" style={{ margin: '1.5rem 0 0 0' }}>
-            <h3 style={{ marginTop: 0, fontSize: '1.1rem' }}>4. Publication</h3>
+          <div style={{ 
+            margin: '1.5rem 0 0 0',
+            padding: '1.25rem',
+            background: 'white',
+            borderRadius: 'var(--radius)',
+            borderLeft: '3px solid var(--yellow)'
+          }}>
+            <h3 style={{ marginTop: 0, fontSize: '1.1rem', color: 'var(--accent)' }}>4. Publication</h3>
             <p className="text-secondary" style={{ margin: 0 }}>
               Accepted items are compiled into the newsletter, organized by section, 
               and published. All issues are permanently archived.
@@ -67,17 +114,18 @@ export default function HowDecisionsWorkPage() {
         </section>
         
         <section className="card" style={{ marginBottom: '1.5rem', padding: '2rem' }}>
-          <h2 style={{ marginTop: 0 }}>Decision Format</h2>
+          <h2 style={{ marginTop: 0, letterSpacing: '0.02em' }}>Decision Format</h2>
           <p className="text-secondary">
             Editorial decisions are recorded as structured comments on each submission:
           </p>
           <pre style={{ 
-            background: 'var(--bg-tertiary)', 
-            padding: '1rem', 
+            background: 'linear-gradient(135deg, var(--accent-subtle) 0%, var(--bg-tertiary) 100%)', 
+            padding: '1.25rem', 
             borderRadius: 'var(--radius)',
             fontSize: '0.875rem',
-            border: '1px solid var(--border)',
-            overflowX: 'auto'
+            border: '1px solid var(--accent-muted)',
+            overflowX: 'auto',
+            color: 'var(--accent-dark)'
           }}>
 {`Decision: accepted
 Reason: High relevance, actionable content

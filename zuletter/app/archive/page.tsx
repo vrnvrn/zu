@@ -28,10 +28,33 @@ export default async function ArchivePage() {
       <Nav />
       <div className="container" style={{ maxWidth: '900px' }}>
         <header style={{ marginBottom: '3rem' }}>
-          <h1 style={{ marginBottom: '0.75rem' }}>
+          <div style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '0.5rem', 
+            marginBottom: '1rem' 
+          }}>
+            <div style={{
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
+              background: 'var(--yellow)',
+              boxShadow: '0 0 8px rgba(232, 213, 86, 0.5)'
+            }} />
+            <span style={{ 
+              fontSize: '0.75rem', 
+              fontWeight: '500', 
+              color: 'var(--accent)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em'
+            }}>
+              History
+            </span>
+          </div>
+          <h1 style={{ marginBottom: '0.75rem', letterSpacing: '0.02em' }}>
             Archive
           </h1>
-          <p style={{ fontSize: '1.0625rem', color: 'var(--text-secondary)', lineHeight: '1.7' }}>
+          <p style={{ fontSize: '1.0625rem', color: 'var(--text-secondary)', lineHeight: '1.75' }}>
             A complete record of past ZuLetter issues. Each edition is permanently stored 
             and cryptographically verifiable through GitHub.
           </p>
@@ -45,9 +68,9 @@ export default async function ArchivePage() {
           <div>
             {allNewsletters.map(newsletter => (
               <article key={newsletter.cycle} className="card" style={{ marginBottom: '1.5rem', padding: '2rem' }}>
-                <div className="flex-between" style={{ marginBottom: '1.5rem' }}>
+                <div className="flex-between" style={{ marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
                   <div>
-                    <h2 style={{ marginTop: 0, marginBottom: '0.5rem' }}>{newsletter.title}</h2>
+                    <h2 style={{ marginTop: 0, marginBottom: '0.5rem', letterSpacing: '0.02em' }}>{newsletter.title}</h2>
                     <div className="text-secondary" style={{ fontSize: '0.875rem' }}>
                       <span style={{ color: 'var(--text-tertiary)' }}>Cycle:</span> {newsletter.cycle}
                       {newsletter.editors.length > 0 && (

@@ -66,7 +66,7 @@ export default function January2026Page() {
           margin: 0 0 1.5rem 0;
           color: var(--text-primary);
           text-align: center;
-          letter-spacing: -0.02em;
+          letter-spacing: 0.02em;
         }
         
         .newsletter-content :global(h2) {
@@ -74,8 +74,10 @@ export default function January2026Page() {
           font-size: 1.5rem;
           font-weight: 400;
           margin: 2rem 0 1rem 0;
-          color: var(--text-primary);
-          letter-spacing: -0.02em;
+          color: var(--accent);
+          letter-spacing: 0.02em;
+          padding-left: 0.75rem;
+          border-left: 3px solid var(--yellow);
         }
         
         .newsletter-content :global(h3) {
@@ -84,7 +86,7 @@ export default function January2026Page() {
           font-weight: 400;
           margin: 1.5rem 0 0.75rem 0;
           color: var(--text-primary);
-          letter-spacing: -0.02em;
+          letter-spacing: 0.01em;
         }
         
         .newsletter-content :global(p),
@@ -153,17 +155,17 @@ export default function January2026Page() {
         }
         
         .newsletter-content :global(.carousel::-webkit-scrollbar-track) {
-          background: #f5f5f4;
+          background: var(--accent-subtle);
           border-radius: 4px;
         }
         
         .newsletter-content :global(.carousel::-webkit-scrollbar-thumb) {
-          background: #d6d3d1;
+          background: var(--accent-muted);
           border-radius: 4px;
         }
         
         .newsletter-content :global(.carousel::-webkit-scrollbar-thumb:hover) {
-          background: #a8a29e;
+          background: var(--accent);
         }
         
         .newsletter-content :global(.carousel-item) {
@@ -192,10 +194,15 @@ export default function January2026Page() {
         
         .newsletter-content :global(.carousel-hint) {
           font-size: 0.75rem;
-          color: #78716c;
+          color: var(--text-tertiary);
           margin-top: 0.25rem;
           margin-bottom: 1rem;
           text-align: center;
+        }
+        
+        .newsletter-content :global(.carousel-item img) {
+          border: 1px solid var(--border);
+          box-shadow: var(--shadow-md);
         }
       `}</style>
     </>

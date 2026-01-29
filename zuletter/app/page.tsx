@@ -50,11 +50,20 @@ export default async function HomePage() {
             </h2>
             <p className="text-secondary" style={{ marginBottom: '1.5rem', maxWidth: '540px' }}>
               Stay informed about upcoming town halls, workshops, and gatherings 
-              across the Zuzalu network.
+              across the Zuzalu network — and{' '}
+              <a 
+                href="https://lu.ma/zuzalutownhall" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{ fontWeight: '600' }}
+              >
+                subscribe to the newsletter
+              </a>{' '}
+              here.
             </p>
             
             <a 
-              href="https://luma.com/zuzalutownhall" 
+              href="https://lu.ma/zuzalutownhall" 
               target="_blank" 
               rel="noopener noreferrer"
               className="btn btn-accent"

@@ -390,6 +390,9 @@ export async function fetchNewsletter(cycle: string): Promise<Newsletter | null>
       const repoMatch = frontmatter.match(/source_repo:\s*["'](.+?)["']/)
       if (repoMatch) sourceRepo = repoMatch[1]
       
+      // Detect if content is HTML (starts with DOCTYPE or <html)
+      const isHtml = body.trim().startsWith('<!DOCTYPE') || body.trim().startsWith('<html')
+      
       return {
         path: `newsletters/${cycle}.md`,
         title,
@@ -397,9 +400,13 @@ export async function fetchNewsletter(cycle: string): Promise<Newsletter | null>
         editors,
         sourceRepo,
         content: body,
+        format: isHtml ? 'html' : 'markdown',
         htmlUrl: `https://github.com/${sourceRepo}/blob/main/newsletters/${cycle}.md`,
       }
     }
+    
+    // Detect if content is HTML
+    const isHtml = content.trim().startsWith('<!DOCTYPE') || content.trim().startsWith('<html')
     
     return {
       path: `newsletters/${cycle}.md`,
@@ -408,6 +415,7 @@ export async function fetchNewsletter(cycle: string): Promise<Newsletter | null>
       editors,
       sourceRepo,
       content,
+      format: isHtml ? 'html' : 'markdown',
       htmlUrl: `https://github.com/${sourceRepo}/blob/main/newsletters/${cycle}.md`,
     }
   } catch (error) {

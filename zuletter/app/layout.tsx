@@ -26,9 +26,9 @@ export default function RootLayout({
         <div className="deadline-banner">
           <div className="container">
             <Link href="/submit" style={{ display: 'block', textAlign: 'center', color: 'inherit', textDecoration: 'none' }}>
-              <span style={{ opacity: 0.9 }}>Submissions for the</span>{' '}
-              <strong>January 2026</strong>{' '}
-              <span style={{ opacity: 0.9 }}>issue close January 23rd</span>{' '}
+              <span style={{ opacity: 0.9 }}>Submissions for</span>{' '}
+              <strong>February 2026</strong>{' '}
+              <span style={{ opacity: 0.9 }}>issue close February 16th</span>{' '}
               <span style={{ marginLeft: '0.5rem' }}>→</span>
             </Link>
           </div>

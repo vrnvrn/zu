@@ -129,9 +129,6 @@ export default async function HomePage() {
               }}>
                 Read the Newsletter
               </Link>
-              <Link href="/retrospective" className="btn btn-secondary">
-                2024 Retrospective
-              </Link>
             </div>
           </div>
         </section>

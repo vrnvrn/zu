@@ -19,7 +19,7 @@ export default async function ArchivePage() {
             ...localNewsletter,
             sha: undefined,
             sourceRepo: repoPath,
-            htmlUrl: `https://github.com/${repoPath}/blob/main/newsletters/${localNewsletter.cycle}.md`,
+            htmlUrl: `https://github.com/${repoPath}/blob/main/zuletter/public/newsletters/${localNewsletter.cycle}.md`,
           },
         ]
   

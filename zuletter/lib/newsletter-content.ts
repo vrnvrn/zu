@@ -1,10 +1,10 @@
 // Local newsletter content for development/demo
 export const localNewsletter = {
-  path: 'newsletters/2024-12-18.md',
+  path: 'zuletter/public/newsletters/2024-12-18.md',
   title: 'Zuzalu Community Newsletter — 2024 Retrospective',
   cycle: '2024-12-18',
   editors: ['@veronica'],
-  sourceRepo: 'zuzalu/community-newsletter',
+  sourceRepo: 'vrnvrn/zu',
   content: `# Zuzalu Community Newsletter — 2024 Retrospective
 
 Happy New Year's Eve, everyone! It's been a whirlwind of a year in the Zu-niverse, and I wouldn't have it any other way.
@@ -61,7 +61,7 @@ Have a wonderful end to 2024, and see you in Zu next year!
 
 ---
 
-*This newsletter is published and verifiable on GitHub. [View source](https://github.com/zuzalu/community-newsletter/blob/main/newsletters/2024-12-18.md)*`,
-  htmlUrl: 'https://github.com/zuzalu/community-newsletter/blob/main/newsletters/2024-12-18.md',
+*This newsletter is published and verifiable on GitHub. [View source](https://github.com/vrnvrn/zu/blob/main/zuletter/public/newsletters/2024-12-18.md)*`,
+  htmlUrl: 'https://github.com/vrnvrn/zu/blob/main/zuletter/public/newsletters/2024-12-18.md',
 }
 

@@ -18,9 +18,6 @@ export default function Nav() {
             ZuLetter
           </Link>
           <div className="nav-links">
-            <Link href="/" className="nav-link">
-              Current Cycle
-            </Link>
             <Link href="/submit" className="nav-link">
               Submit
             </Link>

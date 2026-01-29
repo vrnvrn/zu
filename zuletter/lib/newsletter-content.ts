@@ -5,6 +5,7 @@ export const localNewsletter = {
   cycle: '2024-12-18',
   editors: ['@veronica'],
   sourceRepo: 'vrnvrn/zu',
+  format: 'markdown' as const,
   content: `# Zuzalu Community Newsletter — 2024 Retrospective
 
 Happy New Year's Eve, everyone! It's been a whirlwind of a year in the Zu-niverse, and I wouldn't have it any other way.

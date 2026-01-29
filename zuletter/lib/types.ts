@@ -62,6 +62,7 @@ export interface Newsletter {
   editors: string[]
   sourceRepo: string
   content: string
+  format: 'markdown' | 'html'
   sha?: string
   htmlUrl?: string
 }

@@ -114,9 +114,13 @@ export default async function ArchivePage() {
                 </div>
                 
                 <div className="markdown-content">
-                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                    {newsletter.content}
-                  </ReactMarkdown>
+                  {newsletter.format === 'html' ? (
+                    <div dangerouslySetInnerHTML={{ __html: newsletter.content }} />
+                  ) : (
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                      {newsletter.content}
+                    </ReactMarkdown>
+                  )}
                 </div>
                 
                 {newsletter.htmlUrl && (

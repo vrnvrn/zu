@@ -243,7 +243,10 @@ export async function fetchNewsletters(): Promise<Newsletter[]> {
     const newsletters: Newsletter[] = []
     
     for (const file of files) {
-      if (file.type === 'file' && file.name.endsWith('.md')) {
+      const isMarkdown = file.type === 'file' && file.name.endsWith('.md')
+      const isHtml = file.type === 'file' && file.name.endsWith('.html')
+      
+      if (isMarkdown || isHtml) {
         // Fetch the file content
         const contentResponse = await fetch(file.download_url, {
           next: { revalidate: 300 }
@@ -251,46 +254,20 @@ export async function fetchNewsletters(): Promise<Newsletter[]> {
         
         if (contentResponse.ok) {
           const content = await contentResponse.text()
+          const format = isHtml ? 'html' : 'markdown'
+          const extension = isHtml ? '.html' : '.md'
           
-          // Parse frontmatter
-          const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/)
-          let title = file.name.replace('.md', '')
-          let cycle = file.name.replace('.md', '')
-          let editors: string[] = []
-          let sourceRepo = `${owner}/${repo}`
-          
-          if (frontmatterMatch) {
-            const frontmatter = frontmatterMatch[1]
-            const body = frontmatterMatch[2]
+          // For HTML files, extract title from <title> or <h1> tag
+          if (isHtml) {
+            let title = file.name.replace(extension, '')
+            const cycle = file.name.replace(extension, '')
+            const editors: string[] = []
+            const sourceRepo = `${owner}/${repo}`
             
-            const titleMatch = frontmatter.match(/title:\s*["'](.+?)["']/)
+            // Try to extract title from HTML
+            const titleMatch = content.match(/<title>([^<]+)<\/title>/i)
             if (titleMatch) title = titleMatch[1]
             
-            const cycleMatch = frontmatter.match(/cycle:\s*["'](.+?)["']/)
-            if (cycleMatch) cycle = cycleMatch[1]
-            
-            const editorsMatch = frontmatter.match(/editors:\s*\[(.+?)\]/)
-            if (editorsMatch) {
-              editors = editorsMatch[1]
-                .split(',')
-                .map(e => e.trim().replace(/["']/g, ''))
-            }
-            
-            const repoMatch = frontmatter.match(/source_repo:\s*["'](.+?)["']/)
-            if (repoMatch) sourceRepo = repoMatch[1]
-            
-            newsletters.push({
-              path: file.path,
-              title,
-              cycle,
-              editors,
-              sourceRepo,
-              content: body,
-              sha: file.sha,
-              htmlUrl: `https://github.com/${sourceRepo}/blob/main/${file.path}`,
-            })
-          } else {
-            // No frontmatter, use filename as title
             newsletters.push({
               path: file.path,
               title,
@@ -298,9 +275,63 @@ export async function fetchNewsletters(): Promise<Newsletter[]> {
               editors,
               sourceRepo,
               content,
+              format,
               sha: file.sha,
               htmlUrl: `https://github.com/${sourceRepo}/blob/main/${file.path}`,
             })
+          } else {
+            // Parse frontmatter for markdown files
+            const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/)
+            let title = file.name.replace(extension, '')
+            let cycle = file.name.replace(extension, '')
+            let editors: string[] = []
+            let sourceRepo = `${owner}/${repo}`
+            
+            if (frontmatterMatch) {
+              const frontmatter = frontmatterMatch[1]
+              const body = frontmatterMatch[2]
+              
+              const titleMatch = frontmatter.match(/title:\s*["'](.+?)["']/)
+              if (titleMatch) title = titleMatch[1]
+              
+              const cycleMatch = frontmatter.match(/cycle:\s*["'](.+?)["']/)
+              if (cycleMatch) cycle = cycleMatch[1]
+              
+              const editorsMatch = frontmatter.match(/editors:\s*\[(.+?)\]/)
+              if (editorsMatch) {
+                editors = editorsMatch[1]
+                  .split(',')
+                  .map(e => e.trim().replace(/["']/g, ''))
+              }
+              
+              const repoMatch = frontmatter.match(/source_repo:\s*["'](.+?)["']/)
+              if (repoMatch) sourceRepo = repoMatch[1]
+              
+              newsletters.push({
+                path: file.path,
+                title,
+                cycle,
+                editors,
+                sourceRepo,
+                content: body,
+                format,
+                sha: file.sha,
+                htmlUrl: `https://github.com/${sourceRepo}/blob/main/${file.path}`,
+              })
+            } else {
+              // No frontmatter, use filename as title
+              newsletters.push({
+                path: file.path,
+                title,
+                cycle,
+                editors,
+                sourceRepo,
+                content,
+                format,
+                sha: file.sha,
+                htmlUrl: `https://github.com/${sourceRepo}/blob/main/${file.path}`,
+              })
+            }
           }
         }
       }

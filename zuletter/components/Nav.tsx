@@ -55,6 +55,9 @@ export default function Nav() {
             </span>
           </Link>
           <div className="nav-links">
+            <Link href="/january-2026" className="nav-link" style={{ fontWeight: 500 }}>
+              January 2026
+            </Link>
             <Link href="/submit" className="nav-link">
               Submit
             </Link>

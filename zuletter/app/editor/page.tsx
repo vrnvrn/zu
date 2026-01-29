@@ -41,7 +41,7 @@ const sampleItems: EditorItem[] = [
     id: '4',
     title: 'Community Win: 1000 Members Milestone',
     category: 'wins',
-    summary: 'We reached 1000 active community members this month! Thank you to everyone who has been part of this journey.',
+    summary: 'We reached 1000 active community members this month. Thank you to everyone who has been part of this journey.',
     author: '@diana',
     date: '2026-01-08'
   },
@@ -73,7 +73,6 @@ export default function EditorPage() {
   const handleDrop = (target: 'submissions' | 'accepted') => {
     if (!draggedItem || !draggedSource) return
 
-    // Don't do anything if dropping in the same column
     if (target === draggedSource) {
       setDraggedItem(null)
       setDraggedSource(null)
@@ -81,14 +80,12 @@ export default function EditorPage() {
     }
 
     if (target === 'accepted') {
-      // Move from submissions to accepted
       setSubmissions(prev => prev.filter(item => item.id !== draggedItem.id))
       setAccepted(prev => {
         if (prev.find(item => item.id === draggedItem.id)) return prev
         return [...prev, draggedItem]
       })
     } else {
-      // Move from accepted to submissions
       setAccepted(prev => prev.filter(item => item.id !== draggedItem.id))
       setSubmissions(prev => {
         if (prev.find(item => item.id === draggedItem.id)) return prev
@@ -105,40 +102,37 @@ export default function EditorPage() {
       draggable
       onDragStart={() => handleDragStart(item, source)}
       style={{
-        padding: '16px',
+        padding: '1rem',
         background: 'var(--bg-primary)',
         border: '1px solid var(--border)',
         borderRadius: 'var(--radius)',
-        marginBottom: '12px',
+        marginBottom: '0.75rem',
         cursor: 'grab',
-        transition: 'all 0.2s',
-        boxShadow: 'var(--shadow-sm)'
+        transition: 'border-color 0.15s ease'
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = 'var(--shadow-md)'
-        e.currentTarget.style.transform = 'translateY(-2px)'
+        e.currentTarget.style.borderColor = 'var(--text-tertiary)'
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = 'var(--shadow-sm)'
-        e.currentTarget.style.transform = 'translateY(0)'
+        e.currentTarget.style.borderColor = 'var(--border)'
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-        <span className="badge badge-category" style={{ fontSize: '11px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
+        <span className="badge badge-category">
           {item.category}
         </span>
-        <span style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>
+        <span style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)' }}>
           {item.date}
         </span>
       </div>
-      <h3 style={{ margin: '0 0 8px 0', fontSize: '16px', fontWeight: '600' }}>
+      <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1rem', fontWeight: '500' }}>
         {item.title}
       </h3>
-      <p style={{ margin: '0 0 8px 0', fontSize: '14px', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
+      <p style={{ margin: '0 0 0.5rem 0', fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: '1.5' }}>
         {item.summary}
       </p>
-      <div style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>
-        by {item.author}
+      <div style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)' }}>
+        {item.author}
       </div>
     </div>
   )
@@ -146,49 +140,51 @@ export default function EditorPage() {
   return (
     <>
       <Nav />
-      <div className="container" style={{ maxWidth: '1400px' }}>
-        <header style={{ marginBottom: '32px', textAlign: 'center' }}>
-          <h1 style={{ fontSize: '36px', marginBottom: '8px' }}>
-            📝 Editor Dashboard
+      <div className="container" style={{ maxWidth: '1200px' }}>
+        <header style={{ marginBottom: '2rem' }}>
+          <h1 style={{ marginBottom: '0.5rem' }}>
+            Editor Dashboard
           </h1>
-          <h2 style={{ fontSize: '24px', color: 'var(--text-secondary)', fontWeight: 'normal' }}>
-            January 2026 Newsletter
-          </h2>
+          <p className="text-secondary">
+            January 2026 Issue — Drag items between columns to manage the newsletter
+          </p>
         </header>
 
         <div style={{ 
           display: 'grid', 
           gridTemplateColumns: '1fr 1fr', 
-          gap: '32px',
+          gap: '2rem',
           alignItems: 'start'
         }}>
           {/* Submissions Column */}
           <section>
             <div style={{ 
-              background: 'var(--bg-secondary)', 
-              padding: '20px', 
+              padding: '1rem 1.25rem', 
               borderRadius: 'var(--radius)',
-              marginBottom: '20px',
-              border: '2px solid var(--border)'
+              marginBottom: '1rem',
+              border: '1px solid var(--border)',
+              background: 'var(--bg-secondary)'
             }}>
               <h2 style={{ 
-                fontSize: '20px', 
-                margin: '0 0 8px 0',
+                fontSize: '1rem', 
+                margin: '0 0 0.25rem 0',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px'
+                gap: '0.5rem',
+                fontFamily: 'inherit',
+                fontWeight: '500'
               }}>
-                📝 Submissions
+                Submissions
                 <span style={{ 
-                  fontSize: '16px', 
-                  fontWeight: 'normal', 
-                  color: 'var(--text-secondary)' 
+                  fontSize: '0.875rem', 
+                  fontWeight: '400', 
+                  color: 'var(--text-tertiary)' 
                 }}>
                   ({submissions.length})
                 </span>
               </h2>
-              <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-secondary)' }}>
-                Drag items to Accepted to include them in the newsletter
+              <p style={{ margin: 0, fontSize: '0.8125rem', color: 'var(--text-tertiary)' }}>
+                Pending editorial review
               </p>
             </div>
             <div
@@ -196,10 +192,10 @@ export default function EditorPage() {
               onDrop={() => handleDrop('submissions')}
               style={{
                 minHeight: '400px',
-                padding: '16px',
+                padding: '1rem',
                 background: 'var(--bg-tertiary)',
                 borderRadius: 'var(--radius)',
-                border: '2px dashed var(--border)'
+                border: '1px dashed var(--border)'
               }}
             >
               {submissions.length > 0 ? (
@@ -207,11 +203,11 @@ export default function EditorPage() {
               ) : (
                 <div style={{ 
                   textAlign: 'center', 
-                  padding: '60px 20px',
+                  padding: '4rem 1.5rem',
                   color: 'var(--text-tertiary)'
                 }}>
-                  <p style={{ fontSize: '16px', margin: 0 }}>
-                    No submissions. Drop items here to move them back.
+                  <p style={{ fontSize: '0.9375rem', margin: 0 }}>
+                    No pending submissions
                   </p>
                 </div>
               )}
@@ -221,31 +217,33 @@ export default function EditorPage() {
           {/* Accepted Column */}
           <section>
             <div style={{ 
-              background: 'linear-gradient(135deg, var(--accent-light) 0%, #f0fff0 100%)', 
-              padding: '20px', 
+              padding: '1rem 1.25rem', 
               borderRadius: 'var(--radius)',
-              marginBottom: '20px',
-              border: '2px solid var(--accent)'
+              marginBottom: '1rem',
+              border: '1px solid var(--accent)',
+              background: 'var(--accent-subtle)'
             }}>
               <h2 style={{ 
-                fontSize: '20px', 
-                margin: '0 0 8px 0',
+                fontSize: '1rem', 
+                margin: '0 0 0.25rem 0',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px',
+                gap: '0.5rem',
+                fontFamily: 'inherit',
+                fontWeight: '500',
                 color: 'var(--accent)'
               }}>
-                ✅ Accepted
+                Accepted
                 <span style={{ 
-                  fontSize: '16px', 
-                  fontWeight: 'normal', 
-                  color: 'var(--text-secondary)' 
+                  fontSize: '0.875rem', 
+                  fontWeight: '400', 
+                  color: 'var(--text-tertiary)' 
                 }}>
                   ({accepted.length})
                 </span>
               </h2>
-              <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-secondary)' }}>
-                Items that will be included in the newsletter
+              <p style={{ margin: 0, fontSize: '0.8125rem', color: 'var(--text-tertiary)' }}>
+                Included in the upcoming issue
               </p>
             </div>
             <div
@@ -253,10 +251,10 @@ export default function EditorPage() {
               onDrop={() => handleDrop('accepted')}
               style={{
                 minHeight: '400px',
-                padding: '16px',
+                padding: '1rem',
                 background: 'var(--bg-tertiary)',
                 borderRadius: 'var(--radius)',
-                border: '2px dashed var(--accent)'
+                border: '1px dashed var(--accent)'
               }}
             >
               {accepted.length > 0 ? (
@@ -264,11 +262,11 @@ export default function EditorPage() {
               ) : (
                 <div style={{ 
                   textAlign: 'center', 
-                  padding: '60px 20px',
+                  padding: '4rem 1.5rem',
                   color: 'var(--text-tertiary)'
                 }}>
-                  <p style={{ fontSize: '16px', margin: 0 }}>
-                    Drop items here to accept them for the newsletter.
+                  <p style={{ fontSize: '0.9375rem', margin: 0 }}>
+                    Drag items here to accept
                   </p>
                 </div>
               )}

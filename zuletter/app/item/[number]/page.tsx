@@ -20,10 +20,12 @@ export default async function ItemDetailPage({
     return (
       <>
         <Nav />
-        <div className="container">
-          <div className="card">
-            <h1>Item Not Found</h1>
-            <p>The requested item could not be found.</p>
+        <div className="container" style={{ maxWidth: '800px' }}>
+          <div className="card" style={{ padding: '2rem' }}>
+            <h1 style={{ marginTop: 0 }}>Item Not Found</h1>
+            <p className="text-secondary" style={{ margin: 0 }}>
+              The requested submission could not be located.
+            </p>
           </div>
         </div>
       </>
@@ -39,15 +41,15 @@ export default async function ItemDetailPage({
   return (
     <>
       <Nav />
-      <div className="container" style={{ maxWidth: '900px' }}>
-        <div style={{ marginBottom: '24px' }}>
-          <Link href="/" className="text-secondary" style={{ fontSize: '14px' }}>
-            ← Back to Current Cycle
+      <div className="container" style={{ maxWidth: '800px' }}>
+        <div style={{ marginBottom: '1.5rem' }}>
+          <Link href="/" className="text-secondary link-subtle" style={{ fontSize: '0.875rem' }}>
+            Back to Current Cycle
           </Link>
         </div>
         
-        <div className="card">
-          <div className="flex-between mb-16">
+        <article className="card" style={{ padding: '2rem' }}>
+          <div className="flex-between" style={{ marginBottom: '1rem' }}>
             <div className="flex gap-8">
               <span className={`badge badge-state-${item.state}`}>
                 {item.state}
@@ -59,7 +61,7 @@ export default async function ItemDetailPage({
               )}
               {item.cycle && (
                 <span className="badge badge-category">
-                  cycle: {item.cycle}
+                  {item.cycle}
                 </span>
               )}
             </div>
@@ -68,30 +70,37 @@ export default async function ItemDetailPage({
               target="_blank" 
               rel="noopener noreferrer"
               className="btn btn-secondary"
+              style={{ fontSize: '0.8125rem' }}
             >
               View on GitHub
             </a>
           </div>
           
-          <h1 style={{ marginBottom: '16px' }}>{issue.title}</h1>
+          <h1 style={{ marginTop: 0, marginBottom: '1rem' }}>{issue.title}</h1>
           
-          <div className="text-secondary mb-24">
-            Submitted by{' '}
-            <a href={issue.user.html_url} target="_blank" rel="noopener noreferrer">
+          <div className="text-secondary" style={{ marginBottom: '2rem', fontSize: '0.9375rem' }}>
+            <a 
+              href={issue.user.html_url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="link-subtle"
+            >
               @{issue.user.login}
             </a>
-            {' on '}
+            <span style={{ margin: '0 0.5rem', opacity: 0.4 }}>·</span>
             {format(new Date(issue.created_at), 'MMMM d, yyyy')}
             {issue.updated_at !== issue.created_at && (
               <>
-                {' · Updated '}
-                {format(new Date(issue.updated_at), 'MMMM d, yyyy')}
+                <span style={{ margin: '0 0.5rem', opacity: 0.4 }}>·</span>
+                <span style={{ color: 'var(--text-tertiary)' }}>
+                  Updated {format(new Date(issue.updated_at), 'MMMM d, yyyy')}
+                </span>
               </>
             )}
           </div>
           
           {issue.body && (
-            <div className="markdown-content" style={{ marginBottom: '32px' }}>
+            <div className="markdown-content" style={{ marginBottom: '2rem' }}>
               <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {issue.body}
               </ReactMarkdown>
@@ -100,19 +109,26 @@ export default async function ItemDetailPage({
           
           {decisionComment && (
             <div style={{ 
-              marginTop: '32px', 
-              padding: '20px', 
+              marginTop: '2rem', 
+              padding: '1.5rem', 
               background: 'var(--bg-secondary)', 
               borderRadius: 'var(--radius)',
-              borderLeft: '4px solid var(--accent)'
+              borderLeft: '2px solid var(--accent)'
             }}>
-              <h3 style={{ marginTop: 0, marginBottom: '12px' }}>Decision</h3>
+              <h3 style={{ marginTop: 0, marginBottom: '0.75rem', fontSize: '1rem' }}>
+                Editorial Decision
+              </h3>
               {item.decidedBy && (
-                <p className="text-secondary" style={{ marginBottom: '8px' }}>
-                  Decided by <a href={`https://github.com/${item.decidedBy}`} target="_blank" rel="noopener noreferrer">
+                <p className="text-secondary" style={{ marginBottom: '0.75rem', fontSize: '0.875rem' }}>
+                  <a 
+                    href={`https://github.com/${item.decidedBy}`} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="link-subtle"
+                  >
                     @{item.decidedBy}
                   </a>
-                  {' on '}
+                  <span style={{ margin: '0 0.5rem', opacity: 0.4 }}>·</span>
                   {format(new Date(decisionComment.created_at), 'MMMM d, yyyy')}
                 </p>
               )}
@@ -123,27 +139,37 @@ export default async function ItemDetailPage({
                   </ReactMarkdown>
                 </div>
               )}
-              <div style={{ marginTop: '12px' }}>
+              <div style={{ marginTop: '1rem' }}>
                 <a 
                   href={decisionComment.html_url} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-secondary"
-                  style={{ fontSize: '13px' }}
+                  className="text-tertiary link-subtle"
+                  style={{ fontSize: '0.8125rem' }}
                 >
-                  View decision comment on GitHub →
+                  View decision on GitHub
                 </a>
               </div>
             </div>
           )}
-        </div>
+        </article>
         
         {comments.length > 0 && (
-          <div style={{ marginTop: '32px' }}>
-            <h2>Comments ({comments.length})</h2>
+          <section style={{ marginTop: '2rem' }}>
+            <h2 style={{ marginBottom: '1rem' }}>
+              Discussion
+              <span style={{ 
+                fontWeight: '400', 
+                color: 'var(--text-tertiary)',
+                marginLeft: '0.5rem',
+                fontSize: '1rem'
+              }}>
+                {comments.length}
+              </span>
+            </h2>
             {comments.map(comment => (
-              <div key={comment.id} className="card" style={{ marginBottom: '16px' }}>
-                <div className="flex-between mb-12">
+              <div key={comment.id} className="card" style={{ marginBottom: '1rem', padding: '1.5rem' }}>
+                <div className="flex-between" style={{ marginBottom: '0.75rem' }}>
                   <div className="flex gap-12" style={{ alignItems: 'center' }}>
                     <Image 
                       src={comment.user.avatar_url} 
@@ -157,12 +183,12 @@ export default async function ItemDetailPage({
                         href={comment.user.html_url} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        style={{ fontWeight: '600' }}
+                        style={{ fontWeight: '500', color: 'var(--text-primary)' }}
                       >
                         @{comment.user.login}
                       </a>
-                      <div className="text-tertiary">
-                        {format(new Date(comment.created_at), 'MMM d, yyyy HH:mm')}
+                      <div className="text-tertiary" style={{ fontSize: '0.75rem' }}>
+                        {format(new Date(comment.created_at), 'MMM d, yyyy · HH:mm')}
                       </div>
                     </div>
                   </div>
@@ -170,10 +196,10 @@ export default async function ItemDetailPage({
                     href={comment.html_url} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-secondary"
-                    style={{ fontSize: '12px' }}
+                    className="text-tertiary link-subtle"
+                    style={{ fontSize: '0.75rem' }}
                   >
-                    View →
+                    View
                   </a>
                 </div>
                 <div className="markdown-content">
@@ -183,10 +209,9 @@ export default async function ItemDetailPage({
                 </div>
               </div>
             ))}
-          </div>
+          </section>
         )}
       </div>
     </>
   )
 }
-

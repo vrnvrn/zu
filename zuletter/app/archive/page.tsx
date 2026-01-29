@@ -26,33 +26,34 @@ export default async function ArchivePage() {
   return (
     <>
       <Nav />
-      <div className="container">
-        <header style={{ marginBottom: '40px', textAlign: 'center' }}>
-          <h1 style={{ fontSize: '48px', marginBottom: '12px' }}>
-            💚 ZuLetter Archive 💚
+      <div className="container" style={{ maxWidth: '900px' }}>
+        <header style={{ marginBottom: '3rem' }}>
+          <h1 style={{ marginBottom: '0.75rem' }}>
+            Archive
           </h1>
-          <p style={{ fontSize: '18px', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-            Take a trip down memory lane! Browse our past ZuLetters and see how our community has grown.
-            Every ZuLetter is preserved and verifiable.
+          <p style={{ fontSize: '1.0625rem', color: 'var(--text-secondary)', lineHeight: '1.7' }}>
+            A complete record of past ZuLetter issues. Each edition is permanently stored 
+            and cryptographically verifiable through GitHub.
           </p>
         </header>
         
         {allNewsletters.length === 0 ? (
-          <div className="card">
-            <p className="text-secondary">No ZuLetters published yet.</p>
+          <div className="card" style={{ padding: '2rem' }}>
+            <p className="text-secondary" style={{ margin: 0 }}>No issues published yet.</p>
           </div>
         ) : (
           <div>
             {allNewsletters.map(newsletter => (
-              <div key={newsletter.cycle} className="card" style={{ marginBottom: '24px' }}>
-                <div className="flex-between mb-16">
+              <article key={newsletter.cycle} className="card" style={{ marginBottom: '1.5rem', padding: '2rem' }}>
+                <div className="flex-between" style={{ marginBottom: '1.5rem' }}>
                   <div>
-                    <h2 style={{ marginBottom: '8px' }}>{newsletter.title}</h2>
-                    <div className="text-secondary">
-                      Cycle: {newsletter.cycle}
+                    <h2 style={{ marginTop: 0, marginBottom: '0.5rem' }}>{newsletter.title}</h2>
+                    <div className="text-secondary" style={{ fontSize: '0.875rem' }}>
+                      <span style={{ color: 'var(--text-tertiary)' }}>Cycle:</span> {newsletter.cycle}
                       {newsletter.editors.length > 0 && (
                         <>
-                          {' · Editors: '}
+                          <span style={{ margin: '0 0.5rem', opacity: 0.4 }}>·</span>
+                          <span style={{ color: 'var(--text-tertiary)' }}>Editors:</span>{' '}
                           {newsletter.editors.map((editor, i) => (
                             <span key={editor}>
                               <a 
@@ -69,19 +70,20 @@ export default async function ArchivePage() {
                       )}
                     </div>
                   </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'flex-end' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-end' }}>
                     {newsletter.htmlUrl && (
                       <a
                         href={newsletter.htmlUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn-secondary"
+                        style={{ fontSize: '0.8125rem' }}
                       >
                         Verify on GitHub
                       </a>
                     )}
                     {newsletter.sha && (
-                      <span className="text-tertiary" style={{ fontSize: '11px' }}>
+                      <span className="text-tertiary" style={{ fontSize: '0.6875rem', fontFamily: 'monospace' }}>
                         SHA: {newsletter.sha.substring(0, 7)}
                       </span>
                     )}
@@ -93,18 +95,25 @@ export default async function ArchivePage() {
                     {newsletter.content}
                   </ReactMarkdown>
                 </div>
+                
                 {newsletter.htmlUrl && (
-                  <p className="text-tertiary" style={{ marginTop: '24px', fontSize: '13px', borderTop: '1px solid var(--border)', paddingTop: '16px' }}>
-                    This edition is stored in the repository for verification.{' '}
+                  <footer style={{ 
+                    marginTop: '1.5rem', 
+                    paddingTop: '1rem', 
+                    borderTop: '1px solid var(--border)',
+                    fontSize: '0.8125rem',
+                    color: 'var(--text-tertiary)'
+                  }}>
+                    This edition is permanently stored and verifiable.{' '}
                     <a href={newsletter.htmlUrl} target="_blank" rel="noopener noreferrer">
-                      View on GitHub
+                      View source on GitHub
                     </a>
                     {newsletter.sha && (
-                      <> · Commit: <code style={{ fontSize: '12px' }}>{newsletter.sha.substring(0, 7)}</code></>
+                      <span style={{ fontFamily: 'monospace' }}> · {newsletter.sha.substring(0, 7)}</span>
                     )}
-                  </p>
+                  </footer>
                 )}
-              </div>
+              </article>
             ))}
           </div>
         )}
@@ -112,4 +121,3 @@ export default async function ArchivePage() {
     </>
   )
 }
-

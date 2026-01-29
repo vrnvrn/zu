@@ -65,7 +65,7 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* Last Issue */}
+        {/* Latest Issue */}
         <section style={{ marginBottom: '3rem' }}>
           <div className="feature-card">
             <div style={{ 
@@ -85,16 +85,21 @@ export default async function HomePage() {
               </span>
             </div>
             <h2 style={{ fontSize: '1.5rem', marginTop: 0, marginBottom: '0.5rem' }}>
-              2024 Retrospective
+              Zuzalu Newsletter - January 2026 Edition
             </h2>
             <p className="text-secondary" style={{ marginBottom: '1.5rem' }}>
-              A comprehensive review of the Zuzalu ecosystem&apos;s developments, 
-              milestones, and community achievements throughout 2024.
+              Updates from Edge City, Ârc Montenegro, ZuAfrique, Invisible Garden, 
+              Valley of the Commons, and more from across our global network.
             </p>
             
-            <Link href="/retrospective" className="btn btn-secondary">
-              Read the Retrospective
-            </Link>
+            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <Link href="/january-2026" className="btn btn-accent">
+                Read the Newsletter
+              </Link>
+              <Link href="/retrospective" className="btn btn-secondary">
+                2024 Retrospective
+              </Link>
+            </div>
           </div>
         </section>
         

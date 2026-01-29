@@ -159,7 +159,7 @@ export default async function HomePage() {
             </p>
             
             <iframe
-              src="https://luma.com/embed/calendar/cal-EYB4wNm2FHpKE2n/events"
+              src="https://luma.com/embed/calendar/cal-EYB4wNm2FHpKE2n/events?lt=light"
               width="600"
               height="450"
               frameBorder="0"

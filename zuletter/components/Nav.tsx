@@ -21,6 +21,9 @@ export default function Nav() {
             <Link href="/submit" className="nav-link">
               Submit
             </Link>
+            <Link href="/crossword" className="nav-link">
+              Crossword
+            </Link>
             <Link href="/archive" className="nav-link">
               Archive
             </Link>

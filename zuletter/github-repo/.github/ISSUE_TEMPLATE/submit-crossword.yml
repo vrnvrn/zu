@@ -1,0 +1,82 @@
+name: Submit Crossword Q&A
+description: Submit a question and answer for the monthly crossword puzzle
+title: "[Crossword] "
+labels: ["crossword", "february-2026"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for contributing to the ZuLetter Monthly Crossword! 
+        
+        Submit your question and answer below. The best submissions will be featured in the February 2026 crossword puzzle.
+        
+  - type: input
+    id: answer
+    attributes:
+      label: Answer
+      description: The word or short phrase that will appear in the crossword grid (keep it concise, ideally 3-12 characters)
+      placeholder: "e.g., ZUZALU"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: clue
+    attributes:
+      label: Clue
+      description: The hint/question that will lead solvers to the answer
+      placeholder: "e.g., Pop-up city experiment in Montenegro (2023)"
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Difficulty Level
+      description: How difficult is this clue?
+      options:
+        - Easy (general knowledge)
+        - Medium (requires some community context)
+        - Hard (deep community knowledge)
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: What topic does this clue relate to?
+      options:
+        - Zuzalu Events & History
+        - Crypto & Web3
+        - Science & Technology
+        - Pop-up Cities & Network States
+        - Community Members & Culture
+        - General Knowledge
+    validations:
+      required: true
+      
+  - type: textarea
+    id: explanation
+    attributes:
+      label: Explanation (Optional)
+      description: Brief explanation of why this answer is correct (helps editors verify)
+      placeholder: "Optional context or explanation..."
+    validations:
+      required: false
+      
+  - type: input
+    id: attribution
+    attributes:
+      label: Attribution
+      description: Your name or GitHub handle (will be credited if your clue is used)
+      placeholder: "@yourhandle or Your Name"
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Consent
+      options:
+        - label: I consent to this submission being used in the crossword puzzle and published publicly
+          required: true

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Nav from '@/components/Nav'
-import { getNewIssueWithTemplateUrl, getRepoPath } from '@/lib/github'
+import { getRepoPath } from '@/lib/github'
 
 export default function SubmitPage() {
   const repoPath = getRepoPath()
@@ -16,13 +16,95 @@ export default function SubmitPage() {
     attribution: '',
     consent: false,
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitResult, setSubmitResult] = useState<{ success: boolean; url?: string; error?: string } | null>(null)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Generate the issue body for GitHub
+  const generateIssueBody = () => {
+    return `## Newsletter Item Submission
+
+**Title:** ${formData.title}
+
+**Category:** ${formData.category}
+
+**Summary:**
+${formData.summary}
+
+**Source URL:** ${formData.sourceLink || 'N/A'}
+
+**Community Relevance:**
+${formData.relevance}
+
+**Time Sensitivity:** ${formData.timeSensitivity || 'Evergreen'}
+
+**Attribution:** ${formData.attribution}
+
+---
+*Submitted via ZuLetter submission form*`
+  }
+
+  // Submit directly using dev GitHub account
+  const handleDirectSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
-    const issueUrl = getNewIssueWithTemplateUrl('submit-item.yml')
-    window.open(issueUrl, '_blank')
-    alert('Opening GitHub issue form. Please complete the form there to submit your item.')
+    if (!formData.consent) {
+      alert('Please consent to public publication before submitting.')
+      return
+    }
+
+    setIsSubmitting(true)
+    setSubmitResult(null)
+
+    try {
+      const response = await fetch('/api/submit-issue', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit')
+      }
+
+      setSubmitResult({ success: true, url: data.url })
+      // Reset form on success
+      setFormData({
+        title: '',
+        category: '',
+        summary: '',
+        sourceLink: '',
+        relevance: '',
+        timeSensitivity: '',
+        attribution: '',
+        consent: false,
+      })
+    } catch (error) {
+      setSubmitResult({ 
+        success: false, 
+        error: error instanceof Error ? error.message : 'Failed to submit' 
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  // Open GitHub in new tab for user to submit with their own account
+  const handleOpenGitHub = (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    if (!formData.consent) {
+      alert('Please consent to public publication before submitting.')
+      return
+    }
+
+    const issueTitle = encodeURIComponent(`[Submission] ${formData.title}`)
+    const issueBody = encodeURIComponent(generateIssueBody())
+    const labels = encodeURIComponent(`submission,category:${formData.category}`)
+    
+    const url = `https://github.com/${repoPath}/issues/new?title=${issueTitle}&body=${issueBody}&labels=${labels}`
+    window.open(url, '_blank', 'noopener,noreferrer')
   }
 
   return (
@@ -40,8 +122,8 @@ export default function SubmitPage() {
               width: '8px',
               height: '8px',
               borderRadius: '50%',
-              background: 'var(--yellow)',
-              boxShadow: '0 0 8px rgba(232, 213, 86, 0.5)'
+              background: 'var(--accent)',
+              boxShadow: '0 0 8px rgba(22, 101, 52, 0.3)'
             }} />
             <span style={{ 
               fontSize: '0.75rem', 
@@ -61,9 +143,32 @@ export default function SubmitPage() {
             our editorial team and all decisions are publicly documented.
           </p>
         </header>
+
+        {submitResult && (
+          <div style={{
+            padding: '1rem 1.25rem',
+            marginBottom: '1.5rem',
+            borderRadius: 'var(--radius)',
+            background: submitResult.success ? 'var(--accent-subtle)' : '#fef2f2',
+            border: `1px solid ${submitResult.success ? 'var(--accent-muted)' : '#fecaca'}`,
+          }}>
+            {submitResult.success ? (
+              <p style={{ margin: 0, color: 'var(--accent)' }}>
+                Submitted successfully!{' '}
+                <a href={submitResult.url} target="_blank" rel="noopener noreferrer" style={{ fontWeight: 600 }}>
+                  View on GitHub
+                </a>
+              </p>
+            ) : (
+              <p style={{ margin: 0, color: '#b91c1c' }}>
+                {submitResult.error}
+              </p>
+            )}
+          </div>
+        )}
         
         <div className="card" style={{ padding: '2rem' }}>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={(e) => e.preventDefault()}>
             <div className="form-group">
               <label className="form-label" htmlFor="title">
                 Title <span style={{ color: 'var(--text-tertiary)' }}>*</span>
@@ -193,21 +298,50 @@ export default function SubmitPage() {
               paddingTop: '1.5rem', 
               borderTop: '1px solid var(--border)' 
             }}>
-              <button type="submit" className="btn btn-accent" style={{ 
-                padding: '0.75rem 1.5rem',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem'
-              }}>
-                Continue to GitHub
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
-              </button>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <button 
+                  type="button"
+                  onClick={handleDirectSubmit}
+                  disabled={isSubmitting || !formData.title || !formData.category || !formData.summary || !formData.relevance || !formData.attribution || !formData.consent}
+                  className="btn btn-accent" 
+                  style={{ 
+                    padding: '0.75rem 1.5rem',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.5rem',
+                    opacity: isSubmitting ? 0.7 : 1,
+                    cursor: isSubmitting ? 'wait' : 'pointer'
+                  }}
+                >
+                  {isSubmitting ? 'Submitting...' : 'Submit (directly with dev GitHub vrnvrn)'}
+                </button>
+                
+                <button 
+                  type="button"
+                  onClick={handleOpenGitHub}
+                  disabled={!formData.title || !formData.category || !formData.summary || !formData.relevance || !formData.attribution || !formData.consent}
+                  className="btn btn-secondary" 
+                  style={{ 
+                    padding: '0.75rem 1.5rem',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.5rem'
+                  }}
+                >
+                  Submit (open GitHub in new tab)
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg>
+                </button>
+              </div>
+              
               <p className="text-secondary" style={{ marginTop: '1rem', fontSize: '0.875rem', lineHeight: '1.65' }}>
-                You will be redirected to GitHub to complete your submission. 
-                This ensures all submissions are publicly tracked and verifiable.
+                Choose &quot;directly&quot; to submit instantly, or &quot;open GitHub&quot; to submit with your own GitHub account.
+                All submissions are publicly tracked and verifiable.
               </p>
             </div>
           </form>

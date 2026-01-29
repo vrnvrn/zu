@@ -158,6 +158,17 @@ export default async function HomePage() {
               here.
             </p>
             
+            <iframe
+              src="https://luma.com/embed/calendar/cal-EYB4wNm2FHpKE2n/events"
+              width="600"
+              height="450"
+              frameBorder="0"
+              style={{ border: '1px solid #bfcbda88', borderRadius: '4px', marginBottom: '1.25rem', maxWidth: '100%' }}
+              allowFullScreen
+              aria-hidden="false"
+              tabIndex={0}
+            ></iframe>
+            
             <a 
               href="https://lu.ma/zuzalutownhall" 
               target="_blank" 

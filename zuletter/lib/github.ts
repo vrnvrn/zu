@@ -4,11 +4,11 @@ const GITHUB_API_BASE = 'https://api.github.com'
 const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com'
 
 export function getGitHubOwner(): string {
-  return process.env.NEXT_PUBLIC_GITHUB_OWNER || 'your-org'
+  return process.env.NEXT_PUBLIC_GITHUB_OWNER || 'vrnvrn'
 }
 
 export function getGitHubRepo(): string {
-  return process.env.NEXT_PUBLIC_GITHUB_REPO || 'community-newsletter'
+  return process.env.NEXT_PUBLIC_GITHUB_REPO || 'zu'
 }
 
 export function getRepoPath(): string {

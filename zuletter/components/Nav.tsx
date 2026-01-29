@@ -30,6 +30,9 @@ export default function Nav() {
             <Link href="/how-decisions-work" className="nav-link">
               Process
             </Link>
+            <Link href="/editor" className="nav-link">
+              Editor
+            </Link>
           </div>
         </div>
       </div>

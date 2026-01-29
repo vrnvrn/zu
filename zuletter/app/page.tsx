@@ -25,20 +25,11 @@ export default async function HomePage() {
             A transparent, community-curated newsletter for the Zuzalu ecosystem. 
             All submissions and editorial decisions are publicly tracked.
           </p>
-          <div style={{ 
-            marginTop: '1.5rem', 
-            display: 'flex',
-            gap: '1rem',
-            alignItems: 'center',
-            flexWrap: 'wrap'
-          }}>
-            <div className="info-box">
+          <div style={{ marginTop: '1.5rem' }}>
+            <div className="info-box" style={{ display: 'inline-block' }}>
               <span style={{ color: 'var(--text-tertiary)' }}>Current Cycle:</span>{' '}
               <span style={{ fontWeight: '500' }}>{cycle}</span>
             </div>
-            <Link href="/editor" className="btn btn-primary">
-              Editor Dashboard
-            </Link>
           </div>
         </header>
 

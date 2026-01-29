@@ -3,10 +3,8 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Nav from '@/components/Nav'
-import { getNewIssueWithTemplateUrl, getRepoPath } from '@/lib/github'
 
 export default function CrosswordPage() {
-  const repoPath = getRepoPath()
   const [formData, setFormData] = useState({
     answer: '',
     clue: '',
@@ -20,9 +18,20 @@ export default function CrosswordPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     
-    const issueUrl = getNewIssueWithTemplateUrl('submit-crossword.yml')
-    window.open(issueUrl, '_blank')
-    alert('Opening GitHub issue form. Please complete the form there to submit your crossword clue.')
+    const subject = encodeURIComponent(`Crossword Submission: ${formData.answer}`)
+    const body = encodeURIComponent(`Crossword Clue Submission
+
+Answer: ${formData.answer}
+Clue: ${formData.clue}
+Difficulty: ${formData.difficulty}
+Category: ${formData.category}
+Explanation: ${formData.explanation || 'N/A'}
+Attribution: ${formData.attribution}
+
+I consent to this submission being used in the crossword puzzle and published publicly.
+`)
+    
+    window.location.href = `mailto:hi@zuzone.org?subject=${subject}&body=${body}`
   }
 
   return (
@@ -82,7 +91,7 @@ export default function CrosswordPage() {
           </h2>
           <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: '1.7' }}>
             Contribute a question and answer for next month&apos;s crossword. The best submissions 
-            will be featured in the puzzle. All submissions are tracked publicly on GitHub.
+            will be featured in the puzzle.
           </p>
         </div>
         
@@ -220,11 +229,11 @@ export default function CrosswordPage() {
               borderTop: '1px solid var(--border)' 
             }}>
               <button type="submit" className="btn btn-primary" style={{ padding: '0.75rem 1.5rem' }}>
-                Continue to GitHub
+                Submit via Email
               </button>
               <p className="text-secondary" style={{ marginTop: '1rem', fontSize: '0.875rem', lineHeight: '1.6' }}>
-                You will be redirected to GitHub to complete your submission. 
-                This ensures all submissions are publicly tracked and verifiable.
+                Your email client will open with the submission details pre-filled. 
+                Send the email to complete your submission.
               </p>
             </div>
           </form>
@@ -256,41 +265,6 @@ export default function CrosswordPage() {
             <li>Clues can be definitions, wordplay, or trivia-style questions</li>
             <li>Community-related clues are especially welcome</li>
             <li>Include context so editors can verify your answer</li>
-          </ul>
-        </div>
-        
-        <div style={{ 
-          marginTop: '1.5rem', 
-          padding: '1.25rem',
-          background: 'var(--bg-secondary)',
-          borderRadius: 'var(--radius)',
-          border: '1px solid var(--border)'
-        }}>
-          <p style={{ 
-            fontSize: '0.875rem', 
-            fontWeight: '500',
-            color: 'var(--text-primary)',
-            marginBottom: '0.75rem' 
-          }}>
-            Resources
-          </p>
-          <ul style={{ 
-            fontSize: '0.875rem', 
-            color: 'var(--text-secondary)', 
-            marginLeft: '1.25rem', 
-            lineHeight: '2',
-            marginBottom: 0
-          }}>
-            <li>
-              <a href={`https://github.com/${repoPath}/issues?q=label%3Acrossword`} target="_blank" rel="noopener noreferrer">
-                View All Crossword Submissions
-              </a>
-            </li>
-            <li>
-              <a href={`https://github.com/${repoPath}`} target="_blank" rel="noopener noreferrer">
-                ZuLetter GitHub Repository
-              </a>
-            </li>
           </ul>
         </div>
       </div>

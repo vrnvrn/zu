@@ -81,7 +81,7 @@ export default function CrosswordPage() {
             Submit a Clue
           </h2>
           <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: '1.7' }}>
-            Contribute a question and answer for next month's crossword. The best submissions 
+            Contribute a question and answer for next month&apos;s crossword. The best submissions 
             will be featured in the puzzle. All submissions are tracked publicly on GitHub.
           </p>
         </div>
@@ -194,7 +194,7 @@ export default function CrosswordPage() {
                 required
               />
               <p style={{ fontSize: '0.8125rem', color: 'var(--text-tertiary)', marginTop: '0.5rem', marginBottom: 0 }}>
-                You'll be credited if your clue is used
+                You&apos;ll be credited if your clue is used
               </p>
             </div>
             

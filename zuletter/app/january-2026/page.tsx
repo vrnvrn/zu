@@ -128,7 +128,7 @@ const cards: Card[] = [
   { id: 'valley2', hubId: 'valley', subtitle: 'Michel Bauwens & Adam Arvidsson on the commons', image: '/newsletters/images/2026-01/valley2.png' },
   { id: 'zuafrique2', hubId: 'zuafrique', subtitle: '25 builders at Accra hub', image: '/newsletters/images/2026-01/zuafrique2.jpg' },
   { id: 'calendar', hubId: 'calendar', title: '2026 Pop-ups', isCalendar: true },
-  { id: 'crossword', hubId: 'intro', isCrossword: true },
+  { id: 'crossword', hubId: 'intro', isCrossword: true, image: '/images/crossword-blank.svg' },
   ]
 
 export default function January2026Page() {
@@ -313,8 +313,20 @@ export default function January2026Page() {
           background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
         }
         
+        .card.crossword .card-image {
+          opacity: 0.3;
+        }
+        
+        .card.crossword .card-content.overlay {
+          background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(124, 58, 237, 0.9) 100%);
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+        }
+        
         .card.crossword .card-title {
           color: white;
+          font-size: 0.8125rem;
         }
         
         .card.crossword .card-link {

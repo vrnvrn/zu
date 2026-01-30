@@ -187,6 +187,24 @@ export default function January2026Page() {
             </div>
           ))}
         </div>
+        
+        <div className="popup-cities-bar">
+          <h3 className="popup-cities-title">2026 Pop-up Cities</h3>
+          <div className="popup-cities-list">
+            <span className="popup-city"><strong>ETH Chiang Mai</strong> Dec 8 – Feb 3</span>
+            <span className="popup-city"><strong>Infinita City</strong> Feb 1 – Mar 31</span>
+            <span className="popup-city"><strong>ZuCity Japan</strong> Mar 1 – 30</span>
+            <span className="popup-city"><strong>Ipê Village</strong> Apr 6 – May 1</span>
+            <span className="popup-city"><strong>Ârc Montenegro</strong> Apr 3 – May 29</span>
+            <span className="popup-city"><strong>ZuAfrique</strong> Apr 12 – May 3</span>
+            <span className="popup-city"><strong>muShanghai</strong> Apr 26 – May 23</span>
+            <span className="popup-city"><strong>Edge Esmeralda</strong> May 30 – Jun 27</span>
+            <span className="popup-city"><strong>Zanzalu</strong> Jul 25 – Aug 14</span>
+            <span className="popup-city"><strong>Valley of the Commons</strong> Aug 24 – Sep 20</span>
+            <span className="popup-city"><strong>Invisible Garden</strong> October</span>
+            <span className="popup-city"><strong>Edge City India</strong> Q4</span>
+          </div>
+        </div>
       </div>
 
       {/* Modal */}
@@ -484,6 +502,38 @@ export default function January2026Page() {
           .newsletter-grid {
             grid-template-columns: repeat(2, 1fr);
           }
+        }
+        
+        .popup-cities-bar {
+          margin-top: 1rem;
+          background: #1c1917;
+          border-radius: 8px;
+          padding: 1rem 1.5rem;
+        }
+        
+        .popup-cities-title {
+          color: #fbbf24;
+          font-size: 0.75rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          margin: 0 0 0.75rem 0;
+        }
+        
+        .popup-cities-list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem 1.5rem;
+        }
+        
+        .popup-city {
+          font-size: 0.75rem;
+          color: #a8a29e;
+        }
+        
+        .popup-city strong {
+          color: white;
+          font-weight: 600;
         }
       `}</style>
     </>

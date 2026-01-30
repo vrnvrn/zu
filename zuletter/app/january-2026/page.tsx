@@ -1,7 +1,6 @@
 'use client'
 
 import Nav from '@/components/Nav'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 export default function January2026Page() {
@@ -27,182 +26,168 @@ export default function January2026Page() {
   return (
     <>
       <Nav />
-      <div className="container" style={{ maxWidth: '800px' }}>
-        <div style={{ marginBottom: '1.5rem' }}>
-          <Link href="/" className="text-secondary link-subtle" style={{ fontSize: '0.875rem' }}>
-            Back to Home
-          </Link>
-        </div>
-        
-        <article 
-          className="card" 
-          style={{ 
-            padding: '2.5rem',
-            background: 'var(--bg-primary)',
-          }}
-        >
-          {htmlContent ? (
-            <div 
-              className="newsletter-content"
-              dangerouslySetInnerHTML={{ __html: htmlContent }}
-              style={{
-                fontFamily: 'inherit',
-                lineHeight: '1.75',
-              }}
-            />
-          ) : (
-            <div style={{ textAlign: 'center', padding: '3rem' }}>
-              <p className="text-secondary" style={{ margin: 0 }}>Loading...</p>
-            </div>
-          )}
-        </article>
-      </div>
+      <div 
+        className="newsletter-fullpage"
+        dangerouslySetInnerHTML={{ __html: htmlContent }}
+      />
       
-      <style jsx>{`
-        .newsletter-content :global(h1) {
-          font-family: Georgia, serif;
-          font-size: 2.25rem;
-          font-weight: 400;
-          margin: 0 0 1.5rem 0;
-          color: var(--text-primary);
-          text-align: center;
-          letter-spacing: 0.02em;
-        }
-        
-        .newsletter-content :global(h2) {
-          font-family: Georgia, serif;
-          font-size: 1.5rem;
-          font-weight: 400;
-          margin: 2rem 0 1rem 0;
-          color: var(--accent);
-          letter-spacing: 0.02em;
-          padding-left: 0.75rem;
-          border-left: 3px solid var(--yellow);
-        }
-        
-        .newsletter-content :global(h3) {
-          font-family: Georgia, serif;
-          font-size: 1.25rem;
-          font-weight: 400;
-          margin: 1.5rem 0 0.75rem 0;
-          color: var(--text-primary);
-          letter-spacing: 0.01em;
-        }
-        
-        .newsletter-content :global(p),
-        .newsletter-content :global(div) {
-          margin: 0 0 1rem 0;
-          color: var(--text-primary);
-          font-size: 0.9375rem;
-        }
-        
-        .newsletter-content :global(a) {
-          color: var(--accent);
-          text-decoration: underline;
-          text-underline-offset: 2px;
-        }
-        
-        .newsletter-content :global(a:hover) {
-          color: var(--accent-hover);
-        }
-        
-        .newsletter-content :global(ul),
-        .newsletter-content :global(ol) {
-          margin: 1rem 0;
-          padding-left: 1.5rem;
-        }
-        
-        .newsletter-content :global(li) {
-          margin-bottom: 0.5rem;
-          font-size: 0.9375rem;
-        }
-        
-        .newsletter-content :global(img) {
-          max-width: 100%;
-          height: auto;
-          border-radius: var(--radius);
-        }
-        
-        .newsletter-content :global(hr) {
-          border: none;
-          border-top: 1px solid var(--border);
-          margin: 2rem 0;
-        }
-        
-        .newsletter-content :global(strong) {
-          font-weight: 500;
-          color: var(--text-primary);
-        }
-        
-        .newsletter-content :global(em) {
-          font-style: italic;
-          color: var(--text-secondary);
-        }
-        
-        .newsletter-content :global(.carousel) {
-          display: flex;
-          gap: 1rem;
-          overflow-x: auto;
-          scroll-snap-type: x mandatory;
-          scroll-behavior: smooth;
-          -webkit-overflow-scrolling: touch;
-          padding: 1rem 0;
-          margin: 1rem 0 0.5rem 0;
-        }
-        
-        .newsletter-content :global(.carousel::-webkit-scrollbar) {
-          height: 8px;
-        }
-        
-        .newsletter-content :global(.carousel::-webkit-scrollbar-track) {
-          background: var(--accent-subtle);
-          border-radius: 4px;
-        }
-        
-        .newsletter-content :global(.carousel::-webkit-scrollbar-thumb) {
-          background: var(--accent-muted);
-          border-radius: 4px;
-        }
-        
-        .newsletter-content :global(.carousel::-webkit-scrollbar-thumb:hover) {
-          background: var(--accent);
-        }
-        
-        .newsletter-content :global(.carousel-item) {
-          flex: 0 0 auto;
-          scroll-snap-align: start;
-          width: min(100%, 500px);
-        }
-        
-        .newsletter-content :global(.carousel-item img) {
+      <style jsx global>{`
+        .newsletter-fullpage {
           width: 100%;
-          height: 300px;
+          min-height: calc(100vh - 100px);
+        }
+        
+        .newsletter-fullpage .newsletter-grid-container {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          grid-template-rows: repeat(4, 1fr);
+          height: calc(100vh - 100px);
+          width: 100%;
+          gap: 1px;
+          background: #d4d4d4;
+        }
+        
+        .newsletter-fullpage .cell {
+          background: white;
+          padding: 0.75rem;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          box-sizing: border-box;
+        }
+        
+        .newsletter-fullpage .cell.dark {
+          background: #1c1917;
+          color: white;
+        }
+        
+        .newsletter-fullpage .cell.accent {
+          background: #fef3c7;
+        }
+        
+        .newsletter-fullpage .cell.has-img {
+          padding: 0;
+        }
+        
+        .newsletter-fullpage .cell.has-img .content {
+          padding: 0.5rem 0.75rem;
+          background: white;
+        }
+        
+        .newsletter-fullpage .cell-img {
+          width: 100%;
+          flex: 1;
+          min-height: 0;
           object-fit: cover;
-          border-radius: 6px;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
         
-        .newsletter-content :global(.update-section) {
-          margin-bottom: 2.5rem;
-          padding-bottom: 2rem;
-          border-bottom: 1px solid var(--border);
+        .newsletter-fullpage .cell-title {
+          font-size: 0.8125rem;
+          font-weight: 700;
+          color: #1c1917;
+          margin: 0 0 0.125rem 0;
+          line-height: 1.2;
         }
         
-        .newsletter-content :global(.update-section:last-child) {
-          border-bottom: none;
+        .newsletter-fullpage .cell.dark .cell-title {
+          color: white;
+          font-size: 1.5rem;
         }
         
-        .newsletter-content :global(.carousel-hint) {
-          font-size: 0.75rem;
-          color: var(--text-tertiary);
+        .newsletter-fullpage .cell-date {
+          font-size: 0.5625rem;
+          color: #a8a29e;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin-bottom: 0.25rem;
+        }
+        
+        .newsletter-fullpage .cell-text {
+          font-size: 0.6875rem;
+          line-height: 1.4;
+          color: #57534e;
+          flex: 1;
+          overflow: hidden;
+          margin: 0;
+        }
+        
+        .newsletter-fullpage .cell.dark .cell-text {
+          color: #a8a29e;
+        }
+        
+        .newsletter-fullpage .cell-text strong {
+          color: #1c1917;
+        }
+        
+        .newsletter-fullpage .cell.dark .cell-text strong {
+          color: #fbbf24;
+        }
+        
+        .newsletter-fullpage .cell-text a {
+          color: #2563eb;
+        }
+        
+        .newsletter-fullpage .cell.dark .cell-text a {
+          color: #fbbf24;
+        }
+        
+        .newsletter-fullpage .cell-cta {
+          font-size: 0.5625rem;
+          font-weight: 600;
+          color: #2563eb;
+          text-decoration: none;
           margin-top: 0.25rem;
-          margin-bottom: 1rem;
-          text-align: center;
         }
         
-        .newsletter-content :global(.carousel-item img) {
-          border: 1px solid var(--border);
-          box-shadow: var(--shadow-md);
+        .newsletter-fullpage .cal-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2px;
+          flex: 1;
+          min-height: 0;
+          margin-top: 0.25rem;
+        }
+        
+        .newsletter-fullpage .cal-item {
+          background: white;
+          padding: 0.25rem;
+          font-size: 0.5rem;
+          overflow: hidden;
+        }
+        
+        .newsletter-fullpage .cal-item strong {
+          display: block;
+          font-size: 0.5rem;
+          color: #1c1917;
+        }
+        
+        .newsletter-fullpage .cal-item span {
+          color: #78716c;
+          font-size: 0.4375rem;
+        }
+        
+        @media (max-width: 1200px) {
+          .newsletter-fullpage .newsletter-grid-container {
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+          }
+        }
+        
+        @media (max-width: 900px) {
+          .newsletter-fullpage .newsletter-grid-container {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto;
+            height: auto;
+          }
+          .newsletter-fullpage .cell {
+            min-height: 140px;
+          }
+        }
+        
+        @media (max-width: 600px) {
+          .newsletter-fullpage .newsletter-grid-container {
+            grid-template-columns: repeat(2, 1fr);
+          }
         }
       `}</style>
     </>

@@ -155,7 +155,7 @@ export default function January2026Page() {
               <div className={`cell-overlay ${update.image ? 'has-img' : ''}`}>
                 <h2 className="cell-title">{update.title}</h2>
                 {update.isCrossword && (
-                  <p className="cell-subtitle">Submit Q&A for next month's crossword →</p>
+                  <p className="cell-subtitle">Submit Q&amp;A for next month&apos;s crossword →</p>
                 )}
                 </p>
                 )}

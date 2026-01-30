@@ -5,474 +5,382 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zuzalu Newsletter - January 2026 Edition</title>
   <style>
-    .updates-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin: 2rem 0;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
     
-    @media (max-width: 700px) {
-      .updates-grid {
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f5f4;
+      min-height: 100vh;
+    }
+    
+    .newsletter-header {
+      background: white;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #e7e5e4;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .newsletter-header h1 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1c1917;
+    }
+    
+    .newsletter-header .date {
+      font-size: 0.875rem;
+      color: #78716c;
+    }
+    
+    .main-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: 1px;
+      background: #e7e5e4;
+      min-height: calc(100vh - 57px);
+    }
+    
+    @media (max-width: 1200px) {
+      .main-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        min-height: auto;
+      }
+    }
+    
+    @media (max-width: 800px) {
+      .main-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 500px) {
+      .main-grid {
         grid-template-columns: 1fr;
       }
     }
     
-    .update-card {
-      background: #fafaf9;
-      border: 1px solid #e7e5e4;
-      border-radius: 12px;
-      overflow: hidden;
+    .card {
+      background: white;
+      padding: 1.25rem;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
     }
     
-    .update-card.featured {
+    .card.has-image {
+      padding: 0;
+    }
+    
+    .card.has-image .card-body {
+      padding: 1rem;
+    }
+    
+    .card.span-2 {
       grid-column: span 2;
     }
     
-    @media (max-width: 700px) {
-      .update-card.featured {
+    .card.span-2-row {
+      grid-row: span 2;
+    }
+    
+    @media (max-width: 500px) {
+      .card.span-2 {
         grid-column: span 1;
-      }
-    }
-    
-    .update-card.featured .card-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    
-    @media (max-width: 700px) {
-      .update-card.featured .card-content {
-        grid-template-columns: 1fr;
       }
     }
     
     .card-image {
       width: 100%;
-      height: 180px;
+      height: 140px;
       object-fit: cover;
+    }
+    
+    .card.span-2 .card-image {
+      height: 180px;
     }
     
     .card-images {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2px;
+      gap: 1px;
     }
     
     .card-images img {
       width: 100%;
-      height: 140px;
+      height: 100px;
       object-fit: cover;
     }
     
-    .card-images.triple {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-    
-    .card-images.triple img {
-      height: 120px;
-    }
-    
-    .card-content {
-      padding: 1.25rem;
-    }
-    
     .card-title {
-      font-size: 1.125rem;
+      font-size: 0.9375rem;
       font-weight: 600;
-      margin: 0 0 0.25rem 0;
       color: #1c1917;
+      margin-bottom: 0.25rem;
     }
     
     .card-date {
-      font-size: 0.8125rem;
-      color: #78716c;
-      margin-bottom: 0.75rem;
-      font-weight: 500;
+      font-size: 0.6875rem;
+      color: #a8a29e;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
     }
     
     .card-text {
-      font-size: 0.875rem;
-      line-height: 1.6;
-      color: #44403c;
-      margin: 0;
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      color: #57534e;
+      flex: 1;
     }
     
-    .card-text + .card-text {
-      margin-top: 0.625rem;
+    .card-text strong {
+      color: #1c1917;
     }
     
     .card-text a {
       color: #2563eb;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-    
-    .card-list {
-      font-size: 0.875rem;
-      line-height: 1.6;
-      color: #44403c;
-      margin: 0.5rem 0 0 0;
-      padding-left: 1.25rem;
-    }
-    
-    .card-list li {
-      margin-bottom: 0.375rem;
     }
     
     .card-cta {
-      display: inline-block;
       margin-top: 0.75rem;
-      font-size: 0.8125rem;
+      font-size: 0.75rem;
       font-weight: 600;
       color: #2563eb;
       text-decoration: none;
     }
     
-    .card-cta:hover {
-      text-decoration: underline;
+    .card-list {
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      color: #57534e;
+      padding-left: 1rem;
+      margin-top: 0.5rem;
     }
     
-    .newsletter-header {
-      text-align: center;
-      padding: 2rem 0;
-      border-bottom: 1px solid #e7e5e4;
-      margin-bottom: 2rem;
+    .card-list li {
+      margin-bottom: 0.25rem;
     }
     
-    .newsletter-header h1 {
-      font-size: 2rem;
-      margin: 0 0 0.5rem 0;
-      font-weight: 400;
-      letter-spacing: 0.02em;
+    .card.intro {
+      background: #1c1917;
+      color: white;
     }
     
-    .newsletter-header .subtitle {
-      color: #78716c;
-      font-size: 1rem;
-      margin: 0;
+    .card.intro .card-title {
+      color: white;
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
     }
     
-    .newsletter-intro {
-      max-width: 640px;
-      margin: 0 auto 2rem;
-      text-align: center;
-      font-size: 1rem;
-      line-height: 1.7;
-      color: #44403c;
+    .card.intro .card-text {
+      color: #a8a29e;
+      font-size: 0.9375rem;
     }
     
-    .newsletter-intro a {
-      color: #2563eb;
+    .card.intro a {
+      color: #fbbf24;
     }
     
-    .section-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #1c1917;
-      margin: 2.5rem 0 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid #fbbf24;
-      display: inline-block;
+    .card.calendar {
+      background: #fef3c7;
     }
     
-    .calendar-section {
-      background: #fafaf9;
-      border: 1px solid #e7e5e4;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin: 2rem 0;
+    .card.calendar .card-title {
+      margin-bottom: 0.75rem;
     }
     
-    .calendar-section h2 {
-      font-size: 1.125rem;
-      margin: 0 0 1rem 0;
-      color: #1c1917;
-    }
-    
-    .calendar-grid {
+    .calendar-list {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.75rem;
-    }
-    
-    @media (max-width: 700px) {
-      .calendar-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .calendar-grid {
-        grid-template-columns: 1fr;
-      }
+      grid-template-columns: 1fr 1fr;
+      gap: 0.375rem;
+      font-size: 0.6875rem;
     }
     
     .calendar-item {
       background: white;
-      border: 1px solid #e7e5e4;
-      border-radius: 8px;
-      padding: 0.75rem;
-      font-size: 0.8125rem;
+      padding: 0.5rem;
+      border-radius: 4px;
     }
     
     .calendar-item strong {
       display: block;
       color: #1c1917;
-      margin-bottom: 0.25rem;
+      font-size: 0.6875rem;
     }
     
     .calendar-item span {
       color: #78716c;
-      font-size: 0.75rem;
+      font-size: 0.625rem;
     }
     
-    .newsletter-footer {
+    .card.footer {
+      background: #f5f5f4;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 2rem 0;
-      margin-top: 2rem;
-      border-top: 1px solid #e7e5e4;
-      color: #78716c;
-      font-size: 0.875rem;
     }
     
-    .newsletter-footer a {
-      color: #2563eb;
+    .card.footer .card-text {
+      font-size: 0.75rem;
+      color: #78716c;
     }
   </style>
 </head>
 <body>
   <div class="newsletter-header">
     <h1>Zuzalu Newsletter</h1>
-    <p class="subtitle">January 2026 Edition</p>
-  </div>
-  
-  <div class="newsletter-intro">
-    <p>Welcome to the January 2026 edition! Updates from across our global network of pop-up cities, hubs, and communities.</p>
-    <p><strong>New:</strong> We're starting a monthly crossword next month! <a href="https://zuletter.vercel.app/crossword">Submit your Q&A here</a> to help build the first puzzle.</p>
+    <span class="date">January 2026</span>
   </div>
 
-  <h2 class="section-title">Community Updates</h2>
-
-  <div class="updates-grid">
+  <div class="main-grid">
     
-    <!-- Ârc Montenegro - Featured -->
-    <div class="update-card featured">
+    <!-- Intro -->
+    <div class="card intro span-2">
+      <h2 class="card-title">January 2026</h2>
+      <p class="card-text">Updates from across our global network of pop-up cities, hubs, and communities. <strong style="color: #fbbf24;">New:</strong> Monthly crossword starting next month! <a href="https://zuletter.vercel.app/crossword">Submit Q&A →</a></p>
+    </div>
+
+    <!-- Ârc Montenegro -->
+    <div class="card has-image span-2">
       <div class="card-images">
-        <img src="/newsletters/images/2026-01/arc1.png" alt="Ârc Montenegro venue">
-        <img src="/newsletters/images/2026-01/arc2.JPG" alt="Ârc Montenegro community">
+        <img src="/newsletters/images/2026-01/arc1.png" alt="Ârc Montenegro">
+        <img src="/newsletters/images/2026-01/arc2.JPG" alt="Ârc Montenegro">
       </div>
-      <div class="card-content">
-        <div>
-          <h3 class="card-title">Ârc: Montenegro</h3>
-          <p class="card-date">April 3 – May 29, 2026</p>
-          <p class="card-text">Ârc is building a Charter City. We're hosting a pop-up city at Lustica Bay, Montenegro — a fully immersive live/work experience for founders, builders, researchers, and investors.</p>
-        </div>
-        <div>
-          <p class="card-text">Three festivals, daily programming, co-working spaces, and three communal meals a day. Meanwhile, join us at our permanent hub at Network School, where we've run 200+ events.</p>
-          <p class="card-text"><em>Let's have our cake and eat it.</em></p>
-        </div>
+      <div class="card-body">
+        <h3 class="card-title">Ârc: Montenegro</h3>
+        <p class="card-date">Apr 3 – May 29, 2026</p>
+        <p class="card-text">Building a Charter City at Lustica Bay. Immersive live/work for founders, builders, researchers. Three festivals, daily programming, communal meals.</p>
       </div>
     </div>
 
     <!-- Edge City -->
-    <div class="update-card">
-      <div class="card-images">
-        <img src="/newsletters/images/2026-01/edgecity.png" alt="Edge City gathering">
-        <img src="/newsletters/images/2026-01/edgecity2.png" alt="Edge City activities">
-      </div>
-      <div class="card-content">
+    <div class="card has-image">
+      <img class="card-image" src="/newsletters/images/2026-01/edgecity.png" alt="Edge City">
+      <div class="card-body">
         <h3 class="card-title">Edge City</h3>
-        <p class="card-text">Shifting from "container" to "catalyst" for startups, research, and movements. Tracking <strong>182+ projects</strong> from our villages.</p>
-        <p class="card-text"><strong>Upcoming:</strong> Edge Esmeralda (May 30 – Jun 27, CA) • Edge City India (Q4)</p>
+        <p class="card-text">From "container" to "catalyst." <strong>182+ projects</strong> tracked. Esmeralda May 30 – Jun 27, India Q4.</p>
       </div>
     </div>
 
     <!-- Invisible Garden -->
-    <div class="update-card">
-      <div class="card-images">
-        <img src="/newsletters/images/2026-01/invisiblegarden1.jpeg" alt="Invisible Garden residency">
-        <img src="/newsletters/images/2026-01/invisiblegarden2.jpeg" alt="Invisible Garden builders">
-      </div>
-      <div class="card-content">
+    <div class="card has-image">
+      <img class="card-image" src="/newsletters/images/2026-01/invisiblegarden1.jpeg" alt="Invisible Garden">
+      <div class="card-body">
         <h3 class="card-title">Invisible Garden</h3>
-        <p class="card-text">Buenos Aires: From 1,038 applications → 45 builders on-site, 69 workshops, 27 open-source projects shipped. High-intensity builder residency at the dawn of the AI age.</p>
-        <a href="https://x.com/invisiblgarden/status/2016377386301063673" target="_blank" class="card-cta">Read the full recap →</a>
+        <p class="card-text">Buenos Aires: 1,038 apps → 45 builders, 69 workshops, 27 OSS projects shipped.</p>
+        <a href="https://x.com/invisiblgarden/status/2016377386301063673" class="card-cta">Read recap →</a>
       </div>
     </div>
 
     <!-- muShanghai -->
-    <div class="update-card">
-      <div class="card-content">
-        <h3 class="card-title">muShanghai</h3>
-        <p class="card-date">China — April 26 – May 23, 2026</p>
-        <p class="card-text"><strong>Be a Chinese Builder for a month.</strong></p>
-        <p class="card-text">Experience China's innovation landscape: dark factories, frontier AI, founders shipping at China speed. Live here, build here, plug into China's ecosystem.</p>
-        <p class="card-text"><em>Applications are live. Partnerships are open.</em></p>
-      </div>
+    <div class="card">
+      <h3 class="card-title">muShanghai</h3>
+      <p class="card-date">Apr 26 – May 23, 2026</p>
+      <p class="card-text"><strong>Be a Chinese Builder for a month.</strong> Dark factories, frontier AI, founders shipping at China speed. Live here, build here.</p>
     </div>
 
     <!-- ShanHaiWoo -->
-    <div class="update-card">
-      <div class="card-content">
-        <h3 class="card-title">ShanHaiWoo</h3>
-        <p class="card-date">H2 2026 — Early Planning</p>
-        <p class="card-text">Expected just before Devcon. Focus: accelerating Ethereum-native applications and real-world use cases.</p>
-        <p class="card-text">Locations under consideration: Hong Kong, Mumbai, or Bangalore.</p>
-        <a href="https://www.shanhaiwoo.com/" target="_blank" class="card-cta">Learn more →</a>
-      </div>
+    <div class="card">
+      <h3 class="card-title">ShanHaiWoo</h3>
+      <p class="card-date">H2 2026 • Early Planning</p>
+      <p class="card-text">Expected before Devcon. Focus: Ethereum-native apps. Locations: HK, Mumbai, or Bangalore.</p>
+      <a href="https://www.shanhaiwoo.com/" class="card-cta">Learn more →</a>
     </div>
 
-    <!-- Valley of the Commons - Featured -->
-    <div class="update-card featured">
-      <div class="card-images triple">
-        <img src="/newsletters/images/2026-01/valley1.jpg" alt="Valley of the Commons venue">
-        <img src="/newsletters/images/2026-01/valley2.png" alt="Valley of the Commons community">
-        <img src="/newsletters/images/2026-01/valley3.jpg" alt="Valley of the Commons nature">
+    <!-- Valley of the Commons -->
+    <div class="card has-image span-2">
+      <div class="card-images">
+        <img src="/newsletters/images/2026-01/valley1.jpg" alt="Valley of the Commons">
+        <img src="/newsletters/images/2026-01/valley2.png" alt="Valley of the Commons">
       </div>
-      <div class="card-content">
-        <div>
-          <h3 class="card-title">Valley of the Commons</h3>
-          <p class="card-date">Austria — August 24 – September 20, 2026</p>
-          <p class="card-text">A four-week pop-up village in the Austrian Alps, envisioning life beyond extractive systems. A living commons shared in work, study, making, care, and governance.</p>
-        </div>
-        <div>
-          <p class="card-text"><strong>Program:</strong> Week 1 with Michel Bauwens & Adam Arvidsson on the commons • Week 2 on village economics • Week 3 on co-living • Week 4 on stewardship & governance.</p>
-          <a href="https://www.valleyofthecommons.com/" target="_blank" class="card-cta">Apply now →</a>
-        </div>
+      <div class="card-body">
+        <h3 class="card-title">Valley of the Commons</h3>
+        <p class="card-date">Austria • Aug 24 – Sep 20, 2026</p>
+        <p class="card-text">Four-week pop-up village in the Austrian Alps. Commons with Michel Bauwens & Adam Arvidsson, village economics, co-living, stewardship.</p>
+        <a href="https://www.valleyofthecommons.com/" class="card-cta">Apply now →</a>
       </div>
     </div>
 
     <!-- Viva.city -->
-    <div class="update-card">
-      <div class="card-content">
-        <h3 class="card-title">Viva.city & Frontier Tower</h3>
-        <p class="card-text">Building a permanent city for longevity biotech, AI & crypto. Looking for a host country for a Special Economic Zone.</p>
-        <p class="card-text">First hub: <a href="http://frontiertower.io/" target="_blank">Frontier Tower</a> — a 16-floor vertical village in San Francisco.</p>
-      </div>
+    <div class="card">
+      <h3 class="card-title">Viva.city & Frontier Tower</h3>
+      <p class="card-text">Permanent city for longevity biotech, AI & crypto. First hub: <a href="http://frontiertower.io/">Frontier Tower</a> — 16-floor vertical village in SF.</p>
     </div>
 
     <!-- Zanzalu -->
-    <div class="update-card">
-      <div class="card-content">
-        <h3 class="card-title">Zanzalu</h3>
-        <p class="card-date">Zanzibar — July 25 – August 14, 2026</p>
-        <p class="card-text">Hosted in Fumba Town — a walkable waterfront community built around permaculture design principles.</p>
-        <p class="card-text">Themes: <strong>leapfrog tech, cities, and industry</strong>. New residency tracks for builders and creatives.</p>
-      </div>
+    <div class="card">
+      <h3 class="card-title">Zanzalu</h3>
+      <p class="card-date">Zanzibar • Jul 25 – Aug 14, 2026</p>
+      <p class="card-text">Fumba Town — walkable waterfront, permaculture design. Themes: <strong>leapfrog tech, cities, industry</strong>. New tracks for builders & creatives.</p>
     </div>
 
-    <!-- ZuAfrique - Featured -->
-    <div class="update-card featured">
-      <div class="card-images triple">
-        <img src="/newsletters/images/2026-01/zuafrique1.jpg" alt="ZuAfrique workshop">
-        <img src="/newsletters/images/2026-01/zuafrique2.jpg" alt="ZuAfrique community">
-        <img src="/newsletters/images/2026-01/zuafrique3.jpg" alt="ZuAfrique builders">
+    <!-- ZuAfrique -->
+    <div class="card has-image span-2">
+      <div class="card-images">
+        <img src="/newsletters/images/2026-01/zuafrique1.jpg" alt="ZuAfrique">
+        <img src="/newsletters/images/2026-01/zuafrique2.jpg" alt="ZuAfrique">
       </div>
-      <div class="card-content">
-        <div>
-          <h3 class="card-title">ZuAfrique</h3>
-          <p class="card-date">Kenya — April 12 – May 3, 2026</p>
-          <p class="card-text">Highlights: 3-day developer workshop with 25 builders at Accra hub • End-of-year Web3 experience at Kilifi Hub • Post-Devconnect batch at Ghana and Kenya hubs.</p>
-        </div>
-        <div>
-          <p class="card-text"><em>Thank you, Vitalik and the entire Zuzalu community for keeping human hope alive.</em></p>
-        </div>
+      <div class="card-body">
+        <h3 class="card-title">ZuAfrique</h3>
+        <p class="card-date">Kenya • Apr 12 – May 3, 2026</p>
+        <p class="card-text">25 builders at Accra hub, end-of-year Web3 at Kilifi, post-Devconnect batches at Ghana & Kenya hubs.</p>
       </div>
     </div>
 
     <!-- ZuBerlin -->
-    <div class="update-card">
-      <div class="card-content">
-        <h3 class="card-title">ZuBerlin</h3>
-        <p class="card-text">Two permanent hubs in Berlin:</p>
-        <ul class="card-list">
-          <li><strong>City Center Hub</strong> — Kreuzberg: co-working, cafe, sauna & gym. Opening March.</li>
-          <li><strong>Co-Living Project</strong> — River location, first residency in June.</li>
-        </ul>
-        <p class="card-text">Interested? <a href="mailto:chris@ephema.io">chris@ephema.io</a></p>
-      </div>
+    <div class="card">
+      <h3 class="card-title">ZuBerlin</h3>
+      <p class="card-text"><strong>Two permanent hubs:</strong> City Center (Kreuzberg, opening March) + Co-Living at the river (June).</p>
+      <a href="mailto:chris@ephema.io" class="card-cta">Get involved →</a>
     </div>
 
     <!-- Zuitzerland -->
-    <div class="update-card">
-      <div class="card-content">
-        <h3 class="card-title">Zuitzerland</h3>
-        <p class="card-text"><strong>Focus: d/accelerator</strong> — Fund-of-funds approach to channel capital into hub funds and community operators. First d/acc accelerator cohort in Switzerland this year.</p>
-        <p class="card-text"><strong>Ethereum Zuri</strong> April 10–12, hackathon with ETH Blockchain Club.</p>
-      </div>
+    <div class="card">
+      <h3 class="card-title">Zuitzerland</h3>
+      <p class="card-text"><strong>d/accelerator</strong> — Fund-of-funds for hub operators. First d/acc cohort in Switzerland. <strong>ETH Zuri</strong> Apr 10–12.</p>
     </div>
 
     <!-- ZuKas -->
-    <div class="update-card">
-      <div class="card-content">
-        <h3 class="card-title">ZuKas</h3>
-        <p class="card-date">Kas, Turkey — April 10 – May 10, 2026</p>
-        <p class="card-text"><strong>ZuGov development almost complete</strong> — now with multiple option ranked voting.</p>
-        <p class="card-text">Speakers: E. Glen Weyl, Michel Bauwens, Vit Jedlicka, and more. Targeting 150+ residents for alpha test on privacy, governance, d/acc.</p>
+    <div class="card">
+      <h3 class="card-title">ZuKas</h3>
+      <p class="card-date">Kas, Turkey • Apr 10 – May 10, 2026</p>
+      <p class="card-text"><strong>ZuGov</strong> with ranked voting. Speakers: Glen Weyl, Michel Bauwens, Vit Jedlicka. Target: 150+ residents.</p>
+    </div>
+
+    <!-- Calendar -->
+    <div class="card calendar span-2">
+      <h3 class="card-title">2026 Pop-up Cities</h3>
+      <div class="calendar-list">
+        <div class="calendar-item"><strong>ETH Chiang Mai</strong><span>Dec 8 – Feb 3</span></div>
+        <div class="calendar-item"><strong>Infinita City</strong><span>Feb 1 – Mar 31</span></div>
+        <div class="calendar-item"><strong>ZuCity Japan</strong><span>Mar 1 – Mar 30</span></div>
+        <div class="calendar-item"><strong>Ipê Village</strong><span>Apr 6 – May 1</span></div>
+        <div class="calendar-item"><strong>Ârc Montenegro</strong><span>Apr 3 – May 29</span></div>
+        <div class="calendar-item"><strong>ZuAfrique</strong><span>Apr 12 – May 3</span></div>
+        <div class="calendar-item"><strong>muShanghai</strong><span>Apr 26 – May 23</span></div>
+        <div class="calendar-item"><strong>Edge Esmeralda</strong><span>May 30 – Jun 27</span></div>
+        <div class="calendar-item"><strong>Zanzalu</strong><span>Jul 25 – Aug 14</span></div>
+        <div class="calendar-item"><strong>Valley of Commons</strong><span>Aug 24 – Sep 20</span></div>
+        <div class="calendar-item"><strong>Invisible Garden</strong><span>October</span></div>
+        <div class="calendar-item"><strong>Edge City India</strong><span>Q4</span></div>
       </div>
     </div>
 
-  </div>
-
-  <div class="calendar-section">
-    <h2>2026 Pop-up Cities Calendar</h2>
-    <div class="calendar-grid">
-      <div class="calendar-item">
-        <strong>ETH Chiang Mai</strong>
-        <span>Thailand • Dec 8 – Feb 3</span>
-      </div>
-      <div class="calendar-item">
-        <strong>Infinita City</strong>
-        <span>Próspera • Feb 1 – Mar 31</span>
-      </div>
-      <div class="calendar-item">
-        <strong>ZuCity</strong>
-        <span>Japan • Mar 1 – Mar 30</span>
-      </div>
-      <div class="calendar-item">
-        <strong>Ipê Village</strong>
-        <span>Brazil • Apr 6 – May 1</span>
-      </div>
-      <div class="calendar-item">
-        <strong>Ârc</strong>
-        <span>Montenegro • Apr 3 – May 29</span>
-      </div>
-      <div class="calendar-item">
-        <strong>ZuAfrique</strong>
-        <span>Kenya • Apr 12 – May 3</span>
-      </div>
-      <div class="calendar-item">
-        <strong>muShanghai</strong>
-        <span>China • Apr 26 – May 23</span>
-      </div>
-      <div class="calendar-item">
-        <strong>Edge Esmeralda</strong>
-        <span>CA, USA • May 30 – Jun 27</span>
-      </div>
-      <div class="calendar-item">
-        <strong>Zanzalu</strong>
-        <span>Zanzibar • Jul 25 – Aug 14</span>
-      </div>
-      <div class="calendar-item">
-        <strong>Valley of the Commons</strong>
-        <span>Austria • Aug 24 – Sep 20</span>
-      </div>
-      <div class="calendar-item">
-        <strong>Invisible Garden</strong>
-        <span>India • October</span>
-      </div>
-      <div class="calendar-item">
-        <strong>Edge City India</strong>
-        <span>India • Q4</span>
-      </div>
+    <!-- Footer -->
+    <div class="card footer">
+      <p class="card-text">Verifiable on <a href="https://github.com/vrnvrn/zu/blob/main/zuletter/public/newsletters/2026-01.html">GitHub</a></p>
     </div>
-  </div>
 
-  <div class="newsletter-footer">
-    <p>This newsletter is published and verifiable on GitHub. <a href="https://github.com/vrnvrn/zu/blob/main/zuletter/public/newsletters/2026-01.html" target="_blank">View source</a></p>
   </div>
 </body>
 </html>

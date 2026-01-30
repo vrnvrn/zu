@@ -128,6 +128,12 @@ export default function January2026Page() {
     }
   }
 
+  const getFirstSentence = (content: string) => {
+    const firstPara = content.split('\n\n')[0]
+    const match = firstPara.match(/^[^.!?]+[.!?]/)
+    return match ? match[0] : firstPara.slice(0, 80) + '...'
+  }
+
   const closeModal = () => {
     setSelectedUpdate(null)
   }
@@ -151,7 +157,9 @@ export default function January2026Page() {
                 {update.isCrossword && (
                   <p className="cell-subtitle">Submit Q&A for next month's crossword →</p>
                 )}
-                </div>
+                </p>
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -298,10 +306,18 @@ export default function January2026Page() {
         }
         
         .cell-subtitle {
-          font-size: 0.625rem;
-          color: rgba(255,255,255,0.8);
+          font-size: 0.5625rem;
+          color: #78716c;
           margin: 0.25rem 0 0 0;
           text-align: center;
+          line-height: 1.3;
+        }
+        
+        .cell.dark .cell-subtitle,
+        .cell.crossword .cell-subtitle,
+        .cell.congrats .cell-subtitle,
+        .cell-overlay.has-img .cell-subtitle {
+          color: rgba(255,255,255,0.85);
         }
         
         .cell.congrats {

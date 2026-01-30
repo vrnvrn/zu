@@ -11,376 +11,305 @@
       padding: 0;
     }
     
-    body {
+    html, body {
+      height: 100%;
+      overflow: hidden;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #f5f5f4;
-      min-height: 100vh;
     }
     
-    .newsletter-header {
-      background: white;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid #e7e5e4;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    
-    .newsletter-header h1 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #1c1917;
-    }
-    
-    .newsletter-header .date {
-      font-size: 0.875rem;
-      color: #78716c;
-    }
-    
-    .main-grid {
+    .grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       grid-template-rows: repeat(4, 1fr);
+      height: 100vh;
+      width: 100vw;
       gap: 1px;
-      background: #e7e5e4;
-      min-height: calc(100vh - 57px);
+      background: #d4d4d4;
     }
     
-    @media (max-width: 1200px) {
-      .main-grid {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: auto;
-        min-height: auto;
-      }
-    }
-    
-    @media (max-width: 800px) {
-      .main-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (max-width: 500px) {
-      .main-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    .card {
+    .cell {
       background: white;
-      padding: 1.25rem;
+      padding: 0.75rem;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
     }
     
-    .card.has-image {
-      padding: 0;
-    }
-    
-    .card.has-image .card-body {
-      padding: 1rem;
-    }
-    
-    .card.span-2 {
-      grid-column: span 2;
-    }
-    
-    .card.span-2-row {
-      grid-row: span 2;
-    }
-    
-    @media (max-width: 500px) {
-      .card.span-2 {
-        grid-column: span 1;
-      }
-    }
-    
-    .card-image {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-    }
-    
-    .card.span-2 .card-image {
-      height: 180px;
-    }
-    
-    .card-images {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-    }
-    
-    .card-images img {
-      width: 100%;
-      height: 100px;
-      object-fit: cover;
-    }
-    
-    .card-title {
-      font-size: 0.9375rem;
-      font-weight: 600;
-      color: #1c1917;
-      margin-bottom: 0.25rem;
-    }
-    
-    .card-date {
-      font-size: 0.6875rem;
-      color: #a8a29e;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
-    }
-    
-    .card-text {
-      font-size: 0.8125rem;
-      line-height: 1.5;
-      color: #57534e;
-      flex: 1;
-    }
-    
-    .card-text strong {
-      color: #1c1917;
-    }
-    
-    .card-text a {
-      color: #2563eb;
-    }
-    
-    .card-cta {
-      margin-top: 0.75rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #2563eb;
-      text-decoration: none;
-    }
-    
-    .card-list {
-      font-size: 0.8125rem;
-      line-height: 1.5;
-      color: #57534e;
-      padding-left: 1rem;
-      margin-top: 0.5rem;
-    }
-    
-    .card-list li {
-      margin-bottom: 0.25rem;
-    }
-    
-    .card.intro {
+    .cell.dark {
       background: #1c1917;
       color: white;
     }
     
-    .card.intro .card-title {
-      color: white;
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-    }
-    
-    .card.intro .card-text {
-      color: #a8a29e;
-      font-size: 0.9375rem;
-    }
-    
-    .card.intro a {
-      color: #fbbf24;
-    }
-    
-    .card.calendar {
+    .cell.accent {
       background: #fef3c7;
     }
     
-    .card.calendar .card-title {
-      margin-bottom: 0.75rem;
+    .cell.has-img {
+      padding: 0;
     }
     
-    .calendar-list {
+    .cell.has-img .content {
+      padding: 0.5rem 0.75rem;
+    }
+    
+    .cell-img {
+      width: 100%;
+      flex: 1;
+      min-height: 0;
+      object-fit: cover;
+    }
+    
+    .cell-imgs {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.375rem;
-      font-size: 0.6875rem;
+      flex: 1;
+      min-height: 0;
+      gap: 1px;
     }
     
-    .calendar-item {
-      background: white;
-      padding: 0.5rem;
-      border-radius: 4px;
+    .cell-imgs img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     
-    .calendar-item strong {
-      display: block;
-      color: #1c1917;
-      font-size: 0.6875rem;
-    }
-    
-    .calendar-item span {
-      color: #78716c;
-      font-size: 0.625rem;
-    }
-    
-    .card.footer {
-      background: #f5f5f4;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-    
-    .card.footer .card-text {
+    .title {
       font-size: 0.75rem;
-      color: #78716c;
+      font-weight: 700;
+      color: #1c1917;
+      margin-bottom: 0.125rem;
+      line-height: 1.2;
     }
+    
+    .cell.dark .title {
+      color: white;
+      font-size: 1.25rem;
+    }
+    
+    .date {
+      font-size: 0.5rem;
+      color: #a8a29e;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+    
+    .text {
+      font-size: 0.625rem;
+      line-height: 1.4;
+      color: #57534e;
+      flex: 1;
+      overflow: hidden;
+    }
+    
+    .cell.dark .text {
+      color: #a8a29e;
+    }
+    
+    .text strong {
+      color: #1c1917;
+    }
+    
+    .cell.dark .text strong {
+      color: #fbbf24;
+    }
+    
+    .text a {
+      color: #2563eb;
+    }
+    
+    .cell.dark .text a {
+      color: #fbbf24;
+    }
+    
+    .cta {
+      font-size: 0.5rem;
+      font-weight: 600;
+      color: #2563eb;
+      text-decoration: none;
+      margin-top: 0.25rem;
+    }
+    
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      flex: 1;
+      min-height: 0;
+      margin-top: 0.25rem;
+    }
+    
+    .cal-item {
+      background: white;
+      padding: 0.25rem;
+      font-size: 0.5rem;
+      overflow: hidden;
+    }
+    
+    .cal-item strong {
+      display: block;
+      font-size: 0.5rem;
+      color: #1c1917;
+    }
+    
+    .cal-item span {
+      color: #78716c;
+      font-size: 0.4375rem;
+    }
+    
+    /* Span classes */
+    .span-c2 { grid-column: span 2; }
+    .span-r2 { grid-row: span 2; }
   </style>
 </head>
 <body>
-  <div class="newsletter-header">
-    <h1>Zuzalu Newsletter</h1>
-    <span class="date">January 2026</span>
-  </div>
-
-  <div class="main-grid">
+  <div class="grid">
     
-    <!-- Intro -->
-    <div class="card intro span-2">
-      <h2 class="card-title">January 2026</h2>
-      <p class="card-text">Updates from across our global network of pop-up cities, hubs, and communities. <strong style="color: #fbbf24;">New:</strong> Monthly crossword starting next month! <a href="https://zuletter.vercel.app/crossword">Submit Q&A →</a></p>
+    <!-- Row 1 -->
+    <div class="cell dark">
+      <h1 class="title">Zuzalu Newsletter</h1>
+      <p class="text"><strong>January 2026</strong><br>Updates from our global network of pop-up cities and communities.</p>
     </div>
-
-    <!-- Ârc Montenegro -->
-    <div class="card has-image span-2">
-      <div class="card-images">
-        <img src="/newsletters/images/2026-01/arc1.png" alt="Ârc Montenegro">
-        <img src="/newsletters/images/2026-01/arc2.JPG" alt="Ârc Montenegro">
-      </div>
-      <div class="card-body">
-        <h3 class="card-title">Ârc: Montenegro</h3>
-        <p class="card-date">Apr 3 – May 29, 2026</p>
-        <p class="card-text">Building a Charter City at Lustica Bay. Immersive live/work for founders, builders, researchers. Three festivals, daily programming, communal meals.</p>
+    
+    <div class="cell has-img">
+      <img class="cell-img" src="/newsletters/images/2026-01/arc1.png" alt="Ârc">
+      <div class="content">
+        <h2 class="title">Ârc: Montenegro</h2>
+        <p class="date">Apr 3 – May 29</p>
       </div>
     </div>
-
-    <!-- Edge City -->
-    <div class="card has-image">
-      <img class="card-image" src="/newsletters/images/2026-01/edgecity.png" alt="Edge City">
-      <div class="card-body">
-        <h3 class="card-title">Edge City</h3>
-        <p class="card-text">From "container" to "catalyst." <strong>182+ projects</strong> tracked. Esmeralda May 30 – Jun 27, India Q4.</p>
+    
+    <div class="cell has-img">
+      <img class="cell-img" src="/newsletters/images/2026-01/edgecity.png" alt="Edge City">
+      <div class="content">
+        <h2 class="title">Edge City</h2>
+        <p class="text">182+ projects tracked</p>
       </div>
     </div>
-
-    <!-- Invisible Garden -->
-    <div class="card has-image">
-      <img class="card-image" src="/newsletters/images/2026-01/invisiblegarden1.jpeg" alt="Invisible Garden">
-      <div class="card-body">
-        <h3 class="card-title">Invisible Garden</h3>
-        <p class="card-text">Buenos Aires: 1,038 apps → 45 builders, 69 workshops, 27 OSS projects shipped.</p>
-        <a href="https://x.com/invisiblgarden/status/2016377386301063673" class="card-cta">Read recap →</a>
+    
+    <div class="cell has-img">
+      <img class="cell-img" src="/newsletters/images/2026-01/invisiblegarden1.jpeg" alt="Invisible Garden">
+      <div class="content">
+        <h2 class="title">Invisible Garden</h2>
+        <p class="text">45 builders, 27 OSS projects</p>
       </div>
     </div>
-
-    <!-- muShanghai -->
-    <div class="card">
-      <h3 class="card-title">muShanghai</h3>
-      <p class="card-date">Apr 26 – May 23, 2026</p>
-      <p class="card-text"><strong>Be a Chinese Builder for a month.</strong> Dark factories, frontier AI, founders shipping at China speed. Live here, build here.</p>
+    
+    <div class="cell">
+      <h2 class="title">muShanghai</h2>
+      <p class="date">Apr 26 – May 23</p>
+      <p class="text"><strong>Be a Chinese Builder for a month.</strong> Dark factories, frontier AI, China speed.</p>
     </div>
-
-    <!-- ShanHaiWoo -->
-    <div class="card">
-      <h3 class="card-title">ShanHaiWoo</h3>
-      <p class="card-date">H2 2026 • Early Planning</p>
-      <p class="card-text">Expected before Devcon. Focus: Ethereum-native apps. Locations: HK, Mumbai, or Bangalore.</p>
-      <a href="https://www.shanhaiwoo.com/" class="card-cta">Learn more →</a>
+    
+    <!-- Row 2 -->
+    <div class="cell">
+      <h2 class="title">ShanHaiWoo</h2>
+      <p class="date">H2 2026</p>
+      <p class="text">Expected before Devcon. Focus: Ethereum-native apps. HK, Mumbai, or Bangalore.</p>
+      <a href="https://www.shanhaiwoo.com/" class="cta">Learn more →</a>
     </div>
-
-    <!-- Valley of the Commons -->
-    <div class="card has-image span-2">
-      <div class="card-images">
-        <img src="/newsletters/images/2026-01/valley1.jpg" alt="Valley of the Commons">
-        <img src="/newsletters/images/2026-01/valley2.png" alt="Valley of the Commons">
-      </div>
-      <div class="card-body">
-        <h3 class="card-title">Valley of the Commons</h3>
-        <p class="card-date">Austria • Aug 24 – Sep 20, 2026</p>
-        <p class="card-text">Four-week pop-up village in the Austrian Alps. Commons with Michel Bauwens & Adam Arvidsson, village economics, co-living, stewardship.</p>
-        <a href="https://www.valleyofthecommons.com/" class="card-cta">Apply now →</a>
+    
+    <div class="cell has-img">
+      <img class="cell-img" src="/newsletters/images/2026-01/valley1.jpg" alt="Valley">
+      <div class="content">
+        <h2 class="title">Valley of the Commons</h2>
+        <p class="date">Austria • Aug 24 – Sep 20</p>
       </div>
     </div>
-
-    <!-- Viva.city -->
-    <div class="card">
-      <h3 class="card-title">Viva.city & Frontier Tower</h3>
-      <p class="card-text">Permanent city for longevity biotech, AI & crypto. First hub: <a href="http://frontiertower.io/">Frontier Tower</a> — 16-floor vertical village in SF.</p>
+    
+    <div class="cell">
+      <h2 class="title">Viva.city</h2>
+      <p class="text">Permanent city for longevity biotech, AI & crypto. Frontier Tower: 16-floor vertical village in SF.</p>
     </div>
-
-    <!-- Zanzalu -->
-    <div class="card">
-      <h3 class="card-title">Zanzalu</h3>
-      <p class="card-date">Zanzibar • Jul 25 – Aug 14, 2026</p>
-      <p class="card-text">Fumba Town — walkable waterfront, permaculture design. Themes: <strong>leapfrog tech, cities, industry</strong>. New tracks for builders & creatives.</p>
+    
+    <div class="cell">
+      <h2 class="title">Zanzalu</h2>
+      <p class="date">Zanzibar • Jul 25 – Aug 14</p>
+      <p class="text">Fumba Town — walkable waterfront, permaculture. <strong>Leapfrog tech, cities, industry.</strong></p>
     </div>
-
-    <!-- ZuAfrique -->
-    <div class="card has-image span-2">
-      <div class="card-images">
-        <img src="/newsletters/images/2026-01/zuafrique1.jpg" alt="ZuAfrique">
-        <img src="/newsletters/images/2026-01/zuafrique2.jpg" alt="ZuAfrique">
-      </div>
-      <div class="card-body">
-        <h3 class="card-title">ZuAfrique</h3>
-        <p class="card-date">Kenya • Apr 12 – May 3, 2026</p>
-        <p class="card-text">25 builders at Accra hub, end-of-year Web3 at Kilifi, post-Devconnect batches at Ghana & Kenya hubs.</p>
+    
+    <div class="cell has-img">
+      <img class="cell-img" src="/newsletters/images/2026-01/zuafrique1.jpg" alt="ZuAfrique">
+      <div class="content">
+        <h2 class="title">ZuAfrique</h2>
+        <p class="date">Kenya • Apr 12 – May 3</p>
       </div>
     </div>
-
-    <!-- ZuBerlin -->
-    <div class="card">
-      <h3 class="card-title">ZuBerlin</h3>
-      <p class="card-text"><strong>Two permanent hubs:</strong> City Center (Kreuzberg, opening March) + Co-Living at the river (June).</p>
-      <a href="mailto:chris@ephema.io" class="card-cta">Get involved →</a>
+    
+    <!-- Row 3 -->
+    <div class="cell">
+      <h2 class="title">ZuBerlin</h2>
+      <p class="text"><strong>Two hubs:</strong> City Center (Kreuzberg, March) + Co-Living at river (June).</p>
+      <a href="mailto:chris@ephema.io" class="cta">Get involved →</a>
     </div>
-
-    <!-- Zuitzerland -->
-    <div class="card">
-      <h3 class="card-title">Zuitzerland</h3>
-      <p class="card-text"><strong>d/accelerator</strong> — Fund-of-funds for hub operators. First d/acc cohort in Switzerland. <strong>ETH Zuri</strong> Apr 10–12.</p>
+    
+    <div class="cell">
+      <h2 class="title">Zuitzerland</h2>
+      <p class="text"><strong>d/accelerator</strong> — Fund-of-funds for hub operators. ETH Zuri Apr 10–12.</p>
     </div>
-
-    <!-- ZuKas -->
-    <div class="card">
-      <h3 class="card-title">ZuKas</h3>
-      <p class="card-date">Kas, Turkey • Apr 10 – May 10, 2026</p>
-      <p class="card-text"><strong>ZuGov</strong> with ranked voting. Speakers: Glen Weyl, Michel Bauwens, Vit Jedlicka. Target: 150+ residents.</p>
+    
+    <div class="cell">
+      <h2 class="title">ZuKas</h2>
+      <p class="date">Turkey • Apr 10 – May 10</p>
+      <p class="text">ZuGov with ranked voting. Glen Weyl, Michel Bauwens. 150+ residents.</p>
     </div>
-
-    <!-- Calendar -->
-    <div class="card calendar span-2">
-      <h3 class="card-title">2026 Pop-up Cities</h3>
-      <div class="calendar-list">
-        <div class="calendar-item"><strong>ETH Chiang Mai</strong><span>Dec 8 – Feb 3</span></div>
-        <div class="calendar-item"><strong>Infinita City</strong><span>Feb 1 – Mar 31</span></div>
-        <div class="calendar-item"><strong>ZuCity Japan</strong><span>Mar 1 – Mar 30</span></div>
-        <div class="calendar-item"><strong>Ipê Village</strong><span>Apr 6 – May 1</span></div>
-        <div class="calendar-item"><strong>Ârc Montenegro</strong><span>Apr 3 – May 29</span></div>
-        <div class="calendar-item"><strong>ZuAfrique</strong><span>Apr 12 – May 3</span></div>
-        <div class="calendar-item"><strong>muShanghai</strong><span>Apr 26 – May 23</span></div>
-        <div class="calendar-item"><strong>Edge Esmeralda</strong><span>May 30 – Jun 27</span></div>
-        <div class="calendar-item"><strong>Zanzalu</strong><span>Jul 25 – Aug 14</span></div>
-        <div class="calendar-item"><strong>Valley of Commons</strong><span>Aug 24 – Sep 20</span></div>
-        <div class="calendar-item"><strong>Invisible Garden</strong><span>October</span></div>
-        <div class="calendar-item"><strong>Edge City India</strong><span>Q4</span></div>
+    
+    <div class="cell has-img">
+      <img class="cell-img" src="/newsletters/images/2026-01/arc2.JPG" alt="Ârc community">
+      <div class="content">
+        <p class="text">Ârc: Three festivals, daily programming, communal meals</p>
       </div>
     </div>
-
-    <!-- Footer -->
-    <div class="card footer">
-      <p class="card-text">Verifiable on <a href="https://github.com/vrnvrn/zu/blob/main/zuletter/public/newsletters/2026-01.html">GitHub</a></p>
+    
+    <div class="cell has-img">
+      <img class="cell-img" src="/newsletters/images/2026-01/edgecity2.png" alt="Edge City">
+      <div class="content">
+        <p class="text">Edge Esmeralda May 30 – Jun 27, India Q4</p>
+      </div>
     </div>
-
+    
+    <!-- Row 4 -->
+    <div class="cell has-img">
+      <img class="cell-img" src="/newsletters/images/2026-01/invisiblegarden2.jpeg" alt="Invisible Garden">
+      <div class="content">
+        <p class="text">69 workshops in Buenos Aires</p>
+      </div>
+    </div>
+    
+    <div class="cell has-img">
+      <img class="cell-img" src="/newsletters/images/2026-01/valley2.png" alt="Valley">
+      <div class="content">
+        <p class="text">Michel Bauwens & Adam Arvidsson on the commons</p>
+      </div>
+    </div>
+    
+    <div class="cell has-img">
+      <img class="cell-img" src="/newsletters/images/2026-01/zuafrique2.jpg" alt="ZuAfrique">
+      <div class="content">
+        <p class="text">25 builders at Accra hub</p>
+      </div>
+    </div>
+    
+    <div class="cell accent">
+      <h2 class="title">2026 Pop-ups</h2>
+      <div class="cal-grid">
+        <div class="cal-item"><strong>Chiang Mai</strong><span>Dec–Feb</span></div>
+        <div class="cal-item"><strong>Infinita</strong><span>Feb–Mar</span></div>
+        <div class="cal-item"><strong>ZuCity JP</strong><span>Mar</span></div>
+        <div class="cal-item"><strong>Ipê Village</strong><span>Apr</span></div>
+        <div class="cal-item"><strong>Ârc</strong><span>Apr–May</span></div>
+        <div class="cal-item"><strong>muShanghai</strong><span>Apr–May</span></div>
+        <div class="cal-item"><strong>Edge</strong><span>May–Jun</span></div>
+        <div class="cal-item"><strong>Zanzalu</strong><span>Jul–Aug</span></div>
+        <div class="cal-item"><strong>Valley</strong><span>Aug–Sep</span></div>
+      </div>
+    </div>
+    
+    <div class="cell dark">
+      <p class="text" style="margin-top: auto;"><a href="https://zuletter.vercel.app/crossword">Submit crossword Q&A →</a></p>
+      <p class="text" style="margin-top: 0.5rem;"><a href="https://github.com/vrnvrn/zu">View on GitHub</a></p>
+    </div>
+    
   </div>
 </body>
 </html>

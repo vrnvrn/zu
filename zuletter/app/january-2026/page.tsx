@@ -115,6 +115,7 @@ const cards: Card[] = [
   // Row 3
   { id: 'zanzalu1', hubId: 'zanzalu', title: 'Zanzalu', subtitle: 'ZANZIBAR • JUL 25 – AUG 14' },
   { id: 'zuafrique1', hubId: 'zuafrique', title: 'ZuAfrique', subtitle: 'KENYA • APR 12 – MAY 3', image: '/newsletters/images/2026-01/zuafrique1.jpg' },
+  { id: 'crossword', hubId: 'intro', isCrossword: true, image: '/images/crossword-blank.svg' },
   { id: 'zuberlin1', hubId: 'zuberlin', title: 'ZuBerlin', subtitle: 'Two hubs: City Center (Kreuzberg, March) + Co-Living at river (June).' },
   { id: 'zuitzerland1', hubId: 'zuitzerland', title: 'Zuitzerland', subtitle: 'd/accelerator — Fund-of-funds for hub operators.' },
   
@@ -123,13 +124,11 @@ const cards: Card[] = [
   { id: 'arc2', hubId: 'arc', subtitle: 'Three festivals, daily programming, communal meals', image: '/newsletters/images/2026-01/arc2.JPG' },
   { id: 'edge2', hubId: 'edgecity', subtitle: 'Edge Esmeralda May 30 – Jun 27, India Q4', image: '/newsletters/images/2026-01/edgecity2.png' },
   { id: 'ig2', hubId: 'invisiblegarden', subtitle: '69 workshops in Buenos Aires', image: '/newsletters/images/2026-01/invisiblegarden2.jpeg' },
-  
   // Row 5
   { id: 'valley2', hubId: 'valley', subtitle: 'Michel Bauwens & Adam Arvidsson on the commons', image: '/newsletters/images/2026-01/valley2.png' },
   { id: 'zuafrique2', hubId: 'zuafrique', subtitle: '25 builders at Accra hub', image: '/newsletters/images/2026-01/zuafrique2.jpg' },
   { id: 'calendar', hubId: 'calendar', title: '2026 Pop-ups', isCalendar: true },
-  { id: 'crossword', hubId: 'intro', isCrossword: true, image: '/images/crossword-blank.svg' },
-  ]
+]
 
 export default function January2026Page() {
   const [selectedHub, setSelectedHub] = useState<Hub | null>(null)
@@ -328,27 +327,27 @@ export default function January2026Page() {
         }
         
         .card.crossword {
-          background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
+          background: #fafaf9;
         }
         
         .card.crossword .card-image {
-          opacity: 0.3;
+          opacity: 0.15;
         }
         
         .card.crossword .card-content.overlay {
-          background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(124, 58, 237, 0.9) 100%);
+          background: transparent;
           justify-content: center;
           align-items: center;
           text-align: center;
         }
         
         .card.crossword .card-title {
-          color: white;
+          color: #1c1917;
           font-size: 0.8125rem;
         }
         
         .card.crossword .card-link {
-          color: rgba(255,255,255,0.8);
+          color: #78716c;
           font-size: 0.6875rem;
           margin-top: 0.5rem;
         }

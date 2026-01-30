@@ -59,6 +59,12 @@ const updates: Update[] = [
     link: { url: 'https://www.shanhaiwoo.com/', text: 'Learn more →' },
   },
   {
+    id: 'crossword',
+    title: 'Crossword',
+    fullContent: 'Submit your Q&A for next month\'s crossword puzzle!\n\nWe\'re building a community crossword featuring questions and answers from across the Zuzalu ecosystem.',
+    isCrossword: true,
+  },
+  {
     id: 'valley',
     title: 'Valley of the Commons',
     date: 'August 24 – September 20, 2026 · Austria',
@@ -107,12 +113,6 @@ const updates: Update[] = [
     title: '2026 Calendar',
     fullContent: '2026 Pop-up Cities Calendar:\n\n• ETH Chiang Mai, Thailand — Dec 8, 2025 – Feb 3\n• Infinita City, Próspera, Honduras — Feb 1 – Mar 31\n• ZuCity, Japan — Mar 1 – Mar 30\n• Ipê Village, Brazil — Apr 6 – May 1\n• MuShanghai, China — Apr 26 – May 23\n• Ârc, Montenegro — Apr 3 – May 29\n• ZuAfrique, Kenya — Apr 12 – May 3\n• Edge City, CA, USA — May 30 – Jun 27\n• Zanzalu, Zanzibar — Jul 25 – Aug 14\n• Valley of the Commons, Austria — Aug 24 – Sep 20\n• Invisible Garden, India — October\n• Edge City India — Q4\n• ZuGrama, India — Q4',
     isCalendar: true,
-  },
-  {
-    id: 'crossword',
-    title: 'Crossword',
-    fullContent: 'Submit your Q&A for next month\'s crossword puzzle!\n\nWe\'re building a community crossword featuring questions and answers from across the Zuzalu ecosystem.',
-    isCrossword: true,
   },
   ]
 

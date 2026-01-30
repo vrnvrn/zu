@@ -34,17 +34,20 @@ export default function January2026Page() {
       <style jsx global>{`
         .newsletter-fullpage {
           width: 100%;
-          min-height: calc(100vh - 100px);
+          padding: 1rem;
+          box-sizing: border-box;
         }
         
         .newsletter-fullpage .newsletter-grid-container {
           display: grid;
           grid-template-columns: repeat(5, 1fr);
           grid-template-rows: repeat(4, 1fr);
-          height: calc(100vh - 100px);
+          height: calc(100vh - 130px);
           width: 100%;
           gap: 1px;
           background: #d4d4d4;
+          border-radius: 8px;
+          overflow: hidden;
         }
         
         .newsletter-fullpage .cell {

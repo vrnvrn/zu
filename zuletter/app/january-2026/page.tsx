@@ -2,6 +2,7 @@
 
 import Nav from '@/components/Nav'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 interface Update {
   id: string
@@ -12,7 +13,7 @@ interface Update {
   link?: { url: string; text: string }
   isIntro?: boolean
   isCalendar?: boolean
-  isFooter?: boolean
+  isCrossword?: boolean
 }
 
 const updates: Update[] = [
@@ -108,18 +109,23 @@ const updates: Update[] = [
     isCalendar: true,
   },
   {
-    id: 'footer',
-    title: 'Links',
-    fullContent: 'Submit your Q&A for the monthly crossword at zuletter.vercel.app/crossword\n\nView the newsletter source on GitHub.',
-    isFooter: true,
+    id: 'crossword',
+    title: 'Crossword',
+    fullContent: 'Submit your Q&A for next month\'s crossword puzzle!\n\nWe\'re building a community crossword featuring questions and answers from across the Zuzalu ecosystem.',
+    isCrossword: true,
   },
 ]
 
 export default function January2026Page() {
   const [selectedUpdate, setSelectedUpdate] = useState<Update | null>(null)
+  const router = useRouter()
 
   const handleCardClick = (update: Update) => {
-    setSelectedUpdate(update)
+    if (update.isCrossword) {
+      router.push('/crossword')
+    } else {
+      setSelectedUpdate(update)
+    }
   }
 
   const closeModal = () => {
@@ -134,7 +140,7 @@ export default function January2026Page() {
           {updates.map((update) => (
             <div
               key={update.id}
-              className={`cell ${update.isIntro ? 'dark' : ''} ${update.isCalendar ? 'accent' : ''} ${update.isFooter ? 'dark' : ''} ${update.image ? 'has-img' : ''} clickable`}
+              className={`cell ${update.isIntro ? 'dark' : ''} ${update.isCalendar ? 'accent' : ''} ${update.isCrossword ? 'crossword' : ''} ${update.image ? 'has-img' : ''} clickable`}
               onClick={() => handleCardClick(update)}
             >
               {update.image && (
@@ -142,6 +148,9 @@ export default function January2026Page() {
               )}
               <div className={`cell-overlay ${update.image ? 'has-img' : ''}`}>
                 <h2 className="cell-title">{update.title}</h2>
+                {update.isCrossword && (
+                  <p className="cell-subtitle">Submit Q&A for next month's crossword →</p>
+                )}
               </div>
             </div>
           ))}
@@ -272,6 +281,27 @@ export default function January2026Page() {
         
         .cell.accent .cell-title {
           color: #92400e;
+        }
+        
+        .cell.crossword {
+          background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
+        }
+        
+        .cell.crossword .cell-title {
+          color: white;
+        }
+        
+        .cell.crossword .cell-overlay {
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .cell-subtitle {
+          font-size: 0.625rem;
+          color: rgba(255,255,255,0.8);
+          margin: 0.25rem 0 0 0;
+          text-align: center;
         }
         
         /* Modal */

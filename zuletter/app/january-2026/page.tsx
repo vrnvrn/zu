@@ -400,6 +400,28 @@ export default function January2026Page() {
           justify-content: center;
           z-index: 1000;
           padding: 2rem;
+          perspective: 1000px;
+          animation: fadeIn 0.2s ease-out;
+        }
+        
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        
+        @keyframes twistIn {
+          0% {
+            opacity: 0;
+            transform: rotateY(-90deg) scale(0.8);
+          }
+          50% {
+            opacity: 1;
+            transform: rotateY(10deg) scale(1.02);
+          }
+          100% {
+            opacity: 1;
+            transform: rotateY(0deg) scale(1);
+          }
         }
         
         .modal-content {
@@ -410,6 +432,8 @@ export default function January2026Page() {
           overflow-y: auto;
           position: relative;
           box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+          animation: twistIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+          transform-style: preserve-3d;
         }
         
         .modal-close {

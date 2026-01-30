@@ -4,62 +4,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zuzalu Newsletter - January 2026 Edition</title>
+</head>
+<body>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    
-    html, body {
-      height: 100%;
-      overflow: hidden;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    }
-    
-    .grid {
+    .newsletter-grid-container {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows: repeat(4, 1fr);
-      height: 100vh;
-      width: 100vw;
+      height: calc(100vh - 120px);
+      width: 100%;
       gap: 1px;
       background: #d4d4d4;
+      margin: 0 -2.5rem;
+      width: calc(100% + 5rem);
     }
     
-    .cell {
+    .newsletter-grid-container .cell {
       background: white;
       padding: 0.75rem;
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      box-sizing: border-box;
     }
     
-    .cell.dark {
+    .newsletter-grid-container .cell.dark {
       background: #1c1917;
       color: white;
     }
     
-    .cell.accent {
+    .newsletter-grid-container .cell.accent {
       background: #fef3c7;
     }
     
-    .cell.has-img {
+    .newsletter-grid-container .cell.has-img {
       padding: 0;
     }
     
-    .cell.has-img .content {
+    .newsletter-grid-container .cell.has-img .content {
       padding: 0.5rem 0.75rem;
     }
     
-    .cell-img {
+    .newsletter-grid-container .cell-img {
       width: 100%;
       flex: 1;
       min-height: 0;
       object-fit: cover;
     }
     
-    .cell-imgs {
+    .newsletter-grid-container .cell-imgs {
       display: grid;
       grid-template-columns: 1fr 1fr;
       flex: 1;
@@ -67,26 +60,26 @@
       gap: 1px;
     }
     
-    .cell-imgs img {
+    .newsletter-grid-container .cell-imgs img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
     
-    .title {
+    .newsletter-grid-container .cell-title {
       font-size: 0.75rem;
       font-weight: 700;
       color: #1c1917;
-      margin-bottom: 0.125rem;
+      margin: 0 0 0.125rem 0;
       line-height: 1.2;
     }
     
-    .cell.dark .title {
+    .newsletter-grid-container .cell.dark .cell-title {
       color: white;
       font-size: 1.25rem;
     }
     
-    .date {
+    .newsletter-grid-container .cell-date {
       font-size: 0.5rem;
       color: #a8a29e;
       text-transform: uppercase;
@@ -94,35 +87,36 @@
       margin-bottom: 0.25rem;
     }
     
-    .text {
+    .newsletter-grid-container .cell-text {
       font-size: 0.625rem;
       line-height: 1.4;
       color: #57534e;
       flex: 1;
       overflow: hidden;
+      margin: 0;
     }
     
-    .cell.dark .text {
+    .newsletter-grid-container .cell.dark .cell-text {
       color: #a8a29e;
     }
     
-    .text strong {
+    .newsletter-grid-container .cell-text strong {
       color: #1c1917;
     }
     
-    .cell.dark .text strong {
+    .newsletter-grid-container .cell.dark .cell-text strong {
       color: #fbbf24;
     }
     
-    .text a {
+    .newsletter-grid-container .cell-text a {
       color: #2563eb;
     }
     
-    .cell.dark .text a {
+    .newsletter-grid-container .cell.dark .cell-text a {
       color: #fbbf24;
     }
     
-    .cta {
+    .newsletter-grid-container .cell-cta {
       font-size: 0.5rem;
       font-weight: 600;
       color: #2563eb;
@@ -130,7 +124,7 @@
       margin-top: 0.25rem;
     }
     
-    .cal-grid {
+    .newsletter-grid-container .cal-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2px;
@@ -139,132 +133,145 @@
       margin-top: 0.25rem;
     }
     
-    .cal-item {
+    .newsletter-grid-container .cal-item {
       background: white;
       padding: 0.25rem;
       font-size: 0.5rem;
       overflow: hidden;
     }
     
-    .cal-item strong {
+    .newsletter-grid-container .cal-item strong {
       display: block;
       font-size: 0.5rem;
       color: #1c1917;
     }
     
-    .cal-item span {
+    .newsletter-grid-container .cal-item span {
       color: #78716c;
       font-size: 0.4375rem;
     }
     
-    /* Span classes */
-    .span-c2 { grid-column: span 2; }
-    .span-r2 { grid-row: span 2; }
+    @media (max-width: 1000px) {
+      .newsletter-grid-container {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .newsletter-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        height: auto;
+      }
+      .newsletter-grid-container .cell {
+        min-height: 150px;
+      }
+    }
   </style>
-</head>
-<body>
-  <div class="grid">
+
+  <div class="newsletter-grid-container">
     
     <!-- Row 1 -->
     <div class="cell dark">
-      <h1 class="title">Zuzalu Newsletter</h1>
-      <p class="text"><strong>January 2026</strong><br>Updates from our global network of pop-up cities and communities.</p>
+      <h1 class="cell-title">Zuzalu Newsletter</h1>
+      <p class="cell-text"><strong>January 2026</strong><br>Updates from our global network of pop-up cities and communities.</p>
     </div>
     
     <div class="cell has-img">
       <img class="cell-img" src="/newsletters/images/2026-01/arc1.png" alt="Ârc">
       <div class="content">
-        <h2 class="title">Ârc: Montenegro</h2>
-        <p class="date">Apr 3 – May 29</p>
+        <h2 class="cell-title">Ârc: Montenegro</h2>
+        <p class="cell-date">Apr 3 – May 29</p>
       </div>
     </div>
     
     <div class="cell has-img">
       <img class="cell-img" src="/newsletters/images/2026-01/edgecity.png" alt="Edge City">
       <div class="content">
-        <h2 class="title">Edge City</h2>
-        <p class="text">182+ projects tracked</p>
+        <h2 class="cell-title">Edge City</h2>
+        <p class="cell-text">182+ projects tracked</p>
       </div>
     </div>
     
     <div class="cell has-img">
       <img class="cell-img" src="/newsletters/images/2026-01/invisiblegarden1.jpeg" alt="Invisible Garden">
       <div class="content">
-        <h2 class="title">Invisible Garden</h2>
-        <p class="text">45 builders, 27 OSS projects</p>
+        <h2 class="cell-title">Invisible Garden</h2>
+        <p class="cell-text">45 builders, 27 OSS projects</p>
       </div>
     </div>
     
     <div class="cell">
-      <h2 class="title">muShanghai</h2>
-      <p class="date">Apr 26 – May 23</p>
-      <p class="text"><strong>Be a Chinese Builder for a month.</strong> Dark factories, frontier AI, China speed.</p>
+      <h2 class="cell-title">muShanghai</h2>
+      <p class="cell-date">Apr 26 – May 23</p>
+      <p class="cell-text"><strong>Be a Chinese Builder for a month.</strong> Dark factories, frontier AI, China speed.</p>
     </div>
     
     <!-- Row 2 -->
     <div class="cell">
-      <h2 class="title">ShanHaiWoo</h2>
-      <p class="date">H2 2026</p>
-      <p class="text">Expected before Devcon. Focus: Ethereum-native apps. HK, Mumbai, or Bangalore.</p>
-      <a href="https://www.shanhaiwoo.com/" class="cta">Learn more →</a>
+      <h2 class="cell-title">ShanHaiWoo</h2>
+      <p class="cell-date">H2 2026</p>
+      <p class="cell-text">Expected before Devcon. Focus: Ethereum-native apps. HK, Mumbai, or Bangalore.</p>
+      <a href="https://www.shanhaiwoo.com/" class="cell-cta">Learn more →</a>
     </div>
     
     <div class="cell has-img">
       <img class="cell-img" src="/newsletters/images/2026-01/valley1.jpg" alt="Valley">
       <div class="content">
-        <h2 class="title">Valley of the Commons</h2>
-        <p class="date">Austria • Aug 24 – Sep 20</p>
+        <h2 class="cell-title">Valley of the Commons</h2>
+        <p class="cell-date">Austria • Aug 24 – Sep 20</p>
       </div>
     </div>
     
     <div class="cell">
-      <h2 class="title">Viva.city</h2>
-      <p class="text">Permanent city for longevity biotech, AI & crypto. Frontier Tower: 16-floor vertical village in SF.</p>
+      <h2 class="cell-title">Viva.city</h2>
+      <p class="cell-text">Permanent city for longevity biotech, AI & crypto. Frontier Tower: 16-floor vertical village in SF.</p>
     </div>
     
     <div class="cell">
-      <h2 class="title">Zanzalu</h2>
-      <p class="date">Zanzibar • Jul 25 – Aug 14</p>
-      <p class="text">Fumba Town — walkable waterfront, permaculture. <strong>Leapfrog tech, cities, industry.</strong></p>
+      <h2 class="cell-title">Zanzalu</h2>
+      <p class="cell-date">Zanzibar • Jul 25 – Aug 14</p>
+      <p class="cell-text">Fumba Town — walkable waterfront, permaculture. <strong>Leapfrog tech, cities, industry.</strong></p>
     </div>
     
     <div class="cell has-img">
       <img class="cell-img" src="/newsletters/images/2026-01/zuafrique1.jpg" alt="ZuAfrique">
       <div class="content">
-        <h2 class="title">ZuAfrique</h2>
-        <p class="date">Kenya • Apr 12 – May 3</p>
+        <h2 class="cell-title">ZuAfrique</h2>
+        <p class="cell-date">Kenya • Apr 12 – May 3</p>
       </div>
     </div>
     
     <!-- Row 3 -->
     <div class="cell">
-      <h2 class="title">ZuBerlin</h2>
-      <p class="text"><strong>Two hubs:</strong> City Center (Kreuzberg, March) + Co-Living at river (June).</p>
-      <a href="mailto:chris@ephema.io" class="cta">Get involved →</a>
+      <h2 class="cell-title">ZuBerlin</h2>
+      <p class="cell-text"><strong>Two hubs:</strong> City Center (Kreuzberg, March) + Co-Living at river (June).</p>
+      <a href="mailto:chris@ephema.io" class="cell-cta">Get involved →</a>
     </div>
     
     <div class="cell">
-      <h2 class="title">Zuitzerland</h2>
-      <p class="text"><strong>d/accelerator</strong> — Fund-of-funds for hub operators. ETH Zuri Apr 10–12.</p>
+      <h2 class="cell-title">Zuitzerland</h2>
+      <p class="cell-text"><strong>d/accelerator</strong> — Fund-of-funds for hub operators. ETH Zuri Apr 10–12.</p>
     </div>
     
     <div class="cell">
-      <h2 class="title">ZuKas</h2>
-      <p class="date">Turkey • Apr 10 – May 10</p>
-      <p class="text">ZuGov with ranked voting. Glen Weyl, Michel Bauwens. 150+ residents.</p>
+      <h2 class="cell-title">ZuKas</h2>
+      <p class="cell-date">Turkey • Apr 10 – May 10</p>
+      <p class="cell-text">ZuGov with ranked voting. Glen Weyl, Michel Bauwens. 150+ residents.</p>
     </div>
     
     <div class="cell has-img">
       <img class="cell-img" src="/newsletters/images/2026-01/arc2.JPG" alt="Ârc community">
       <div class="content">
-        <p class="text">Ârc: Three festivals, daily programming, communal meals</p>
+        <p class="cell-text">Ârc: Three festivals, daily programming, communal meals</p>
       </div>
     </div>
     
     <div class="cell has-img">
       <img class="cell-img" src="/newsletters/images/2026-01/edgecity2.png" alt="Edge City">
       <div class="content">
-        <p class="text">Edge Esmeralda May 30 – Jun 27, India Q4</p>
+        <p class="cell-text">Edge Esmeralda May 30 – Jun 27, India Q4</p>
       </div>
     </div>
     
@@ -272,26 +279,26 @@
     <div class="cell has-img">
       <img class="cell-img" src="/newsletters/images/2026-01/invisiblegarden2.jpeg" alt="Invisible Garden">
       <div class="content">
-        <p class="text">69 workshops in Buenos Aires</p>
+        <p class="cell-text">69 workshops in Buenos Aires</p>
       </div>
     </div>
     
     <div class="cell has-img">
       <img class="cell-img" src="/newsletters/images/2026-01/valley2.png" alt="Valley">
       <div class="content">
-        <p class="text">Michel Bauwens & Adam Arvidsson on the commons</p>
+        <p class="cell-text">Michel Bauwens & Adam Arvidsson on the commons</p>
       </div>
     </div>
     
     <div class="cell has-img">
       <img class="cell-img" src="/newsletters/images/2026-01/zuafrique2.jpg" alt="ZuAfrique">
       <div class="content">
-        <p class="text">25 builders at Accra hub</p>
+        <p class="cell-text">25 builders at Accra hub</p>
       </div>
     </div>
     
     <div class="cell accent">
-      <h2 class="title">2026 Pop-ups</h2>
+      <h2 class="cell-title">2026 Pop-ups</h2>
       <div class="cal-grid">
         <div class="cal-item"><strong>Chiang Mai</strong><span>Dec–Feb</span></div>
         <div class="cal-item"><strong>Infinita</strong><span>Feb–Mar</span></div>
@@ -306,8 +313,8 @@
     </div>
     
     <div class="cell dark">
-      <p class="text" style="margin-top: auto;"><a href="https://zuletter.vercel.app/crossword">Submit crossword Q&A →</a></p>
-      <p class="text" style="margin-top: 0.5rem;"><a href="https://github.com/vrnvrn/zu">View on GitHub</a></p>
+      <p class="cell-text" style="margin-top: auto;"><a href="https://zuletter.vercel.app/crossword">Submit crossword Q&A →</a></p>
+      <p class="cell-text" style="margin-top: 0.5rem;"><a href="https://github.com/vrnvrn/zu">View on GitHub</a></p>
     </div>
     
   </div>

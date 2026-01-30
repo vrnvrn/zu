@@ -14,7 +14,7 @@ interface Update {
   isIntro?: boolean
   isCalendar?: boolean
   isCrossword?: boolean
-}
+  }
 
 const updates: Update[] = [
   {
@@ -114,7 +114,7 @@ const updates: Update[] = [
     fullContent: 'Submit your Q&A for next month\'s crossword puzzle!\n\nWe\'re building a community crossword featuring questions and answers from across the Zuzalu ecosystem.',
     isCrossword: true,
   },
-]
+  ]
 
 export default function January2026Page() {
   const [selectedUpdate, setSelectedUpdate] = useState<Update | null>(null)
@@ -140,7 +140,7 @@ export default function January2026Page() {
           {updates.map((update) => (
             <div
               key={update.id}
-              className={`cell ${update.isIntro ? 'dark' : ''} ${update.isCalendar ? 'accent' : ''} ${update.isCrossword ? 'crossword' : ''} ${update.image ? 'has-img' : ''} clickable`}
+              className={`cell ${update.isIntro ? 'dark' : ''} ${update.isCalendar ? 'accent' : ''} ${update.isCrossword ? 'crossword' : ''} $${update.image ? 'has-img' : ''} clickable`}
               onClick={() => handleCardClick(update)}
             >
               {update.image && (
@@ -151,7 +151,7 @@ export default function January2026Page() {
                 {update.isCrossword && (
                   <p className="cell-subtitle">Submit Q&A for next month's crossword →</p>
                 )}
-              </div>
+                </div>
             </div>
           ))}
         </div>
@@ -190,8 +190,8 @@ export default function January2026Page() {
         
         .newsletter-grid-container {
           display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          grid-template-rows: repeat(3, 1fr);
+          grid-template-columns: repeat(4, 1fr);
+          grid-template-rows: repeat(4, 1fr);
           height: calc(100vh - 130px);
           width: 100%;
           gap: 1px;
@@ -302,6 +302,20 @@ export default function January2026Page() {
           color: rgba(255,255,255,0.8);
           margin: 0.25rem 0 0 0;
           text-align: center;
+        }
+        
+        .cell.congrats {
+          background: linear-gradient(135deg, #f59e0b 0%, #ec4899 100%);
+        }
+        
+        .cell.congrats .cell-title {
+          color: white;
+        }
+        
+        .cell.congrats .cell-overlay {
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
         }
         
         /* Modal */
@@ -424,14 +438,14 @@ export default function January2026Page() {
         
         @media (max-width: 1200px) {
           .newsletter-grid-container {
-            grid-template-columns: repeat(5, 1fr);
-            grid-template-rows: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
           }
         }
         
         @media (max-width: 900px) {
           .newsletter-grid-container {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             grid-template-rows: auto;
             height: auto;
           }

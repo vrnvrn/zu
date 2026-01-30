@@ -12,7 +12,22 @@ interface Hub {
   link?: { url: string; text: string }
 }
 
-interface Card const hubs: Record<string, Hub> = {
+interface Card {
+  id: string
+  hubId: string
+  title?: string
+  subtitle?: string
+  description?: string
+  image?: string
+  link?: { url: string; text: string }
+  isIntro?: boolean
+  isCalendar?: boolean
+  isCrossword?: boolean
+  colSpan?: number
+  rowSpan?: number
+}
+
+const hubs: Record<string, Hub> = {
   intro: {
     id: 'intro',
     title: 'Zuzalu Newsletter — January 2026',
@@ -101,34 +116,37 @@ interface Card const hubs: Record<string, Hub> = {
 
 const cards: Card[] = [
   // Row 1
-  { id: 'intro', hubId: 'intro', title: 'Zuzalu Newsletter', subtitle: 'January 2026', isIntro: true },
-  { id: 'arc1', hubId: 'arc', title: 'Ârc: Montenegro', subtitle: 'APR 3 – MAY 29', image: '/newsletters/images/2026-01/arc1.png' },
+  { id: 'intro', hubId: 'intro', title: 'Zuzalu Newsletter', subtitle: 'January 2026', description: 'Updates from our global network of pop-up cities and communities.', isIntro: true },
+  { id: 'arc1', hubId: 'arc', image: '/newsletters/images/2026-01/arc1.png' },
   { id: 'edge1', hubId: 'edgecity', title: 'Edge City', subtitle: '182+ projects tracked', image: '/newsletters/images/2026-01/edgecity.png' },
   { id: 'ig1', hubId: 'invisiblegarden', title: 'Invisible Garden', subtitle: '45 builders, 27 OSS projects', image: '/newsletters/images/2026-01/invisiblegarden1.jpeg' },
   
   // Row 2
-  { id: 'mu1', hubId: 'mushanghai', title: 'muShanghai', subtitle: 'APR 26 – MAY 23', size: 'small' },
-  { id: 'shw1', hubId: 'shanhaiwoo', title: 'ShanHaiWoo', subtitle: 'H2 2026' },
+  { id: 'arc-text', hubId: 'arc', title: 'Ârc: Montenegro', subtitle: 'APR 3 – MAY 29' },
+  { id: 'mu1', hubId: 'mushanghai', title: 'muShanghai', subtitle: 'APR 26 – MAY 23', description: 'Be a Chinese Builder for a month. Dark factories, frontier AI, China speed.' },
+  { id: 'shw1', hubId: 'shanhaiwoo', title: 'ShanHaiWoo', subtitle: 'H2 2026', description: 'Expected before Devcon. Focus: Ethereum-native apps. HK, Mumbai, or Bangalore.', link: { url: 'https://www.shanhaiwoo.com/', text: 'Learn more →' } },
   { id: 'valley1', hubId: 'valley', title: 'Valley of the Commons', subtitle: 'AUSTRIA • AUG 24 – SEP 20', image: '/newsletters/images/2026-01/valley1.jpg' },
-  { id: 'viva1', hubId: 'vivacity', title: 'Viva.city', subtitle: 'Permanent city for longevity biotech, AI & crypto.' },
-  
+  { id: 'viva1', hubId: 'vivacity', title: 'Viva.city', description: 'Permanent city for longevity biotech, AI & crypto. Frontier Tower: 16-floor vertical village in SF.' },
+
   // Row 3
-  { id: 'zanzalu1', hubId: 'zanzalu', title: 'Zanzalu', subtitle: 'ZANZIBAR • JUL 25 – AUG 14' },
-  { id: 'zuafrique1', hubId: 'zuafrique', title: 'ZuAfrique', subtitle: 'KENYA • APR 12 – MAY 3', image: '/newsletters/images/2026-01/zuafrique1.jpg' },
-  { id: 'crossword', hubId: 'intro', isCrossword: true, image: '/images/crossword-blank.svg' },
-  { id: 'zuberlin1', hubId: 'zuberlin', title: 'ZuBerlin', subtitle: 'Two hubs: City Center (Kreuzberg, March) + Co-Living at river (June).' },
-  { id: 'zuitzerland1', hubId: 'zuitzerland', title: 'Zuitzerland', subtitle: 'd/accelerator — Fund-of-funds for hub operators.' },
-  
+  { id: 'zanzalu1', hubId: 'zanzalu', title: 'Zanzalu', subtitle: 'ZANZIBAR • JUL 25 – AUG 14', description: 'Fumba Town — walkable waterfront, permaculture. Leapfrog tech, cities, industry.' },
+  { id: 'zuafrique1', hubId: 'zuafrique', image: '/newsletters/images/2026-01/zuafrique1.jpg' },
+  { id: 'zuberlin1', hubId: 'zuberlin', title: 'ZuBerlin', description: 'Two hubs: City Center (Kreuzberg, March) + Co-Living at river (June).', link: { url: 'mailto:chris@ephema.io', text: 'Get involved →' } },
+  { id: 'zuitzerland1', hubId: 'zuitzerland', title: 'Zuitzerland', description: 'd/accelerator — Fund-of-funds for hub operators. ETH Zuri Apr 10–12.' },
+
   // Row 4
-  { id: 'zukas1', hubId: 'zukas', title: 'ZuKas', subtitle: 'TURKEY • APR 10 – MAY 10' },
-  { id: 'arc2', hubId: 'arc', subtitle: 'Three festivals, daily programming, communal meals', image: '/newsletters/images/2026-01/arc2.JPG' },
-  { id: 'edge2', hubId: 'edgecity', subtitle: 'Edge Esmeralda May 30 – Jun 27, India Q4', image: '/newsletters/images/2026-01/edgecity2.png' },
-  { id: 'ig2', hubId: 'invisiblegarden', subtitle: '69 workshops in Buenos Aires', image: '/newsletters/images/2026-01/invisiblegarden2.jpeg' },
+  { id: 'zukas1', hubId: 'zukas', title: 'ZuKas', subtitle: 'TURKEY • APR 10 – MAY 10', description: 'Gov with ranked voting. Glen Weyl, Michel Bauwens. 150+ residents.' },
+  { id: 'zuafrique-text', hubId: 'zuafrique', title: 'ZuAfrique', subtitle: 'KENYA • APR 12 – MAY 3' },
+  { id: 'arc2', hubId: 'arc', description: 'Ârc: Three festivals, daily programming, communal meals', image: '/newsletters/images/2026-01/arc2.JPG' },
+  { id: 'edge2', hubId: 'edgecity', description: 'Edge Esmeralda May 30 – Jun 27, India Q4', image: '/newsletters/images/2026-01/edgecity2.png' },
+  { id: 'ig2', hubId: 'invisiblegarden', description: '69 workshops in Buenos Aires', image: '/newsletters/images/2026-01/invisiblegarden2.jpeg' },
+  
   // Row 5
-  { id: 'valley2', hubId: 'valley', subtitle: 'Michel Bauwens & Adam Arvidsson on the commons', image: '/newsletters/images/2026-01/valley2.png' },
-  { id: 'zuafrique2', hubId: 'zuafrique', subtitle: '25 builders at Accra hub', image: '/newsletters/images/2026-01/zuafrique2.jpg' },
+  { id: 'valley2', hubId: 'valley', description: 'Michel Bauwens & Adam Arvidsson on the commons', image: '/newsletters/images/2026-01/valley2.png' },
+  { id: 'zuafrique2', hubId: 'zuafrique', description: '25 builders at Accra hub', image: '/newsletters/images/2026-01/zuafrique2.jpg' },
   { id: 'calendar', hubId: 'calendar', title: '2026 Pop-ups', isCalendar: true },
-]
+  { id: 'crossword', hubId: 'intro', isCrossword: true, image: '/images/crossword-blank.svg' },
+  ]
 
 export default function January2026Page() {
   const [selectedHub, setSelectedHub] = useState<Hub | null>(null)
@@ -163,6 +181,8 @@ export default function January2026Page() {
               <div className={`card-content ${card.image ? 'overlay' : ''}`}>
                 {card.title && <h3 className="card-title">{card.title}</h3>}
                 {card.subtitle && <p className="card-subtitle">{card.subtitle}</p>}
+                {card.description && <p className="card-description">{card.description}</p>}
+                {card.link && <span className="card-link">{card.link.text}</span>}
                 {card.isCalendar && (
                   <div className="cal-grid">
                     <div className="cal-item"><strong>Chiang Mai</strong><span>Dec–Feb</span></div>
@@ -177,32 +197,11 @@ export default function January2026Page() {
                   </div>
                 )}
                 {card.isCrossword && (
-                  <>
-                    <p className="card-title">Submit crossword Q&amp;A →</p>
-                    <a href="https://github.com/vrnvrn/zu" className="card-link">View on GitHub</a>
-                  </>
+                  <p className="card-link">Submit crossword Q&amp;A →</p>
                 )}
                 </div>
             </div>
           ))}
-        </div>
-        
-        <div className="popup-cities-bar">
-          <h3 className="popup-cities-title">2026 Pop-up Cities</h3>
-          <div className="popup-cities-list">
-            <span className="popup-city"><strong>ETH Chiang Mai</strong> Dec 8 – Feb 3</span>
-            <span className="popup-city"><strong>Infinita City</strong> Feb 1 – Mar 31</span>
-            <span className="popup-city"><strong>ZuCity Japan</strong> Mar 1 – 30</span>
-            <span className="popup-city"><strong>Ipê Village</strong> Apr 6 – May 1</span>
-            <span className="popup-city"><strong>Ârc Montenegro</strong> Apr 3 – May 29</span>
-            <span className="popup-city"><strong>ZuAfrique</strong> Apr 12 – May 3</span>
-            <span className="popup-city"><strong>muShanghai</strong> Apr 26 – May 23</span>
-            <span className="popup-city"><strong>Edge Esmeralda</strong> May 30 – Jun 27</span>
-            <span className="popup-city"><strong>Zanzalu</strong> Jul 25 – Aug 14</span>
-            <span className="popup-city"><strong>Valley of the Commons</strong> Aug 24 – Sep 20</span>
-            <span className="popup-city"><strong>Invisible Garden</strong> October</span>
-            <span className="popup-city"><strong>Edge City India</strong> Q4</span>
-          </div>
         </div>
       </div>
 
@@ -229,38 +228,41 @@ export default function January2026Page() {
       
       <style jsx global>{`
         .newsletter-fullpage {
-          padding: 1rem;
+          padding: 0;
+          background: #fafaf9;
+          min-height: 100vh;
         }
         
         .newsletter-grid {
           display: grid;
           grid-template-columns: repeat(5, 1fr);
           gap: 1px;
-          background: #e5e5e5;
-          border-radius: 8px;
-          overflow: hidden;
+          background: #d4d4d4;
         }
         
         .card {
-          background: white;
+          background: #fafaf9;
           padding: 1rem;
           cursor: pointer;
-          transition: transform 0.15s, box-shadow 0.15s;
+          transition: background 0.15s;
           display: flex;
           flex-direction: column;
-          min-height: 140px;
+          min-height: 120px;
           position: relative;
           overflow: hidden;
         }
         
         .card:hover {
-          transform: scale(1.02);
-          box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-          z-index: 10;
+          background: #f5f5f4;
         }
         
         .card.has-image {
           padding: 0;
+          min-height: 160px;
+        }
+        
+        .card.has-image:hover {
+          background: transparent;
         }
         
         .card-image {
@@ -281,49 +283,83 @@ export default function January2026Page() {
         }
         
         .card-content.overlay {
-          background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 70%);
+          background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 80%);
           padding: 1rem;
           justify-content: flex-end;
           height: 100%;
         }
         
         .card-content.overlay .card-title,
-        .card-content.overlay .card-subtitle {
+        .card-content.overlay .card-subtitle,
+        .card-content.overlay .card-description {
           color: white;
           text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
         
         .card-title {
-          font-size: 0.875rem;
+          font-size: 1rem;
           font-weight: 700;
           color: #1c1917;
           margin: 0 0 0.25rem 0;
+          line-height: 1.2;
         }
         
         .card-subtitle {
           font-size: 0.6875rem;
-          color: #78716c;
+          color: #d97706;
+          margin: 0 0 0.375rem 0;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.02em;
+        }
+        
+        .card-description {
+          font-size: 0.8125rem;
+          color: #57534e;
           margin: 0;
           line-height: 1.4;
         }
         
+        .card-link {
+          font-size: 0.8125rem;
+          color: #d97706;
+          font-weight: 600;
+          margin-top: auto;
+          padding-top: 0.5rem;
+        }
+        
         .card.intro {
           background: #1c1917;
-          grid-row: span 1;
+        }
+        
+        .card.intro:hover {
+          background: #292524;
         }
         
         .card.intro .card-title {
           color: white;
-          font-size: 1.25rem;
+          font-size: 1.5rem;
+          margin-bottom: 0.125rem;
         }
         
         .card.intro .card-subtitle {
           color: #fbbf24;
-          font-size: 0.875rem;
+          font-size: 1rem;
+          text-transform: none;
+          font-weight: 400;
+        }
+        
+        .card.intro .card-description {
+          color: #a8a29e;
+          margin-top: 0.5rem;
         }
         
         .card.calendar {
-          background: #fef3c7;
+          background: #fefce8;
+        }
+        
+        .card.calendar:hover {
+          background: #fef9c3;
         }
         
         .card.crossword {
@@ -331,7 +367,7 @@ export default function January2026Page() {
         }
         
         .card.crossword .card-image {
-          opacity: 0.15;
+          opacity: 0.12;
         }
         
         .card.crossword .card-content.overlay {
@@ -341,21 +377,15 @@ export default function January2026Page() {
           text-align: center;
         }
         
-        .card.crossword .card-title {
-          color: #1c1917;
-          font-size: 0.8125rem;
-        }
-        
         .card.crossword .card-link {
-          color: #78716c;
-          font-size: 0.6875rem;
-          margin-top: 0.5rem;
+          color: #d97706;
+          font-size: 0.875rem;
         }
         
         .cal-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 3px;
+          gap: 4px;
           margin-top: 0.5rem;
         }
         
@@ -363,12 +393,13 @@ export default function January2026Page() {
           background: white;
           padding: 0.25rem 0.375rem;
           border-radius: 3px;
-          font-size: 0.5rem;
+          font-size: 0.5625rem;
         }
         
         .cal-item strong {
           display: block;
           color: #1c1917;
+          font-weight: 600;
         }
         
         .cal-item span {
@@ -454,8 +485,9 @@ export default function January2026Page() {
         
         .modal-date {
           font-size: 0.875rem;
-          color: #78716c;
+          color: #d97706;
           margin: 0 1.5rem 1rem;
+          font-weight: 600;
         }
         
         .modal-body {
@@ -473,7 +505,7 @@ export default function January2026Page() {
           display: inline-block;
           margin: 0 1.5rem 1.5rem;
           padding: 0.75rem 1.25rem;
-          background: #2563eb;
+          background: #d97706;
           color: white;
           border-radius: 6px;
           text-decoration: none;
@@ -482,7 +514,7 @@ export default function January2026Page() {
         }
         
         .modal-link:hover {
-          background: #1d4ed8;
+          background: #b45309;
         }
         
         @media (max-width: 1000px) {
@@ -501,38 +533,6 @@ export default function January2026Page() {
           .newsletter-grid {
             grid-template-columns: repeat(2, 1fr);
           }
-        }
-        
-        .popup-cities-bar {
-          margin-top: 1rem;
-          background: #1c1917;
-          border-radius: 8px;
-          padding: 1rem 1.5rem;
-        }
-        
-        .popup-cities-title {
-          color: #fbbf24;
-          font-size: 0.75rem;
-          font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-          margin: 0 0 0.75rem 0;
-        }
-        
-        .popup-cities-list {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.5rem 1.5rem;
-        }
-        
-        .popup-city {
-          font-size: 0.75rem;
-          color: #a8a29e;
-        }
-        
-        .popup-city strong {
-          color: white;
-          font-weight: 600;
         }
       `}</style>
     </>

@@ -5,7 +5,7 @@
 ### 1. Install & Run Locally
 ```bash
 npm install
-cp .env.local.example .env.local
+cp .env.example .env.local
 # Edit .env.local with your GitHub org/repo
 npm run dev
 ```

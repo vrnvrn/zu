@@ -2,7 +2,6 @@ import Nav from '@/components/Nav'
 import ItemCard from '@/components/ItemCard'
 import Link from 'next/link'
 import { fetchIssuesForCycle, processIssuesIntoItems, getCurrentCycle } from '@/lib/github'
-import { NewsletterItem } from '@/lib/types'
 
 export const revalidate = 60 // Revalidate every 60 seconds
 
@@ -17,7 +16,7 @@ export default async function HomePage() {
     <>
       <Nav />
       <div className="container">
-        {/* Hero Section with Zuzalu branding */}
+        {/* Hero Section - Zuzone */}
         <header style={{ marginBottom: '3rem', maxWidth: '680px' }}>
           <div style={{ 
             display: 'flex', 
@@ -39,46 +38,76 @@ export default async function HomePage() {
               textTransform: 'uppercase',
               letterSpacing: '0.1em'
             }}>
-              Zuzalu Community
+              Zuzalu Ecosystem
             </span>
           </div>
           <h1 style={{ 
-            fontSize: '3rem', 
-            marginBottom: '1rem',
-            letterSpacing: '0.04em'
+            fontSize: '3.5rem', 
+            marginBottom: '0.75rem',
+            letterSpacing: '0.08em',
+            fontWeight: '800'
           }}>
-            ZuLetter
+            ZUZONE
           </h1>
           <p style={{ 
-            fontSize: '1.125rem', 
+            fontSize: '1.25rem', 
+            color: 'var(--text-primary)', 
+            lineHeight: '1.6',
+            maxWidth: '600px',
+            fontWeight: '500',
+            marginBottom: '1.25rem'
+          }}>
+            The home for all permanent hubs and pop-up cities.
+          </p>
+          <p style={{ 
+            fontSize: '1rem', 
             color: 'var(--text-secondary)', 
             lineHeight: '1.75',
-            maxWidth: '560px'
+            maxWidth: '600px',
+            marginBottom: '1.25rem'
           }}>
-            A transparent, community-curated newsletter for the Zuzalu ecosystem. 
-            All submissions and editorial decisions are publicly tracked.
+            Zuzone is the connective layer for the Zuzalu ecosystem — a shared home where permanent hubs and pop-up cities come together, learn from each other, and grow as one global community.
           </p>
-          <div style={{ marginTop: '1.5rem' }}>
-            <div style={{ 
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.75rem',
-              padding: '0.625rem 1rem',
-              background: 'var(--accent-subtle)',
-              borderRadius: 'var(--radius)',
-              border: '1px solid var(--accent-muted)'
+          <p style={{ 
+            fontSize: '1rem', 
+            color: 'var(--text-secondary)', 
+            lineHeight: '1.75',
+            maxWidth: '600px',
+            marginBottom: '1.5rem'
+          }}>
+            Born from the spirit of Zuzalu, Zuzone exists to make sure that what we are building across the world stays aligned, supported, transparent, and human. It is a space for coordination, care, and collective progress.
+          </p>
+          
+          <div style={{ 
+            padding: '1.25rem 1.5rem',
+            background: 'var(--accent-subtle)',
+            borderRadius: 'var(--radius)',
+            border: '1px solid var(--accent-muted)',
+            marginBottom: '0.5rem'
+          }}>
+            <h3 style={{ 
+              fontSize: '0.875rem', 
+              fontWeight: '600', 
+              color: 'var(--accent)',
+              marginTop: 0,
+              marginBottom: '0.5rem',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em'
             }}>
-              <span style={{ color: 'var(--text-tertiary)', fontSize: '0.875rem' }}>Current Cycle</span>
-              <span style={{ 
-                fontWeight: '600', 
-                color: 'var(--accent)',
-                fontSize: '0.875rem'
-              }}>{cycle}</span>
-            </div>
+              Our Mission
+            </h3>
+            <p style={{ 
+              fontSize: '0.9375rem', 
+              color: 'var(--text-secondary)', 
+              lineHeight: '1.6',
+              margin: 0
+            }}>
+              Zuzone&apos;s mission is to help hubs build, help secure funding, and collaborate across the ecosystem — creating a stronger, more connected global Zu network.
+            </p>
           </div>
         </header>
 
-        {/* Latest Issue - Hero Card */}
+        {/* ZuLetter Section */}
         <section style={{ marginBottom: '2rem' }}>
           <div className="hero-card">
             <div style={{ 
@@ -106,7 +135,13 @@ export default async function HomePage() {
                   borderRadius: '50%',
                   background: 'var(--yellow)'
                 }} />
-                Latest Issue
+                ZuLetter
+              </span>
+              <span style={{ 
+                fontSize: '0.75rem', 
+                color: 'var(--text-tertiary)'
+              }}>
+                Community Newsletter
               </span>
             </div>
             <h2 style={{ 
@@ -115,7 +150,7 @@ export default async function HomePage() {
               marginBottom: '0.625rem',
               letterSpacing: '0.02em'
             }}>
-              Zuzalu Newsletter — January 2026
+              January 2026 Edition
             </h2>
             <p className="text-secondary" style={{ marginBottom: '1.5rem', maxWidth: '520px' }}>
               Updates from Edge City, Ârc Montenegro, ZuAfrique, Invisible Garden, 

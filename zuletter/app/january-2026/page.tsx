@@ -207,7 +207,7 @@ const popupCities = [
   { name: 'ShanHaiWoo', date: 'H2 2026', url: 'https://www.shanhaiwoo.com/' },
   { name: 'Invisible Garden', date: 'October', url: 'https://invisible.garden/' },
   { name: 'Edge City India', date: 'Q4', url: 'https://www.edgecity.live/' },
-  { name: 'ZuGrama India', date: 'Feb –', url: 'https://zugrama.org/' },
+  { name: 'ZuGrama India', date: 'From Feb 2026', url: 'https://zugrama.org/' },
 ]
 
 function linkifyText(text: string) {

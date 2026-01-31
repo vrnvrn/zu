@@ -22,6 +22,7 @@ interface Card {
   link?: { url: string; text: string }
   isIntro?: boolean
   isCrossword?: boolean
+  isCongrats?: boolean
 }
 
 const hubs: Record<string, Hub> = {
@@ -71,7 +72,7 @@ const hubs: Record<string, Hub> = {
   },
   vivacity: {
     id: 'vivacity',
-    title: 'Viva.city',
+    title: 'Viva.city and Frontier Tower',
     fullContent: 'Building viva.city — a permanent city to accelerate innovation, starting with a focus on longevity biotech, AI & crypto.\n\nWe\'re looking for a new host country to establish a Special Economic Zone. Meanwhile, we\'re bringing people together IRL to self-govern and self-experiment, with a first hub in San Francisco, in a 16-floor vertical village: the Frontier Tower.',
     link: { url: 'http://frontiertower.io/', text: 'Frontier Tower →' },
   },
@@ -117,44 +118,49 @@ const hubs: Record<string, Hub> = {
     title: 'Crossword',
     fullContent: 'Submit your Q&A for the monthly crossword!',
   },
+  congrats: {
+    id: 'congrats',
+    title: 'Congratulations',
+    fullContent: 'Warm congratulations on your lovely personal milestones; \n\nJanine (Edge City)\n\nAudrey Tang (ShanHaiWoo)\n\nSanti Cristobal (Crecimento)',
+  },
 }
 
-// 5x5 grid = 25 cards, crossword at position 13 (center)
+// One card per hub + extra images to fill the grid
 const cards: Card[] = [
   // Row 1
   { id: 'intro', hubId: 'intro', title: 'Zuzalu Newsletter', subtitle: 'January 2026', isIntro: true },
-  { id: 'arc1', hubId: 'arc', image: '/newsletters/images/2026-01/arc1.png' },
-  { id: 'edge1', hubId: 'edgecity', image: '/newsletters/images/2026-01/edgecity.png' },
-  { id: 'ig1', hubId: 'invisiblegarden', image: '/newsletters/images/2026-01/invisiblegarden1.jpeg' },
-  { id: 'mu1', hubId: 'mushanghai' },
+  { id: 'arc', hubId: 'arc', image: '/newsletters/images/2026-01/arc1.png' },
+  { id: 'edgecity', hubId: 'edgecity', image: '/newsletters/images/2026-01/edgecity.png' },
+  { id: 'invisiblegarden', hubId: 'invisiblegarden', image: '/newsletters/images/2026-01/invisiblegarden1.jpeg' },
+  { id: 'mushanghai', hubId: 'mushanghai' },
 
   // Row 2
-  { id: 'shw1', hubId: 'shanhaiwoo' },
-  { id: 'valley1', hubId: 'valley', image: '/newsletters/images/2026-01/valley1.jpg' },
-  { id: 'viva1', hubId: 'vivacity' },
-  { id: 'arc-text', hubId: 'arc' },
-  { id: 'zanzalu1', hubId: 'zanzalu', image: '/newsletters/images/2026-01/zanzalu.jpeg' },
+  { id: 'shanhaiwoo', hubId: 'shanhaiwoo' },
+  { id: 'valley', hubId: 'valley', image: '/newsletters/images/2026-01/valley1.jpg' },
+  { id: 'img-arc2', hubId: 'arc', image: '/newsletters/images/2026-01/arc2.JPG' },
+  { id: 'vivacity', hubId: 'vivacity' },
+  { id: 'zanzalu', hubId: 'zanzalu', image: '/newsletters/images/2026-01/zanzalu.jpeg' },
 
-  // Row 3 (crossword in center = position 13)
-  { id: 'zuafrique1', hubId: 'zuafrique', image: '/newsletters/images/2026-01/zuafrique1.jpg' },
-  { id: 'zuberlin1', hubId: 'zuberlin' },
+  // Row 3 (crossword in center)
+  { id: 'zuafrique', hubId: 'zuafrique', image: '/newsletters/images/2026-01/zuafrique1.jpg' },
+  { id: 'zuberlin', hubId: 'zuberlin' },
   { id: 'crossword', hubId: 'crossword', isCrossword: true, image: '/images/crossword-blank.svg' },
-  { id: 'zuitzerland1', hubId: 'zuitzerland' },
-  { id: 'zuafrique-text', hubId: 'zuafrique' },
+  { id: 'zuitzerland', hubId: 'zuitzerland' },
+  { id: 'img-edge2', hubId: 'edgecity', image: '/newsletters/images/2026-01/edgecity2.png' },
 
   // Row 4
-  { id: 'zukas1', hubId: 'zukas' },
-  { id: 'arc2', hubId: 'arc', image: '/newsletters/images/2026-01/arc2.JPG' },
-  { id: 'edge2', hubId: 'edgecity', image: '/newsletters/images/2026-01/edgecity2.png' },
-  { id: 'ig2', hubId: 'invisiblegarden', image: '/newsletters/images/2026-01/invisiblegarden2.jpeg' },
-  { id: 'valley2', hubId: 'valley', image: '/newsletters/images/2026-01/valley2.png' },
+  { id: 'zukas', hubId: 'zukas' },
+  { id: 'img-ig2', hubId: 'invisiblegarden', image: '/newsletters/images/2026-01/invisiblegarden2.jpeg' },
+  { id: 'img-valley2', hubId: 'valley', image: '/newsletters/images/2026-01/valley2.png' },
+  { id: 'zugrama', hubId: 'zugrama', image: '/newsletters/images/2026-01/zugrama1.jpeg' },
+  { id: 'img-zuafrique2', hubId: 'zuafrique', image: '/newsletters/images/2026-01/zuafrique2.jpg' },
 
   // Row 5
-  { id: 'zuafrique2', hubId: 'zuafrique', image: '/newsletters/images/2026-01/zuafrique2.jpg' },
-  { id: 'zugrama1', hubId: 'zugrama', image: '/newsletters/images/2026-01/zugrama1.jpeg' },
-  { id: 'zanzalu2', hubId: 'zanzalu' },
-  { id: 'mu2', hubId: 'mushanghai' },
-  { id: 'zugrama2', hubId: 'zugrama', image: '/newsletters/images/2026-01/zugrama2.jpeg' },
+  { id: 'img-valley3', hubId: 'valley', image: '/newsletters/images/2026-01/valley3.jpg' },
+  { id: 'congrats', hubId: 'congrats', title: 'Congratulations', description: 'Janine (Edge City)\nAudrey Tang (ShanHaiWoo)\nSanti Cristobal (Crecimento)', isCongrats: true },
+  { id: 'img-zuafrique3', hubId: 'zuafrique', image: '/newsletters/images/2026-01/zuafrique3.jpg' },
+  { id: 'img-zugrama2', hubId: 'zugrama', image: '/newsletters/images/2026-01/zugrama2.jpeg' },
+  { id: 'img-zanzalu2', hubId: 'zanzalu', image: '/newsletters/images/2026-01/zanzalu.jpeg' },
 ]
 
 const popupCities = [
@@ -204,7 +210,7 @@ export default function January2026Page() {
             return (
               <div
                 key={card.id}
-                className={`card ${card.isIntro ? 'intro' : ''} ${card.isCrossword ? 'crossword' : ''} ${card.image ? 'has-image' : ''}`}
+                className={`card ${card.isIntro ? 'intro' : ''} ${card.isCrossword ? 'crossword' : ''} ${card.isCongrats ? 'congrats' : ''} ${card.image ? 'has-image' : ''}`}
                 onClick={() => handleCardClick(card)}
               >
                 {card.image && (
@@ -213,6 +219,13 @@ export default function January2026Page() {
                 <div className={`card-content ${card.image ? 'overlay' : ''}`}>
                   <h3 className="card-title">{title}</h3>
                   {subtitle && <p className="card-subtitle">{subtitle}</p>}
+                  {card.isCongrats && card.description && (
+                    <p className="card-congrats-names">
+                      {card.description.split('\n').map((line, i) => (
+                        <span key={i}>{i > 0 && <br />}{line}</span>
+                      ))}
+                    </p>
+                  )}
                   {card.isCrossword && (
                     <p className="card-link">Submit crossword Q&amp;A →</p>
                   )}
@@ -372,6 +385,26 @@ export default function January2026Page() {
           font-size: 1rem;
           text-transform: none;
           font-weight: 400;
+        }
+
+        .card.congrats {
+          background: #fef3c7;
+          border-left: 3px solid #f59e0b;
+        }
+
+        .card.congrats:hover {
+          background: #fde68a;
+        }
+
+        .card.congrats .card-title {
+          color: #92400e;
+        }
+
+        .card-congrats-names {
+          font-size: 0.75rem;
+          color: #78350f;
+          line-height: 1.6;
+          margin: 0.25rem 0 0 0;
         }
 
         .card.crossword {

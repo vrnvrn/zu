@@ -21,7 +21,6 @@ interface Card {
   image?: string
   link?: { url: string; text: string }
   isIntro?: boolean
-  isCalendar?: boolean
   isCrossword?: boolean
 }
 
@@ -35,13 +34,13 @@ const hubs: Record<string, Hub> = {
     id: 'arc',
     title: 'Ârc: Montenegro',
     date: 'April 3 – May 29, 2026',
-    fullContent: 'Ârc is building a Charter City. We are hosting a pop-up city at Lustica Bay, Montenegro as part of our continued journey to this goal.\n\nMontenegro will have a fully immersive live/work experience for founders, builders, researchers, investors & more. There will be three festivals, daily community programming, co-working spaces and three communal meals a day.\n\nMeanwhile, you can join us at our permanent hub at Network School, where we\'ve now run over 200 events and helped transform a ghost city to a thriving city.\n\nÂrc aims to show that with new approaches to governance we can flourish on every axis simultaneously. Let\'s have our cake and eat it.',
+    fullContent: 'Ârc is building a Charter City. We are hosting a pop-up city at Lustica Bay, Montenegro as part of our continued journey to this goal.\n\nMontenegro will have a fully immersive live/work experience for founders, builders, researchers, investors & more. There will be three festivals, daily community programming, co-working spaces and three communal meals a day.\n\nMeanwhile, you can join us at our permanent hub at Network School, where we\'ve now run over 200 events and helped transform a ghost city to a thriving city.',
   },
   edgecity: {
     id: 'edgecity',
     title: 'Edge City',
     date: 'May 30 – June 27 (CA) · Q4 (India)',
-    fullContent: 'In 2026, Edge City is shifting from being a "container" for serendipity to a "catalyst" for startups, research, and new movements.\n\nWe\'re tracking 182+ projects that have emerged from our villages, from neurotech startup Constellation to the d/acc Residency we ran in Patagonia with Vitalik and Protocol Labs.\n\nWe recently hired Katherine Jones, who helped launch Merge Labs, to lead ecosystem building and better support what emerges.\n\nUpcoming:\n• Edge Esmeralda 2026 — May 30 – June 27, Healdsburg, CA\n• Edge City India — Q4 2026',
+    fullContent: 'In 2026, Edge City is shifting from being a "container" for serendipity to a "catalyst" for startups, research, and new movements.\n\nWe\'re tracking 182+ projects that have emerged from our villages, from neurotech startup Constellation to the d/acc Residency we ran in Patagonia with Vitalik and Protocol Labs.\n\nUpcoming:\n• Edge Esmeralda 2026 — May 30 – June 27, Healdsburg, CA\n• Edge City India — Q4 2026',
   },
   invisiblegarden: {
     id: 'invisiblegarden',
@@ -54,61 +53,56 @@ const hubs: Record<string, Hub> = {
     id: 'mushanghai',
     title: 'muShanghai',
     date: 'April 26 – May 23, 2026 · China',
-    fullContent: 'Be a Chinese Builder for a month.\n\nThis May, we\'re bringing global builders to Shanghai to experience China\'s innovation landscape firsthand: dark factories, frontier AI, and founders shipping at China speed.\n\nChina dominates headlines, but most builders outside China still don\'t understand how it actually works on the ground. muShanghai changes that: live here, build here, and learn how to plug into China\'s ecosystem to level up your project.',
+    fullContent: 'Be a Chinese Builder for a month.\n\nThis May, we\'re bringing global builders to Shanghai to experience China\'s innovation landscape firsthand: dark factories, frontier AI, and founders shipping at China speed.',
   },
   shanhaiwoo: {
     id: 'shanhaiwoo',
     title: 'ShanHaiWoo',
     date: 'H2 2026 · Early Planning',
-    fullContent: '2026 is in early planning!\n\nThe next ShanHaiWoo is expected to take place in the second half of 2026, likely just before Devcon.\n\nThe residency will continue to focus on accelerating Ethereum-native applications and real-world use cases.\n\nLocations under consideration include Hong Kong and India (Mumbai or Bangalore).',
+    fullContent: '2026 is in early planning!\n\nThe next ShanHaiWoo is expected to take place in the second half of 2026, likely just before Devcon.\n\nLocations under consideration include Hong Kong and India (Mumbai or Bangalore).',
     link: { url: 'https://www.shanhaiwoo.com/', text: 'Learn more →' },
   },
   valley: {
     id: 'valley',
     title: 'Valley of the Commons',
     date: 'August 24 – September 20, 2026 · Austria',
-    fullContent: 'Valley of the Commons is a four-week pop-up village by a nascent network society envisioning life beyond extractive systems.\n\nRooted at The Commons Hub and held by the forests, mountains, and open skies of the Austrian Alps, this gathering is a living commons shared in work and study, in making and care, in governance and everyday life.\n\nProgram Highlights:\n• Week 1: Five-day course led by Michel Bauwens and Adam Arvidsson\n• Week 2: Mechanics of how a village economy could function\n• Week 3: How we might live together — architecturally, legally, ecologically\n• Week 4: Stewardship — how we organize, decide, invest, and protect',
+    fullContent: 'Valley of the Commons is a four-week pop-up village by a nascent network society envisioning life beyond extractive systems.\n\nRooted at The Commons Hub and held by the forests, mountains, and open skies of the Austrian Alps.',
     link: { url: 'https://www.valleyofthecommons.com/', text: 'Apply now →' },
   },
   vivacity: {
     id: 'vivacity',
     title: 'Viva.city',
-    fullContent: 'Building viva.city — a permanent city to accelerate innovation, starting with a focus on longevity biotech, AI & crypto.\n\nWe\'re looking for a new host country to establish a Special Economic Zone. Meanwhile, we\'re bringing people together IRL to self-govern and self-experiment, with a first hub in San Francisco, in a 16-floor vertical village: the Frontier Tower.',
+    fullContent: 'Building viva.city — a permanent city to accelerate innovation, starting with a focus on longevity biotech, AI & crypto.\n\nWe\'re bringing people together IRL in San Francisco, in a 16-floor vertical village: the Frontier Tower.',
     link: { url: 'http://frontiertower.io/', text: 'Frontier Tower →' },
   },
   zanzalu: {
     id: 'zanzalu',
     title: 'Zanzalu',
     date: 'July 25 – August 14, 2026 · Zanzibar',
-    fullContent: 'Zanzalu 2026 is happening!\n\nHosted in Fumba Town, Zanzibar — a walkable waterfront community built around permaculture design principles.\n\nThemes centered on leapfrog tech, cities, and industry.\n\nNew residency tracks for builders and creatives.',
+    fullContent: 'Zanzalu 2026 is happening!\n\nHosted in Fumba Town, Zanzibar — a walkable waterfront community built around permaculture design principles.\n\nThemes centered on leapfrog tech, cities, and industry.',
   },
   zuafrique: {
     id: 'zuafrique',
     title: 'ZuAfrique',
     date: 'April 12 – May 3, 2026 · Kenya',
-    fullContent: 'Here are the highlights from the ZuAfrique ecosystem:\n\n• 3-day developer workshop using the Hub residence and event halls as the venue. A total of 25 builders were hosted at our Accra hub.\n• 3-day end-of-year Web3 experience hosted at the Kilifi Hub (December 11-13, 2025).\n• We also hosted post-Devconnect batch at both Ghana and Kenya Hub.\n\nThank you, Vitalik and the entire Zuzalu community for keeping human hope alive.',
+    fullContent: 'Highlights from the ZuAfrique ecosystem:\n\n• 3-day developer workshop. 25 builders hosted at our Accra hub.\n• 3-day end-of-year Web3 experience at Kilifi Hub.\n• Post-Devconnect batch at both Ghana and Kenya Hub.',
   },
   zuberlin: {
     id: 'zuberlin',
     title: 'ZuBerlin',
-    fullContent: 'The ZuBerlin team is working on two permanent hubs in Berlin:\n\n• City Center Hub — In the middle of Kreuzberg, combines cozy co-working, a cafe and a health area including a sauna & gym. Planning to open in March.\n• Large-Scale Co-Living Project — At the river in Berlin, will be initiated with a first residency in June.',
+    fullContent: 'Two permanent hubs in Berlin:\n\n• City Center Hub — Kreuzberg, opening March.\n• Co-Living Project — At the river, first residency in June.',
     link: { url: 'mailto:chris@ephema.io', text: 'Get involved →' },
   },
   zuitzerland: {
     id: 'zuitzerland',
     title: 'Zuitzerland',
-    fullContent: 'Our focus: d/accelerator — We\'re making progress on a fund-of-funds approach to channel capital into the best hub funds and community operators.\n\nJoin us at Ethereum Zuri April 10–12, with a hackathon co-hosted by the ETH Blockchain Club.',
+    fullContent: 'd/accelerator — Fund-of-funds for hub operators.\n\nJoin us at Ethereum Zuri April 10–12.',
   },
   zukas: {
     id: 'zukas',
     title: 'ZuKas',
     date: 'April 10 – May 10, 2026 · Turkey',
-    fullContent: 'ZuGov development is almost complete, and we now support multiple option ranked voting.\n\nConfirmed speakers include E. Glen Weyl, Michel Bauwens (P2P Foundation), Vit Jedlicka (Liberland), and more.\n\nWe are targeting 150+ residents for a meaningful alpha test, with a primary focus on privacy, governance, d/acc, and Phygital commons coordination.',
-  },
-  calendar: {
-    id: 'calendar',
-    title: '2026 Pop-up Cities Calendar',
-    fullContent: '• ETH Chiang Mai — Dec 8, 2025 – Feb 3\n• Infinita City — Feb 1 – Mar 31\n• ZuCity Japan — Mar 1 – 30\n• Ipê Village — Apr 6 – May 1\n• Ârc Montenegro — Apr 3 – May 29\n• ZuAfrique — Apr 12 – May 3\n• ZuKas Turkey — Apr 10 – May 10\n• muShanghai — Apr 26 – May 23\n• Edge Esmeralda — May 30 – Jun 27\n• Zanzalu — Jul 25 – Aug 14\n• Valley of the Commons — Aug 24 – Sep 20\n• ShanHaiWoo — H2 2026\n• Invisible Garden — October\n• Edge City India — Q4',
+    fullContent: 'ZuGov development is almost complete. Ranked voting now supported.\n\nConfirmed speakers: Glen Weyl, Michel Bauwens, Vit Jedlicka.\n\nTargeting 150+ residents.',
   },
   crossword: {
     id: 'crossword',
@@ -117,24 +111,26 @@ const hubs: Record<string, Hub> = {
   },
 }
 
+// 5x5 grid = 25 cards, crossword at position 13 (center)
 const cards: Card[] = [
   // Row 1
   { id: 'intro', hubId: 'intro', title: 'Zuzalu Newsletter', subtitle: 'January 2026', description: 'Updates from our global network of pop-up cities and communities.', isIntro: true },
   { id: 'arc1', hubId: 'arc', image: '/newsletters/images/2026-01/arc1.png' },
   { id: 'edge1', hubId: 'edgecity', title: 'Edge City', subtitle: '182+ projects tracked', image: '/newsletters/images/2026-01/edgecity.png' },
   { id: 'ig1', hubId: 'invisiblegarden', title: 'Invisible Garden', subtitle: '45 builders, 27 OSS projects', image: '/newsletters/images/2026-01/invisiblegarden1.jpeg' },
+  { id: 'mu1', hubId: 'mushanghai', title: 'muShanghai', subtitle: 'APR 26 – MAY 23', description: 'Be a Chinese Builder for a month. Dark factories, frontier AI, China speed.' },
   
   // Row 2
-  { id: 'mu1', hubId: 'mushanghai', title: 'muShanghai', subtitle: 'APR 26 – MAY 23', description: 'Be a Chinese Builder for a month. Dark factories, frontier AI, China speed.' },
   { id: 'shw1', hubId: 'shanhaiwoo', title: 'ShanHaiWoo', subtitle: 'H2 2026', description: 'Expected before Devcon. Focus: Ethereum-native apps. HK, Mumbai, or Bangalore.', link: { url: 'https://www.shanhaiwoo.com/', text: 'Learn more →' } },
   { id: 'valley1', hubId: 'valley', title: 'Valley of the Commons', subtitle: 'AUSTRIA • AUG 24 – SEP 20', image: '/newsletters/images/2026-01/valley1.jpg' },
   { id: 'viva1', hubId: 'vivacity', title: 'Viva.city', description: 'Permanent city for longevity biotech, AI & crypto. Frontier Tower: 16-floor vertical village in SF.' },
   { id: 'arc-text', hubId: 'arc', title: 'Ârc: Montenegro', subtitle: 'APR 3 – MAY 29' },
-
-  // Row 3
   { id: 'zanzalu1', hubId: 'zanzalu', title: 'Zanzalu', subtitle: 'ZANZIBAR • JUL 25 – AUG 14', description: 'Fumba Town — walkable waterfront, permaculture. Leapfrog tech, cities, industry.' },
+
+  // Row 3 (crossword in center = position 13)
   { id: 'zuafrique1', hubId: 'zuafrique', image: '/newsletters/images/2026-01/zuafrique1.jpg' },
   { id: 'zuberlin1', hubId: 'zuberlin', title: 'ZuBerlin', description: 'Two hubs: City Center (Kreuzberg, March) + Co-Living at river (June).', link: { url: 'mailto:chris@ephema.io', text: 'Get involved →' } },
+  { id: 'crossword', hubId: 'crossword', isCrossword: true, image: '/images/crossword-blank.svg' },
   { id: 'zuitzerland1', hubId: 'zuitzerland', title: 'Zuitzerland', description: 'd/accelerator — Fund-of-funds for hub operators. ETH Zuri Apr 10–12.' },
   { id: 'zuafrique-text', hubId: 'zuafrique', title: 'ZuAfrique', subtitle: 'KENYA • APR 12 – MAY 3' },
 
@@ -143,12 +139,31 @@ const cards: Card[] = [
   { id: 'arc2', hubId: 'arc', description: 'Ârc: Three festivals, daily programming, communal meals', image: '/newsletters/images/2026-01/arc2.JPG' },
   { id: 'edge2', hubId: 'edgecity', description: 'Edge Esmeralda May 30 – Jun 27, India Q4', image: '/newsletters/images/2026-01/edgecity2.png' },
   { id: 'ig2', hubId: 'invisiblegarden', description: '69 workshops in Buenos Aires', image: '/newsletters/images/2026-01/invisiblegarden2.jpeg' },
+  { id: 'valley2', hubId: 'valley', description: 'Michel Bauwens & Adam Arvidsson on the commons', image: '/newsletters/images/2026-01/valley2.png' },
   
   // Row 5
-  { id: 'valley2', hubId: 'valley', description: 'Michel Bauwens & Adam Arvidsson on the commons', image: '/newsletters/images/2026-01/valley2.png' },
   { id: 'zuafrique2', hubId: 'zuafrique', description: '25 builders at Accra hub', image: '/newsletters/images/2026-01/zuafrique2.jpg' },
-  { id: 'calendar', hubId: 'calendar', title: '2026 Pop-ups', isCalendar: true },
-  { id: 'crossword', hubId: 'crossword', isCrossword: true, image: '/images/crossword-blank.svg' },
+  { id: 'shw2', hubId: 'shanhaiwoo', title: 'ShanHaiWoo', description: 'Focus: Ethereum-native apps and real-world use cases.' },
+  { id: 'zanzalu2', hubId: 'zanzalu', description: 'New residency tracks for builders and creatives' },
+  { id: 'mu2', hubId: 'mushanghai', description: 'Live here, build here, plug into China ecosystem' },
+  { id: 'viva2', hubId: 'vivacity', description: 'Special Economic Zone for innovation' },
+]
+
+const popupCities = [
+  { name: 'ETH Chiang Mai', date: 'Dec 8 – Feb 3', url: 'https://www.ethchiangmai.com/' },
+  { name: 'Infinita City', date: 'Feb 1 – Mar 31', url: 'https://infinita.city/' },
+  { name: 'ZuCity Japan', date: 'Mar 1 – 30', url: 'https://zuzalu.city/' },
+  { name: 'Ipê Village', date: 'Apr 6 – May 1', url: 'https://ipevillage.com/' },
+  { name: 'Ârc Montenegro', date: 'Apr 3 – May 29', url: 'https://www.arc.fun/' },
+  { name: 'ZuAfrique', date: 'Apr 12 – May 3', url: 'https://zuafrique.com/' },
+  { name: 'ZuKas Turkey', date: 'Apr 10 – May 10', url: 'https://zukas.org/' },
+  { name: 'muShanghai', date: 'Apr 26 – May 23', url: 'https://www.mushanghai.city/' },
+  { name: 'Edge Esmeralda', date: 'May 30 – Jun 27', url: 'https://www.edgecity.live/' },
+  { name: 'Zanzalu', date: 'Jul 25 – Aug 14', url: 'https://zanzalu.com/' },
+  { name: 'Valley of the Commons', date: 'Aug 24 – Sep 20', url: 'https://www.valleyofthecommons.com/' },
+  { name: 'ShanHaiWoo', date: 'H2 2026', url: 'https://www.shanhaiwoo.com/' },
+  { name: 'Invisible Garden', date: 'October', url: 'https://invisible.garden/' },
+  { name: 'Edge City India', date: 'Q4', url: 'https://www.edgecity.live/' },
 ]
 
 export default function January2026Page() {
@@ -175,7 +190,7 @@ export default function January2026Page() {
           {cards.map((card) => (
             <div
               key={card.id}
-              className={`card ${card.isIntro ? 'intro' : ''} ${card.isCalendar ? 'calendar' : ''} ${card.isCrossword ? 'crossword' : ''} ${card.image ? 'has-image' : ''}`}
+              className={`card ${card.isIntro ? 'intro' : ''} ${card.isCrossword ? 'crossword' : ''} ${card.image ? 'has-image' : ''}`}
               onClick={() => handleCardClick(card)}
             >
               {card.image && (
@@ -186,28 +201,23 @@ export default function January2026Page() {
                 {card.subtitle && <p className="card-subtitle">{card.subtitle}</p>}
                 {card.description && <p className="card-description">{card.description}</p>}
                 {card.link && <span className="card-link">{card.link.text}</span>}
-                {card.isCalendar && (
-                  <div className="cal-grid">
-                    <div className="cal-item"><strong>Chiang Mai</strong><span>Dec–Feb</span></div>
-                    <div className="cal-item"><strong>Infinita</strong><span>Feb–Mar</span></div>
-                    <div className="cal-item"><strong>ZuCity JP</strong><span>Mar</span></div>
-                    <div className="cal-item"><strong>Ipê Village</strong><span>Apr</span></div>
-                    <div className="cal-item"><strong>Ârc</strong><span>Apr–May</span></div>
-                    <div className="cal-item"><strong>muShanghai</strong><span>Apr–May</span></div>
-                    <div className="cal-item"><strong>Edge</strong><span>May–Jun</span></div>
-                    <div className="cal-item"><strong>Zanzalu</strong><span>Jul–Aug</span></div>
-                    <div className="cal-item"><strong>Valley</strong><span>Aug–Sep</span></div>
-                  </div>
-                )}
                 {card.isCrossword && (
-                  <>
-                    <p className="card-link">Submit crossword Q&amp;A →</p>
-                    <a href="https://github.com/vrnvrn/zu" className="card-sublink">View on GitHub</a>
-                  </>
+                  <p className="card-link">Submit crossword Q&amp;A →</p>
                 )}
               </div>
             </div>
           ))}
+        </div>
+        
+        <div className="popup-cities-bar">
+          <h3 className="popup-cities-title">2026 Pop-up Cities</h3>
+          <div className="popup-cities-list">
+            {popupCities.map((city) => (
+              <a key={city.name} href={city.url} target="_blank" rel="noopener noreferrer" className="popup-city">
+                <strong>{city.name}</strong> {city.date}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -241,7 +251,6 @@ export default function January2026Page() {
         .newsletter-grid {
           display: grid;
           grid-template-columns: repeat(5, 1fr);
-          background: #e7e5e4;
         }
         
         .card {
@@ -254,8 +263,6 @@ export default function January2026Page() {
           min-height: 140px;
           position: relative;
           overflow: hidden;
-          border-right: 1px solid #e7e5e4;
-          border-bottom: 1px solid #e7e5e4;
         }
         
         .card:hover {
@@ -334,15 +341,8 @@ export default function January2026Page() {
           padding-top: 0.5rem;
         }
         
-        .card-sublink {
-          font-size: 0.75rem;
-          color: #78716c;
-          margin-top: 0.25rem;
-        }
-        
         .card.intro {
           background: #1c1917;
-          border-color: #1c1917;
         }
         
         .card.intro:hover {
@@ -367,14 +367,6 @@ export default function January2026Page() {
           margin-top: 0.5rem;
         }
         
-        .card.calendar {
-          background: #fefce8;
-        }
-        
-        .card.calendar:hover {
-          background: #fef9c3;
-        }
-        
         .card.crossword {
           background: #fef3c7;
         }
@@ -393,30 +385,6 @@ export default function January2026Page() {
         .card.crossword .card-link {
           color: #d97706;
           font-size: 0.9375rem;
-        }
-        
-        .cal-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 4px;
-          margin-top: 0.5rem;
-        }
-        
-        .cal-item {
-          background: white;
-          padding: 0.25rem 0.375rem;
-          border-radius: 3px;
-          font-size: 0.5625rem;
-        }
-        
-        .cal-item strong {
-          display: block;
-          color: #1c1917;
-          font-weight: 600;
-        }
-        
-        .cal-item span {
-          color: #78716c;
         }
         
         /* Modal */
@@ -528,6 +496,46 @@ export default function January2026Page() {
         
         .modal-link:hover {
           background: #b45309;
+        }
+        
+        .popup-cities-bar {
+          background: #1c1917;
+          padding: 1.5rem 2rem;
+        }
+        
+        .popup-cities-title {
+          color: #fbbf24;
+          font-size: 0.75rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          margin: 0 0 1rem 0;
+        }
+        
+        .popup-cities-list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem 2rem;
+        }
+        
+        .popup-city {
+          font-size: 0.8125rem;
+          color: #a8a29e;
+          text-decoration: none;
+          transition: color 0.15s;
+        }
+        
+        .popup-city:hover {
+          color: #fbbf24;
+        }
+        
+        .popup-city strong {
+          color: white;
+          font-weight: 600;
+        }
+        
+        .popup-city:hover strong {
+          color: #fbbf24;
         }
         
         @media (max-width: 1000px) {

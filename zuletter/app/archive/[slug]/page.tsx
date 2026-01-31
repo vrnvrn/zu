@@ -1,38 +1,34 @@
 import Nav from '@/components/Nav'
-import { fetchNewsletters } from '@/lib/github'
+import { fetchLocalArchiveNewsletters } from '@/lib/github'
 import { Newsletter } from '@/lib/types'
 import MarkdownRenderer from './MarkdownRenderer'
-import HtmlRenderer from './HtmlRenderer'
 
-export const revalidate = 300
-
-export async function generateStaticParams() {
-  const newsletters = await fetchNewsletters()
+export function generateStaticParams() {
+  const newsletters = fetchLocalArchiveNewsletters()
   return newsletters.map(n => ({
     slug: n.cycle,
   }))
 }
 
-function formatCycleDate(cycle: string): string {
+function formatDate(date: string): string {
   const months = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
   ]
-  const parts = cycle.split('-')
-  if (parts.length === 3) {
+  const parts = date.split('-')
+  if (parts.length >= 2) {
     const month = months[parseInt(parts[1], 10) - 1]
-    const day = parseInt(parts[2], 10)
-    return `${month} ${day}, ${parts[0]}`
-  }
-  if (parts.length === 2) {
-    const month = months[parseInt(parts[1], 10) - 1]
+    if (parts.length === 3) {
+      const day = parseInt(parts[2], 10)
+      return `${month} ${day}, ${parts[0]}`
+    }
     return `${month} ${parts[0]}`
   }
-  return cycle
+  return date
 }
 
-export default async function NewsletterPage({ params }: { params: { slug: string } }) {
-  const newsletters = await fetchNewsletters()
+export default function NewsletterPage({ params }: { params: { slug: string } }) {
+  const newsletters = fetchLocalArchiveNewsletters()
   const newsletter: Newsletter | undefined = newsletters.find(n => n.cycle === params.slug)
 
   if (!newsletter) {
@@ -42,7 +38,7 @@ export default async function NewsletterPage({ params }: { params: { slug: strin
         <div className="container" style={{ maxWidth: '800px', padding: '2rem' }}>
           <h1>Newsletter not found</h1>
           <p style={{ color: 'var(--text-secondary)' }}>
-            Could not find a newsletter for cycle &quot;{params.slug}&quot;.
+            Could not find a newsletter for &quot;{params.slug}&quot;.
           </p>
           <a href="/archive" style={{ color: 'var(--accent)' }}>Back to archive</a>
         </div>
@@ -73,37 +69,24 @@ export default async function NewsletterPage({ params }: { params: { slug: strin
             {newsletter.title}
           </h1>
           <div style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', display: 'flex', flexWrap: 'wrap', gap: '0.5rem', alignItems: 'center' }}>
-            <span>{formatCycleDate(newsletter.cycle)}</span>
+            <span>{formatDate(newsletter.cycle)}</span>
+            {newsletter.edition && (
+              <>
+                <span style={{ opacity: 0.4 }}>&middot;</span>
+                <span>{newsletter.edition}</span>
+              </>
+            )}
             {newsletter.editors.length > 0 && (
               <>
                 <span style={{ opacity: 0.4 }}>&middot;</span>
-                <span>
-                  Editors: {newsletter.editors.join(', ')}
-                </span>
-              </>
-            )}
-            {newsletter.htmlUrl && (
-              <>
-                <span style={{ opacity: 0.4 }}>&middot;</span>
-                <a
-                  href={newsletter.htmlUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: 'var(--accent)', fontSize: '0.8125rem' }}
-                >
-                  View on GitHub
-                </a>
+                <span>by {newsletter.editors.join(', ')}</span>
               </>
             )}
           </div>
         </header>
 
         <article className="newsletter-content">
-          {newsletter.format === 'html' ? (
-            <HtmlRenderer content={newsletter.content} />
-          ) : (
-            <MarkdownRenderer content={newsletter.content} />
-          )}
+          <MarkdownRenderer content={newsletter.content} />
         </article>
       </div>
 
@@ -163,21 +146,6 @@ export default async function NewsletterPage({ params }: { params: { slug: strin
         }
         .newsletter-content code {
           font-size: 0.875em;
-        }
-        .newsletter-content table {
-          width: 100%;
-          border-collapse: collapse;
-          margin-bottom: 1rem;
-        }
-        .newsletter-content th,
-        .newsletter-content td {
-          border: 1px solid var(--border);
-          padding: 0.5rem 0.75rem;
-          text-align: left;
-        }
-        .newsletter-content th {
-          background: var(--bg-secondary);
-          font-weight: 600;
         }
         .newsletter-content hr {
           border: none;

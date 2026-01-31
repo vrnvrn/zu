@@ -1,30 +1,25 @@
 import Nav from '@/components/Nav'
-import { fetchNewsletters, getRepoPath } from '@/lib/github'
+import { fetchLocalArchiveNewsletters } from '@/lib/github'
 
-export const revalidate = 300 // Cache for 5 minutes
-
-// Human-readable date from cycle string (e.g. "2024-12-31" -> "December 31, 2024")
-function formatCycleDate(cycle: string): string {
+function formatDate(date: string): string {
   const months = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
   ]
-  const parts = cycle.split('-')
-  if (parts.length === 3) {
+  const parts = date.split('-')
+  if (parts.length >= 2) {
     const month = months[parseInt(parts[1], 10) - 1]
-    const day = parseInt(parts[2], 10)
-    return `${month} ${day}, ${parts[0]}`
-  }
-  if (parts.length === 2) {
-    const month = months[parseInt(parts[1], 10) - 1]
+    if (parts.length === 3) {
+      const day = parseInt(parts[2], 10)
+      return `${month} ${day}, ${parts[0]}`
+    }
     return `${month} ${parts[0]}`
   }
-  return cycle
+  return date
 }
 
-export default async function ArchivePage() {
-  const newsletters = await fetchNewsletters()
-  const repoPath = getRepoPath()
+export default function ArchivePage() {
+  const newsletters = fetchLocalArchiveNewsletters()
 
   return (
     <>
@@ -58,8 +53,7 @@ export default async function ArchivePage() {
             Archive
           </h1>
           <p style={{ fontSize: '1.0625rem', color: 'var(--text-secondary)', lineHeight: '1.75' }}>
-            A complete record of past ZuLetter issues. Each edition is permanently stored
-            and cryptographically verifiable through GitHub.
+            A complete record of past ZuLetter issues.
           </p>
         </header>
 
@@ -95,45 +89,21 @@ export default async function ArchivePage() {
                     {newsletter.title}
                   </h2>
                   <div className="text-secondary" style={{ fontSize: '0.8125rem', display: 'flex', flexWrap: 'wrap', gap: '0.25rem', alignItems: 'center' }}>
-                    <span style={{ color: 'var(--text-tertiary)' }}>Cycle:</span>{' '}
-                    <span>{formatCycleDate(newsletter.cycle)}</span>
+                    <span>{formatDate(newsletter.cycle)}</span>
+                    {newsletter.edition && (
+                      <>
+                        <span style={{ margin: '0 0.25rem', opacity: 0.4 }}>&middot;</span>
+                        <span>{newsletter.edition}</span>
+                      </>
+                    )}
                     {newsletter.editors.length > 0 && (
                       <>
-                        <span style={{ margin: '0 0.25rem', opacity: 0.4 }}>·</span>
-                        <span style={{ color: 'var(--text-tertiary)' }}>Editors:</span>{' '}
-                        {newsletter.editors.map((editor, i) => (
-                          <span key={editor}>
-                            <a
-                              href={`https://github.com/${editor.replace('@', '')}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {editor}
-                            </a>
-                            {i < newsletter.editors.length - 1 && ', '}
-                          </span>
-                        ))}
+                        <span style={{ margin: '0 0.25rem', opacity: 0.4 }}>&middot;</span>
+                        <span style={{ color: 'var(--text-tertiary)' }}>by</span>{' '}
+                        <span>{newsletter.editors.join(', ')}</span>
                       </>
                     )}
                   </div>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexShrink: 0 }}>
-                  {newsletter.sha && (
-                    <span className="text-tertiary" style={{ fontSize: '0.6875rem', fontFamily: 'monospace' }}>
-                      SHA: {newsletter.sha.substring(0, 7)}
-                    </span>
-                  )}
-                  {newsletter.htmlUrl && (
-                    <a
-                      href={newsletter.htmlUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-secondary"
-                      style={{ fontSize: '0.8125rem', whiteSpace: 'nowrap' }}
-                    >
-                      Verify on GitHub
-                    </a>
-                  )}
                 </div>
               </a>
             ))}

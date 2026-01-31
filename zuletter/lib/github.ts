@@ -1,4 +1,6 @@
 import { GitHubIssue, GitHubComment, Newsletter, NewsletterItem, IssueState, Category } from './types'
+import fs from 'fs'
+import path from 'path'
 
 const GITHUB_API_BASE = 'https://api.github.com'
 const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com'
@@ -415,6 +417,73 @@ export async function fetchNewsletter(cycle: string): Promise<Newsletter | null>
     console.error('Error fetching newsletter:', error)
     return null
   }
+}
+
+// Read local archive markdown files from app/archive/
+export function fetchLocalArchiveNewsletters(): Newsletter[] {
+  const archiveBase = path.join(process.cwd(), 'app', 'archive')
+  const newsletters: Newsletter[] = []
+
+  try {
+    const years = fs.readdirSync(archiveBase).filter(entry => {
+      const fullPath = path.join(archiveBase, entry)
+      return fs.statSync(fullPath).isDirectory() && /^\d{4}$/.test(entry)
+    })
+
+    for (const year of years) {
+      const yearDir = path.join(archiveBase, year)
+      const files = fs.readdirSync(yearDir).filter(f => f.endsWith('.md'))
+
+      for (const file of files) {
+        const filePath = path.join(yearDir, file)
+        const content = fs.readFileSync(filePath, 'utf-8')
+
+        const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/)
+        const slug = file.replace('.md', '')
+        let title = slug
+        let cycle = slug
+        let editors: string[] = []
+        let edition: string | undefined
+        let body = content
+
+        if (frontmatterMatch) {
+          const fm = frontmatterMatch[1]
+          body = frontmatterMatch[2]
+
+          const titleMatch = fm.match(/title:\s*["'](.+?)["']/)
+          if (titleMatch) title = titleMatch[1]
+
+          const dateMatch = fm.match(/date:\s*(\S+)/)
+          if (dateMatch) cycle = dateMatch[1]
+
+          const editionMatch = fm.match(/edition:\s*["'](.+?)["']/)
+          if (editionMatch) edition = editionMatch[1]
+
+          const authorMatch = fm.match(/author:\s*["']?(.+?)["']?\s*$/m)
+          if (authorMatch) {
+            const author = authorMatch[1].trim()
+            editors = [author]
+          }
+        }
+
+        newsletters.push({
+          path: `archive/${year}/${file}`,
+          title,
+          cycle,
+          editors,
+          edition,
+          sourceRepo: `${getGitHubOwner()}/${getGitHubRepo()}`,
+          content: body,
+          format: 'markdown',
+        })
+      }
+    }
+  } catch (error) {
+    console.error('Error reading local archive:', error)
+  }
+
+  newsletters.sort((a, b) => b.cycle.localeCompare(a.cycle))
+  return newsletters
 }
 
 // Get current cycle (most recent cycle label from issues, or default to today's week)

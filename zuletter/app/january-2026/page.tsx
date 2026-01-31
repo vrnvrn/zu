@@ -104,6 +104,13 @@ const hubs: Record<string, Hub> = {
     date: 'April 10 – May 10, 2026 · Turkey',
     fullContent: 'ZuGov development is almost complete, and we now support multiple option ranked voting.\n\nCurrent confirmed speakers include E. Glen Weyl, Michel Bauwens from the P2P Foundation, Vit Jedlicka from Liberland, Martinet Lee from Zircuit, Xiao Wu from EthRiyadh and Chainide, Isa Sertkaya from Tubitak, and Ramazan Agirtas from Nethermind.\n\nAdditionally, several Turkish foundations and government organizations have provided soft commitments. We are targeting 150+ residents for a meaningful alpha test, with a primary focus on privacy, governance, d/acc, and Phygital commons coordination.',
   },
+  zugrama: {
+    id: 'zugrama',
+    title: 'ZuGrama',
+    date: 'Feb 2026 — Onwards · India',
+    fullContent: 'At ZuGrama, we have been busy prepping for our permanent hubs.\n\n• We wrote about why we are building ZuGrama: https://yeshdoteth.substack.com/p/why-we-are-building-zugrama\n\n• Grama Founding citizen SBT passport will be live and invite only starting Feb 4, 2026.\n\n• ZuGrama Bangalore will go live from Feb, with access to co-working spaces, hardware and biotech labs, office spaces. It will be a place for our d/acc incubator. RFPs will be out soon and you can apply to become a citizen on our website.\n\n• v1 Grama OS launching on Wednesday, Feb 4, 2026.\n\n• Grama dAI Agents powered by Ethereum & EigenAI (ERC 8004) launching on Wednesday, Feb 4, 2026.\n\n• New Grama Website launching Friday, Feb 6, 2026.\n\n• Closing partnership with 500 acre land stewardship for establishing Grama permanent hub. More details on location will be revealed in a few weeks.',
+    link: { url: 'https://yeshdoteth.substack.com/p/why-we-are-building-zugrama', text: 'Read why we\'re building ZuGrama →' },
+  },
   crossword: {
     id: 'crossword',
     title: 'Crossword',
@@ -125,7 +132,7 @@ const cards: Card[] = [
   { id: 'valley1', hubId: 'valley', title: 'Valley of the Commons', subtitle: 'AUSTRIA • AUG 24 – SEP 20', image: '/newsletters/images/2026-01/valley1.jpg' },
   { id: 'viva1', hubId: 'vivacity', title: 'Viva.city', description: 'Permanent city for longevity biotech, AI & crypto. Frontier Tower: 16-floor vertical village in SF.' },
   { id: 'arc-text', hubId: 'arc', title: 'Ârc: Montenegro', subtitle: 'APR 3 – MAY 29' },
-  { id: 'zanzalu1', hubId: 'zanzalu', title: 'Zanzalu', subtitle: 'ZANZIBAR • JUL 25 – AUG 14', description: 'Fumba Town — walkable waterfront, permaculture. Leapfrog tech, cities, industry.' },
+  { id: 'zanzalu1', hubId: 'zanzalu', title: 'Zanzalu', subtitle: 'ZANZIBAR • JUL 25 – AUG 14', description: 'Fumba Town — walkable waterfront, permaculture. Leapfrog tech, cities, industry.', image: '/newsletters/images/2026-01/zanzalu.jpeg' },
 
   // Row 3 (crossword in center = position 13)
   { id: 'zuafrique1', hubId: 'zuafrique', image: '/newsletters/images/2026-01/zuafrique1.jpg' },
@@ -143,10 +150,10 @@ const cards: Card[] = [
   
   // Row 5
   { id: 'zuafrique2', hubId: 'zuafrique', description: '25 builders at Accra hub', image: '/newsletters/images/2026-01/zuafrique2.jpg' },
-  { id: 'shw2', hubId: 'shanhaiwoo', title: 'ShanHaiWoo', description: 'Focus: Ethereum-native apps and real-world use cases.' },
+  { id: 'zugrama1', hubId: 'zugrama', title: 'ZuGrama', subtitle: 'FEB 2026 — INDIA', description: 'Permanent hubs, d/acc incubator, Grama OS, dAI Agents powered by Ethereum & EigenAI.', image: '/newsletters/images/2026-01/zugrama1.jpeg' },
   { id: 'zanzalu2', hubId: 'zanzalu', description: 'New residency tracks for builders and creatives' },
   { id: 'mu2', hubId: 'mushanghai', description: 'Live here, build here, plug into China ecosystem' },
-  { id: 'viva2', hubId: 'vivacity', description: 'Special Economic Zone for innovation' },
+  { id: 'zugrama2', hubId: 'zugrama', description: '500 acre land stewardship for permanent hub. Grama Website & SBT passport launching Feb.', image: '/newsletters/images/2026-01/zugrama2.jpeg' },
 ]
 
 const popupCities = [
@@ -164,6 +171,7 @@ const popupCities = [
   { name: 'ShanHaiWoo', date: 'H2 2026', url: 'https://www.shanhaiwoo.com/' },
   { name: 'Invisible Garden', date: 'October', url: 'https://invisible.garden/' },
   { name: 'Edge City India', date: 'Q4', url: 'https://www.edgecity.live/' },
+  { name: 'ZuGrama India', date: 'Feb –', url: 'https://yeshdoteth.substack.com/p/why-we-are-building-zugrama' },
 ]
 
 export default function January2026Page() {

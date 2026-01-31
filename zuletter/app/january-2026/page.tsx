@@ -28,81 +28,81 @@ const hubs: Record<string, Hub> = {
   intro: {
     id: 'intro',
     title: 'Zuzalu Newsletter — January 2026',
-    fullContent: 'Welcome to the January 2026 edition of the Zuzalu community newsletter! This month brings exciting updates from across our global network of pop-up cities, hubs, and communities.',
+    fullContent: 'Welcome to the January 2026 edition of the Zuzalu community newsletter! This month brings exciting updates from across our global network of pop-up cities, hubs, and communities.\n\nNew: We\'re starting a monthly crossword next month! Submit your Q&A at zuletter.vercel.app/crossword to help build the first puzzle.',
   },
   arc: {
     id: 'arc',
     title: 'Ârc: Montenegro',
     date: 'April 3 – May 29, 2026',
-    fullContent: 'Ârc is building a Charter City. We are hosting a pop-up city at Lustica Bay, Montenegro as part of our continued journey to this goal.\n\nMontenegro will have a fully immersive live/work experience for founders, builders, researchers, investors & more. There will be three festivals, daily community programming, co-working spaces and three communal meals a day.\n\nMeanwhile, you can join us at our permanent hub at Network School, where we\'ve now run over 200 events and helped transform a ghost city to a thriving city.',
+    fullContent: 'Ârc is building a Charter City. We are hosting a pop-up city at Lustica Bay, Montenegro (April 3 - May 29, 2026) as part of our continued journey to this goal.\n\nMontenegro will have a fully immersive live/work experience for founders, builders, researchers, investors & more. There will be three festivals, daily community programming, co-working spaces and three communal meals a day.\n\nMeanwhile, you can join us at our permanent hub at Network School, where we\'ve now run over 200 events and helped transform a ghost city to a thriving city.\n\nÂrc aims to show that with new approaches to governance we can flourish on every axis simultaneously. Let\'s have our cake and eat it.',
   },
   edgecity: {
     id: 'edgecity',
     title: 'Edge City',
     date: 'May 30 – June 27 (CA) · Q4 (India)',
-    fullContent: 'In 2026, Edge City is shifting from being a "container" for serendipity to a "catalyst" for startups, research, and new movements.\n\nWe\'re tracking 182+ projects that have emerged from our villages, from neurotech startup Constellation to the d/acc Residency we ran in Patagonia with Vitalik and Protocol Labs.\n\nUpcoming:\n• Edge Esmeralda 2026 — May 30 – June 27, Healdsburg, CA\n• Edge City India — Q4 2026',
+    fullContent: 'In 2026, Edge City is shifting from being a "container" for serendipity to a "catalyst" for startups, research, and new movements.\n\nWe\'re tracking 182+ projects that have emerged from our villages, from neurotech startup Constellation to the d/acc Residency we ran in Patagonia with Vitalik and Protocol Labs.\n\nWe recently hired Katherine Jones, who helped launch Merge Labs, to lead ecosystem building and better support what emerges.\n\nNext up: Edge Esmeralda 2026 (May 30 – June 27, Healdsburg, CA) and Edge City India in Q4.',
   },
   invisiblegarden: {
     id: 'invisiblegarden',
     title: 'Invisible Garden',
     date: 'October 2026 · India',
-    fullContent: 'Buenos Aires was a moment of refinement for Invisible Garden at the dawn of the AI age: a tight, high-intensity builder residency for deep learning, mentorship, and shipping reusable work.\n\nFrom 1,038 applications, we brought 45 builders on-site in Buenos Aires 🇦🇷, ran 69 workshops, and shipped 27 high-quality open-source projects and research outputs.',
-    link: { url: 'https://x.com/invisiblgarden/status/2016377386301063673', text: 'Read the full recap →' },
+    fullContent: 'Invisible Garden is a short, intense builder residency designed for deep learning, uninterrupted build time, and living together long enough for real community (not just "event vibes") to form.\n\nAfter seeding the model in Chiang Mai (Nov 2024), the Buenos Aires chapter (Oct 2025) refined the rhythm—tighter, clearer, and focused on work that gets harder in an AI-saturated world: security, privacy, truth-seeking, and protocol design.\n\nBy the numbers: 1,038 applications, 379 accepted, 45 builders on-site for 3 weeks, running 69 workshops across Ethereum, ZK, AI, and cybersecurity with 40+ mentors.\n\nBuilders shipped 27 open-source projects and research outputs, including Stylus + ZK verification pipelines, privacy-first applications, zkML experiments, and specs/docs treated as infrastructure.\n\nThe takeaway: focus still beats frenzy, and the residency format is becoming a repeatable bridge between local ecosystems (like LatAm) and Ethereum\'s global roadmap.\n\nStay tuned for our upcoming residency in India in October!',
+    link: { url: 'https://invisible.garden/', text: 'Learn more →' },
   },
   mushanghai: {
     id: 'mushanghai',
     title: 'muShanghai',
     date: 'April 26 – May 23, 2026 · China',
-    fullContent: 'Be a Chinese Builder for a month.\n\nThis May, we\'re bringing global builders to Shanghai to experience China\'s innovation landscape firsthand: dark factories, frontier AI, and founders shipping at China speed.',
+    fullContent: 'Be a Chinese Builder for a month.\n\nThis May, we\'re bringing global builders to Shanghai to experience China\'s innovation landscape firsthand: dark factories, frontier AI, and founders shipping at China speed.\n\nChina dominates headlines, but most builders outside China still don\'t understand how it actually works on the ground. muShanghai changes that: live here, build here, and learn how to plug into China\'s ecosystem to level up your project.\n\nApplications are live. Partnerships are open.\n\nSee you in muShanghai.',
   },
   shanhaiwoo: {
     id: 'shanhaiwoo',
     title: 'ShanHaiWoo',
     date: 'H2 2026 · Early Planning',
-    fullContent: '2026 is in early planning!\n\nThe next ShanHaiWoo is expected to take place in the second half of 2026, likely just before Devcon.\n\nLocations under consideration include Hong Kong and India (Mumbai or Bangalore).',
+    fullContent: '2026 is in early planning!\n\nThe next ShanHaiWoo is expected to take place in the second half of 2026, likely just before Devcon.\n\nThe residency will continue to focus on accelerating Ethereum-native applications and real-world use cases.\n\nLocations under consideration include Hong Kong and India (Mumbai or Bangalore), and the team would love to hear your thoughts and ideas as planning unfolds!',
     link: { url: 'https://www.shanhaiwoo.com/', text: 'Learn more →' },
   },
   valley: {
     id: 'valley',
     title: 'Valley of the Commons',
     date: 'August 24 – September 20, 2026 · Austria',
-    fullContent: 'Valley of the Commons is a four-week pop-up village by a nascent network society envisioning life beyond extractive systems.\n\nRooted at The Commons Hub and held by the forests, mountains, and open skies of the Austrian Alps.',
+    fullContent: 'Valley of the Commons is a four-week pop-up village by a nascent network society envisioning life beyond extractive systems.\n\nRooted at The Commons Hub and held by the forests, mountains, and open skies of the Austrian Alps, this gathering is a living commons shared in work and study, in making and care, in governance and everyday life.\n\nWe begin with a five‑day course led by Michel Bauwens and Adam Arvidsson, two of the most insightful and engaging contemporary thinkers on the commons.\n\nNext, we shift from macro-narratives to the mechanics of how a village economy could actually function.\n\nWeek three turns toward how we might actually live together – architecturally, legally, ecologically, and socially. We explore cooperative housing concepts, map local resources and unused buildings, and examine the ecological potentials of the valley as a site for long-term habitation.\n\nThe fourth week brings everything into the domain of stewardship: how we organize, decide, invest, and protect what we build together. We explore participatory governance frameworks, cooperative legal structures, long-term investment models, and mechanisms for holding shared assets in trust.',
     link: { url: 'https://www.valleyofthecommons.com/', text: 'Apply now →' },
   },
   vivacity: {
     id: 'vivacity',
     title: 'Viva.city',
-    fullContent: 'Building viva.city — a permanent city to accelerate innovation, starting with a focus on longevity biotech, AI & crypto.\n\nWe\'re bringing people together IRL in San Francisco, in a 16-floor vertical village: the Frontier Tower.',
+    fullContent: 'Building viva.city — a permanent city to accelerate innovation, starting with a focus on longevity biotech, AI & crypto.\n\nWe\'re looking for a new host country to establish a Special Economic Zone. Meanwhile, we\'re bringing people together IRL to self-govern and self-experiment, with a first hub in San Francisco, in a 16-floor vertical village: the Frontier Tower.',
     link: { url: 'http://frontiertower.io/', text: 'Frontier Tower →' },
   },
   zanzalu: {
     id: 'zanzalu',
     title: 'Zanzalu',
     date: 'July 25 – August 14, 2026 · Zanzibar',
-    fullContent: 'Zanzalu 2026 is happening!\n\nHosted in Fumba Town, Zanzibar — a walkable waterfront community built around permaculture design principles.\n\nThemes centered on leapfrog tech, cities, and industry.',
+    fullContent: 'Zanzalu 2026 is happening!\n\nHosted in Fumba Town, Zanzibar — a walkable waterfront community built around permaculture design principles.\n\nThemes centered on leapfrog tech, cities, and industry.\n\nNew residency tracks for builders and creatives.',
   },
   zuafrique: {
     id: 'zuafrique',
     title: 'ZuAfrique',
     date: 'April 12 – May 3, 2026 · Kenya',
-    fullContent: 'Highlights from the ZuAfrique ecosystem:\n\n• 3-day developer workshop. 25 builders hosted at our Accra hub.\n• 3-day end-of-year Web3 experience at Kilifi Hub.\n• Post-Devconnect batch at both Ghana and Kenya Hub.',
+    fullContent: 'Below are the highlights from the ZuAfrique ecosystem:\n\n• 3 days workshop for developer community, using the Hub residence and event halls as the venue. A total of 25 builders were hosted at our Accra hub.\n\n• A 3-day end-of-year Web3 experience was hosted at the Kilifi Hub, between 11-13 December 2025. The event brought together residents, local builders, founders, and university talent to learn, connect, and celebrate the close of the year.\n\n• We also hosted post Devconnect batch at both Ghana and Kenya Hub.\n\nSharing some of the pictures with you to get you into the spirit of what went on here. Thank you, Vitalik and the entire Zuzalu community for keeping human hope alive.',
   },
   zuberlin: {
     id: 'zuberlin',
     title: 'ZuBerlin',
-    fullContent: 'Two permanent hubs in Berlin:\n\n• City Center Hub — Kreuzberg, opening March.\n• Co-Living Project — At the river, first residency in June.',
+    fullContent: 'The ZuBerlin team is working on two permanent hubs in Berlin, a smaller one in the city center and a larger one as a more ambitious, large-scale co-living project at the river in Berlin.\n\nThe small one is in the middle of Kreuzberg, combines cozy co-working, a cafe and a health area including a sauna & gym. We are very actively working on this one and planning to open in March.\n\nThe larger location will be initiated with a first residency in June, more details to be announced.\n\nWe are excited to soon go more public with our new, exciting projects.\n\nIf you are interested to contribute (and ideally located in Berlin), feel free to reach out to chris@ephema.io.',
     link: { url: 'mailto:chris@ephema.io', text: 'Get involved →' },
   },
   zuitzerland: {
     id: 'zuitzerland',
     title: 'Zuitzerland',
-    fullContent: 'd/accelerator — Fund-of-funds for hub operators.\n\nJoin us at Ethereum Zuri April 10–12.',
+    fullContent: 'Our focus: d/accelerator — We\'re making progress on a fund-of-funds approach to channel capital into the best hub funds and community operators. We aim to host the first d/acc accelerator cohort in Switzerland later this year, piloting the hub/accelerator model.\n\nd/acc a day: get featured! We\'re looking for ambitious d/acc builders to feature in live interviews, showcasing your work to our community of builders and investors.\n\nJoin us at Ethereum Zuri April 10–12, with a hackathon co-hosted by the ETH Blockchain Club. Build, learn, and connect.',
   },
   zukas: {
     id: 'zukas',
     title: 'ZuKas',
     date: 'April 10 – May 10, 2026 · Turkey',
-    fullContent: 'ZuGov development is almost complete. Ranked voting now supported.\n\nConfirmed speakers: Glen Weyl, Michel Bauwens, Vit Jedlicka.\n\nTargeting 150+ residents.',
+    fullContent: 'ZuGov development is almost complete, and we now support multiple option ranked voting.\n\nCurrent confirmed speakers include E. Glen Weyl, Michel Bauwens from the P2P Foundation, Vit Jedlicka from Liberland, Martinet Lee from Zircuit, Xiao Wu from EthRiyadh and Chainide, Isa Sertkaya from Tubitak, and Ramazan Agirtas from Nethermind.\n\nAdditionally, several Turkish foundations and government organizations have provided soft commitments. We are targeting 150+ residents for a meaningful alpha test, with a primary focus on privacy, governance, d/acc, and Phygital commons coordination.',
   },
   crossword: {
     id: 'crossword',
@@ -245,12 +245,16 @@ export default function January2026Page() {
       <style jsx global>{`
         .newsletter-fullpage {
           padding: 0;
+          margin: 0;
           background: #fafaf9;
         }
         
         .newsletter-grid {
           display: grid;
           grid-template-columns: repeat(5, 1fr);
+          gap: 0;
+          margin: 0;
+          padding: 0;
         }
         
         .card {
@@ -263,6 +267,9 @@ export default function January2026Page() {
           min-height: 140px;
           position: relative;
           overflow: hidden;
+          margin: 0;
+          border: none;
+          box-sizing: border-box;
         }
         
         .card:hover {
@@ -427,9 +434,9 @@ export default function January2026Page() {
         .modal-content {
           background: white;
           border-radius: 12px;
-          max-width: 560px;
+          max-width: 600px;
           width: 100%;
-          max-height: 80vh;
+          max-height: 85vh;
           overflow-y: auto;
           position: relative;
           box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -501,6 +508,7 @@ export default function January2026Page() {
         .popup-cities-bar {
           background: #1c1917;
           padding: 1.5rem 2rem;
+          margin: 0;
         }
         
         .popup-cities-title {

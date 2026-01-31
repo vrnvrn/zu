@@ -187,7 +187,7 @@ const cards: Card[] = [
   { id: 'zuitzerland', hubId: 'zuitzerland', image: '/newsletters/images/2026-01/Zuitz.jpeg' },
   { id: 'zukas', hubId: 'zukas', image: '/newsletters/images/2026-01/ZuKas.webp' },
   { id: 'zugrama', hubId: 'zugrama', image: '/newsletters/images/2026-01/zugrama1.jpeg' },
-  { id: 'congrats', hubId: 'congrats', title: 'Congratulations', description: 'Janine (Edge City)\nAudrey Tang (ShanHaiWoo)\nSanti Cristobal (Crecimento)', isCongrats: true },
+  { id: 'congrats', hubId: 'congrats', title: 'Congratulations', isCongrats: true },
   // Photo-only fillers (no hub info overlay) when grid incomplete
   //{ id: 'filler-1', hubId: 'arc', image: '/newsletters/images/2026-01/arc2.JPG', isFiller: true },
 ]

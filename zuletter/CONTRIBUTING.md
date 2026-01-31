@@ -44,3 +44,4 @@ If you're submitting updates for a hub or pop-up city, please include:
 ## Questions?
 
 Open an issue on the repository if you have questions or suggestions.
+Reach out to us at hi@zuzone.org

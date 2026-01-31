@@ -102,7 +102,7 @@ export default async function HomePage() {
               lineHeight: '1.6',
               margin: 0
             }}>
-              Zuzone&apos;s mission is to help hubs build, help secure funding, and collaborate across the ecosystem. Creating a stronger, more connected global Zu network.
+            Zuzone’s mission is to help hubs build, grow sustainably, and collaborate across the ecosystem. Creating a stronger, more connected global Zu network.
             </p>
           </div>
         </header>

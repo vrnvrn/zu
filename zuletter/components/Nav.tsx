@@ -51,7 +51,7 @@ export default function Nav() {
                 color: 'var(--accent)',
               }}
             >
-              ZuLetter
+              ZuZone
             </span>
           </Link>
           <div className="nav-links">

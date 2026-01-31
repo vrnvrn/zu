@@ -23,6 +23,7 @@ interface Card {
   isIntro?: boolean
   isCrossword?: boolean
   isCongrats?: boolean
+  isFiller?: boolean
 }
 
 const hubs: Record<string, Hub> = {
@@ -125,42 +126,29 @@ const hubs: Record<string, Hub> = {
   },
 }
 
-// One card per hub + extra images to fill the grid
+// One card per hub + photo-only fillers to complete the row
 const cards: Card[] = [
-  // Row 1
   { id: 'intro', hubId: 'intro', title: 'Zuzalu Newsletter', subtitle: 'January 2026', isIntro: true },
   { id: 'arc', hubId: 'arc', image: '/newsletters/images/2026-01/arc1.png' },
   { id: 'edgecity', hubId: 'edgecity', image: '/newsletters/images/2026-01/edgecity.png' },
   { id: 'invisiblegarden', hubId: 'invisiblegarden', image: '/newsletters/images/2026-01/invisiblegarden1.jpeg' },
   { id: 'mushanghai', hubId: 'mushanghai' },
-
-  // Row 2
   { id: 'shanhaiwoo', hubId: 'shanhaiwoo' },
   { id: 'valley', hubId: 'valley', image: '/newsletters/images/2026-01/valley1.jpg' },
-  { id: 'img-arc2', hubId: 'arc', image: '/newsletters/images/2026-01/arc2.JPG' },
   { id: 'vivacity', hubId: 'vivacity' },
   { id: 'zanzalu', hubId: 'zanzalu', image: '/newsletters/images/2026-01/zanzalu.jpeg' },
-
-  // Row 3 (crossword in center)
   { id: 'zuafrique', hubId: 'zuafrique', image: '/newsletters/images/2026-01/zuafrique1.jpg' },
   { id: 'zuberlin', hubId: 'zuberlin' },
   { id: 'crossword', hubId: 'crossword', isCrossword: true, image: '/images/crossword-blank.svg' },
   { id: 'zuitzerland', hubId: 'zuitzerland' },
-  { id: 'img-edge2', hubId: 'edgecity', image: '/newsletters/images/2026-01/edgecity2.png' },
-
-  // Row 4
   { id: 'zukas', hubId: 'zukas' },
-  { id: 'img-ig2', hubId: 'invisiblegarden', image: '/newsletters/images/2026-01/invisiblegarden2.jpeg' },
-  { id: 'img-valley2', hubId: 'valley', image: '/newsletters/images/2026-01/valley2.png' },
   { id: 'zugrama', hubId: 'zugrama', image: '/newsletters/images/2026-01/zugrama1.jpeg' },
-  { id: 'img-zuafrique2', hubId: 'zuafrique', image: '/newsletters/images/2026-01/zuafrique2.jpg' },
-
-  // Row 5
-  { id: 'img-valley3', hubId: 'valley', image: '/newsletters/images/2026-01/valley3.jpg' },
   { id: 'congrats', hubId: 'congrats', title: 'Congratulations', description: 'Janine (Edge City)\nAudrey Tang (ShanHaiWoo)\nSanti Cristobal (Crecimento)', isCongrats: true },
-  { id: 'img-zuafrique3', hubId: 'zuafrique', image: '/newsletters/images/2026-01/zuafrique3.jpg' },
-  { id: 'img-zugrama2', hubId: 'zugrama', image: '/newsletters/images/2026-01/zugrama2.jpeg' },
-  { id: 'img-zanzalu2', hubId: 'zanzalu', image: '/newsletters/images/2026-01/zanzalu.jpeg' },
+  // Photo-only fillers (no hub info overlay)
+  { id: 'filler-1', hubId: 'arc', image: '/newsletters/images/2026-01/arc2.JPG', isFiller: true },
+  { id: 'filler-2', hubId: 'valley', image: '/newsletters/images/2026-01/valley2.png', isFiller: true },
+  { id: 'filler-3', hubId: 'zuafrique', image: '/newsletters/images/2026-01/zuafrique2.jpg', isFiller: true },
+  { id: 'filler-4', hubId: 'zugrama', image: '/newsletters/images/2026-01/zugrama2.jpeg', isFiller: true },
 ]
 
 const popupCities = [
@@ -210,26 +198,28 @@ export default function January2026Page() {
             return (
               <div
                 key={card.id}
-                className={`card ${card.isIntro ? 'intro' : ''} ${card.isCrossword ? 'crossword' : ''} ${card.isCongrats ? 'congrats' : ''} ${card.image ? 'has-image' : ''}`}
-                onClick={() => handleCardClick(card)}
+                className={`card ${card.isIntro ? 'intro' : ''} ${card.isCrossword ? 'crossword' : ''} ${card.isCongrats ? 'congrats' : ''} ${card.image ? 'has-image' : ''} ${card.isFiller ? 'filler' : ''}`}
+                onClick={() => !card.isFiller && handleCardClick(card)}
               >
                 {card.image && (
-                  <img className="card-image" src={card.image} alt={title} />
+                  <img className="card-image" src={card.image} alt={card.isFiller ? '' : title} />
                 )}
-                <div className={`card-content ${card.image ? 'overlay' : ''}`}>
-                  <h3 className="card-title">{title}</h3>
-                  {subtitle && <p className="card-subtitle">{subtitle}</p>}
-                  {card.isCongrats && card.description && (
-                    <p className="card-congrats-names">
-                      {card.description.split('\n').map((line, i) => (
-                        <span key={i}>{i > 0 && <br />}{line}</span>
-                      ))}
-                    </p>
-                  )}
-                  {card.isCrossword && (
-                    <p className="card-link">Submit crossword Q&amp;A →</p>
-                  )}
-                </div>
+                {!card.isFiller && (
+                  <div className={`card-content ${card.image ? 'overlay' : ''}`}>
+                    <h3 className="card-title">{title}</h3>
+                    {subtitle && <p className="card-subtitle">{subtitle}</p>}
+                    {card.isCongrats && card.description && (
+                      <p className="card-congrats-names">
+                        {card.description.split('\n').map((line, i) => (
+                          <span key={i}>{i > 0 && <br />}{line}</span>
+                        ))}
+                      </p>
+                    )}
+                    {card.isCrossword && (
+                      <p className="card-link">Submit crossword Q&amp;A →</p>
+                    )}
+                  </div>
+                )}
               </div>
             )
           })}
@@ -405,6 +395,14 @@ export default function January2026Page() {
           color: #78350f;
           line-height: 1.6;
           margin: 0.25rem 0 0 0;
+        }
+
+        .card.filler {
+          cursor: default;
+        }
+
+        .card.filler:hover {
+          background: transparent;
         }
 
         .card.crossword {

@@ -2,6 +2,7 @@ import Nav from '@/components/Nav'
 import { fetchNewsletters } from '@/lib/github'
 import { Newsletter } from '@/lib/types'
 import MarkdownRenderer from './MarkdownRenderer'
+import HtmlRenderer from './HtmlRenderer'
 
 export const revalidate = 300
 
@@ -99,7 +100,7 @@ export default async function NewsletterPage({ params }: { params: { slug: strin
 
         <article className="newsletter-content">
           {newsletter.format === 'html' ? (
-            <div dangerouslySetInnerHTML={{ __html: newsletter.content }} />
+            <HtmlRenderer content={newsletter.content} />
           ) : (
             <MarkdownRenderer content={newsletter.content} />
           )}

@@ -2,7 +2,6 @@
 
 import Nav from '@/components/Nav'
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 
 interface Hub {
   id: string
@@ -71,8 +70,8 @@ const hubs: Record<string, Hub> = {
     id: 'infinita',
     title: 'Infinita City',
     date: 'February 1 – March 31, 2026',
-    fullContent: 'The Infinita Games 2026 are kicking off! A season of events, conferences, and community gatherings across the city:\nhttps://www.infinita.city/games/landing\n\nFeb 6–9: Longevity Biomarker Conference hosted by Rejuve.AI, bringing together researchers and practitioners at the frontier of longevity science:\nhttps://www.rejuve.ai/longevitybiomarkersconference\n\n Towards the end of March, we\'re hosting a BioHub Demo Day and a major governance summit with Patri Friedman. We\'d love to have key Ethereum leaders join us for these.\n\n• BioHub Demo Day:\nhttps://luma.com/BioHub2026\n• Governance Summit:\nhttps://luma.com/lib_acc2026\n\nPatri and a few VCs will also be running a private, founder-focused sub-event for startup city and network city leaders:\nhttps://luma.com/founders_acc2026\nIf you have great founders to recommend, let them know.\n\nWe\'re also relocating the Dome to the central territory, more on that soon.',
-    link: { url: 'https://www.infinita.city/games/landing', text: 'Infinita Games' },
+    fullContent: 'The Infinita Games 2026 are kicking off! A season of events, conferences, and community gatherings across the city:\nhttps://www.infinita.city/games/landing\n\nFeb 6–9: Longevity Biomarker Conference hosted by Rejuve.AI, bringing together researchers and practitioners at the frontier of longevity science:\nhttps://www.rejuve.ai/longevitybiomarkersconference\n\n Towards the end of March, we\'re hosting a BioHub Demo Day and a major governance summit with Patri Friedman. We\'d love to have key Ethereum leaders join us for these.\n\n• BioHub Demo Day:\nhttps://luma.com/BioHub2026\n• Governance Summit:\nhttps://luma.com/lib_acc2026\n\nPatri and a few VCs will also be running a private, founder-focused sub-event for startup city and network city leaders:\nhttps://luma.com/founders_acc2026\nIf you have great founders to recommend, let us know.\n\nWe\'re also relocating the Dome to the central territory, more on that soon.',
+    link: { url: 'https://www.infinita.city', text: 'Know more' },
   },
   crecimiento: {
     id: 'crecimiento',
@@ -86,7 +85,7 @@ const hubs: Record<string, Hub> = {
     title: 'muShanghai',
     date: 'April 26 – May 23, 2026 · China',
     fullContent: 'Be a Chinese Builder for a month.\n\nThis May, we\'re bringing global builders to Shanghai to experience China\'s innovation landscape firsthand: dark factories, frontier AI, and founders shipping at China speed.\n\nChina dominates headlines, but most builders outside China still don\'t understand how it actually works on the ground. muShanghai changes that: live here, build here, and learn how to plug into China\'s ecosystem to level up your project.\n\nApplications are live. Partnerships are open.\n\nSee you in muShanghai.',
-    link: { url: 'https://www.mushanghai.city/', text: 'Know more' },
+    link: { url: 'https://www.mushanghai.xyz/', text: 'Know more' },
   },
   nomadlayer: {
     id: 'nomadlayer',
@@ -112,32 +111,32 @@ const hubs: Record<string, Hub> = {
     id: 'frontiertower',
     title: 'Viva.city and Frontier Tower',
     fullContent: 'Building viva.city — a permanent city to accelerate innovation, starting with a focus on longevity biotech, AI & crypto.\n\nWe\'re looking for a new host country to establish a Special Economic Zone. Meanwhile, we\'re bringing people together IRL to self-govern and self-experiment, with a first hub in San Francisco, in a 16-floor vertical village: the Frontier Tower.',
-    link: { url: 'http://frontiertower.io/', text: 'Frontier Tower' },
+    link: { url: 'http://frontiertower.io/', text: 'Know more' },
   },
   crossword: {
     id: 'crossword',
-    title: 'Crossword',
-    fullContent: 'Submit your Q&A for the monthly crossword!',
+    title: 'Crossword & Community Open Asks',
+    fullContent: 'Two new sections are coming next month!\n\nCrossword — A community crossword puzzle based on the previous month\'s newsletter updates. A fun way to test how closely you\'ve been following the Zuzalu ecosystem.\n\nCommunity Open Asks — A space where hubs can submit requests for collaboration, resources, expertise, or partnerships. If your hub needs something from the wider community, this is the place to ask.',
   },
   zanzalu: {
     id: 'zanzalu',
     title: 'Zanzalu',
     date: 'July 25 – August 14, 2026 · Zanzibar',
     fullContent: 'Zanzalu 2026 is happening!\n\nHosted in Fumba Town, Zanzibar — a walkable waterfront community built around permaculture design principles.\n\nThemes centered on leapfrog tech, cities, and industry.\n\nNew residency tracks for builders and creatives.',
-    link: { url: 'https://zanzalu.com/', text: 'Know more' },
+    link: { url: 'https://zanzalu.org', text: 'Know more' },
   },
   zuafrique: {
     id: 'zuafrique',
     title: 'ZuAfrique',
     date: 'April 12 – May 3, 2026 · Kenya',
     fullContent: 'Below are the highlights from the ZuAfrique ecosystem:\n\n• 3 days workshop for developer community, using the Hub residence and event halls as the venue. A total of 25 builders were hosted at our Accra hub.\n\n• A 3-day end-of-year Web3 experience was hosted at the Kilifi Hub, between 11-13 December 2025. The event brought together residents, local builders, founders, and university talent to learn, connect, and celebrate the close of the year.\n\n• We also hosted post Devconnect batch at both Ghana and Kenya Hub.\n\nSharing some of the pictures with you to get you into the spirit of what went on here. Thank you, Vitalik and the entire Zuzalu community for keeping human hope alive.',
-    link: { url: 'https://zuafrique.com/', text: 'Know more' },
+    link: { url: 'https://zuafrique.com', text: 'Know more' },
   },
   zuberlin: {
     id: 'zuberlin',
     title: 'ZuBerlin',
     fullContent: 'The ZuBerlin team is working on two permanent hubs in Berlin, a smaller one in the city center and a larger one as a more ambitious, large-scale co-living project at the river in Berlin.\n\nThe small one is in the middle of Kreuzberg, combines cozy co-working, a cafe and a health area including a sauna & gym. We are very actively working on this one and planning to open in March.\n\nThe larger location will be initiated with a first residency in June, more details to be announced.\n\nWe are excited to soon go more public with our new, exciting projects.\n\nIf you are interested to contribute (and ideally located in Berlin), feel free to reach out to chris@ephema.io.',
-    link: { url: 'mailto:chris@ephema.io', text: 'Get involved' },
+    link: { url: 'https://zuberlin.city', text: 'Know more' },
   },
   zuitzerland: {
     id: 'zuitzerland',
@@ -181,8 +180,8 @@ const cards: Card[] = [
   { id: 'shanhaiwoo', hubId: 'shanhaiwoo', image: '/newsletters/images/2026-01/shw.jpeg' },
   { id: 'valley', hubId: 'valley', image: '/newsletters/images/2026-01/valley1.jpg' },
   { id: 'frontiertower', hubId: 'frontiertower', image: '/newsletters/images/2026-01/frontiertower.jpg' },
-  { id: 'zanzalu', hubId: 'zanzalu', image: '/newsletters/images/2026-01/zanzalu.jpeg' },
   { id: 'crossword', hubId: 'crossword', isCrossword: true, image: '/images/crossword-blank.svg' },
+  { id: 'zanzalu', hubId: 'zanzalu', image: '/newsletters/images/2026-01/zanzalu.jpeg' },
   { id: 'zuafrique', hubId: 'zuafrique', image: '/newsletters/images/2026-01/zuafrique1.jpg' },
   { id: 'zuberlin', hubId: 'zuberlin', image: '/newsletters/images/2026-01/zuberlin.jpeg' },
   { id: 'zuitzerland', hubId: 'zuitzerland', image: '/newsletters/images/2026-01/Zuitz.jpeg' },
@@ -196,7 +195,7 @@ const cards: Card[] = [
 const popupCities = [
   { name: 'ETH Chiang Mai', date: 'Dec 8 – Feb 3', url: 'https://www.ethchiangmai.com/' },
   { name: 'Infinita City', date: 'Feb 1 – Mar 31', url: 'https://infinita.city/' },
-  { name: 'ZuCity Japan', date: 'Mar 1 – 30', url: 'https://zuzalu.city/' },
+  { name: 'ZuCity Japan', date: 'Mar 1 – 30', url: 'https://zucity.org/' },
   { name: 'Ipê Village', date: 'Apr 6 – May 1', url: 'https://ipe.city/' },
   { name: 'Ârc Montenegro', date: 'Apr 3 – May 29', url: 'https://luma.com/montenegro' },
   { name: 'ZuAfrique', date: 'Apr 12 – May 3', url: 'https://zuafrique.com/' },
@@ -216,7 +215,7 @@ function linkifyText(text: string) {
   const parts = text.split(urlRegex)
   return parts.map((part, i) =>
     urlRegex.test(part) ? (
-      <a key={i} href={part} target="_blank" rel="noopener noreferrer" style={{ color: '#d97706', wordBreak: 'break-all' }}>
+      <a key={i} href={part} target="_blank" rel="noopener noreferrer" style={{ color: '#2d6b5d', wordBreak: 'break-all' }}>
         {part}
       </a>
     ) : (
@@ -227,14 +226,12 @@ function linkifyText(text: string) {
 
 export default function January2026Page() {
   const [selectedHub, setSelectedHub] = useState<Hub | null>(null)
-  const router = useRouter()
 
   const handleCardClick = (card: Card) => {
     if (card.isCrossword) {
-      router.push('/crossword')
-    } else {
-      setSelectedHub(hubs[card.hubId])
+      return // handled by split-diagonal links
     }
+    setSelectedHub(hubs[card.hubId])
   }
 
   const closeModal = () => {
@@ -264,15 +261,38 @@ export default function January2026Page() {
                   <div className={`card-content ${card.image ? 'overlay' : ''}`}>
                     <h3 className="card-title">{title}</h3>
                     {subtitle && <p className="card-subtitle">{subtitle}</p>}
-                    {card.isCongrats && card.description && (
-                      <p className="card-congrats-names">
-                        {card.description.split('\n').map((line, i) => (
-                          <span key={i}>{i > 0 && <br />}{line}</span>
-                        ))}
-                      </p>
+                    {card.isCongrats && (
+                      <>
+                        <div className="congrats-flowers">
+                          <span className="flower f1">✿</span>
+                          <span className="flower f2">❀</span>
+                          <span className="flower f3">✿</span>
+                          <span className="flower f4">❁</span>
+                          <span className="flower f5">✿</span>
+                        </div>
+                        {card.description && (
+                          <p className="card-congrats-names">
+                            {card.description.split('\n').map((line, i) => (
+                              <span key={i}>{i > 0 && <br />}{line}</span>
+                            ))}
+                          </p>
+                        )}
+                      </>
                     )}
                     {card.isCrossword && (
-                      <p className="card-link">Submit crossword Q&amp;A →</p>
+                      <>
+                        <div className="split-diagonal">
+                          <a href="/crossword" className="split-left" onClick={(e) => e.stopPropagation()}>
+                            <div className="split-crossword-bg" />
+                            <p className="split-label">Crossword</p>
+                          </a>
+                          <div className="split-right">
+                            <p className="split-label">Open Asks</p>
+                            <p className="split-desc">Hub collaboration requests</p>
+                          </div>
+                        </div>
+                        <p className="card-coming">Coming next month</p>
+                      </>
                     )}
                   </div>
                 )}
@@ -296,7 +316,19 @@ export default function January2026Page() {
       {/* Modal */}
       {selectedHub && (
         <div className="modal-overlay" onClick={closeModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <div className={`modal-content ${selectedHub.id === 'congrats' ? 'modal-congrats' : ''}`} onClick={(e) => e.stopPropagation()}>
+            {selectedHub.id === 'congrats' && (
+              <div className="modal-flowers">
+                <span className="mf mf1">✿</span>
+                <span className="mf mf2">❀</span>
+                <span className="mf mf3">❁</span>
+                <span className="mf mf4">✿</span>
+                <span className="mf mf5">❀</span>
+                <span className="mf mf6">✿</span>
+                <span className="mf mf7">❁</span>
+                <span className="mf mf8">❀</span>
+              </div>
+            )}
             <button className="modal-close" onClick={closeModal}>×</button>
             {selectedHub.image && (
               <img src={selectedHub.image} alt={selectedHub.title} className="modal-image" />
@@ -416,7 +448,7 @@ export default function January2026Page() {
 
         .card-subtitle {
           font-size: 0.6875rem;
-          color: #d97706;
+          color: #2d6b5d;
           margin: 0 0 0.375rem 0;
           font-weight: 600;
           text-transform: uppercase;
@@ -425,7 +457,7 @@ export default function January2026Page() {
 
         .card-link {
           font-size: 0.8125rem;
-          color: #d97706;
+          color: #2d6b5d;
           font-weight: 600;
           margin-top: auto;
           padding-top: 0.5rem;
@@ -446,30 +478,115 @@ export default function January2026Page() {
         }
 
         .card.intro .card-subtitle {
-          color: #fbbf24;
+          color: #c8f4e7;
           font-size: 1rem;
           text-transform: none;
           font-weight: 400;
         }
 
         .card.congrats {
-          background: #fef3c7;
-          border-left: 3px solid #f59e0b;
+          background: linear-gradient(135deg, #1a4a40 0%, #2d6b5d 40%, #E8D556 100%);
+          background-size: 200% 200%;
+          animation: congratsShimmer 6s ease-in-out infinite;
+          border-left: none;
+          overflow: hidden;
+          position: relative;
+        }
+
+        .card.congrats::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, rgba(232,213,86,0.15) 0%, transparent 50%, rgba(45,107,93,0.1) 100%);
+          animation: congratsShimmer 6s ease-in-out infinite reverse;
+          pointer-events: none;
+        }
+
+        .card.congrats::after {
+          content: '';
+          position: absolute;
+          top: -20%;
+          left: -20%;
+          right: -20%;
+          bottom: -20%;
+          background:
+            radial-gradient(3px 3px at 15% 25%, #E8D556 50%, transparent 60%),
+            radial-gradient(2px 2px at 35% 15%, rgba(255,255,255,0.6) 50%, transparent 60%),
+            radial-gradient(3px 3px at 70% 80%, #E8D556 50%, transparent 60%),
+            radial-gradient(2px 2px at 85% 30%, rgba(255,255,255,0.5) 50%, transparent 60%),
+            radial-gradient(2px 2px at 50% 90%, rgba(232,213,86,0.7) 50%, transparent 60%),
+            radial-gradient(3px 3px at 20% 70%, rgba(255,255,255,0.4) 50%, transparent 60%),
+            radial-gradient(2px 2px at 90% 60%, #E8D556 50%, transparent 60%);
+          animation: congratsFloat 8s ease-in-out infinite;
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        @keyframes congratsShimmer {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+
+        @keyframes congratsFloat {
+          0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+          33% { transform: translateY(-4px) rotate(1deg); opacity: 1; }
+          66% { transform: translateY(2px) rotate(-0.5deg); opacity: 0.8; }
         }
 
         .card.congrats:hover {
-          background: #fde68a;
+          background: linear-gradient(135deg, #153832 0%, #2d6b5d 40%, #d4c24c 100%);
+          background-size: 200% 200%;
+          animation: congratsShimmer 4s ease-in-out infinite;
+        }
+
+        .card.congrats .card-content {
+          position: relative;
+          z-index: 1;
         }
 
         .card.congrats .card-title {
-          color: #92400e;
+          color: #E8D556;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
 
         .card-congrats-names {
           font-size: 0.75rem;
-          color: #78350f;
+          color: rgba(255,255,255,0.9);
           line-height: 1.6;
           margin: 0.25rem 0 0 0;
+          text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .congrats-flowers {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          pointer-events: none;
+          z-index: 0;
+          overflow: hidden;
+        }
+
+        .flower {
+          position: absolute;
+          font-size: 1rem;
+          opacity: 0.5;
+          animation: flowerDrift 6s ease-in-out infinite;
+        }
+
+        .flower.f1 { top: 8%; right: 10%; color: #E8D556; animation-delay: 0s; font-size: 1.3rem; }
+        .flower.f2 { bottom: 15%; left: 8%; color: rgba(255,255,255,0.5); animation-delay: 1.2s; font-size: 1.1rem; }
+        .flower.f3 { top: 50%; right: 5%; color: #E8D556; animation-delay: 2.4s; font-size: 1rem; }
+        .flower.f4 { top: 20%; left: 15%; color: rgba(255,255,255,0.4); animation-delay: 3.6s; font-size: 0.95rem; }
+        .flower.f5 { bottom: 8%; right: 25%; color: #E8D556; animation-delay: 4.8s; font-size: 1.05rem; }
+
+        @keyframes flowerDrift {
+          0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.4; }
+          50% { transform: translateY(-6px) rotate(15deg); opacity: 0.7; }
         }
 
         .card.filler {
@@ -481,23 +598,152 @@ export default function January2026Page() {
         }
 
         .card.crossword {
-          background: #fef3c7;
+          background: #1a4a40;
+          padding: 0;
+        }
+
+        .card.crossword:hover {
+          background: #153832;
         }
 
         .card.crossword .card-image {
-          opacity: 0.1;
+          opacity: 0.08;
+          filter: brightness(2) invert(1);
         }
 
         .card.crossword .card-content.overlay {
           background: transparent;
-          justify-content: center;
+          justify-content: flex-end;
           align-items: center;
           text-align: center;
+          padding: 0;
+        }
+
+        .card.crossword .card-title {
+          display: none;
+        }
+
+        .card.crossword .card-coming {
+          font-size: 0.5625rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          color: rgba(255,255,255,0.6);
+          margin: 0;
+          padding: 0.375rem 0;
+          background: rgba(45, 107, 93, 0.6);
+          width: 100%;
         }
 
         .card.crossword .card-link {
-          color: #d97706;
-          font-size: 0.9375rem;
+          color: rgba(255,255,255,0.8);
+          font-size: 0.8125rem;
+        }
+
+        .split-diagonal {
+          position: relative;
+          width: 100%;
+          flex: 1;
+          display: flex;
+          overflow: hidden;
+        }
+
+        .split-left {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: #1a4a40;
+          clip-path: polygon(0 0, 100% 0, 0 100%);
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-start;
+          padding: 0.75rem;
+          z-index: 1;
+          text-decoration: none;
+          color: inherit;
+          cursor: pointer;
+          transition: background 0.15s;
+        }
+
+        .split-left:hover {
+          background: #1e5549;
+        }
+
+        .split-right {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: #153832;
+          clip-path: polygon(100% 0, 100% 100%, 0 100%);
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          justify-content: flex-end;
+          padding: 0.75rem;
+          z-index: 1;
+          text-decoration: none;
+          color: inherit;
+          cursor: pointer;
+          transition: background 0.15s;
+        }
+
+        .split-right:hover {
+          background: #1a4a40;
+        }
+
+        .split-label {
+          font-size: 0.75rem;
+          font-weight: 700;
+          color: white;
+          margin: 0;
+          line-height: 1.2;
+        }
+
+        .split-crossword-bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: url('/images/crossword-blank.svg') center center / 80% no-repeat;
+          opacity: 0.15;
+          filter: brightness(2) invert(1);
+          pointer-events: none;
+        }
+
+        .split-desc {
+          font-size: 0.5rem;
+          color: rgba(255,255,255,0.5);
+          margin: 0.125rem 0 0 0;
+          text-align: right;
+          line-height: 1.3;
+        }
+
+        .split-left::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background: linear-gradient(135deg, rgba(232,213,86,0.08) 0%, transparent 60%);
+          pointer-events: none;
+        }
+
+        .split-right::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background: linear-gradient(315deg, rgba(232,213,86,0.06) 0%, transparent 60%);
+          pointer-events: none;
         }
 
         /* Modal */
@@ -587,7 +833,7 @@ export default function January2026Page() {
 
         .modal-date {
           font-size: 0.875rem;
-          color: #d97706;
+          color: #2d6b5d;
           margin: 0 1.5rem 1rem;
           font-weight: 600;
         }
@@ -613,7 +859,7 @@ export default function January2026Page() {
         .modal-link {
           display: inline-block;
           padding: 0.75rem 1.25rem;
-          background: #d97706;
+          background: #2d6b5d;
           color: white;
           border-radius: 6px;
           text-decoration: none;
@@ -622,17 +868,151 @@ export default function January2026Page() {
         }
 
         .modal-link:hover {
-          background: #b45309;
+          background: #2d6b5d;
+          color: #faf6dc;
+        }
+
+        /* Congrats modal */
+        .modal-congrats {
+          background: linear-gradient(135deg, #1a4a40 0%, #2d6b5d 40%, #E8D556 100%);
+          background-size: 200% 200%;
+          animation: twistIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), congratsShimmer 6s ease-in-out infinite;
+          overflow: hidden;
+        }
+
+        .modal-flowers {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          pointer-events: none;
+          z-index: 0;
+          overflow: hidden;
+        }
+
+        .mf {
+          position: absolute;
+          font-size: 1.5rem;
+          opacity: 0;
+        }
+
+        .mf1 { color: #E8D556; animation: mfPath1 9s linear infinite; animation-delay: 0s; }
+        .mf2 { color: rgba(255,255,255,0.4); animation: mfPath2 11s linear infinite; animation-delay: 1s; }
+        .mf3 { color: #E8D556; animation: mfPath3 8s linear infinite; animation-delay: 2.5s; }
+        .mf4 { color: rgba(255,255,255,0.35); animation: mfPath4 10s linear infinite; animation-delay: 0.5s; }
+        .mf5 { color: #E8D556; animation: mfPath5 12s linear infinite; animation-delay: 3s; }
+        .mf6 { color: rgba(255,255,255,0.3); animation: mfPath6 9.5s linear infinite; animation-delay: 4s; }
+        .mf7 { color: #E8D556; animation: mfPath7 10.5s linear infinite; animation-delay: 1.5s; }
+        .mf8 { color: rgba(255,255,255,0.4); animation: mfPath8 8.5s linear infinite; animation-delay: 5s; }
+
+        @keyframes mfPath1 {
+          0%   { top: 110%; left: 10%; opacity: 0; transform: rotate(0deg) scale(0.8); }
+          10%  { opacity: 0.5; }
+          50%  { left: 30%; transform: rotate(180deg) scale(1.1); }
+          90%  { opacity: 0.4; }
+          100% { top: -10%; left: 20%; opacity: 0; transform: rotate(360deg) scale(0.9); }
+        }
+
+        @keyframes mfPath2 {
+          0%   { top: 110%; left: 75%; opacity: 0; transform: rotate(0deg); }
+          10%  { opacity: 0.4; }
+          50%  { left: 60%; transform: rotate(-150deg) scale(1.2); }
+          90%  { opacity: 0.3; }
+          100% { top: -10%; left: 85%; opacity: 0; transform: rotate(-360deg); }
+        }
+
+        @keyframes mfPath3 {
+          0%   { top: 110%; left: 45%; opacity: 0; transform: rotate(0deg) scale(1); }
+          10%  { opacity: 0.5; }
+          35%  { left: 25%; transform: rotate(90deg) scale(1.15); }
+          65%  { left: 55%; transform: rotate(200deg) scale(0.9); }
+          90%  { opacity: 0.35; }
+          100% { top: -10%; left: 40%; opacity: 0; transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes mfPath4 {
+          0%   { top: 110%; left: 90%; opacity: 0; transform: rotate(0deg); }
+          10%  { opacity: 0.4; }
+          40%  { left: 70%; transform: rotate(120deg) scale(1.1); }
+          70%  { left: 80%; transform: rotate(240deg) scale(0.85); }
+          90%  { opacity: 0.3; }
+          100% { top: -10%; left: 65%; opacity: 0; transform: rotate(400deg); }
+        }
+
+        @keyframes mfPath5 {
+          0%   { top: 110%; left: 5%; opacity: 0; transform: rotate(0deg); }
+          10%  { opacity: 0.45; }
+          30%  { left: 20%; transform: rotate(-60deg) scale(1.05); }
+          60%  { left: 8%; transform: rotate(-180deg) scale(1.2); }
+          90%  { opacity: 0.3; }
+          100% { top: -10%; left: 15%; opacity: 0; transform: rotate(-360deg); }
+        }
+
+        @keyframes mfPath6 {
+          0%   { top: 110%; left: 55%; opacity: 0; transform: rotate(0deg) scale(0.9); }
+          10%  { opacity: 0.35; }
+          50%  { left: 40%; transform: rotate(160deg) scale(1.1); }
+          90%  { opacity: 0.25; }
+          100% { top: -10%; left: 50%; opacity: 0; transform: rotate(360deg) scale(0.9); }
+        }
+
+        @keyframes mfPath7 {
+          0%   { top: 110%; left: 30%; opacity: 0; transform: rotate(0deg); }
+          10%  { opacity: 0.4; }
+          45%  { left: 50%; transform: rotate(-130deg) scale(1.15); }
+          80%  { left: 35%; transform: rotate(-280deg) scale(0.95); }
+          90%  { opacity: 0.3; }
+          100% { top: -10%; left: 45%; opacity: 0; transform: rotate(-360deg); }
+        }
+
+        @keyframes mfPath8 {
+          0%   { top: 110%; left: 70%; opacity: 0; transform: rotate(0deg) scale(1); }
+          10%  { opacity: 0.4; }
+          40%  { left: 85%; transform: rotate(100deg) scale(1.1); }
+          70%  { left: 60%; transform: rotate(220deg) scale(0.9); }
+          90%  { opacity: 0.3; }
+          100% { top: -10%; left: 75%; opacity: 0; transform: rotate(360deg) scale(1); }
+        }
+
+        .modal-congrats .modal-title {
+          color: #E8D556;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+          position: relative;
+          z-index: 1;
+        }
+
+        .modal-congrats .modal-date {
+          color: #E8D556;
+          position: relative;
+          z-index: 1;
+        }
+
+        .modal-congrats .modal-body {
+          color: #E8D556;
+          text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+          position: relative;
+          z-index: 1;
+        }
+
+        .modal-congrats .modal-close {
+          background: rgba(255,255,255,0.15);
+          color: white;
+          z-index: 2;
+        }
+
+        .modal-congrats .modal-close:hover {
+          background: rgba(255,255,255,0.3);
         }
 
         .popup-cities-bar {
-          background: #1c1917;
+          background: #e8f5f1;
           padding: 1.5rem 2rem;
           margin: 0;
         }
 
         .popup-cities-title {
-          color: #fbbf24;
+          color: #2d6b5d;
           font-size: 0.75rem;
           font-weight: 600;
           text-transform: uppercase;
@@ -648,22 +1028,22 @@ export default function January2026Page() {
 
         .popup-city {
           font-size: 0.8125rem;
-          color: #a8a29e;
+          color: #6b8a82;
           text-decoration: none;
           transition: color 0.15s;
         }
 
         .popup-city:hover {
-          color: #fbbf24;
+          color: #1a4a40;
         }
 
         .popup-city strong {
-          color: white;
+          color: #1a4a40;
           font-weight: 600;
         }
 
         .popup-city:hover strong {
-          color: #fbbf24;
+          color: #2d6b5d;
         }
 
         @media (max-width: 1000px) {

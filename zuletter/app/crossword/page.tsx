@@ -1,273 +1,139 @@
 'use client'
 
-import { useState } from 'react'
 import Image from 'next/image'
 import Nav from '@/components/Nav'
 
 export default function CrosswordPage() {
-  const [formData, setFormData] = useState({
-    answer: '',
-    clue: '',
-    difficulty: '',
-    category: '',
-    explanation: '',
-    attribution: '',
-    consent: false,
-  })
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    
-    const subject = encodeURIComponent(`Crossword Submission: ${formData.answer}`)
-    const body = encodeURIComponent(`Crossword Clue Submission
-
-Answer: ${formData.answer}
-Clue: ${formData.clue}
-Difficulty: ${formData.difficulty}
-Category: ${formData.category}
-Explanation: ${formData.explanation || 'N/A'}
-Attribution: ${formData.attribution}
-
-I consent to this submission being used in the crossword puzzle and published publicly.
-`)
-    
-    window.location.href = `mailto:hi@zuzone.org?subject=${subject}&body=${body}`
-  }
-
   return (
     <>
       <Nav />
-      <div className="container" style={{ maxWidth: '680px' }}>
-        <header style={{ marginBottom: '2.5rem', textAlign: 'center' }}>
-          <h1 style={{ marginBottom: '0.75rem' }}>
-            Monthly Crossword
-          </h1>
-          <p style={{ fontSize: '1.0625rem', color: 'var(--text-secondary)', lineHeight: '1.7' }}>
-            Help build the February 2026 crossword puzzle! Submit your questions and answers below.
-          </p>
-        </header>
-        
-        {/* Crossword Image */}
-        <div style={{ 
-          marginBottom: '3rem',
-          display: 'flex',
-          justifyContent: 'center'
-        }}>
-          <div style={{
-            background: 'var(--bg-secondary)',
-            border: '1px solid var(--border)',
-            borderRadius: 'var(--radius)',
-            padding: '2rem',
-            width: '100%',
-            maxWidth: '550px'
-          }}>
+      <div className="crossword-page">
+        <div className="crossword-container">
+          <div className="crossword-grid-wrapper">
             <Image
               src="/images/crossword-blank.svg"
               alt="Crossword puzzle grid"
               width={500}
               height={500}
-              style={{ 
-                width: '100%', 
-                height: 'auto',
-                display: 'block'
-              }}
+              className="crossword-image"
               priority
             />
-            <p style={{ 
-              textAlign: 'center', 
-              marginTop: '1rem', 
-              fontSize: '0.875rem',
-              color: 'var(--text-tertiary)',
-              marginBottom: 0
-            }}>
-              February 2026 Crossword — Coming Soon
+          </div>
+
+          <div className="crossword-info">
+            <p className="crossword-label">Coming in</p>
+            <h1 className="crossword-title">February 2026</h1>
+            <p className="crossword-description">
+              The first ZuLetter community crossword is launching next month.
+              Each puzzle will be based on the previous month&apos;s newsletter updates
+              — a fun way to test how closely you&apos;ve been following the Zuzalu ecosystem.
+            </p>
+            <p className="crossword-description" style={{ color: 'var(--text-tertiary)' }}>
+              Stay tuned.
             </p>
           </div>
         </div>
-
-        <div style={{ marginBottom: '2rem' }}>
-          <h2 style={{ marginBottom: '0.75rem', marginTop: 0 }}>
-            Submit a Clue
-          </h2>
-          <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: '1.7' }}>
-            Contribute a question and answer for next month&apos;s crossword. The best submissions 
-            will be featured in the puzzle.
-          </p>
-        </div>
-        
-        <div className="card" style={{ padding: '2rem' }}>
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label className="form-label" htmlFor="answer">
-                Answer <span style={{ color: 'var(--text-tertiary)' }}>*</span>
-              </label>
-              <input
-                type="text"
-                id="answer"
-                className="form-input"
-                value={formData.answer}
-                onChange={(e) => setFormData({ ...formData, answer: e.target.value.toUpperCase() })}
-                placeholder="e.g., ZUZALU"
-                required
-                style={{ textTransform: 'uppercase', letterSpacing: '0.1em' }}
-              />
-              <p style={{ fontSize: '0.8125rem', color: 'var(--text-tertiary)', marginTop: '0.5rem', marginBottom: 0 }}>
-                The word that will appear in the crossword grid (3-12 characters ideal)
-              </p>
-            </div>
-            
-            <div className="form-group">
-              <label className="form-label" htmlFor="clue">
-                Clue <span style={{ color: 'var(--text-tertiary)' }}>*</span>
-              </label>
-              <textarea
-                id="clue"
-                className="form-textarea"
-                value={formData.clue}
-                onChange={(e) => setFormData({ ...formData, clue: e.target.value })}
-                placeholder="e.g., Pop-up city experiment in Montenegro (2023)"
-                required
-                style={{ minHeight: '80px' }}
-              />
-              <p style={{ fontSize: '0.8125rem', color: 'var(--text-tertiary)', marginTop: '0.5rem', marginBottom: 0 }}>
-                The hint that will lead solvers to the answer
-              </p>
-            </div>
-            
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-              <div className="form-group">
-                <label className="form-label" htmlFor="difficulty">
-                  Difficulty <span style={{ color: 'var(--text-tertiary)' }}>*</span>
-                </label>
-                <select
-                  id="difficulty"
-                  className="form-select"
-                  value={formData.difficulty}
-                  onChange={(e) => setFormData({ ...formData, difficulty: e.target.value })}
-                  required
-                >
-                  <option value="">Select difficulty</option>
-                  <option value="easy">Easy</option>
-                  <option value="medium">Medium</option>
-                  <option value="hard">Hard</option>
-                </select>
-              </div>
-              
-              <div className="form-group">
-                <label className="form-label" htmlFor="category">
-                  Category <span style={{ color: 'var(--text-tertiary)' }}>*</span>
-                </label>
-                <select
-                  id="category"
-                  className="form-select"
-                  value={formData.category}
-                  onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                  required
-                >
-                  <option value="">Select category</option>
-                  <option value="zuzalu">Zuzalu Events & History</option>
-                  <option value="crypto">Crypto & Web3</option>
-                  <option value="science">Science & Technology</option>
-                  <option value="popup-cities">Pop-up Cities & Network States</option>
-                  <option value="community">Community Members & Culture</option>
-                  <option value="general">General Knowledge</option>
-                </select>
-              </div>
-            </div>
-            
-            <div className="form-group">
-              <label className="form-label" htmlFor="explanation">
-                Explanation <span style={{ color: 'var(--text-tertiary)', fontWeight: '400' }}>(optional)</span>
-              </label>
-              <textarea
-                id="explanation"
-                className="form-textarea"
-                value={formData.explanation}
-                onChange={(e) => setFormData({ ...formData, explanation: e.target.value })}
-                placeholder="Brief explanation of why this answer is correct (helps editors verify)"
-                style={{ minHeight: '60px' }}
-              />
-            </div>
-            
-            <div className="form-group">
-              <label className="form-label" htmlFor="attribution">
-                Attribution <span style={{ color: 'var(--text-tertiary)' }}>*</span>
-              </label>
-              <input
-                type="text"
-                id="attribution"
-                className="form-input"
-                value={formData.attribution}
-                onChange={(e) => setFormData({ ...formData, attribution: e.target.value })}
-                placeholder="Your name or handle (@username)"
-                required
-              />
-              <p style={{ fontSize: '0.8125rem', color: 'var(--text-tertiary)', marginTop: '0.5rem', marginBottom: 0 }}>
-                You&apos;ll be credited if your clue is used
-              </p>
-            </div>
-            
-            <div className="form-group">
-              <label style={{ display: 'flex', alignItems: 'flex-start', cursor: 'pointer', gap: '0.5rem' }}>
-                <input
-                  type="checkbox"
-                  className="form-checkbox"
-                  checked={formData.consent}
-                  onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
-                  required
-                  style={{ marginTop: '0.25rem' }}
-                />
-                <span style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)' }}>
-                  I consent to this submission being used in the crossword puzzle and published publicly
-                </span>
-              </label>
-            </div>
-            
-            <div style={{ 
-              marginTop: '2rem', 
-              paddingTop: '1.5rem', 
-              borderTop: '1px solid var(--border)' 
-            }}>
-              <button type="submit" className="btn btn-primary" style={{ padding: '0.75rem 1.5rem' }}>
-                Submit via Email
-              </button>
-              <p className="text-secondary" style={{ marginTop: '1rem', fontSize: '0.875rem', lineHeight: '1.6' }}>
-                Your email client will open with the submission details pre-filled. 
-                Send the email to complete your submission.
-              </p>
-            </div>
-          </form>
-        </div>
-        
-        <div style={{ 
-          marginTop: '2rem', 
-          padding: '1.25rem',
-          background: 'var(--bg-secondary)',
-          borderRadius: 'var(--radius)',
-          border: '1px solid var(--border)'
-        }}>
-          <p style={{ 
-            fontSize: '0.875rem', 
-            fontWeight: '500',
-            color: 'var(--text-primary)',
-            marginBottom: '0.75rem' 
-          }}>
-            Tips for Great Clues
-          </p>
-          <ul style={{ 
-            fontSize: '0.875rem', 
-            color: 'var(--text-secondary)', 
-            marginLeft: '1.25rem', 
-            lineHeight: '2',
-            marginBottom: 0
-          }}>
-            <li>Keep answers between 3-12 characters for best fit</li>
-            <li>Clues can be definitions, wordplay, or trivia-style questions</li>
-            <li>Community-related clues are especially welcome</li>
-            <li>Include context so editors can verify your answer</li>
-          </ul>
-        </div>
       </div>
+
+      <style jsx global>{`
+        .crossword-page {
+          min-height: calc(100vh - 60px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 2rem;
+        }
+
+        .crossword-container {
+          display: flex;
+          align-items: center;
+          gap: 4rem;
+          max-width: 900px;
+          width: 100%;
+        }
+
+        .crossword-grid-wrapper {
+          flex-shrink: 0;
+          width: 420px;
+          height: 420px;
+          position: relative;
+          animation: float 5s ease-in-out infinite;
+        }
+
+        .crossword-image {
+          width: 100%;
+          height: 100%;
+          display: block;
+          opacity: 0.9;
+          animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0) rotate(0deg) scale(1);
+          }
+          25% {
+            transform: translateY(-18px) rotate(1.5deg) scale(1.02);
+          }
+          75% {
+            transform: translateY(6px) rotate(-1deg) scale(0.99);
+          }
+        }
+
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 0.9;
+          }
+          50% {
+            opacity: 1;
+          }
+        }
+
+        .crossword-info {
+          flex: 1;
+        }
+
+        .crossword-label {
+          font-size: 0.75rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.12em;
+          color: var(--accent);
+          margin: 0 0 0.5rem;
+        }
+
+        .crossword-title {
+          font-size: 2.5rem;
+          font-weight: 700;
+          letter-spacing: -0.02em;
+          margin: 0 0 1.25rem;
+          line-height: 1.1;
+        }
+
+        .crossword-description {
+          font-size: 1.0625rem;
+          color: var(--text-secondary);
+          line-height: 1.75;
+          margin: 0 0 1rem;
+        }
+
+        @media (max-width: 700px) {
+          .crossword-container {
+            flex-direction: column;
+            gap: 2rem;
+            text-align: center;
+          }
+
+          .crossword-grid-wrapper {
+            width: 280px;
+            height: 280px;
+          }
+
+          .crossword-title {
+            font-size: 2rem;
+          }
+        }
+      `}</style>
     </>
   )
 }

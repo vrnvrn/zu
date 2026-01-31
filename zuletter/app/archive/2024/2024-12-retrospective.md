@@ -2,7 +2,7 @@
 title: "Zuzalu Community Newsletter | 2024 Retrospective"
 date: 2024-12-31
 edition: "2024 Retrospective"
-author: "https://github.com/vrnvrn"
+author: "vrn.eth"
 type: "newsletter"
 ---
 

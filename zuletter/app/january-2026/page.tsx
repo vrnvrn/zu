@@ -2,6 +2,7 @@
 
 import Nav from '@/components/Nav'
 import { useState } from 'react'
+import Image from 'next/image'
 
 interface Hub {
   id: string
@@ -255,7 +256,7 @@ export default function January2026Page() {
                 onClick={() => !card.isFiller && handleCardClick(card)}
               >
                 {card.image && (
-                  <img className="card-image" src={card.image} alt={card.isFiller ? '' : title} />
+                  <Image className="card-image" src={card.image} alt={card.isFiller ? '' : title} />
                 )}
                 {!card.isFiller && (
                   <div className={`card-content ${card.image ? 'overlay' : ''}`}>
@@ -331,7 +332,7 @@ export default function January2026Page() {
             )}
             <button className="modal-close" onClick={closeModal}>×</button>
             {selectedHub.image && (
-              <img src={selectedHub.image} alt={selectedHub.title} className="modal-image" />
+              <Image src={selectedHub.image} alt={selectedHub.title} className="modal-image" />
             )}
             <h2 className="modal-title">{selectedHub.title}</h2>
             {selectedHub.date && <p className="modal-date">{selectedHub.date}</p>}

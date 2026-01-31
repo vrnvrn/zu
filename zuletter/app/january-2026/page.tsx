@@ -51,6 +51,13 @@ const hubs: Record<string, Hub> = {
     fullContent: 'Invisible Garden is a short, intense builder residency designed for deep learning, uninterrupted build time, and living together long enough for real community (not just "event vibes") to form.\n\nAfter seeding the model in Chiang Mai (Nov 2024), the Buenos Aires chapter (Oct 2025) refined the rhythm—tighter, clearer, and focused on work that gets harder in an AI-saturated world: security, privacy, truth-seeking, and protocol design.\n\nBy the numbers: 1,038 applications, 379 accepted, 45 builders on-site for 3 weeks, running 69 workshops across Ethereum, ZK, AI, and cybersecurity with 40+ mentors.\n\nBuilders shipped 27 open-source projects and research outputs, including Stylus + ZK verification pipelines, privacy-first applications, zkML experiments, and specs/docs treated as infrastructure.\n\nThe takeaway: focus still beats frenzy, and the residency format is becoming a repeatable bridge between local ecosystems (like LatAm) and Ethereum\'s global roadmap.\n\nStay tuned for our upcoming residency in India in October!',
     link: { url: 'https://invisible.garden/', text: 'Learn more →' },
   },
+  infinita: {
+    id: 'infinita',
+    title: 'Infinita City',
+    date: 'February 1 – March 31, 2026',
+    fullContent: 'The Infinita Games 2026 are kicking off! A season of events, conferences, and community gatherings across the city.\n\nFeb 6–9: Longevity Biomarker Conference hosted by Rejuve.AI — bringing together researchers and practitioners at the frontier of longevity science.\n\nTowards the end of March, we\'re hosting a BioHub Demo Day and a major governance summit with Patri Friedman. We\'d love to have key Ethereum leaders join us for these.\n\nPatri and a few VCs will also be running a private, founder-focused sub-event for startup city and network city leaders. If you have great founders to recommend, let us know.\n\nWe\'re also relocating the Dome to the central territory — more on that soon.',
+    link: { url: 'https://www.infinita.city/games/landing', text: 'Infinita Games →' },
+  },
   mushanghai: {
     id: 'mushanghai',
     title: 'muShanghai',
@@ -132,6 +139,7 @@ const cards: Card[] = [
   { id: 'arc', hubId: 'arc', image: '/newsletters/images/2026-01/arc1.png' },
   { id: 'edgecity', hubId: 'edgecity', image: '/newsletters/images/2026-01/edgecity.png' },
   { id: 'invisiblegarden', hubId: 'invisiblegarden', image: '/newsletters/images/2026-01/invisiblegarden1.jpeg' },
+  { id: 'infinita', hubId: 'infinita' },
   { id: 'mushanghai', hubId: 'mushanghai' },
   { id: 'shanhaiwoo', hubId: 'shanhaiwoo' },
   { id: 'valley', hubId: 'valley', image: '/newsletters/images/2026-01/valley1.jpg' },
@@ -148,7 +156,6 @@ const cards: Card[] = [
   { id: 'filler-1', hubId: 'arc', image: '/newsletters/images/2026-01/arc2.JPG', isFiller: true },
   { id: 'filler-2', hubId: 'valley', image: '/newsletters/images/2026-01/valley2.png', isFiller: true },
   { id: 'filler-3', hubId: 'zuafrique', image: '/newsletters/images/2026-01/zuafrique2.jpg', isFiller: true },
-  { id: 'filler-4', hubId: 'zugrama', image: '/newsletters/images/2026-01/zugrama2.jpeg', isFiller: true },
 ]
 
 const popupCities = [

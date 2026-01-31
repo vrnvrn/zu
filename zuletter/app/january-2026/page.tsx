@@ -10,6 +10,7 @@ interface Hub {
   date?: string
   fullContent: string
   link?: { url: string; text: string }
+  image?: string
 }
 
 interface Card {
@@ -43,26 +44,47 @@ const hubs: Record<string, Hub> = {
     title: 'Edge City',
     date: 'May 30 – June 27 (CA) · Q4 (India)',
     fullContent: 'In 2026, Edge City is shifting from being a "container" for serendipity to a "catalyst" for startups, research, and new movements.\n\nWe\'re tracking 182+ projects that have emerged from our villages, from neurotech startup Constellation to the d/acc Residency we ran in Patagonia with Vitalik and Protocol Labs.\n\nWe recently hired Katherine Jones, who helped launch Merge Labs, to lead ecosystem building and better support what emerges.\n\nNext up: Edge Esmeralda 2026 (May 30 – June 27, Healdsburg, CA) and Edge City India in Q4.',
+    image: '/newsletters/images/2026-01/edgecity1.png',
   },
   invisiblegarden: {
     id: 'invisiblegarden',
     title: 'Invisible Garden',
     date: 'October 2026 · India',
     fullContent: 'Invisible Garden is a short, intense builder residency designed for deep learning, uninterrupted build time, and living together long enough for real community (not just "event vibes") to form.\n\nAfter seeding the model in Chiang Mai (Nov 2024), the Buenos Aires chapter (Oct 2025) refined the rhythm—tighter, clearer, and focused on work that gets harder in an AI-saturated world: security, privacy, truth-seeking, and protocol design.\n\nBy the numbers: 1,038 applications, 379 accepted, 45 builders on-site for 3 weeks, running 69 workshops across Ethereum, ZK, AI, and cybersecurity with 40+ mentors.\n\nBuilders shipped 27 open-source projects and research outputs, including Stylus + ZK verification pipelines, privacy-first applications, zkML experiments, and specs/docs treated as infrastructure.\n\nThe takeaway: focus still beats frenzy, and the residency format is becoming a repeatable bridge between local ecosystems (like LatAm) and Ethereum\'s global roadmap.\n\nStay tuned for our upcoming residency in India in October!',
+    image: '/newsletters/images/2026-01/invisiblegarden1.jpeg',
     link: { url: 'https://invisible.garden/', text: 'Learn more →' },
+  },
+  ipe: {
+    id: 'ipe',
+    title: 'Ipê Village',
+    date: 'April 6 – May 1, 2026 · Florianópolis, Brazil',
+    fullContent: 'Ipê Village 2026 is coming to Florianópolis, Brazil. This edition will feature more Hacker Houses — including AI House, Privacy House, and Onchain House — hosting workshops, experiences, and a big buildathon to prototype a new city using crypto and AI tools.\n\nWe\'re partnering with Balaji\'s Network School to offer a free one-month residency as a prize for the best builder.\n\nThis is part of our long-term plan to establish physical spaces for techno-optimists and grow the Ipê ecosystem of governance and social apps on top of our onchain platform.',
+    link: { url: 'https://ipe.city/village2026', text: 'Apply now →' },
   },
   infinita: {
     id: 'infinita',
     title: 'Infinita City',
     date: 'February 1 – March 31, 2026',
-    fullContent: 'The Infinita Games 2026 are kicking off! A season of events, conferences, and community gatherings across the city.\n\nFeb 6–9: Longevity Biomarker Conference hosted by Rejuve.AI — bringing together researchers and practitioners at the frontier of longevity science.\n\nTowards the end of March, we\'re hosting a BioHub Demo Day and a major governance summit with Patri Friedman. We\'d love to have key Ethereum leaders join us for these.\n\nPatri and a few VCs will also be running a private, founder-focused sub-event for startup city and network city leaders. If you have great founders to recommend, let us know.\n\nWe\'re also relocating the Dome to the central territory — more on that soon.',
+    fullContent: 'The Infinita Games 2026 are kicking off! A season of events, conferences, and community gatherings across the city: https://www.infinita.city/games/landing\n\nFeb 6–9: Longevity Biomarker Conference hosted by Rejuve.AI, bringing together researchers and practitioners at the frontier of longevity science: https://www.rejuve.ai/longevitybiomarkersconference\n\nTowards the end of March, we\'re hosting a BioHub Demo Day and a major governance summit with Patri Friedman. We\'d love to have key Ethereum leaders join us for these.\n\n• BioHub Demo Day: https://luma.com/BioHub2026\n• Governance Summit: https://luma.com/lib_acc2026\n\nPatri and a few VCs will also be running a private, founder-focused sub-event for startup city and network city leaders: https://luma.com/founders_acc2026\nIf you have great founders to recommend, let them know.\n\nWe\'re also relocating the Dome to the central territory, more on that soon.',
     link: { url: 'https://www.infinita.city/games/landing', text: 'Infinita Games →' },
+  },
+  crecimiento: {
+    id: 'crecimiento',
+    title: 'Crecimiento',
+    fullContent: 'Big things ahead for Crecimiento in 2026.\n\nOur new office is opening in March, and we\'re kicking off the Aleph Hub from March 4 to 26 in Buenos Aires.\n\nFrom March through July, we\'re running a full Buildathon Season with several programs for builders across the region.\n\nIn June/July we\'ll be hosting the Startup World Cup, and a second pop-up is planned for August. Stay tuned for more details.',
+    image: '/newsletters/images/2026-01/crecimento.png',
   },
   mushanghai: {
     id: 'mushanghai',
     title: 'muShanghai',
     date: 'April 26 – May 23, 2026 · China',
     fullContent: 'Be a Chinese Builder for a month.\n\nThis May, we\'re bringing global builders to Shanghai to experience China\'s innovation landscape firsthand: dark factories, frontier AI, and founders shipping at China speed.\n\nChina dominates headlines, but most builders outside China still don\'t understand how it actually works on the ground. muShanghai changes that: live here, build here, and learn how to plug into China\'s ecosystem to level up your project.\n\nApplications are live. Partnerships are open.\n\nSee you in muShanghai.',
+  },
+  nomadlayer: {
+    id: 'nomadlayer',
+    title: 'Nomad Layer',
+    fullContent: 'Nomad Layer has officially launched and is building a remote-first tax residency and legal home base for digital nomads and globally mobile founders, operating on top of Próspera in Honduras.\n\nThe focus is on simplifying tax residency into a clear lump-sum framework that works without relocation, lifestyle disruption, or complex offshore structures. Over the past months, we\'ve completed the legal and regulatory groundwork to make residency setup fully remote and operational.\n\nWe\'re now onboarding early participants and engaging with aligned communities interested in practical jurisdictional infrastructure for network states and pop-up cities.',
+    link: { url: 'https://nomadlayer.com/', text: 'Learn more →' },
   },
   shanhaiwoo: {
     id: 'shanhaiwoo',
@@ -83,6 +105,11 @@ const hubs: Record<string, Hub> = {
     title: 'Viva.city and Frontier Tower',
     fullContent: 'Building viva.city — a permanent city to accelerate innovation, starting with a focus on longevity biotech, AI & crypto.\n\nWe\'re looking for a new host country to establish a Special Economic Zone. Meanwhile, we\'re bringing people together IRL to self-govern and self-experiment, with a first hub in San Francisco, in a 16-floor vertical village: the Frontier Tower.',
     link: { url: 'http://frontiertower.io/', text: 'Frontier Tower →' },
+  },
+  crossword: {
+    id: 'crossword',
+    title: 'Crossword',
+    fullContent: 'Submit your Q&A for the monthly crossword!',
   },
   zanzalu: {
     id: 'zanzalu',
@@ -121,11 +148,7 @@ const hubs: Record<string, Hub> = {
     fullContent: 'At ZuGrama, we have been busy prepping for our permanent hubs.\n\n• We wrote about why we are building ZuGrama: https://yeshdoteth.substack.com/p/why-we-are-building-zugrama\n\n• Grama Founding citizen SBT passport will be live and invite only starting Feb 4, 2026.\n\n• ZuGrama Bangalore will go live from Feb, with access to co-working spaces, hardware and biotech labs, office spaces. It will be a place for our d/acc incubator. RFPs will be out soon and you can apply to become a citizen on our website.\n\n• v1 Grama OS launching on Wednesday, Feb 4, 2026.\n\n• Grama dAI Agents powered by Ethereum & EigenAI (ERC 8004) launching on Wednesday, Feb 4, 2026.\n\n• New Grama Website launching Friday, Feb 6, 2026.\n\n• Closing partnership with 500 acre land stewardship for establishing Grama permanent hub. More details on location will be revealed in a few weeks.',
     link: { url: 'https://yeshdoteth.substack.com/p/why-we-are-building-zugrama', text: 'Read why we\'re building ZuGrama →' },
   },
-  crossword: {
-    id: 'crossword',
-    title: 'Crossword',
-    fullContent: 'Submit your Q&A for the monthly crossword!',
-  },
+  
   congrats: {
     id: 'congrats',
     title: 'Congratulations',
@@ -137,25 +160,26 @@ const hubs: Record<string, Hub> = {
 const cards: Card[] = [
   { id: 'intro', hubId: 'intro', title: 'Zuzalu Newsletter', subtitle: 'January 2026', isIntro: true },
   { id: 'arc', hubId: 'arc', image: '/newsletters/images/2026-01/arc1.png' },
-  { id: 'edgecity', hubId: 'edgecity', image: '/newsletters/images/2026-01/edgecity.png' },
-  { id: 'invisiblegarden', hubId: 'invisiblegarden', image: '/newsletters/images/2026-01/invisiblegarden1.jpeg' },
-  { id: 'infinita', hubId: 'infinita' },
-  { id: 'mushanghai', hubId: 'mushanghai' },
-  { id: 'shanhaiwoo', hubId: 'shanhaiwoo' },
+  { id: 'crecimiento', hubId: 'crecimiento' },
+  { id: 'edgecity', hubId: 'edgecity', image: '/newsletters/images/2026-01/edgecity.jpeg' },
+  { id: 'invisiblegarden', hubId: 'invisiblegarden', image: '/newsletters/images/2026-01/Invisiblegarden.jpeg' },
+  { id: 'ipe', hubId: 'ipe' },
+  { id: 'infinita', hubId: 'infinita', image: '/newsletters/images/2026-01/infinita1.jpeg' },
+  { id: 'mushanghai', hubId: 'mushanghai', image: '/newsletters/images/2026-01/muShanghai.jpg' },
+  { id: 'nomadlayer', hubId: 'nomadlayer' },
+  { id: 'shanhaiwoo', hubId: 'shanhaiwoo', image: '/newsletters/images/2026-01/Shanhaiwoo.avif' },
   { id: 'valley', hubId: 'valley', image: '/newsletters/images/2026-01/valley1.jpg' },
-  { id: 'vivacity', hubId: 'vivacity' },
+  { id: 'vivacity', hubId: 'vivacity', image: '/newsletters/images/2026-01/frontiertower.jpg' },
   { id: 'zanzalu', hubId: 'zanzalu', image: '/newsletters/images/2026-01/zanzalu.jpeg' },
   { id: 'zuafrique', hubId: 'zuafrique', image: '/newsletters/images/2026-01/zuafrique1.jpg' },
-  { id: 'zuberlin', hubId: 'zuberlin' },
+  { id: 'zuberlin', hubId: 'zuberlin', image: '/newsletters/images/2026-01/zuberlin.avif' },
   { id: 'crossword', hubId: 'crossword', isCrossword: true, image: '/images/crossword-blank.svg' },
-  { id: 'zuitzerland', hubId: 'zuitzerland' },
-  { id: 'zukas', hubId: 'zukas' },
+  { id: 'zuitzerland', hubId: 'zuitzerland', image: '/newsletters/images/2026-01/Zuitz.jpeg' },
+  { id: 'zukas', hubId: 'zukas', image: '/newsletters/images/2026-01/ZuKas.webp' },
   { id: 'zugrama', hubId: 'zugrama', image: '/newsletters/images/2026-01/zugrama1.jpeg' },
   { id: 'congrats', hubId: 'congrats', title: 'Congratulations', description: 'Janine (Edge City)\nAudrey Tang (ShanHaiWoo)\nSanti Cristobal (Crecimento)', isCongrats: true },
-  // Photo-only fillers (no hub info overlay)
-  { id: 'filler-1', hubId: 'arc', image: '/newsletters/images/2026-01/arc2.JPG', isFiller: true },
-  { id: 'filler-2', hubId: 'valley', image: '/newsletters/images/2026-01/valley2.png', isFiller: true },
-  { id: 'filler-3', hubId: 'zuafrique', image: '/newsletters/images/2026-01/zuafrique2.jpg', isFiller: true },
+  // Photo-only fillers (no hub info overlay) when grid incomplete
+  //{ id: 'filler-1', hubId: 'arc', image: '/newsletters/images/2026-01/arc2.JPG', isFiller: true },
 ]
 
 const popupCities = [
@@ -175,6 +199,20 @@ const popupCities = [
   { name: 'Edge City India', date: 'Q4', url: 'https://www.edgecity.live/' },
   { name: 'ZuGrama India', date: 'Feb –', url: 'https://yeshdoteth.substack.com/p/why-we-are-building-zugrama' },
 ]
+
+function linkifyText(text: string) {
+  const urlRegex = /(https?:\/\/[^\s,)]+)/g
+  const parts = text.split(urlRegex)
+  return parts.map((part, i) =>
+    urlRegex.test(part) ? (
+      <a key={i} href={part} target="_blank" rel="noopener noreferrer" style={{ color: '#d97706', wordBreak: 'break-all' }}>
+        {part}
+      </a>
+    ) : (
+      <span key={i}>{part}</span>
+    )
+  )
+}
 
 export default function January2026Page() {
   const [selectedHub, setSelectedHub] = useState<Hub | null>(null)
@@ -249,11 +287,21 @@ export default function January2026Page() {
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={closeModal}>×</button>
+            {selectedHub.image && (
+              <img src={selectedHub.image} alt={selectedHub.title} className="modal-image" />
+            )}
             <h2 className="modal-title">{selectedHub.title}</h2>
             {selectedHub.date && <p className="modal-date">{selectedHub.date}</p>}
             <div className="modal-body">
               {selectedHub.fullContent.split('\n\n').map((para, i) => (
-                <p key={i}>{para}</p>
+                <p key={i}>
+                  {para.split('\n').map((line, j) => (
+                    <span key={j}>
+                      {j > 0 && <br />}
+                      {linkifyText(line)}
+                    </span>
+                  ))}
+                </p>
               ))}
             </div>
             {selectedHub.link && (
@@ -500,6 +548,14 @@ export default function January2026Page() {
 
         .modal-close:hover {
           background: rgba(0,0,0,0.2);
+        }
+
+        .modal-image {
+          width: 100%;
+          max-height: 300px;
+          object-fit: contain;
+          border-radius: 12px 12px 0 0;
+          background: #f5f5f4;
         }
 
         .modal-title {

@@ -66,7 +66,7 @@ export default async function HomePage() {
             maxWidth: '600px',
             marginBottom: '1.25rem'
           }}>
-            Zuzone is the connective layer for the Zuzalu ecosystem — a shared home where permanent hubs and pop-up cities come together, learn from each other, and grow as one global community.
+            Zuzone is the connective layer for the Zuzalu ecosystem, a shared home where permanent hubs and pop-up cities come together, learn from each other, and grow as one global community.
           </p>
           <p style={{ 
             fontSize: '1rem', 
@@ -102,7 +102,7 @@ export default async function HomePage() {
               lineHeight: '1.6',
               margin: 0
             }}>
-              Zuzone&apos;s mission is to help hubs build, help secure funding, and collaborate across the ecosystem — creating a stronger, more connected global Zu network.
+              Zuzone&apos;s mission is to help hubs build, help secure funding, and collaborate across the ecosystem. Creating a stronger, more connected global Zu network.
             </p>
           </div>
         </header>

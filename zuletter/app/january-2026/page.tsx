@@ -97,6 +97,7 @@ const hubs: Record<string, Hub> = {
     id: 'zuitzerland',
     title: 'Zuitzerland',
     fullContent: 'Our focus: d/accelerator — We\'re making progress on a fund-of-funds approach to channel capital into the best hub funds and community operators. We aim to host the first d/acc accelerator cohort in Switzerland later this year, piloting the hub/accelerator model.\n\nd/acc a day: get featured! We\'re looking for ambitious d/acc builders to feature in live interviews, showcasing your work to our community of builders and investors.\n\nJoin us at Ethereum Zuri April 10–12, with a hackathon co-hosted by the ETH Blockchain Club. Build, learn, and connect.',
+    link: { url: 'https://ethereumzuri.ch/', text: 'Ethereum Zuri →' },
   },
   zukas: {
     id: 'zukas',
@@ -121,39 +122,39 @@ const hubs: Record<string, Hub> = {
 // 5x5 grid = 25 cards, crossword at position 13 (center)
 const cards: Card[] = [
   // Row 1
-  { id: 'intro', hubId: 'intro', title: 'Zuzalu Newsletter', subtitle: 'January 2026', description: 'Updates from our global network of pop-up cities and communities.', isIntro: true },
+  { id: 'intro', hubId: 'intro', title: 'Zuzalu Newsletter', subtitle: 'January 2026', isIntro: true },
   { id: 'arc1', hubId: 'arc', image: '/newsletters/images/2026-01/arc1.png' },
-  { id: 'edge1', hubId: 'edgecity', title: 'Edge City', subtitle: '182+ projects tracked', image: '/newsletters/images/2026-01/edgecity.png' },
-  { id: 'ig1', hubId: 'invisiblegarden', title: 'Invisible Garden', subtitle: '45 builders, 27 OSS projects', image: '/newsletters/images/2026-01/invisiblegarden1.jpeg' },
-  { id: 'mu1', hubId: 'mushanghai', title: 'muShanghai', subtitle: 'APR 26 – MAY 23', description: 'Be a Chinese Builder for a month. Dark factories, frontier AI, China speed.' },
-  
+  { id: 'edge1', hubId: 'edgecity', image: '/newsletters/images/2026-01/edgecity.png' },
+  { id: 'ig1', hubId: 'invisiblegarden', image: '/newsletters/images/2026-01/invisiblegarden1.jpeg' },
+  { id: 'mu1', hubId: 'mushanghai' },
+
   // Row 2
-  { id: 'shw1', hubId: 'shanhaiwoo', title: 'ShanHaiWoo', subtitle: 'H2 2026', description: 'Expected before Devcon. Focus: Ethereum-native apps. HK, Mumbai, or Bangalore.', link: { url: 'https://www.shanhaiwoo.com/', text: 'Learn more →' } },
-  { id: 'valley1', hubId: 'valley', title: 'Valley of the Commons', subtitle: 'AUSTRIA • AUG 24 – SEP 20', image: '/newsletters/images/2026-01/valley1.jpg' },
-  { id: 'viva1', hubId: 'vivacity', title: 'Viva.city', description: 'Permanent city for longevity biotech, AI & crypto. Frontier Tower: 16-floor vertical village in SF.' },
-  { id: 'arc-text', hubId: 'arc', title: 'Ârc: Montenegro', subtitle: 'APR 3 – MAY 29' },
-  { id: 'zanzalu1', hubId: 'zanzalu', title: 'Zanzalu', subtitle: 'ZANZIBAR • JUL 25 – AUG 14', description: 'Fumba Town — walkable waterfront, permaculture. Leapfrog tech, cities, industry.', image: '/newsletters/images/2026-01/zanzalu.jpeg' },
+  { id: 'shw1', hubId: 'shanhaiwoo' },
+  { id: 'valley1', hubId: 'valley', image: '/newsletters/images/2026-01/valley1.jpg' },
+  { id: 'viva1', hubId: 'vivacity' },
+  { id: 'arc-text', hubId: 'arc' },
+  { id: 'zanzalu1', hubId: 'zanzalu', image: '/newsletters/images/2026-01/zanzalu.jpeg' },
 
   // Row 3 (crossword in center = position 13)
   { id: 'zuafrique1', hubId: 'zuafrique', image: '/newsletters/images/2026-01/zuafrique1.jpg' },
-  { id: 'zuberlin1', hubId: 'zuberlin', title: 'ZuBerlin', description: 'Two hubs: City Center (Kreuzberg, March) + Co-Living at river (June).', link: { url: 'mailto:chris@ephema.io', text: 'Get involved →' } },
+  { id: 'zuberlin1', hubId: 'zuberlin' },
   { id: 'crossword', hubId: 'crossword', isCrossword: true, image: '/images/crossword-blank.svg' },
-  { id: 'zuitzerland1', hubId: 'zuitzerland', title: 'Zuitzerland', description: 'd/accelerator — Fund-of-funds for hub operators. ETH Zuri Apr 10–12.' },
-  { id: 'zuafrique-text', hubId: 'zuafrique', title: 'ZuAfrique', subtitle: 'KENYA • APR 12 – MAY 3' },
+  { id: 'zuitzerland1', hubId: 'zuitzerland' },
+  { id: 'zuafrique-text', hubId: 'zuafrique' },
 
   // Row 4
-  { id: 'zukas1', hubId: 'zukas', title: 'ZuKas', subtitle: 'TURKEY • APR 10 – MAY 10', description: 'Gov with ranked voting. Glen Weyl, Michel Bauwens. 150+ residents.' },
-  { id: 'arc2', hubId: 'arc', description: 'Ârc: Three festivals, daily programming, communal meals', image: '/newsletters/images/2026-01/arc2.JPG' },
-  { id: 'edge2', hubId: 'edgecity', description: 'Edge Esmeralda May 30 – Jun 27, India Q4', image: '/newsletters/images/2026-01/edgecity2.png' },
-  { id: 'ig2', hubId: 'invisiblegarden', description: '69 workshops in Buenos Aires', image: '/newsletters/images/2026-01/invisiblegarden2.jpeg' },
-  { id: 'valley2', hubId: 'valley', description: 'Michel Bauwens & Adam Arvidsson on the commons', image: '/newsletters/images/2026-01/valley2.png' },
-  
+  { id: 'zukas1', hubId: 'zukas' },
+  { id: 'arc2', hubId: 'arc', image: '/newsletters/images/2026-01/arc2.JPG' },
+  { id: 'edge2', hubId: 'edgecity', image: '/newsletters/images/2026-01/edgecity2.png' },
+  { id: 'ig2', hubId: 'invisiblegarden', image: '/newsletters/images/2026-01/invisiblegarden2.jpeg' },
+  { id: 'valley2', hubId: 'valley', image: '/newsletters/images/2026-01/valley2.png' },
+
   // Row 5
-  { id: 'zuafrique2', hubId: 'zuafrique', description: '25 builders at Accra hub', image: '/newsletters/images/2026-01/zuafrique2.jpg' },
-  { id: 'zugrama1', hubId: 'zugrama', title: 'ZuGrama', subtitle: 'FEB 2026 — INDIA', description: 'Permanent hubs, d/acc incubator, Grama OS, dAI Agents powered by Ethereum & EigenAI.', image: '/newsletters/images/2026-01/zugrama1.jpeg' },
-  { id: 'zanzalu2', hubId: 'zanzalu', description: 'New residency tracks for builders and creatives' },
-  { id: 'mu2', hubId: 'mushanghai', description: 'Live here, build here, plug into China ecosystem' },
-  { id: 'zugrama2', hubId: 'zugrama', description: '500 acre land stewardship for permanent hub. Grama Website & SBT passport launching Feb.', image: '/newsletters/images/2026-01/zugrama2.jpeg' },
+  { id: 'zuafrique2', hubId: 'zuafrique', image: '/newsletters/images/2026-01/zuafrique2.jpg' },
+  { id: 'zugrama1', hubId: 'zugrama', image: '/newsletters/images/2026-01/zugrama1.jpeg' },
+  { id: 'zanzalu2', hubId: 'zanzalu' },
+  { id: 'mu2', hubId: 'mushanghai' },
+  { id: 'zugrama2', hubId: 'zugrama', image: '/newsletters/images/2026-01/zugrama2.jpeg' },
 ]
 
 const popupCities = [
@@ -195,28 +196,32 @@ export default function January2026Page() {
       <Nav />
       <div className="newsletter-fullpage">
         <div className="newsletter-grid">
-          {cards.map((card) => (
-            <div
-              key={card.id}
-              className={`card ${card.isIntro ? 'intro' : ''} ${card.isCrossword ? 'crossword' : ''} ${card.image ? 'has-image' : ''}`}
-              onClick={() => handleCardClick(card)}
-            >
-              {card.image && (
-                <img className="card-image" src={card.image} alt={card.title || ''} />
-              )}
-              <div className={`card-content ${card.image ? 'overlay' : ''}`}>
-                {card.title && <h3 className="card-title">{card.title}</h3>}
-                {card.subtitle && <p className="card-subtitle">{card.subtitle}</p>}
-                {card.description && <p className="card-description">{card.description}</p>}
-                {card.link && <span className="card-link">{card.link.text}</span>}
-                {card.isCrossword && (
-                  <p className="card-link">Submit crossword Q&amp;A →</p>
+          {cards.map((card) => {
+            const hub = hubs[card.hubId]
+            const title = card.title || hub.title
+            const subtitle = card.subtitle || hub.date?.replace(/,?\s*\d{4}/g, '').toUpperCase()
+
+            return (
+              <div
+                key={card.id}
+                className={`card ${card.isIntro ? 'intro' : ''} ${card.isCrossword ? 'crossword' : ''} ${card.image ? 'has-image' : ''}`}
+                onClick={() => handleCardClick(card)}
+              >
+                {card.image && (
+                  <img className="card-image" src={card.image} alt={title} />
                 )}
+                <div className={`card-content ${card.image ? 'overlay' : ''}`}>
+                  <h3 className="card-title">{title}</h3>
+                  {subtitle && <p className="card-subtitle">{subtitle}</p>}
+                  {card.isCrossword && (
+                    <p className="card-link">Submit crossword Q&amp;A →</p>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
-        
+
         <div className="popup-cities-bar">
           <h3 className="popup-cities-title">2026 Pop-up Cities</h3>
           <div className="popup-cities-list">
@@ -249,14 +254,14 @@ export default function January2026Page() {
           </div>
         </div>
       )}
-      
+
       <style jsx global>{`
         .newsletter-fullpage {
           padding: 0;
           margin: 0;
           background: #fafaf9;
         }
-        
+
         .newsletter-grid {
           display: grid;
           grid-template-columns: repeat(5, 1fr);
@@ -264,7 +269,7 @@ export default function January2026Page() {
           margin: 0;
           padding: 0;
         }
-        
+
         .card {
           background: #fafaf9;
           padding: 1rem;
@@ -279,20 +284,20 @@ export default function January2026Page() {
           border: none;
           box-sizing: border-box;
         }
-        
+
         .card:hover {
           background: #f5f5f4;
         }
-        
+
         .card.has-image {
           padding: 0;
           min-height: 160px;
         }
-        
+
         .card.has-image:hover {
           background: transparent;
         }
-        
+
         .card-image {
           width: 100%;
           height: 100%;
@@ -301,7 +306,7 @@ export default function January2026Page() {
           top: 0;
           left: 0;
         }
-        
+
         .card-content {
           position: relative;
           z-index: 1;
@@ -309,21 +314,20 @@ export default function January2026Page() {
           flex-direction: column;
           flex: 1;
         }
-        
+
         .card-content.overlay {
           background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 70%);
           padding: 1rem;
           justify-content: flex-end;
           height: 100%;
         }
-        
+
         .card-content.overlay .card-title,
-        .card-content.overlay .card-subtitle,
-        .card-content.overlay .card-description {
+        .card-content.overlay .card-subtitle {
           color: white;
           text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
-        
+
         .card-title {
           font-size: 1rem;
           font-weight: 700;
@@ -331,7 +335,7 @@ export default function January2026Page() {
           margin: 0 0 0.25rem 0;
           line-height: 1.2;
         }
-        
+
         .card-subtitle {
           font-size: 0.6875rem;
           color: #d97706;
@@ -340,14 +344,7 @@ export default function January2026Page() {
           text-transform: uppercase;
           letter-spacing: 0.02em;
         }
-        
-        .card-description {
-          font-size: 0.8125rem;
-          color: #57534e;
-          margin: 0;
-          line-height: 1.4;
-        }
-        
+
         .card-link {
           font-size: 0.8125rem;
           color: #d97706;
@@ -355,53 +352,48 @@ export default function January2026Page() {
           margin-top: auto;
           padding-top: 0.5rem;
         }
-        
+
         .card.intro {
           background: #1c1917;
         }
-        
+
         .card.intro:hover {
           background: #292524;
         }
-        
+
         .card.intro .card-title {
           color: white;
           font-size: 1.5rem;
           margin-bottom: 0.125rem;
         }
-        
+
         .card.intro .card-subtitle {
           color: #fbbf24;
           font-size: 1rem;
           text-transform: none;
           font-weight: 400;
         }
-        
-        .card.intro .card-description {
-          color: #a8a29e;
-          margin-top: 0.5rem;
-        }
-        
+
         .card.crossword {
           background: #fef3c7;
         }
-        
+
         .card.crossword .card-image {
           opacity: 0.1;
         }
-        
+
         .card.crossword .card-content.overlay {
           background: transparent;
           justify-content: center;
           align-items: center;
           text-align: center;
         }
-        
+
         .card.crossword .card-link {
           color: #d97706;
           font-size: 0.9375rem;
         }
-        
+
         /* Modal */
         .modal-overlay {
           position: fixed;
@@ -418,12 +410,12 @@ export default function January2026Page() {
           perspective: 1000px;
           animation: fadeIn 0.2s ease-out;
         }
-        
+
         @keyframes fadeIn {
           from { opacity: 0; }
           to { opacity: 1; }
         }
-        
+
         @keyframes twistIn {
           0% {
             opacity: 0;
@@ -438,7 +430,7 @@ export default function January2026Page() {
             transform: rotateY(0deg) scale(1);
           }
         }
-        
+
         .modal-content {
           background: white;
           border-radius: 12px;
@@ -451,7 +443,7 @@ export default function January2026Page() {
           animation: twistIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
           transform-style: preserve-3d;
         }
-        
+
         .modal-close {
           position: absolute;
           top: 1rem;
@@ -467,36 +459,36 @@ export default function January2026Page() {
           align-items: center;
           justify-content: center;
         }
-        
+
         .modal-close:hover {
           background: rgba(0,0,0,0.2);
         }
-        
+
         .modal-title {
           font-size: 1.5rem;
           font-weight: 700;
           margin: 1.5rem 1.5rem 0.5rem;
           color: #1c1917;
         }
-        
+
         .modal-date {
           font-size: 0.875rem;
           color: #d97706;
           margin: 0 1.5rem 1rem;
           font-weight: 600;
         }
-        
+
         .modal-body {
           padding: 0 1.5rem 1.5rem;
           font-size: 0.9375rem;
           line-height: 1.7;
           color: #44403c;
         }
-        
+
         .modal-body p {
           margin: 0 0 1rem;
         }
-        
+
         .modal-link {
           display: inline-block;
           margin: 0 1.5rem 1.5rem;
@@ -508,17 +500,17 @@ export default function January2026Page() {
           font-weight: 600;
           font-size: 0.875rem;
         }
-        
+
         .modal-link:hover {
           background: #b45309;
         }
-        
+
         .popup-cities-bar {
           background: #1c1917;
           padding: 1.5rem 2rem;
           margin: 0;
         }
-        
+
         .popup-cities-title {
           color: #fbbf24;
           font-size: 0.75rem;
@@ -527,45 +519,45 @@ export default function January2026Page() {
           letter-spacing: 0.1em;
           margin: 0 0 1rem 0;
         }
-        
+
         .popup-cities-list {
           display: flex;
           flex-wrap: wrap;
           gap: 0.5rem 2rem;
         }
-        
+
         .popup-city {
           font-size: 0.8125rem;
           color: #a8a29e;
           text-decoration: none;
           transition: color 0.15s;
         }
-        
+
         .popup-city:hover {
           color: #fbbf24;
         }
-        
+
         .popup-city strong {
           color: white;
           font-weight: 600;
         }
-        
+
         .popup-city:hover strong {
           color: #fbbf24;
         }
-        
+
         @media (max-width: 1000px) {
           .newsletter-grid {
             grid-template-columns: repeat(4, 1fr);
           }
         }
-        
+
         @media (max-width: 768px) {
           .newsletter-grid {
             grid-template-columns: repeat(3, 1fr);
           }
         }
-        
+
         @media (max-width: 500px) {
           .newsletter-grid {
             grid-template-columns: repeat(2, 1fr);

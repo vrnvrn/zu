@@ -59,13 +59,13 @@ I consent to this submission being used in the crossword puzzle and published pu
             borderRadius: 'var(--radius)',
             padding: '2rem',
             width: '100%',
-            maxWidth: '450px'
+            maxWidth: '550px'
           }}>
             <Image
               src="/images/crossword-blank.svg"
               alt="Crossword puzzle grid"
-              width={400}
-              height={400}
+              width={500}
+              height={500}
               style={{ 
                 width: '100%', 
                 height: 'auto',

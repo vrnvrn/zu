@@ -88,11 +88,11 @@ const hubs: Record<string, Hub> = {
     fullContent: 'Be a Chinese Builder for a month.\n\nThis May, we\'re bringing global builders to Shanghai to experience China\'s innovation landscape firsthand: dark factories, frontier AI, and founders shipping at China speed.\n\nChina dominates headlines, but most builders outside China still don\'t understand how it actually works on the ground. muShanghai changes that: live here, build here, and learn how to plug into China\'s ecosystem to level up your project.\n\nApplications are live. Partnerships are open.\n\nSee you in muShanghai.',
     link: { url: 'https://www.mushanghai.xyz/', text: 'Know more' },
   },
-  nomadlayer: {
-    id: 'nomadlayer',
-    title: 'Nomad Layer',
-    fullContent: 'Nomad Layer has officially launched and is building a remote-first tax residency and legal home base for digital nomads and globally mobile founders, operating on top of Próspera in Honduras.\n\nThe focus is on simplifying tax residency into a clear lump-sum framework that works without relocation, lifestyle disruption, or complex offshore structures. Over the past months, we\'ve completed the legal and regulatory groundwork to make residency setup fully remote and operational.\n\nWe\'re now onboarding early participants and engaging with aligned communities interested in practical jurisdictional infrastructure for network states and pop-up cities.',
-    link: { url: 'https://nomadlayer.com/', text: 'Know more' },
+  alphageo: {
+    id: 'alphageo',
+    title: 'AlphaGeo',
+    fullContent: 'All Zuzalu hubs and nodes are welcome to use AlphaGeo to access its unique and proprietary predictive location analytics.  \n\n These can be used both "defensively" to understand the climate risk of your hub and plan adaptation measures – and also "offensively" to select the best locations for your next site or investment.\n\nUse this free trial link to get data for up to three locations: https://app.alphageo.ai/trial_setup\n\nFor any questions or to upgrade to a pro account for more location searches, contact: info@alphageo.ai',
+    link: { url: 'https://app.alphageo.ai/trial_setup', text: 'Free trial' },
   },
   shanhaiwoo: {
     id: 'shanhaiwoo',
@@ -177,7 +177,7 @@ const cards: Card[] = [
   { id: 'ipe', hubId: 'ipe' },
   { id: 'infinita', hubId: 'infinita', image: '/newsletters/images/2026-01/infinita1.jpeg' },
   { id: 'mushanghai', hubId: 'mushanghai', image: '/newsletters/images/2026-01/muShanghai.jpg' },
-  { id: 'nomadlayer', hubId: 'nomadlayer' },
+  { id: 'alphageo', hubId: 'alphageo' },
   { id: 'shanhaiwoo', hubId: 'shanhaiwoo', image: '/newsletters/images/2026-01/shw.jpeg' },
   { id: 'valley', hubId: 'valley', image: '/newsletters/images/2026-01/valley1.jpg' },
   { id: 'frontiertower', hubId: 'frontiertower', image: '/newsletters/images/2026-01/frontiertower.jpg' },
@@ -256,7 +256,7 @@ export default function January2026Page() {
                 onClick={() => !card.isFiller && handleCardClick(card)}
               >
                 {card.image && (
-                  <Image className="card-image" src={card.image} alt={card.isFiller ? '' : title} />
+                  <Image className="card-image" src={card.image} alt={card.isFiller ? '' : title} fill sizes="(max-width: 500px) 50vw, (max-width: 768px) 33vw, (max-width: 1000px) 25vw, 20vw" />
                 )}
                 {!card.isFiller && (
                   <div className={`card-content ${card.image ? 'overlay' : ''}`}>
@@ -332,7 +332,7 @@ export default function January2026Page() {
             )}
             <button className="modal-close" onClick={closeModal}>×</button>
             {selectedHub.image && (
-              <Image src={selectedHub.image} alt={selectedHub.title} className="modal-image" />
+              <Image src={selectedHub.image} alt={selectedHub.title} className="modal-image" width={600} height={300} />
             )}
             <h2 className="modal-title">{selectedHub.title}</h2>
             {selectedHub.date && <p className="modal-date">{selectedHub.date}</p>}

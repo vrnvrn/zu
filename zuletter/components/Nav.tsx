@@ -67,9 +67,6 @@ export default function Nav() {
             <Link href="/archive" className="nav-link">
               Archive
             </Link>
-            <Link href="/how-decisions-work" className="nav-link">
-              Process
-            </Link>
             <a 
               href="https://github.com/vrnvrn/zu/" 
               target="_blank" 

@@ -8,36 +8,30 @@ export default function HowDecisionsWorkPage() {
     <>
       <Nav />
       <div className="container" style={{ maxWidth: '720px' }}>
-        <header style={{ marginBottom: '3rem' }}>
-          <div style={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            gap: '0.5rem', 
-            marginBottom: '1rem' 
+        <header style={{ marginBottom: '3rem', textAlign: 'center', paddingTop: '2rem' }}>
+          <div style={{
+            display: 'inline-block',
+            padding: '0.5rem 1.25rem',
+            background: 'var(--accent-subtle)',
+            border: '1px solid var(--accent-muted)',
+            borderRadius: 'var(--radius)',
+            marginBottom: '1.5rem'
           }}>
-            <div style={{
-              width: '8px',
-              height: '8px',
-              borderRadius: '50%',
-              background: 'var(--yellow)',
-              boxShadow: '0 0 8px rgba(232, 213, 86, 0.5)'
-            }} />
-            <span style={{ 
-              fontSize: '0.75rem', 
-              fontWeight: '500', 
+            <span style={{
+              fontSize: '0.8125rem',
+              fontWeight: '500',
               color: 'var(--accent)',
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em'
+              letterSpacing: '0.05em'
             }}>
-              Transparency
+              Under Construction
             </span>
           </div>
           <h1 style={{ marginBottom: '0.75rem', letterSpacing: '0.02em' }}>
             Editorial Process
           </h1>
           <p style={{ fontSize: '1.0625rem', color: 'var(--text-secondary)', lineHeight: '1.75' }}>
-            ZuLetter operates with full transparency. Every submission, editorial decision, 
-            and published issue is publicly documented and verifiable.
+            This page is being built. It will document how ZuLetter operates with full
+            transparency — every submission, editorial decision, and published issue.
           </p>
         </header>
         

@@ -171,7 +171,7 @@ const cards: Card[] = [
   { id: 'ipe', hubId: 'ipe' },
   { id: 'infinita', hubId: 'infinita', image: '/newsletters/images/2026-01/infinita1.jpeg' },
   { id: 'mushanghai', hubId: 'mushanghai', image: '/newsletters/images/2026-01/muShanghai.jpg' },
-  { id: 'filler-1', hubId: 'arc', image: '/newsletters/images/2026-01/arc2.JPG' },
+  { id: 'filler-1', hubId: 'arc', image: '/newsletters/images/2026-01/arc2.JPG', isFiller: true },
   { id: 'shanhaiwoo', hubId: 'shanhaiwoo', image: '/newsletters/images/2026-01/shw.jpeg' },
   { id: 'valley', hubId: 'valley', image: '/newsletters/images/2026-01/valley1.jpg' },
   { id: 'frontiertower', hubId: 'frontiertower', image: '/newsletters/images/2026-01/frontiertower.jpg' },
@@ -247,7 +247,7 @@ export default function January2026Page() {
               <div
                 key={card.id}
                 className={`card ${card.isIntro ? 'intro' : ''} ${card.isCrossword ? 'crossword' : ''} ${card.isCongrats ? 'congrats' : ''} ${card.image ? 'has-image' : ''} ${card.isFiller ? 'filler' : ''}`}
-                onClick={() => !card.isFiller && handleCardClick(card)}
+                onClick={() => handleCardClick(card)}
               >
                 {card.image && (
                   <Image className="card-image" src={card.image} alt={card.isFiller ? '' : title} fill sizes="(max-width: 500px) 50vw, (max-width: 768px) 33vw, (max-width: 1000px) 25vw, 20vw" />
@@ -585,7 +585,7 @@ export default function January2026Page() {
         }
 
         .card.filler {
-          cursor: default;
+          cursor: pointer;
         }
 
         .card.filler:hover {

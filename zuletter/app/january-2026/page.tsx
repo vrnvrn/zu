@@ -171,7 +171,7 @@ const cards: Card[] = [
   { id: 'ipe', hubId: 'ipe' },
   { id: 'infinita', hubId: 'infinita', image: '/newsletters/images/2026-01/infinita1.jpeg' },
   { id: 'mushanghai', hubId: 'mushanghai', image: '/newsletters/images/2026-01/muShanghai.jpg' },
-  { id: 'filler-1', hubId: 'arc', image: '/newsletters/images/2026-01/arc2.JPG', isFiller: true },
+  { id: 'filler-1', hubId: 'arc', image: '/newsletters/images/2026-01/arc2.JPG' },
   { id: 'shanhaiwoo', hubId: 'shanhaiwoo', image: '/newsletters/images/2026-01/shw.jpeg' },
   { id: 'valley', hubId: 'valley', image: '/newsletters/images/2026-01/valley1.jpg' },
   { id: 'frontiertower', hubId: 'frontiertower', image: '/newsletters/images/2026-01/frontiertower.jpg' },

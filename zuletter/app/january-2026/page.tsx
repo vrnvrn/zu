@@ -88,12 +88,6 @@ const hubs: Record<string, Hub> = {
     fullContent: 'Be a Chinese Builder for a month.\n\nThis May, we\'re bringing global builders to Shanghai to experience China\'s innovation landscape firsthand: dark factories, frontier AI, and founders shipping at China speed.\n\nChina dominates headlines, but most builders outside China still don\'t understand how it actually works on the ground. muShanghai changes that: live here, build here, and learn how to plug into China\'s ecosystem to level up your project.\n\nApplications are live. Partnerships are open.\n\nSee you in muShanghai.',
     link: { url: 'https://www.mushanghai.xyz/', text: 'Know more' },
   },
-  alphageo: {
-    id: 'alphageo',
-    title: 'AlphaGeo',
-    fullContent: 'All Zuzalu hubs and nodes are welcome to use AlphaGeo to access its unique and proprietary predictive location analytics.  \n\n These can be used both "defensively" to understand the climate risk of your hub and plan adaptation measures – and also "offensively" to select the best locations for your next site or investment.\n\nUse this free trial link to get data for up to three locations: https://app.alphageo.ai/trial_setup\n\nFor any questions or to upgrade to a pro account for more location searches, contact: info@alphageo.ai',
-    link: { url: 'https://app.alphageo.ai/trial_setup', text: 'Free trial' },
-  },
   shanhaiwoo: {
     id: 'shanhaiwoo',
     title: 'ShanHaiWoo',
@@ -177,7 +171,7 @@ const cards: Card[] = [
   { id: 'ipe', hubId: 'ipe' },
   { id: 'infinita', hubId: 'infinita', image: '/newsletters/images/2026-01/infinita1.jpeg' },
   { id: 'mushanghai', hubId: 'mushanghai', image: '/newsletters/images/2026-01/muShanghai.jpg' },
-  { id: 'alphageo', hubId: 'alphageo' },
+  { id: 'filler-1', hubId: 'arc', image: '/newsletters/images/2026-01/arc2.JPG', isFiller: true },
   { id: 'shanhaiwoo', hubId: 'shanhaiwoo', image: '/newsletters/images/2026-01/shw.jpeg' },
   { id: 'valley', hubId: 'valley', image: '/newsletters/images/2026-01/valley1.jpg' },
   { id: 'frontiertower', hubId: 'frontiertower', image: '/newsletters/images/2026-01/frontiertower.jpg' },

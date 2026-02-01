@@ -64,6 +64,9 @@ export default function Nav() {
             <Link href="/crossword" className="nav-link">
               Crossword
             </Link>
+            <Link href="/announcements" className="nav-link">
+              Announcements
+            </Link>
             <Link href="/archive" className="nav-link">
               Archive
             </Link>

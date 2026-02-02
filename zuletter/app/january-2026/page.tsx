@@ -32,7 +32,7 @@ const hubs: Record<string, Hub> = {
   intro: {
     id: 'intro',
     title: 'Zuzalu Newsletter — January 2026',
-    fullContent: 'Welcome to the January 2026 edition of the Zuzalu community newsletter! \n\n This month brings exciting updates from across our global network of pop-up cities, hubs, and communities.\n\n Also, We\'re starting a monthly crossword next month! Submit your Q&A at \nzuletter.vercel.app/crossword\n\n to help build the first puzzle.',
+    fullContent: 'Welcome to the January 2026 edition of the Zuzalu community newsletter! \n\n This month brings exciting updates from across our global network of pop-up cities, hubs, and communities.\n\n Also, We\'re starting a monthly crossword next month!',
   },
   arc: {
     id: 'arc',

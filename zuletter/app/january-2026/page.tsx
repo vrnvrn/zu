@@ -195,7 +195,7 @@ const popupCities = [
   { name: 'Ârc Montenegro', date: 'Apr 3 – May 29', url: 'https://luma.com/montenegro' },
   { name: 'ZuAfrique', date: 'Apr 12 – May 3', url: 'https://zuafrique.com/' },
   { name: 'ZuKas Turkey', date: 'Apr 10 – May 10', url: 'https://zukas.city/' },
-  { name: 'muShanghai', date: 'Apr 26 – May 23', url: 'https://www.mushanghai.xyz/' },
+  { name: 'muShanghai', date: 'May 10th – June 06', url: 'https://www.mushanghai.xyz/' },
   { name: 'Edge Esmeralda', date: 'May 30 – Jun 27', url: 'https://www.edgecity.live/' },
   { name: 'Zanzalu', date: 'Jul 25 – Aug 14', url: 'https://zanzalu.org/' },
   { name: 'Valley of the Commons', date: 'Aug 24 – Sep 20', url: 'https://www.valleyofthecommons.com/' },

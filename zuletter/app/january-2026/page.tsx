@@ -84,7 +84,7 @@ const hubs: Record<string, Hub> = {
   mushanghai: {
     id: 'mushanghai',
     title: 'muShanghai',
-    date: 'April 26 – May 23, 2026 · China',
+    date: 'May 10th – June 06, 2026 · China',
     fullContent: 'Be a Chinese Builder for a month.\n\nThis May, we\'re bringing global builders to Shanghai to experience China\'s innovation landscape firsthand: dark factories, frontier AI, and founders shipping at China speed.\n\nChina dominates headlines, but most builders outside China still don\'t understand how it actually works on the ground. muShanghai changes that: live here, build here, and learn how to plug into China\'s ecosystem to level up your project.\n\nApplications are live. Partnerships are open.\n\nSee you in muShanghai.',
     link: { url: 'https://www.mushanghai.xyz/', text: 'Know more' },
   },

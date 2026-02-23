@@ -44,6 +44,7 @@ const hubs: Record<string, Hub> = {
   dacc: {
     id: 'dacc',
     title: 'd/acc in Practice',
+    image: '/images/ChrisMata.jpeg',
     fullContent: `**Project Spotlight: Multi KZG Point Evaluation Precompile**
 
 **The Build**
@@ -281,10 +282,11 @@ export default function February2026Page() {
                 )}
                 {card.isDacc && (
                   <div className="card-content dacc-content">
-                    <div className="dacc-image-wrapper">
-                      <Image src={card.image!} alt={title} width={80} height={80} className="dacc-avatar" />
-                    </div>
                     <h3 className="card-title">{title}</h3>
+                    <p className="dacc-spotlight">Project Spotlight: Multi KZG Point Evaluation Precompile</p>
+                    <div className="dacc-image-wrapper">
+                      <Image src={card.image!} alt="Chris Mata" width={70} height={70} className="dacc-avatar" />
+                    </div>
                   </div>
                 )}
                 {!card.isFiller && !card.isPlaceholder && !card.isDacc && (
@@ -324,22 +326,29 @@ export default function February2026Page() {
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={closeModal}>×</button>
-            {selectedHub.image && (
-              <Image src={selectedHub.image} alt={selectedHub.title} className="modal-image" width={600} height={300} />
-            )}
             <h2 className="modal-title">{selectedHub.title}</h2>
             {selectedHub.date && <p className="modal-date">{selectedHub.date}</p>}
             <div className="modal-body">
-              {selectedHub.fullContent.split('\n\n').map((para, i) => (
-                <p key={i}>
-                  {para.split('\n').map((line, j) => (
-                    <span key={j}>
-                      {j > 0 && <br />}
-                      {formatText(line)}
-                    </span>
-                  ))}
-                </p>
-              ))}
+              {selectedHub.fullContent.split('\n\n').map((para, i) => {
+                const isMeetBuilder = para.includes('**Meet the Builder**')
+                return (
+                  <div key={i}>
+                    {isMeetBuilder && selectedHub.image && (
+                      <div className="modal-builder-image">
+                        <Image src={selectedHub.image} alt="" width={100} height={100} className="builder-avatar" />
+                      </div>
+                    )}
+                    <p>
+                      {para.split('\n').map((line, j) => (
+                        <span key={j}>
+                          {j > 0 && <br />}
+                          {formatText(line)}
+                        </span>
+                      ))}
+                    </p>
+                  </div>
+                )
+              })}
             </div>
             {(selectedHub.link || selectedHub.links) && (
               <div className="modal-links">
@@ -502,15 +511,24 @@ export default function February2026Page() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: center;
+          justify-content: flex-start;
           height: 100%;
           text-align: center;
-          gap: 0.75rem;
+          gap: 0.5rem;
+          padding-top: 0.75rem;
+        }
+
+        .dacc-spotlight {
+          font-size: 0.625rem;
+          color: rgba(255,255,255,0.7);
+          margin: 0;
+          line-height: 1.4;
+          max-width: 90%;
         }
 
         .dacc-image-wrapper {
-          width: 80px;
-          height: 80px;
+          width: 70px;
+          height: 70px;
           border-radius: 50%;
           overflow: hidden;
           border: 3px solid #4ade80;
@@ -749,6 +767,20 @@ export default function February2026Page() {
 
         .modal-body p {
           margin: 0 0 1rem;
+        }
+
+        .modal-builder-image {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 1rem;
+        }
+
+        .builder-avatar {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 3px solid #2d6b5d;
         }
 
         .modal-links {

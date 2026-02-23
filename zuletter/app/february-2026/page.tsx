@@ -158,6 +158,17 @@ export default function February2026Page() {
     setSelectedHub(null)
   }
 
+  const backgroundImages = [
+    '/newsletters/images/2026-01/Invisiblegarden.jpeg',
+    '/newsletters/images/2026-01/edgecity.jpeg',
+    '/newsletters/images/2026-01/infinita1.jpeg',
+    '/newsletters/images/2026-01/zanzalu.jpeg',
+    '/newsletters/images/2026-01/zuberlin.jpeg',
+    '/newsletters/images/2026-01/zugrama1.jpeg',
+    '/newsletters/images/2026-01/frontiertower.jpg',
+    '/newsletters/images/2026-01/crecimento.png',
+  ]
+
   return (
     <>
       <Nav />
@@ -167,6 +178,16 @@ export default function February2026Page() {
         <span className="in-progress-icon">🚧</span>
       </div>
       <div className="newsletter-fullpage">
+        <div className="background-images left">
+          {backgroundImages.slice(0, 4).map((src, i) => (
+            <Image key={`bg-left-${i}`} src={src} alt="" width={120} height={80} className="bg-image" />
+          ))}
+        </div>
+        <div className="background-images right">
+          {backgroundImages.slice(4).map((src, i) => (
+            <Image key={`bg-right-${i}`} src={src} alt="" width={120} height={80} className="bg-image" />
+          ))}
+        </div>
         <div className="newsletter-grid">
           {cards.map((card) => {
             const hub = hubs[card.hubId]
@@ -328,6 +349,41 @@ export default function February2026Page() {
           padding: 0;
           margin: 0;
           background: #fafaf9;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .background-images {
+          position: fixed;
+          top: 120px;
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+          opacity: 0.06;
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        .background-images.left {
+          left: 1rem;
+        }
+
+        .background-images.right {
+          right: 1rem;
+        }
+
+        .bg-image {
+          width: 80px;
+          height: auto;
+          object-fit: cover;
+          border-radius: 6px;
+          filter: grayscale(40%);
+        }
+
+        @media (max-width: 1100px) {
+          .background-images {
+            display: none;
+          }
         }
 
         .newsletter-grid {

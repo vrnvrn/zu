@@ -27,6 +27,7 @@ interface Card {
   isCongrats?: boolean
   isFiller?: boolean
   isPlaceholder?: boolean
+  isDacc?: boolean
 }
 
 const hubs: Record<string, Hub> = {
@@ -34,6 +35,31 @@ const hubs: Record<string, Hub> = {
     id: 'intro',
     title: 'Zuzalu Newsletter — February 2026',
     fullContent: 'Welcome to the February 2026 edition of the Zuzalu community newsletter!\n\nThis edition is currently being compiled. Check back soon for updates from across our global network of pop-up cities, hubs, and communities.',
+  },
+  dacc: {
+    id: 'dacc',
+    title: 'd/acc in Practice',
+    fullContent: `1. Project Spotlight: Multi KZG Point Evaluation Precompile
+
+2. The Build:
+
+I'm building a new Ethereum precompile (EIP-8149) that makes it much more efficient to verify many KZG polynomial commitments at once. Right now, verifying each point (a KZG opening) from an EIP-4844 data blob costs a lot of gas because each has to be checked individually. This proposal adds a dedicated precompile that takes a blob commitment and a batch of point/value pairs and performs one cryptographic verification over all of them in a single call, lowering gas cost and overhead for workloads like fraud proofs or data availability checks that need multiple evaluation.
+
+3. Meet the Builder:
+
+I'm Chris Mata (protocolwhisper) and IG builder - a mechanical and computer engineer with a passion for cryptography, automotive control theory, and distributed consensus systems. I love contributing to open-source infrastructure, crypto libraries, and consensus clients, and I've spent years building developer tooling that makes others' lives easier. What really drives me is creating technology that helps people and strengthens the systems they rely on.
+
+4. What This Defends Against (the d/acc angle):
+
+What threat does this mitigate?
+It reduces the risk of invalid or manipulated data being accepted on-chain by making full verification of KZG openings cheap enough to do consistently when needed.
+
+What vulnerability does this address?
+It fixes the cost barrier that forces verification off-chain, where protocols become dependent on trusted actors or centralized services instead of trustless checks.
+
+Why does this matter for resilience/sovereignty/privacy?
+Cheaper, native batch verification strengthens decentralization and user sovereignty by enabling more participants to independently verify data. It improves network resilience under adversarial conditions and supports privacy preserving systems built on polynomial commitments, ensuring users can trust what's posted on-chain and prove the correctness of the data this depends on.`,
+    link: { url: 'https://eips.ethereum.org/EIPS/eip-8149', text: 'View EIP-8149' },
   },
   placeholder: {
     id: 'placeholder',
@@ -44,7 +70,7 @@ const hubs: Record<string, Hub> = {
 
 const cards: Card[] = [
   { id: 'intro', hubId: 'intro', title: 'Zuzalu Newsletter', subtitle: 'February 2026', isIntro: true },
-  { id: 'placeholder-1', hubId: 'placeholder', isPlaceholder: true },
+  { id: 'dacc', hubId: 'dacc', title: 'd/acc in Practice', isDacc: true, image: '/images/ChrisMata.jpeg' },
   { id: 'placeholder-2', hubId: 'placeholder', isPlaceholder: true },
   { id: 'placeholder-3', hubId: 'placeholder', isPlaceholder: true },
   { id: 'placeholder-4', hubId: 'placeholder', isPlaceholder: true },
@@ -129,13 +155,21 @@ export default function February2026Page() {
             return (
               <div
                 key={card.id}
-                className={`card ${card.isIntro ? 'intro' : ''} ${card.isCrossword ? 'crossword' : ''} ${card.isCongrats ? 'congrats' : ''} ${card.image ? 'has-image' : ''} ${card.isFiller ? 'filler' : ''} ${card.isPlaceholder ? 'placeholder' : ''}`}
+                className={`card ${card.isIntro ? 'intro' : ''} ${card.isCrossword ? 'crossword' : ''} ${card.isCongrats ? 'congrats' : ''} ${card.image && !card.isDacc ? 'has-image' : ''} ${card.isFiller ? 'filler' : ''} ${card.isPlaceholder ? 'placeholder' : ''} ${card.isDacc ? 'dacc' : ''}`}
                 onClick={() => handleCardClick(card)}
               >
-                {card.image && (
+                {card.image && !card.isDacc && (
                   <Image className="card-image" src={card.image} alt={card.isFiller ? '' : title} fill sizes="(max-width: 500px) 50vw, (max-width: 768px) 33vw, (max-width: 1000px) 25vw, 20vw" />
                 )}
-                {!card.isFiller && !card.isPlaceholder && (
+                {card.isDacc && (
+                  <div className="card-content dacc-content">
+                    <div className="dacc-image-wrapper">
+                      <Image src={card.image!} alt={title} width={80} height={80} className="dacc-avatar" />
+                    </div>
+                    <h3 className="card-title">{title}</h3>
+                  </div>
+                )}
+                {!card.isFiller && !card.isPlaceholder && !card.isDacc && (
                   <div className={`card-content ${card.image ? 'overlay' : ''}`}>
                     <h3 className="card-title">{title}</h3>
                     {subtitle && <p className="card-subtitle">{subtitle}</p>}
@@ -331,6 +365,49 @@ export default function February2026Page() {
           font-size: 1rem;
           text-transform: none;
           font-weight: 400;
+        }
+
+        .card.dacc {
+          background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+          padding: 1rem;
+        }
+
+        .card.dacc:hover {
+          background: linear-gradient(135deg, #1f1f3a 0%, #1a2744 100%);
+        }
+
+        .dacc-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          text-align: center;
+          gap: 0.75rem;
+        }
+
+        .dacc-image-wrapper {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 3px solid #4ade80;
+          box-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
+        }
+
+        .dacc-avatar {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .card.dacc .card-title {
+          color: #4ade80;
+          font-size: 0.875rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin: 0;
         }
 
         .card.placeholder {

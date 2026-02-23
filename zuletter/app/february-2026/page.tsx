@@ -78,23 +78,12 @@ const cards: Card[] = [
   { id: 'intro', hubId: 'intro', title: 'Zuzalu Newsletter', subtitle: 'February 2026', isIntro: true },
   { id: 'dacc', hubId: 'dacc', title: 'd/acc in Practice', isDacc: true, image: '/images/ChrisMata.jpeg' },
   { id: 'crossword', hubId: 'crossword', title: 'February Crossword', isCrossword: true, image: '/images/feb26crossword.png' },
-  { id: 'placeholder-3', hubId: 'placeholder', isPlaceholder: true },
   { id: 'placeholder-4', hubId: 'placeholder', isPlaceholder: true },
   { id: 'placeholder-5', hubId: 'placeholder', isPlaceholder: true },
   { id: 'placeholder-6', hubId: 'placeholder', isPlaceholder: true },
   { id: 'placeholder-7', hubId: 'placeholder', isPlaceholder: true },
   { id: 'placeholder-8', hubId: 'placeholder', isPlaceholder: true },
   { id: 'placeholder-9', hubId: 'placeholder', isPlaceholder: true },
-  { id: 'placeholder-10', hubId: 'placeholder', isPlaceholder: true },
-  { id: 'placeholder-11', hubId: 'placeholder', isPlaceholder: true },
-  { id: 'placeholder-12', hubId: 'placeholder', isPlaceholder: true },
-  { id: 'placeholder-13', hubId: 'placeholder', isPlaceholder: true },
-  { id: 'placeholder-14', hubId: 'placeholder', isPlaceholder: true },
-  { id: 'placeholder-15', hubId: 'placeholder', isPlaceholder: true },
-  { id: 'placeholder-16', hubId: 'placeholder', isPlaceholder: true },
-  { id: 'placeholder-17', hubId: 'placeholder', isPlaceholder: true },
-  { id: 'placeholder-18', hubId: 'placeholder', isPlaceholder: true },
-  { id: 'placeholder-19', hubId: 'placeholder', isPlaceholder: true },
 ]
 
 const popupCities = [
@@ -286,9 +275,11 @@ export default function February2026Page() {
 
         .newsletter-grid {
           display: grid;
-          grid-template-columns: repeat(5, 1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 0;
           margin: 0;
+          max-width: 900px;
+          margin: 0 auto;
           padding: 0;
         }
 
@@ -635,21 +626,15 @@ export default function February2026Page() {
           color: #2d6b5d;
         }
 
-        @media (max-width: 1000px) {
-          .newsletter-grid {
-            grid-template-columns: repeat(4, 1fr);
-          }
-        }
-
         @media (max-width: 768px) {
           .newsletter-grid {
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
           }
         }
 
         @media (max-width: 500px) {
           .newsletter-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr;
           }
         }
       `}</style>

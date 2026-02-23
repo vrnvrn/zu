@@ -30,6 +30,8 @@ interface Card {
   isPlaceholder?: boolean
   isDacc?: boolean
   isComingSoon?: boolean
+  isExternalLink?: boolean
+  externalUrl?: string
 }
 
 const hubs: Record<string, Hub> = {
@@ -97,7 +99,7 @@ const cards: Card[] = [
   { id: 'article', hubId: 'article', title: 'Article', isPlaceholder: true },
   { id: 'stats', hubId: 'stats', title: 'Ecosystem Stats', isPlaceholder: true },
   { id: 'forum', hubId: 'forum', title: 'Zuzone Forum', isComingSoon: true },
-  { id: 'placeholder-7', hubId: 'placeholder', isPlaceholder: true },
+  { id: 'twitter', hubId: 'placeholder', title: 'Follow our new X!', isExternalLink: true, externalUrl: 'https://x.com/zuzones' },
   { id: 'placeholder-8', hubId: 'placeholder', isPlaceholder: true },
   { id: 'placeholder-9', hubId: 'placeholder', isPlaceholder: true },
 ]
@@ -194,6 +196,22 @@ export default function February2026Page() {
                     <h3 className="coming-soon-title">{title}</h3>
                   </div>
                 </div>
+              )
+            }
+
+            if (card.isExternalLink && card.externalUrl) {
+              return (
+                <a
+                  key={card.id}
+                  href={card.externalUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card external-link"
+                >
+                  <div className="card-content external-link-content">
+                    <h3 className="external-link-title">{title}</h3>
+                  </div>
+                </a>
               )
             }
 
@@ -510,6 +528,30 @@ export default function February2026Page() {
         }
 
         .coming-soon-title {
+          font-size: 1rem;
+          font-weight: 700;
+          color: white;
+          margin: 0;
+        }
+
+        .card.external-link {
+          background: #1c1917;
+          text-decoration: none;
+        }
+
+        .card.external-link:hover {
+          background: #292524;
+        }
+
+        .external-link-content {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          text-align: center;
+        }
+
+        .external-link-title {
           font-size: 1rem;
           font-weight: 700;
           color: white;

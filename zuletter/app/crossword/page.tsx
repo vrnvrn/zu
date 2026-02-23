@@ -115,6 +115,7 @@ export default function CrosswordPage() {
     <>
       <Nav />
       <div className="crossword-page">
+        <p className="crossword-instructions">Click on a question to check your answer</p>
         <div className="crossword-container">
           <div className="crossword-grid-wrapper">
             <Image
@@ -148,9 +149,17 @@ export default function CrosswordPage() {
         .crossword-page {
           min-height: calc(100vh - 60px);
           display: flex;
-          align-items: flex-start;
-          justify-content: center;
-          padding: 3rem 2rem;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          padding: 2rem 2rem 3rem;
+        }
+
+        .crossword-instructions {
+          font-size: 0.9375rem;
+          color: var(--text-secondary);
+          margin: 0 0 1.5rem;
+          text-align: center;
         }
 
         .crossword-container {

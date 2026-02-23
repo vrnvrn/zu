@@ -111,10 +111,31 @@ export default function CrosswordPage() {
     )
   }
 
+  const backgroundImages = [
+    '/newsletters/images/2026-01/Invisiblegarden.jpeg',
+    '/newsletters/images/2026-01/edgecity.jpeg',
+    '/newsletters/images/2026-01/infinita1.jpeg',
+    '/newsletters/images/2026-01/zanzalu.jpeg',
+    '/newsletters/images/2026-01/zuberlin.jpeg',
+    '/newsletters/images/2026-01/zugrama1.jpeg',
+    '/newsletters/images/2026-01/frontiertower.jpg',
+    '/newsletters/images/2026-01/crecimento.png',
+  ]
+
   return (
     <>
       <Nav />
       <div className="crossword-page">
+        <div className="background-images left">
+          {backgroundImages.slice(0, 4).map((src, i) => (
+            <Image key={i} src={src} alt="" width={120} height={80} className="bg-image" />
+          ))}
+        </div>
+        <div className="background-images right">
+          {backgroundImages.slice(4).map((src, i) => (
+            <Image key={i} src={src} alt="" width={120} height={80} className="bg-image" />
+          ))}
+        </div>
         <p className="crossword-instructions">Click on a question to check your answer</p>
         <div className="crossword-container">
           <div className="crossword-grid-wrapper">
@@ -153,6 +174,41 @@ export default function CrosswordPage() {
           align-items: center;
           justify-content: flex-start;
           padding: 2rem 2rem 3rem;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .background-images {
+          position: fixed;
+          top: 100px;
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+          opacity: 0.08;
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        .background-images.left {
+          left: 1rem;
+        }
+
+        .background-images.right {
+          right: 1rem;
+        }
+
+        .bg-image {
+          width: 100px;
+          height: auto;
+          object-fit: cover;
+          border-radius: 8px;
+          filter: grayscale(50%);
+        }
+
+        @media (max-width: 1400px) {
+          .background-images {
+            display: none;
+          }
         }
 
         .crossword-instructions {

@@ -355,32 +355,31 @@ export default function February2026Page() {
 
         .background-images {
           position: fixed;
-          top: 120px;
+          top: 100px;
           display: flex;
           flex-direction: column;
-          gap: 1.5rem;
-          opacity: 0.06;
+          gap: 0;
           pointer-events: none;
           z-index: 0;
         }
 
         .background-images.left {
-          left: 1rem;
+          left: 0;
         }
 
         .background-images.right {
-          right: 1rem;
+          right: 0;
         }
 
         .bg-image {
-          width: 80px;
-          height: auto;
+          width: 140px;
+          height: 100px;
           object-fit: cover;
-          border-radius: 6px;
-          filter: grayscale(40%);
+          opacity: 0.35;
+          filter: grayscale(20%);
         }
 
-        @media (max-width: 1100px) {
+        @media (max-width: 1200px) {
           .background-images {
             display: none;
           }

@@ -93,7 +93,26 @@ Cheaper, native batch verification strengthens decentralization and user soverei
   },
 }
 
-const cards: Card[] = [
+const fadedImages = [
+  '/newsletters/images/2026-01/Invisiblegarden.jpeg',
+  '/newsletters/images/2026-01/edgecity.jpeg',
+  '/newsletters/images/2026-01/infinita1.jpeg',
+  '/newsletters/images/2026-01/zanzalu.jpeg',
+  '/newsletters/images/2026-01/zuberlin.jpeg',
+  '/newsletters/images/2026-01/zugrama1.jpeg',
+  '/newsletters/images/2026-01/frontiertower.jpg',
+  '/newsletters/images/2026-01/crecimento.png',
+  '/newsletters/images/2026-01/muShanghai.jpg',
+  '/newsletters/images/2026-01/shw.jpeg',
+  '/newsletters/images/2026-01/infinita2.jpeg',
+  '/newsletters/images/2026-01/zugrama2.jpeg',
+  '/newsletters/images/2026-01/infinita3.jpeg',
+  '/newsletters/images/2026-01/invisiblegarden1.jpeg',
+  '/newsletters/images/2026-01/infinita4.jpeg',
+  '/newsletters/images/2026-01/infinita5.jpeg',
+]
+
+const contentCards: Card[] = [
   { id: 'intro', hubId: 'intro', title: 'Zuzalu Newsletter', subtitle: 'February 2026', isIntro: true },
   { id: 'dacc', hubId: 'dacc', title: 'd/acc in Practice', isDacc: true, image: '/images/ChrisMata.jpeg' },
   { id: 'crossword', hubId: 'crossword', title: 'February Crossword', isCrossword: true, image: '/images/feb26crossword.png' },
@@ -101,8 +120,35 @@ const cards: Card[] = [
   { id: 'stats', hubId: 'stats', title: 'Ecosystem Stats', isPlaceholder: true },
   { id: 'forum', hubId: 'forum', title: 'Zuzone Forum', isComingSoon: true },
   { id: 'twitter', hubId: 'placeholder', title: 'Follow our new X!', isExternalLink: true, externalUrl: 'https://x.com/zuzones' },
-  { id: 'faded-1', hubId: 'placeholder', isFadedImage: true, image: '/newsletters/images/2026-01/Invisiblegarden.jpeg' },
-  { id: 'faded-2', hubId: 'placeholder', isFadedImage: true, image: '/newsletters/images/2026-01/edgecity.jpeg' },
+  { id: 'placeholder-8', hubId: 'placeholder', isPlaceholder: true },
+  { id: 'placeholder-9', hubId: 'placeholder', isPlaceholder: true },
+]
+
+const cards: Card[] = [
+  // Row 1: 5 faded images (top border)
+  { id: 'faded-0', hubId: 'placeholder', isFadedImage: true, image: fadedImages[0] },
+  { id: 'faded-1', hubId: 'placeholder', isFadedImage: true, image: fadedImages[1] },
+  { id: 'faded-2', hubId: 'placeholder', isFadedImage: true, image: fadedImages[2] },
+  { id: 'faded-3', hubId: 'placeholder', isFadedImage: true, image: fadedImages[3] },
+  { id: 'faded-4', hubId: 'placeholder', isFadedImage: true, image: fadedImages[4] },
+  // Row 2: faded, 3 content, faded
+  { id: 'faded-5', hubId: 'placeholder', isFadedImage: true, image: fadedImages[5] },
+  ...contentCards.slice(0, 3),
+  { id: 'faded-6', hubId: 'placeholder', isFadedImage: true, image: fadedImages[6] },
+  // Row 3: faded, 3 content, faded
+  { id: 'faded-7', hubId: 'placeholder', isFadedImage: true, image: fadedImages[7] },
+  ...contentCards.slice(3, 6),
+  { id: 'faded-8', hubId: 'placeholder', isFadedImage: true, image: fadedImages[8] },
+  // Row 4: faded, 3 content, faded
+  { id: 'faded-9', hubId: 'placeholder', isFadedImage: true, image: fadedImages[9] },
+  ...contentCards.slice(6, 9),
+  { id: 'faded-10', hubId: 'placeholder', isFadedImage: true, image: fadedImages[10] },
+  // Row 5: 5 faded images (bottom border)
+  { id: 'faded-11', hubId: 'placeholder', isFadedImage: true, image: fadedImages[11] },
+  { id: 'faded-12', hubId: 'placeholder', isFadedImage: true, image: fadedImages[12] },
+  { id: 'faded-13', hubId: 'placeholder', isFadedImage: true, image: fadedImages[13] },
+  { id: 'faded-14', hubId: 'placeholder', isFadedImage: true, image: fadedImages[14] },
+  { id: 'faded-15', hubId: 'placeholder', isFadedImage: true, image: fadedImages[15] },
 ]
 
 const popupCities = [
@@ -341,11 +387,9 @@ export default function February2026Page() {
 
         .newsletter-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(5, 1fr);
           gap: 0;
           margin: 0;
-          max-width: 900px;
-          margin: 0 auto;
           padding: 0;
         }
 
@@ -771,9 +815,15 @@ export default function February2026Page() {
           color: #2d6b5d;
         }
 
+        @media (max-width: 1000px) {
+          .newsletter-grid {
+            grid-template-columns: repeat(4, 1fr);
+          }
+        }
+
         @media (max-width: 768px) {
           .newsletter-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
           }
         }
 

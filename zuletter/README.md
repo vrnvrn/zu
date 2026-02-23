@@ -36,7 +36,4 @@ vercel
 
 The app uses ISR (Incremental Static Regeneration) to cache GitHub API responses.
 
-## Verifying Newsletters
-
-Every newsletter in the Archive links to its source file in the repo (**Verify on GitHub**). When loaded from the repo, the commit SHA is shown so anyone can confirm the content is stored in version control. See [SETUP.md](./SETUP.md#adding-historical-newsletters) and [HISTORICAL_NEWSLETTERS.md](./HISTORICAL_NEWSLETTERS.md) for how to add past editions.
-
+## Verifying NewslettersEvery newsletter in the Archive links to its source file in the repo (**Verify on GitHub**). When loaded from the repo, the commit SHA is shown so anyone can confirm the content is stored in version control. See [SETUP.md](./SETUP.md#adding-historical-newsletters) and [HISTORICAL_NEWSLETTERS.md](./HISTORICAL_NEWSLETTERS.md) for how to add past editions.

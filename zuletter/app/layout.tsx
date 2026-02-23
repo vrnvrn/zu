@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -23,16 +22,6 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <div className="deadline-banner">
-          <div className="container">
-            <Link href="/submit" style={{ display: 'block', textAlign: 'center', color: 'inherit', textDecoration: 'none' }}>
-              <span style={{ opacity: 0.9 }}>Submissions for</span>{' '}
-              <strong>February 2026</strong>{' '}
-              <span style={{ opacity: 0.9 }}>issue close February 16th</span>{' '}
-              <span style={{ marginLeft: '0.5rem' }}>→</span>
-            </Link>
-          </div>
-        </div>
         {children}
       </body>
     </html>

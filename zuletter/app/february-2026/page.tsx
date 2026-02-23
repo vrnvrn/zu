@@ -29,6 +29,7 @@ interface Card {
   isFiller?: boolean
   isPlaceholder?: boolean
   isDacc?: boolean
+  isComingSoon?: boolean
 }
 
 const hubs: Record<string, Hub> = {
@@ -82,6 +83,11 @@ Cheaper, native batch verification strengthens decentralization and user soverei
     title: 'Ecosystem Stats',
     fullContent: 'Coming soon.',
   },
+  forum: {
+    id: 'forum',
+    title: 'Zuzone Forum',
+    fullContent: 'A community forum for the Zuzalu ecosystem. Coming soon.',
+  },
 }
 
 const cards: Card[] = [
@@ -90,7 +96,7 @@ const cards: Card[] = [
   { id: 'crossword', hubId: 'crossword', title: 'February Crossword', isCrossword: true, image: '/images/feb26crossword.png' },
   { id: 'article', hubId: 'article', title: 'Article', isPlaceholder: true },
   { id: 'stats', hubId: 'stats', title: 'Ecosystem Stats', isPlaceholder: true },
-  { id: 'placeholder-6', hubId: 'placeholder', isPlaceholder: true },
+  { id: 'forum', hubId: 'forum', title: 'Zuzone Forum', isComingSoon: true },
   { id: 'placeholder-7', hubId: 'placeholder', isPlaceholder: true },
   { id: 'placeholder-8', hubId: 'placeholder', isPlaceholder: true },
   { id: 'placeholder-9', hubId: 'placeholder', isPlaceholder: true },
@@ -140,7 +146,7 @@ export default function February2026Page() {
   const [selectedHub, setSelectedHub] = useState<Hub | null>(null)
 
   const handleCardClick = (card: Card) => {
-    if (card.isPlaceholder || card.isCrossword) {
+    if (card.isPlaceholder || card.isCrossword || card.isComingSoon) {
       return
     }
     setSelectedHub(hubs[card.hubId])
@@ -177,6 +183,17 @@ export default function February2026Page() {
                     <h3 className="card-title">{title}</h3>
                   </div>
                 </Link>
+              )
+            }
+
+            if (card.isComingSoon) {
+              return (
+                <div key={card.id} className="card coming-soon">
+                  <div className="card-content coming-soon-content">
+                    <p className="coming-soon-label">Coming Soon</p>
+                    <h3 className="coming-soon-title">{title}</h3>
+                  </div>
+                </div>
               )
             }
 
@@ -466,6 +483,37 @@ export default function February2026Page() {
         .card.crossword .card-title {
           color: white;
           text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .card.coming-soon {
+          background: #1a4a40;
+          cursor: default;
+        }
+
+        .coming-soon-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          text-align: center;
+          gap: 0.5rem;
+        }
+
+        .coming-soon-label {
+          font-size: 0.625rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          color: rgba(255,255,255,0.6);
+          margin: 0;
+        }
+
+        .coming-soon-title {
+          font-size: 1rem;
+          font-weight: 700;
+          color: white;
+          margin: 0;
         }
 
         .placeholder-content {

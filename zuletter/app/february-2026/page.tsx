@@ -40,17 +40,17 @@ const hubs: Record<string, Hub> = {
   dacc: {
     id: 'dacc',
     title: 'd/acc in Practice',
-    fullContent: `1. Project Spotlight: Multi KZG Point Evaluation Precompile
+    fullContent: `**Project Spotlight: Multi KZG Point Evaluation Precompile**
 
-2. The Build:
+**The Build**
 
 I'm building a new Ethereum precompile (EIP-8149) that makes it much more efficient to verify many KZG polynomial commitments at once. Right now, verifying each point (a KZG opening) from an EIP-4844 data blob costs a lot of gas because each has to be checked individually. This proposal adds a dedicated precompile that takes a blob commitment and a batch of point/value pairs and performs one cryptographic verification over all of them in a single call, lowering gas cost and overhead for workloads like fraud proofs or data availability checks that need multiple evaluation.
 
-3. Meet the Builder:
+**Meet the Builder**
 
 I'm Chris Mata (protocolwhisper) and IG builder - a mechanical and computer engineer with a passion for cryptography, automotive control theory, and distributed consensus systems. I love contributing to open-source infrastructure, crypto libraries, and consensus clients, and I've spent years building developer tooling that makes others' lives easier. What really drives me is creating technology that helps people and strengthens the systems they rely on.
 
-4. What This Defends Against (the d/acc angle):
+**What This Defends Against (the d/acc angle)**
 
 What threat does this mitigate?
 It reduces the risk of invalid or manipulated data being accepted on-chain by making full verification of KZG openings cheap enough to do consistently when needed.
@@ -104,18 +104,26 @@ const popupCities = [
   { name: 'ZuGrama India', date: 'From Feb 2026', url: 'https://zugrama.org/' },
 ]
 
-function linkifyText(text: string) {
+function formatText(text: string) {
+  const boldRegex = /\*\*(.+?)\*\*/g
   const urlRegex = /(https?:\/\/[^\s,)]+)/g
-  const parts = text.split(urlRegex)
-  return parts.map((part, i) =>
-    urlRegex.test(part) ? (
-      <a key={i} href={part} target="_blank" rel="noopener noreferrer" style={{ color: '#2d6b5d', wordBreak: 'break-all' }}>
-        {part}
-      </a>
-    ) : (
-      <span key={i}>{part}</span>
+  
+  const parts = text.split(boldRegex)
+  return parts.map((part, i) => {
+    if (i % 2 === 1) {
+      return <strong key={i} style={{ display: 'block', fontSize: '1.0625rem', marginBottom: '0.25rem', color: '#1c1917' }}>{part}</strong>
+    }
+    const urlParts = part.split(urlRegex)
+    return urlParts.map((urlPart, j) =>
+      urlRegex.test(urlPart) ? (
+        <a key={`${i}-${j}`} href={urlPart} target="_blank" rel="noopener noreferrer" style={{ color: '#2d6b5d', wordBreak: 'break-all' }}>
+          {urlPart}
+        </a>
+      ) : (
+        <span key={`${i}-${j}`}>{urlPart}</span>
+      )
     )
-  )
+  })
 }
 
 export default function February2026Page() {
@@ -223,7 +231,7 @@ export default function February2026Page() {
                   {para.split('\n').map((line, j) => (
                     <span key={j}>
                       {j > 0 && <br />}
-                      {linkifyText(line)}
+                      {formatText(line)}
                     </span>
                   ))}
                 </p>

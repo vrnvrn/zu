@@ -72,14 +72,24 @@ Cheaper, native batch verification strengthens decentralization and user soverei
     title: 'February Crossword',
     fullContent: 'Test your knowledge of the Zuzalu ecosystem with this month\'s crossword puzzle!',
   },
+  article: {
+    id: 'article',
+    title: 'Article',
+    fullContent: 'Coming soon.',
+  },
+  stats: {
+    id: 'stats',
+    title: 'Ecosystem Stats',
+    fullContent: 'Coming soon.',
+  },
 }
 
 const cards: Card[] = [
   { id: 'intro', hubId: 'intro', title: 'Zuzalu Newsletter', subtitle: 'February 2026', isIntro: true },
   { id: 'dacc', hubId: 'dacc', title: 'd/acc in Practice', isDacc: true, image: '/images/ChrisMata.jpeg' },
   { id: 'crossword', hubId: 'crossword', title: 'February Crossword', isCrossword: true, image: '/images/feb26crossword.png' },
-  { id: 'placeholder-4', hubId: 'placeholder', isPlaceholder: true },
-  { id: 'placeholder-5', hubId: 'placeholder', isPlaceholder: true },
+  { id: 'article', hubId: 'article', title: 'Article', isPlaceholder: true },
+  { id: 'stats', hubId: 'stats', title: 'Ecosystem Stats', isPlaceholder: true },
   { id: 'placeholder-6', hubId: 'placeholder', isPlaceholder: true },
   { id: 'placeholder-7', hubId: 'placeholder', isPlaceholder: true },
   { id: 'placeholder-8', hubId: 'placeholder', isPlaceholder: true },
@@ -195,7 +205,11 @@ export default function February2026Page() {
                 )}
                 {card.isPlaceholder && (
                   <div className="card-content placeholder-content">
-                    <div className="placeholder-icon">+</div>
+                    {card.title ? (
+                      <h3 className="placeholder-title">{card.title}</h3>
+                    ) : (
+                      <div className="placeholder-icon">+</div>
+                    )}
                   </div>
                 )}
               </div>
@@ -465,6 +479,15 @@ export default function February2026Page() {
           font-size: 2rem;
           color: #d6d3d1;
           font-weight: 300;
+        }
+
+        .placeholder-title {
+          font-size: 0.875rem;
+          font-weight: 600;
+          color: #a8a29e;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin: 0;
         }
 
         /* Modal */

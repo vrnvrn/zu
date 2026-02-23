@@ -32,6 +32,7 @@ interface Card {
   isComingSoon?: boolean
   isExternalLink?: boolean
   externalUrl?: string
+  isFadedImage?: boolean
 }
 
 const hubs: Record<string, Hub> = {
@@ -100,8 +101,8 @@ const cards: Card[] = [
   { id: 'stats', hubId: 'stats', title: 'Ecosystem Stats', isPlaceholder: true },
   { id: 'forum', hubId: 'forum', title: 'Zuzone Forum', isComingSoon: true },
   { id: 'twitter', hubId: 'placeholder', title: 'Follow our new X!', isExternalLink: true, externalUrl: 'https://x.com/zuzones' },
-  { id: 'placeholder-8', hubId: 'placeholder', isPlaceholder: true },
-  { id: 'placeholder-9', hubId: 'placeholder', isPlaceholder: true },
+  { id: 'faded-1', hubId: 'placeholder', isFadedImage: true, image: '/newsletters/images/2026-01/Invisiblegarden.jpeg' },
+  { id: 'faded-2', hubId: 'placeholder', isFadedImage: true, image: '/newsletters/images/2026-01/edgecity.jpeg' },
 ]
 
 const popupCities = [
@@ -158,17 +159,6 @@ export default function February2026Page() {
     setSelectedHub(null)
   }
 
-  const backgroundImages = [
-    '/newsletters/images/2026-01/Invisiblegarden.jpeg',
-    '/newsletters/images/2026-01/edgecity.jpeg',
-    '/newsletters/images/2026-01/infinita1.jpeg',
-    '/newsletters/images/2026-01/zanzalu.jpeg',
-    '/newsletters/images/2026-01/zuberlin.jpeg',
-    '/newsletters/images/2026-01/zugrama1.jpeg',
-    '/newsletters/images/2026-01/frontiertower.jpg',
-    '/newsletters/images/2026-01/crecimento.png',
-  ]
-
   return (
     <>
       <Nav />
@@ -178,16 +168,6 @@ export default function February2026Page() {
         <span className="in-progress-icon">🚧</span>
       </div>
       <div className="newsletter-fullpage">
-        <div className="background-images left">
-          {backgroundImages.slice(0, 4).map((src, i) => (
-            <Image key={`bg-left-${i}`} src={src} alt="" width={120} height={80} className="bg-image" />
-          ))}
-        </div>
-        <div className="background-images right">
-          {backgroundImages.slice(4).map((src, i) => (
-            <Image key={`bg-right-${i}`} src={src} alt="" width={120} height={80} className="bg-image" />
-          ))}
-        </div>
         <div className="newsletter-grid">
           {cards.map((card) => {
             const hub = hubs[card.hubId]
@@ -233,6 +213,14 @@ export default function February2026Page() {
                     <h3 className="external-link-title">{title}</h3>
                   </div>
                 </a>
+              )
+            }
+
+            if (card.isFadedImage && card.image) {
+              return (
+                <div key={card.id} className="card faded-image">
+                  <Image className="card-image" src={card.image} alt="" fill sizes="(max-width: 500px) 50vw, (max-width: 768px) 33vw, 300px" />
+                </div>
               )
             }
 
@@ -349,40 +337,6 @@ export default function February2026Page() {
           padding: 0;
           margin: 0;
           background: #fafaf9;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .background-images {
-          position: fixed;
-          top: 100px;
-          display: flex;
-          flex-direction: column;
-          gap: 0;
-          pointer-events: none;
-          z-index: 0;
-        }
-
-        .background-images.left {
-          left: 0;
-        }
-
-        .background-images.right {
-          right: 0;
-        }
-
-        .bg-image {
-          width: 140px;
-          height: 100px;
-          object-fit: cover;
-          opacity: 0.35;
-          filter: grayscale(20%);
-        }
-
-        @media (max-width: 1200px) {
-          .background-images {
-            display: none;
-          }
         }
 
         .newsletter-grid {
@@ -633,6 +587,21 @@ export default function February2026Page() {
           text-transform: uppercase;
           letter-spacing: 0.05em;
           margin: 0;
+        }
+
+        .card.faded-image {
+          padding: 0;
+          cursor: default;
+          min-height: 160px;
+        }
+
+        .card.faded-image:hover {
+          background: transparent;
+        }
+
+        .card.faded-image .card-image {
+          opacity: 0.4;
+          filter: grayscale(15%);
         }
 
         /* Modal */

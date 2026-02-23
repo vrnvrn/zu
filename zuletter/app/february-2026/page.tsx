@@ -3,6 +3,7 @@
 import Nav from '@/components/Nav'
 import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface Hub {
   id: string
@@ -66,12 +67,17 @@ Cheaper, native batch verification strengthens decentralization and user soverei
     title: 'Coming Soon',
     fullContent: 'This card will be updated with hub news and updates.',
   },
+  crossword: {
+    id: 'crossword',
+    title: 'February Crossword',
+    fullContent: 'Test your knowledge of the Zuzalu ecosystem with this month\'s crossword puzzle!',
+  },
 }
 
 const cards: Card[] = [
   { id: 'intro', hubId: 'intro', title: 'Zuzalu Newsletter', subtitle: 'February 2026', isIntro: true },
   { id: 'dacc', hubId: 'dacc', title: 'd/acc in Practice', isDacc: true, image: '/images/ChrisMata.jpeg' },
-  { id: 'placeholder-2', hubId: 'placeholder', isPlaceholder: true },
+  { id: 'crossword', hubId: 'crossword', title: 'February Crossword', isCrossword: true, image: '/images/feb26crossword.png' },
   { id: 'placeholder-3', hubId: 'placeholder', isPlaceholder: true },
   { id: 'placeholder-4', hubId: 'placeholder', isPlaceholder: true },
   { id: 'placeholder-5', hubId: 'placeholder', isPlaceholder: true },
@@ -127,7 +133,7 @@ export default function February2026Page() {
   const [selectedHub, setSelectedHub] = useState<Hub | null>(null)
 
   const handleCardClick = (card: Card) => {
-    if (card.isPlaceholder) {
+    if (card.isPlaceholder || card.isCrossword) {
       return
     }
     setSelectedHub(hubs[card.hubId])
@@ -152,10 +158,25 @@ export default function February2026Page() {
             const title = card.title || hub?.title
             const subtitle = card.subtitle || hub?.date?.replace(/,?\s*\d{4}/g, '').toUpperCase()
 
+            if (card.isCrossword) {
+              return (
+                <Link
+                  key={card.id}
+                  href="/crossword"
+                  className="card crossword has-image"
+                >
+                  <Image className="card-image" src={card.image!} alt={title} fill sizes="(max-width: 500px) 50vw, (max-width: 768px) 33vw, (max-width: 1000px) 25vw, 20vw" />
+                  <div className="card-content overlay">
+                    <h3 className="card-title">{title}</h3>
+                  </div>
+                </Link>
+              )
+            }
+
             return (
               <div
                 key={card.id}
-                className={`card ${card.isIntro ? 'intro' : ''} ${card.isCrossword ? 'crossword' : ''} ${card.isCongrats ? 'congrats' : ''} ${card.image && !card.isDacc ? 'has-image' : ''} ${card.isFiller ? 'filler' : ''} ${card.isPlaceholder ? 'placeholder' : ''} ${card.isDacc ? 'dacc' : ''}`}
+                className={`card ${card.isIntro ? 'intro' : ''} ${card.isCongrats ? 'congrats' : ''} ${card.image && !card.isDacc ? 'has-image' : ''} ${card.isFiller ? 'filler' : ''} ${card.isPlaceholder ? 'placeholder' : ''} ${card.isDacc ? 'dacc' : ''}`}
                 onClick={() => handleCardClick(card)}
               >
                 {card.image && !card.isDacc && (
@@ -418,6 +439,20 @@ export default function February2026Page() {
 
         .card.placeholder:hover {
           background: #f5f5f4;
+        }
+
+        .card.crossword {
+          background: #1a4a40;
+          text-decoration: none;
+        }
+
+        .card.crossword:hover {
+          background: #153832;
+        }
+
+        .card.crossword .card-title {
+          color: white;
+          text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
 
         .placeholder-content {

@@ -11,8 +11,8 @@ export default function CrosswordPage() {
         <div className="crossword-container">
           <div className="crossword-grid-wrapper">
             <Image
-              src="/images/crossword-blank.svg"
-              alt="Crossword puzzle grid"
+              src="/images/feb26crossword.png"
+              alt="February 2026 Crossword puzzle"
               width={500}
               height={500}
               className="crossword-image"
@@ -20,17 +20,31 @@ export default function CrosswordPage() {
             />
           </div>
 
-          <div className="crossword-info">
-            <p className="crossword-label">Coming in</p>
-            <h1 className="crossword-title">February 2026</h1>
-            <p className="crossword-description">
-              The first ZuLetter community crossword is launching next month.
-              Each puzzle will be based on the previous month&apos;s newsletter updates
-              — a fun way to test how closely you&apos;ve been following the Zuzalu ecosystem.
-            </p>
-            <p className="crossword-description" style={{ color: 'var(--text-tertiary)' }}>
-              Stay tuned.
-            </p>
+          <div className="crossword-clues">
+            <div className="clues-column">
+              <h2 className="clues-heading">Down:</h2>
+              <ol className="clues-list">
+                <li value={1}>A builder immersion revealing innovation at &quot;China speed.&quot;</li>
+                <li value={2}>From container of serendipity to catalyst of emergence.</li>
+                <li value={4}>A Swiss experiment coordinating capital through a hub accelerator model.</li>
+                <li value={7}>A residency accelerating Ethereum applications while its geography remains undecided.</li>
+                <li value={9}>A vertical village designing a permanent city for longevity and self-governance.</li>
+                <li value={11}>Where governance, longevity science, and startup cities become a seasonal game.</li>
+                <li value={12}>A proto-city designed through hacker houses and AI-driven urban experiments.</li>
+                <li value={13}>A governance lab testing ranked voting and phygital commons.</li>
+              </ol>
+            </div>
+            <div className="clues-column">
+              <h2 className="clues-heading">Across:</h2>
+              <ol className="clues-list">
+                <li value={3}>Two urban scales of belonging — a Kreuzberg hub and riverside vision.</li>
+                <li value={5}>A distributed African ecosystem nurturing Web3 builders and local hubs.</li>
+                <li value={6}>Turns regional growth into infrastructure through buildathons and startup pipelines.</li>
+                <li value={8}>A governance experiment where a ghost city becomes proof that coordination can scale.</li>
+                <li value={10}>A residency where focus defeats frenzy and builders pursue truth and privacy.</li>
+                <li value={15}>A programmable society with citizenship passports, AI agents, and land stewardship.</li>
+              </ol>
+            </div>
           </div>
         </div>
       </div>
@@ -39,98 +53,98 @@ export default function CrosswordPage() {
         .crossword-page {
           min-height: calc(100vh - 60px);
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           justify-content: center;
-          padding: 2rem;
+          padding: 3rem 2rem;
         }
 
         .crossword-container {
           display: flex;
-          align-items: center;
-          gap: 4rem;
-          max-width: 900px;
+          align-items: flex-start;
+          gap: 3rem;
+          max-width: 1100px;
           width: 100%;
         }
 
         .crossword-grid-wrapper {
           flex-shrink: 0;
-          width: 420px;
-          height: 420px;
+          width: 400px;
+          height: 400px;
           position: relative;
-          animation: float 5s ease-in-out infinite;
         }
 
         .crossword-image {
           width: 100%;
           height: 100%;
           display: block;
-          opacity: 0.9;
-          animation: pulse 3s ease-in-out infinite;
         }
 
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0) rotate(0deg) scale(1);
-          }
-          25% {
-            transform: translateY(-18px) rotate(1.5deg) scale(1.02);
-          }
-          75% {
-            transform: translateY(6px) rotate(-1deg) scale(0.99);
-          }
+        .crossword-clues {
+          flex: 1;
+          display: flex;
+          gap: 3rem;
         }
 
-        @keyframes pulse {
-          0%, 100% {
-            opacity: 0.9;
-          }
-          50% {
-            opacity: 1;
-          }
-        }
-
-        .crossword-info {
+        .clues-column {
           flex: 1;
         }
 
-        .crossword-label {
-          font-size: 0.75rem;
+        .clues-heading {
+          font-size: 1rem;
           font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 0.12em;
-          color: var(--accent);
-          margin: 0 0 0.5rem;
-        }
-
-        .crossword-title {
-          font-size: 2.5rem;
-          font-weight: 700;
-          letter-spacing: -0.02em;
-          margin: 0 0 1.25rem;
-          line-height: 1.1;
-        }
-
-        .crossword-description {
-          font-size: 1.0625rem;
-          color: var(--text-secondary);
-          line-height: 1.75;
           margin: 0 0 1rem;
+          color: var(--text-primary);
         }
 
-        @media (max-width: 700px) {
+        .clues-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .clues-list li {
+          font-size: 0.9375rem;
+          line-height: 1.6;
+          color: var(--text-secondary);
+          margin-bottom: 0.875rem;
+          padding-left: 1.75rem;
+          position: relative;
+        }
+
+        .clues-list li::before {
+          content: attr(value) ".";
+          position: absolute;
+          left: 0;
+          font-weight: 600;
+          color: var(--text-primary);
+        }
+
+        @media (max-width: 900px) {
           .crossword-container {
             flex-direction: column;
+            align-items: center;
             gap: 2rem;
-            text-align: center;
           }
 
+          .crossword-grid-wrapper {
+            width: 320px;
+            height: 320px;
+          }
+
+          .crossword-clues {
+            width: 100%;
+          }
+        }
+
+        @media (max-width: 600px) {
           .crossword-grid-wrapper {
             width: 280px;
             height: 280px;
           }
 
-          .crossword-title {
-            font-size: 2rem;
+          .crossword-clues {
+            flex-direction: column;
+            gap: 2rem;
           }
         }
       `}</style>

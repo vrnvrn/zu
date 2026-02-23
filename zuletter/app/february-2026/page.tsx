@@ -114,14 +114,17 @@ const fadedImages = [
 ]
 
 const contentCards: Card[] = [
+  // Row 1
   { id: 'intro', hubId: 'intro', title: 'Zuzalu Newsletter', subtitle: 'February 2026', isIntro: true },
   { id: 'dacc', hubId: 'dacc', title: 'd/acc in Practice', isDacc: true, image: '/images/ChrisMata.jpeg' },
   { id: 'crossword', hubId: 'crossword', title: 'February Crossword', isCrossword: true, image: '/images/feb26crossword.png' },
+  // Row 2
   { id: 'article', hubId: 'article', title: 'Article', isComingSoon: true },
-  { id: 'stats', hubId: 'stats', title: 'Ecosystem Stats', isComingSoon: true },
+  { id: 'placeholder-center', hubId: 'placeholder', isPlaceholder: true },
   { id: 'forum', hubId: 'forum', title: 'Zuzone Forum', isComingSoon: true },
+  // Row 3
   { id: 'twitter', hubId: 'placeholder', title: 'Follow our new X!', isExternalLink: true, externalUrl: 'https://x.com/zuzones' },
-  { id: 'placeholder-8', hubId: 'placeholder', isPlaceholder: true },
+  { id: 'stats', hubId: 'stats', title: 'Ecosystem Stats', isComingSoon: true },
   { id: 'placeholder-9', hubId: 'placeholder', isPlaceholder: true },
 ]
 

@@ -155,6 +155,40 @@ const cards: Card[] = [
   { id: 'faded-15', hubId: 'placeholder', isFadedImage: true, image: fadedImages[15] },
 ]
 
+// Scrapbook positions for each card (25 total)
+const cardPositions = [
+  // Row 1: top faded images
+  { top: '0vw', left: '2vw', rotate: -4, width: '18vw', zIndex: 1 },
+  { top: '1vw', left: '18vw', rotate: 3, width: '17vw', zIndex: 2 },
+  { top: '-1vw', left: '34vw', rotate: -2, width: '19vw', zIndex: 1 },
+  { top: '2vw', left: '52vw', rotate: 4, width: '16vw', zIndex: 2 },
+  { top: '0vw', left: '68vw', rotate: -3, width: '18vw', zIndex: 1 },
+  // Row 2: faded, intro, dacc, crossword, faded
+  { top: '14vw', left: '-1vw', rotate: 5, width: '16vw', zIndex: 2 },
+  { top: '12vw', left: '14vw', rotate: -2, width: '22vw', zIndex: 10 },
+  { top: '13vw', left: '35vw', rotate: 3, width: '20vw', zIndex: 11 },
+  { top: '11vw', left: '54vw', rotate: -4, width: '21vw', zIndex: 10 },
+  { top: '15vw', left: '74vw', rotate: 2, width: '15vw', zIndex: 2 },
+  // Row 3: faded, article, placeholder, forum, faded
+  { top: '28vw', left: '1vw', rotate: -3, width: '15vw', zIndex: 3 },
+  { top: '26vw', left: '15vw', rotate: 4, width: '20vw', zIndex: 12 },
+  { top: '27vw', left: '36vw', rotate: -1, width: '18vw', zIndex: 9 },
+  { top: '25vw', left: '53vw', rotate: 3, width: '21vw', zIndex: 12 },
+  { top: '29vw', left: '73vw', rotate: -5, width: '16vw', zIndex: 3 },
+  // Row 4: faded, twitter, stats, placeholder, faded
+  { top: '41vw', left: '0vw', rotate: 4, width: '17vw', zIndex: 2 },
+  { top: '39vw', left: '16vw', rotate: -3, width: '19vw', zIndex: 11 },
+  { top: '40vw', left: '34vw', rotate: 2, width: '21vw', zIndex: 10 },
+  { top: '38vw', left: '54vw', rotate: -4, width: '18vw', zIndex: 9 },
+  { top: '42vw', left: '72vw', rotate: 3, width: '17vw', zIndex: 2 },
+  // Row 5: bottom faded images
+  { top: '54vw', left: '3vw', rotate: -2, width: '16vw', zIndex: 1 },
+  { top: '55vw', left: '19vw', rotate: 5, width: '18vw', zIndex: 2 },
+  { top: '53vw', left: '36vw', rotate: -3, width: '17vw', zIndex: 1 },
+  { top: '56vw', left: '53vw', rotate: 2, width: '19vw', zIndex: 2 },
+  { top: '54vw', left: '70vw', rotate: -4, width: '18vw', zIndex: 1 },
+]
+
 const popupCities = [
   { name: 'ETH Chiang Mai', date: 'Dec 8 – Feb 3', url: 'https://www.ethchiangmai.com/' },
   { name: 'Infinita City', date: 'Feb 1 – Mar 31', url: 'https://infinita.city/' },
@@ -366,34 +400,46 @@ export default function February2026Page() {
         <span className="in-progress-icon">🚧</span>
       </div>
       <div className="newsletter-fullpage">
-        <div className="newsletter-grid">
-          {cards.map((card) => {
+        <div className="scrapbook-container">
+          {cards.map((card, index) => {
             const hub = hubs[card.hubId]
             const title = card.title || hub?.title
             const subtitle = card.subtitle || hub?.date?.replace(/,?\s*\d{4}/g, '').toUpperCase()
+            const pos = cardPositions[index] || { top: '0', left: '0', rotate: 0, width: '18vw', zIndex: 1 }
+            const posStyle = {
+              position: 'absolute' as const,
+              top: pos.top,
+              left: pos.left,
+              width: pos.width,
+              transform: `rotate(${pos.rotate}deg)`,
+              zIndex: pos.zIndex,
+            }
 
             if (card.isCrossword) {
               return (
                 <Link
                   key={card.id}
                   href="/crossword"
-                  className="card crossword has-image"
+                  className="card crossword has-image scrapbook-card"
+                  style={posStyle}
                 >
-                  <Image className="card-image" src={card.image!} alt={title} fill sizes="(max-width: 500px) 50vw, (max-width: 768px) 33vw, (max-width: 1000px) 25vw, 20vw" />
+                  <Image className="card-image" src={card.image!} alt={title} fill sizes="25vw" />
                   <div className="card-content overlay">
                     <h3 className="card-title">{title}</h3>
                   </div>
+                  <div className="tape tape-top" />
                 </Link>
               )
             }
 
             if (card.isComingSoon) {
               return (
-                <div key={card.id} className="card coming-soon">
+                <div key={card.id} className="card coming-soon scrapbook-card" style={posStyle}>
                   <div className="card-content coming-soon-content">
                     <p className="coming-soon-label">Coming Soon</p>
                     <h3 className="coming-soon-title">{title}</h3>
                   </div>
+                  <div className="tape tape-top" />
                 </div>
               )
             }
@@ -405,19 +451,22 @@ export default function February2026Page() {
                   href={card.externalUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="card external-link"
+                  className="card external-link scrapbook-card"
+                  style={posStyle}
                 >
                   <div className="card-content external-link-content">
                     <h3 className="external-link-title">{title}</h3>
                   </div>
+                  <div className="tape tape-top" />
                 </a>
               )
             }
 
             if (card.isFadedImage && card.image) {
               return (
-                <div key={card.id} className="card faded-image">
-                  <Image className="card-image" src={card.image} alt="" fill sizes="(max-width: 500px) 50vw, (max-width: 768px) 33vw, 300px" />
+                <div key={card.id} className="card faded-image scrapbook-card" style={posStyle}>
+                  <Image className="card-image" src={card.image} alt="" fill sizes="25vw" />
+                  <div className="tape tape-corner" />
                 </div>
               )
             }
@@ -425,11 +474,12 @@ export default function February2026Page() {
             return (
               <div
                 key={card.id}
-                className={`card ${card.isIntro ? 'intro' : ''} ${card.isCongrats ? 'congrats' : ''} ${card.image && !card.isDacc ? 'has-image' : ''} ${card.isFiller ? 'filler' : ''} ${card.isPlaceholder ? 'placeholder' : ''} ${card.isDacc ? 'dacc' : ''}`}
+                className={`card scrapbook-card ${card.isIntro ? 'intro' : ''} ${card.isCongrats ? 'congrats' : ''} ${card.image && !card.isDacc ? 'has-image' : ''} ${card.isFiller ? 'filler' : ''} ${card.isPlaceholder ? 'placeholder' : ''} ${card.isDacc ? 'dacc' : ''}`}
+                style={posStyle}
                 onClick={() => handleCardClick(card)}
               >
                 {card.image && !card.isDacc && (
-                  <Image className="card-image" src={card.image} alt={card.isFiller ? '' : title} fill sizes="(max-width: 500px) 50vw, (max-width: 768px) 33vw, (max-width: 1000px) 25vw, 20vw" />
+                  <Image className="card-image" src={card.image} alt={card.isFiller ? '' : title} fill sizes="25vw" />
                 )}
                 {card.isDacc && (
                   <div className="card-content dacc-content">
@@ -455,6 +505,7 @@ export default function February2026Page() {
                     )}
                   </div>
                 )}
+                <div className="tape tape-top" />
               </div>
             )
           })}
@@ -545,17 +596,52 @@ export default function February2026Page() {
           background: #fafaf9;
         }
 
-        .newsletter-grid {
-          display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          gap: 0;
-          margin: 0;
-          padding: 0;
+        .scrapbook-container {
+          position: relative;
+          width: 100%;
+          height: 75vw;
+          min-height: 600px;
+          overflow: visible;
+        }
+
+        .scrapbook-card {
+          box-shadow: 3px 4px 12px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.1);
+          transition: transform 0.2s ease, z-index 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .scrapbook-card:hover {
+          z-index: 100 !important;
+          box-shadow: 5px 8px 20px rgba(0,0,0,0.25);
+        }
+
+        .tape {
+          position: absolute;
+          background: rgba(255, 248, 220, 0.7);
+          pointer-events: none;
+        }
+
+        .tape-top {
+          top: -8px;
+          left: 50%;
+          transform: translateX(-50%) rotate(-2deg);
+          width: 50px;
+          height: 18px;
+          border-radius: 2px;
+        }
+
+        .tape-corner {
+          top: -5px;
+          right: -5px;
+          width: 35px;
+          height: 15px;
+          transform: rotate(45deg);
+          border-radius: 2px;
         }
 
         .card {
           background: #fafaf9;
           padding: 1rem;
+          aspect-ratio: 1;
           cursor: pointer;
           transition: background 0.15s;
           display: flex;
@@ -805,7 +891,8 @@ export default function February2026Page() {
         .card.faded-image {
           padding: 0;
           cursor: default;
-          min-height: 160px;
+          overflow: hidden;
+          border-radius: 4px;
         }
 
         .card.faded-image:hover {
@@ -813,8 +900,8 @@ export default function February2026Page() {
         }
 
         .card.faded-image .card-image {
-          opacity: 0.4;
-          filter: grayscale(15%);
+          opacity: 0.85;
+          filter: grayscale(10%) saturate(0.9);
         }
 
         /* Modal */
@@ -998,21 +1085,19 @@ export default function February2026Page() {
           color: #2d6b5d;
         }
 
-        @media (max-width: 1000px) {
-          .newsletter-grid {
-            grid-template-columns: repeat(4, 1fr);
-          }
-        }
-
         @media (max-width: 768px) {
-          .newsletter-grid {
-            grid-template-columns: repeat(3, 1fr);
+          .scrapbook-container {
+            height: 120vw;
+          }
+          
+          .scrapbook-card {
+            font-size: 0.8rem;
           }
         }
 
         @media (max-width: 500px) {
-          .newsletter-grid {
-            grid-template-columns: 1fr;
+          .scrapbook-container {
+            height: 160vw;
           }
         }
       `}</style>

@@ -112,20 +112,20 @@ const contentCards: Card[] = [
 // Just the 9 content cards in a 3x3 layout
 const cards: Card[] = [...contentCards]
 
-// Scrapbook positions for 3x3 grid (9 cards, spread further apart)
+// Scrapbook positions for 3x3 grid (fits in viewport)
 const cardPositions = [
   // Row 1: intro, dacc, crossword
-  { top: '2vw', left: '5vw', rotate: -3, width: '26vw', zIndex: 10 },
-  { top: '3vw', left: '35vw', rotate: 2, width: '24vw', zIndex: 11 },
-  { top: '1vw', left: '64vw', rotate: -4, width: '25vw', zIndex: 10 },
+  { top: '0%', left: '3%', rotate: -3, width: '28%', zIndex: 10 },
+  { top: '2%', left: '36%', rotate: 2, width: '26%', zIndex: 11 },
+  { top: '1%', left: '68%', rotate: -4, width: '27%', zIndex: 10 },
   // Row 2: article, placeholder, forum
-  { top: '26vw', left: '6vw', rotate: 4, width: '25vw', zIndex: 12 },
-  { top: '27vw', left: '36vw', rotate: -1, width: '22vw', zIndex: 9 },
-  { top: '25vw', left: '63vw', rotate: 3, width: '26vw', zIndex: 12 },
+  { top: '34%', left: '4%', rotate: 4, width: '27%', zIndex: 12 },
+  { top: '35%', left: '37%', rotate: -1, width: '24%', zIndex: 9 },
+  { top: '33%', left: '67%', rotate: 3, width: '28%', zIndex: 12 },
   // Row 3: twitter, stats, placeholder
-  { top: '50vw', left: '7vw', rotate: -2, width: '24vw', zIndex: 11 },
-  { top: '51vw', left: '35vw', rotate: 3, width: '25vw', zIndex: 10 },
-  { top: '49vw', left: '64vw', rotate: -3, width: '24vw', zIndex: 9 },
+  { top: '67%', left: '5%', rotate: -2, width: '26%', zIndex: 11 },
+  { top: '68%', left: '36%', rotate: 3, width: '27%', zIndex: 10 },
+  { top: '66%', left: '68%', rotate: -3, width: '26%', zIndex: 9 },
 ]
 
 const popupCities = [
@@ -538,9 +538,10 @@ export default function February2026Page() {
         .scrapbook-container {
           position: relative;
           width: 100%;
-          height: 85vw;
-          min-height: 700px;
-          max-width: 1200px;
+          height: calc(100vh - 160px);
+          min-height: 500px;
+          max-height: 800px;
+          max-width: 1100px;
           margin: 0 auto;
           overflow: visible;
         }
@@ -581,8 +582,8 @@ export default function February2026Page() {
 
         .card {
           background: #fafaf9;
-          padding: 1rem;
-          aspect-ratio: 1;
+          padding: 0.75rem;
+          height: 28%;
           cursor: pointer;
           transition: background 0.15s;
           display: flex;
@@ -1028,17 +1029,23 @@ export default function February2026Page() {
 
         @media (max-width: 768px) {
           .scrapbook-container {
-            height: 120vw;
+            height: auto;
+            min-height: 80vh;
+            max-height: none;
           }
           
           .scrapbook-card {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
           }
         }
 
         @media (max-width: 500px) {
           .scrapbook-container {
-            height: 160vw;
+            min-height: 100vh;
+          }
+          
+          .scrapbook-card {
+            font-size: 0.7rem;
           }
         }
       `}</style>

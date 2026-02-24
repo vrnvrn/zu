@@ -94,25 +94,6 @@ Cheaper, native batch verification strengthens decentralization and user soverei
   },
 }
 
-const fadedImages = [
-  '/newsletters/images/2026-01/Invisiblegarden.jpeg',
-  '/newsletters/images/2026-01/edgecity.jpeg',
-  '/newsletters/images/2026-01/infinita1.jpeg',
-  '/newsletters/images/2026-01/zanzalu.jpeg',
-  '/newsletters/images/2026-01/zuberlin.jpeg',
-  '/newsletters/images/2026-01/zugrama1.jpeg',
-  '/newsletters/images/2026-01/frontiertower.jpg',
-  '/newsletters/images/2026-01/crecimento.png',
-  '/newsletters/images/2026-01/muShanghai.jpg',
-  '/newsletters/images/2026-01/shw.jpeg',
-  '/newsletters/images/2026-01/infinita2.jpeg',
-  '/newsletters/images/2026-01/zugrama2.jpeg',
-  '/newsletters/images/2026-01/infinita3.jpeg',
-  '/newsletters/images/2026-01/invisiblegarden1.jpeg',
-  '/newsletters/images/2026-01/infinita4.jpeg',
-  '/newsletters/images/2026-01/infinita5.jpeg',
-]
-
 const contentCards: Card[] = [
   // Row 1
   { id: 'intro', hubId: 'intro', title: 'Zuzalu Newsletter', subtitle: 'February 2026', isIntro: true },
@@ -128,65 +109,23 @@ const contentCards: Card[] = [
   { id: 'placeholder-9', hubId: 'placeholder', isPlaceholder: true },
 ]
 
-const cards: Card[] = [
-  // Row 1: 5 faded images (top border)
-  { id: 'faded-0', hubId: 'placeholder', isFadedImage: true, image: fadedImages[0] },
-  { id: 'faded-1', hubId: 'placeholder', isFadedImage: true, image: fadedImages[1] },
-  { id: 'faded-2', hubId: 'placeholder', isFadedImage: true, image: fadedImages[2] },
-  { id: 'faded-3', hubId: 'placeholder', isFadedImage: true, image: fadedImages[3] },
-  { id: 'faded-4', hubId: 'placeholder', isFadedImage: true, image: fadedImages[4] },
-  // Row 2: faded, 3 content, faded
-  { id: 'faded-5', hubId: 'placeholder', isFadedImage: true, image: fadedImages[5] },
-  ...contentCards.slice(0, 3),
-  { id: 'faded-6', hubId: 'placeholder', isFadedImage: true, image: fadedImages[6] },
-  // Row 3: faded, 3 content, faded
-  { id: 'faded-7', hubId: 'placeholder', isFadedImage: true, image: fadedImages[7] },
-  ...contentCards.slice(3, 6),
-  { id: 'faded-8', hubId: 'placeholder', isFadedImage: true, image: fadedImages[8] },
-  // Row 4: faded, 3 content, faded
-  { id: 'faded-9', hubId: 'placeholder', isFadedImage: true, image: fadedImages[9] },
-  ...contentCards.slice(6, 9),
-  { id: 'faded-10', hubId: 'placeholder', isFadedImage: true, image: fadedImages[10] },
-  // Row 5: 5 faded images (bottom border)
-  { id: 'faded-11', hubId: 'placeholder', isFadedImage: true, image: fadedImages[11] },
-  { id: 'faded-12', hubId: 'placeholder', isFadedImage: true, image: fadedImages[12] },
-  { id: 'faded-13', hubId: 'placeholder', isFadedImage: true, image: fadedImages[13] },
-  { id: 'faded-14', hubId: 'placeholder', isFadedImage: true, image: fadedImages[14] },
-  { id: 'faded-15', hubId: 'placeholder', isFadedImage: true, image: fadedImages[15] },
-]
+// Just the 9 content cards in a 3x3 layout
+const cards: Card[] = [...contentCards]
 
-// Scrapbook positions for each card (25 total)
+// Scrapbook positions for 3x3 grid (9 cards, spread further apart)
 const cardPositions = [
-  // Row 1: top faded images
-  { top: '0vw', left: '2vw', rotate: -4, width: '18vw', zIndex: 1 },
-  { top: '1vw', left: '18vw', rotate: 3, width: '17vw', zIndex: 2 },
-  { top: '-1vw', left: '34vw', rotate: -2, width: '19vw', zIndex: 1 },
-  { top: '2vw', left: '52vw', rotate: 4, width: '16vw', zIndex: 2 },
-  { top: '0vw', left: '68vw', rotate: -3, width: '18vw', zIndex: 1 },
-  // Row 2: faded, intro, dacc, crossword, faded
-  { top: '14vw', left: '-1vw', rotate: 5, width: '16vw', zIndex: 2 },
-  { top: '12vw', left: '14vw', rotate: -2, width: '22vw', zIndex: 10 },
-  { top: '13vw', left: '35vw', rotate: 3, width: '20vw', zIndex: 11 },
-  { top: '11vw', left: '54vw', rotate: -4, width: '21vw', zIndex: 10 },
-  { top: '15vw', left: '74vw', rotate: 2, width: '15vw', zIndex: 2 },
-  // Row 3: faded, article, placeholder, forum, faded
-  { top: '28vw', left: '1vw', rotate: -3, width: '15vw', zIndex: 3 },
-  { top: '26vw', left: '15vw', rotate: 4, width: '20vw', zIndex: 12 },
-  { top: '27vw', left: '36vw', rotate: -1, width: '18vw', zIndex: 9 },
-  { top: '25vw', left: '53vw', rotate: 3, width: '21vw', zIndex: 12 },
-  { top: '29vw', left: '73vw', rotate: -5, width: '16vw', zIndex: 3 },
-  // Row 4: faded, twitter, stats, placeholder, faded
-  { top: '41vw', left: '0vw', rotate: 4, width: '17vw', zIndex: 2 },
-  { top: '39vw', left: '16vw', rotate: -3, width: '19vw', zIndex: 11 },
-  { top: '40vw', left: '34vw', rotate: 2, width: '21vw', zIndex: 10 },
-  { top: '38vw', left: '54vw', rotate: -4, width: '18vw', zIndex: 9 },
-  { top: '42vw', left: '72vw', rotate: 3, width: '17vw', zIndex: 2 },
-  // Row 5: bottom faded images
-  { top: '54vw', left: '3vw', rotate: -2, width: '16vw', zIndex: 1 },
-  { top: '55vw', left: '19vw', rotate: 5, width: '18vw', zIndex: 2 },
-  { top: '53vw', left: '36vw', rotate: -3, width: '17vw', zIndex: 1 },
-  { top: '56vw', left: '53vw', rotate: 2, width: '19vw', zIndex: 2 },
-  { top: '54vw', left: '70vw', rotate: -4, width: '18vw', zIndex: 1 },
+  // Row 1: intro, dacc, crossword
+  { top: '2vw', left: '5vw', rotate: -3, width: '26vw', zIndex: 10 },
+  { top: '3vw', left: '35vw', rotate: 2, width: '24vw', zIndex: 11 },
+  { top: '1vw', left: '64vw', rotate: -4, width: '25vw', zIndex: 10 },
+  // Row 2: article, placeholder, forum
+  { top: '26vw', left: '6vw', rotate: 4, width: '25vw', zIndex: 12 },
+  { top: '27vw', left: '36vw', rotate: -1, width: '22vw', zIndex: 9 },
+  { top: '25vw', left: '63vw', rotate: 3, width: '26vw', zIndex: 12 },
+  // Row 3: twitter, stats, placeholder
+  { top: '50vw', left: '7vw', rotate: -2, width: '24vw', zIndex: 11 },
+  { top: '51vw', left: '35vw', rotate: 3, width: '25vw', zIndex: 10 },
+  { top: '49vw', left: '64vw', rotate: -3, width: '24vw', zIndex: 9 },
 ]
 
 const popupCities = [
@@ -599,8 +538,10 @@ export default function February2026Page() {
         .scrapbook-container {
           position: relative;
           width: 100%;
-          height: 75vw;
-          min-height: 600px;
+          height: 85vw;
+          min-height: 700px;
+          max-width: 1200px;
+          margin: 0 auto;
           overflow: visible;
         }
 

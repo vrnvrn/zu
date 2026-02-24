@@ -1,7 +1,7 @@
 'use client'
 
 import Nav from '@/components/Nav'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -197,6 +197,41 @@ function formatText(text: string) {
 
 export default function February2026Page() {
   const [selectedHub, setSelectedHub] = useState<Hub | null>(null)
+  const [isUnlocked, setIsUnlocked] = useState(false)
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const saved = sessionStorage.getItem('feb2026_unlocked')
+    if (saved === 'true') {
+      setIsUnlocked(true)
+    }
+    setIsLoading(false)
+  }, [])
+
+  const handlePasswordSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setError('')
+    
+    try {
+      const res = await fetch('/api/verify-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
+      })
+      const data = await res.json()
+      
+      if (data.valid) {
+        setIsUnlocked(true)
+        sessionStorage.setItem('feb2026_unlocked', 'true')
+      } else {
+        setError('Incorrect password')
+      }
+    } catch {
+      setError('Error verifying password')
+    }
+  }
 
   const handleCardClick = (card: Card) => {
     if (card.isPlaceholder || card.isCrossword || card.isComingSoon) {
@@ -207,6 +242,119 @@ export default function February2026Page() {
 
   const closeModal = () => {
     setSelectedHub(null)
+  }
+
+  if (isLoading) {
+    return (
+      <>
+        <Nav />
+        <div className="password-gate">
+          <div className="password-box">
+            <p>Loading...</p>
+          </div>
+        </div>
+        <style jsx>{`
+          .password-gate {
+            min-height: calc(100vh - 60px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fafaf9;
+          }
+          .password-box {
+            text-align: center;
+            color: #44403c;
+          }
+        `}</style>
+      </>
+    )
+  }
+
+  if (!isUnlocked) {
+    return (
+      <>
+        <Nav />
+        <div className="password-gate">
+          <div className="password-box">
+            <h2>February 2026 Newsletter</h2>
+            <p>This newsletter is password protected.</p>
+            <form onSubmit={handlePasswordSubmit}>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter password"
+                autoFocus
+              />
+              <button type="submit">Enter</button>
+            </form>
+            {error && <p className="error">{error}</p>}
+          </div>
+        </div>
+        <style jsx>{`
+          .password-gate {
+            min-height: calc(100vh - 60px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fafaf9;
+          }
+          .password-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+          }
+          .password-box h2 {
+            margin: 0 0 0.5rem;
+            color: #1c1917;
+            font-size: 1.5rem;
+          }
+          .password-box p {
+            margin: 0 0 1.5rem;
+            color: #6b7280;
+            font-size: 0.9375rem;
+          }
+          .password-box form {
+            display: flex;
+            gap: 0.5rem;
+          }
+          .password-box input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.15s;
+          }
+          .password-box input:focus {
+            border-color: #2d6b5d;
+          }
+          .password-box button {
+            padding: 0.75rem 1.5rem;
+            background: #2d6b5d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.15s;
+          }
+          .password-box button:hover {
+            background: #1a4a40;
+          }
+          .error {
+            color: #dc2626;
+            margin: 1rem 0 0;
+            font-size: 0.875rem;
+          }
+        `}</style>
+      </>
+    )
   }
 
   return (

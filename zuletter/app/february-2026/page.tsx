@@ -35,13 +35,14 @@ interface Card {
   isFadedImage?: boolean
   isFullImage?: boolean
   isBgImage?: boolean
+  isCenterText?: boolean
 }
 
 const hubs: Record<string, Hub> = {
   intro: {
     id: 'intro',
     title: 'Zuzone — February 2026',
-    fullContent: 'Welcome to the February 2026 edition of the Zuzone community newsletter! This month, we\'re excited to share updates from across the Zuzalu ecosystem, spotlight a groundbreaking new Ethereum precompile, and reflect on the potentials and pitfalls that lie ahead for our movement in 2026. Dive in to explore the latest developments, upcoming pop-up cities, and how we can all contribute to a more resilient and sovereign web.',
+    fullContent: 'Welcome to the February 2026 edition of the Zuzone community newsletter! \n\nThen what is ZuZone actually? The simplest answer: it\'s the space where we try to make this sustainable. \n\nThank you, everyone, for the care you bring to this ecosystem. \nWishing you a March full of good builds and conversations.',
   },
   dacc: {
     id: 'dacc',
@@ -80,6 +81,11 @@ Cheaper, native batch verification strengthens decentralization and user soverei
     title: 'Coming Soon',
     fullContent: 'This card will be updated with hub news and updates.',
   },
+  addcity: {
+    id: 'addcity',
+    title: 'Add Your Popup City or Village',
+    fullContent: 'Have a popup city or village you want to add to the Zuzone map? Want to introduce a new village to the community? Reach out to us at hi@zuzone.org',
+  },
   crossword: {
     id: 'crossword',
     title: 'February Crossword',
@@ -88,7 +94,11 @@ Cheaper, native batch verification strengthens decentralization and user soverei
   amagi: {
     id: 'amagi',
     title: 'Introducing New Villages',
-    fullContent: `Introducing Amagi - a regenerative village in Thailand that's become a proof-of-concept for scalable community ownership models. Six months in, we have residents living here, businesses operating, and other villages wanting to replicate our shared equity approach.`,
+    fullContent: `Introducing Amagi - a regenerative village in Thailand that's become a proof-of-concept for scalable community ownership models. Six months in, we have residents living here, businesses operating, and other villages wanting to replicate our shared equity approach.
+
+Learn more: https://amagi.life/
+
+Contact @oferrotem on TG for more details.`,
   },
   article: {
     id: 'article',
@@ -102,8 +112,8 @@ Cheaper, native batch verification strengthens decentralization and user soverei
   },
   forum: {
     id: 'forum',
-    title: 'Zuzone Forum',
-    fullContent: 'A community forum for the Zuzalu ecosystem. Coming soon.',
+    title: 'Winners of Crossword',
+    fullContent: 'Winners of the crossword puzzle will be announced in the next monthly newsletter! Stay tuned.',
   },
   burns: {
     id: 'burns',
@@ -133,32 +143,32 @@ const contentCards: Card[] = [
   { id: 'dacc', hubId: 'dacc', title: 'd/acc in Practice', isDacc: true, image: '/images/ChrisMata.jpeg' },
   { id: 'crossword', hubId: 'crossword', title: 'February Crossword', isCrossword: true, image: '/images/feb26crossword.png' },
   // Row 2
-  { id: 'burns', hubId: 'burns', title: 'On Potentials, Pitfalls and Priorities in Zu2026', subtitle: 'by Burns' },
+  { id: 'burns', hubId: 'burns', title: 'On Potentials, Pitfalls and Priorities in Zu2026', subtitle: 'by Burns', isCenterText: true },
   { id: 'placeholder-center', hubId: 'map', title: '2026 Map', image: '/images/zumap-2026.png', isFullImage: true },
-  { id: 'forum', hubId: 'forum', title: 'Zuzone Forum', isComingSoon: true },
+  { id: 'forum', hubId: 'forum', title: 'Winners of Crossword', subtitle: 'Announced next month' },
   // Row 3
   { id: 'twitter', hubId: 'placeholder', title: 'Follow our new X!', isExternalLink: true, externalUrl: 'https://x.com/zuzones' },
-  { id: 'amagi', hubId: 'amagi', title: 'Introducing New Villages', subtitle: 'Amagi, Thailand', isBgImage: true },
-  { id: 'placeholder-9', hubId: 'placeholder', isPlaceholder: true },
+  { id: 'amagi', hubId: 'amagi', title: 'Introducing New Villages', image: '/images/amagilife.jpeg', isBgImage: true },
+  { id: 'addcity', hubId: 'addcity', title: 'Add Your Popup City or Village', subtitle: 'Email: hi@zuzone.org', isExternalLink: true, externalUrl: 'mailto:hi@zuzone.org?subject=Add%20my%20popup%20city%20to%20the%20map' },
 ]
 
 // Just the 9 content cards in a 3x3 layout
 const cards: Card[] = [...contentCards]
 
-// Scrapbook positions for 3x3 grid (fits in viewport)
+// Scrapbook positions - 9 cards in centered grid
 const cardPositions = [
-  // Row 1: intro, dacc, crossword
-  { top: '0%', left: '0%', rotate: -3, width: '26%', height: '28%', zIndex: 10 },
-  { top: '2%', left: '28%', rotate: 2, width: '32%', height: '28%', zIndex: 11 },
-  { top: '0%', left: '62%', rotate: -2, width: '36%', height: '28%', zIndex: 10 },
-  // Row 2: burns, map, forum
-  { top: '33%', left: '0%', rotate: 4, width: '24%', height: '28%', zIndex: 12 },
-  { top: '31%', left: '26%', rotate: -1, width: '44%', height: '32%', zIndex: 13 },
-  { top: '33%', left: '72%', rotate: 3, width: '24%', height: '28%', zIndex: 12 },
-  // Row 3: twitter, amagi, placeholder
-  { top: '66%', left: '0%', rotate: -2, width: '24%', height: '28%', zIndex: 11 },
-  { top: '66%', left: '26%', rotate: 2, width: '32%', height: '28%', zIndex: 10 },
-  { top: '66%', left: '60%', rotate: -3, width: '38%', height: '28%', zIndex: 9 },
+  // Row 1
+  { top: '2%', left: '2%', rotate: -2, width: '28%', height: '28%', zIndex: 10 },
+  { top: '0%', left: '32%', rotate: 3, width: '32%', height: '28%', zIndex: 11 },
+  { top: '2%', left: '66%', rotate: -1, width: '30%', height: '28%', zIndex: 10 },
+  // Row 2
+  { top: '32%', left: '2%', rotate: 2, width: '26%', height: '28%', zIndex: 12 },
+  { top: '30%', left: '30%', rotate: -1, width: '38%', height: '30%', zIndex: 13 },
+  { top: '32%', left: '70%', rotate: 1, width: '26%', height: '28%', zIndex: 12 },
+  // Row 3
+  { top: '62%', left: '2%', rotate: -2, width: '26%', height: '28%', zIndex: 11 },
+  { top: '62%', left: '30%', rotate: 1, width: '28%', height: '28%', zIndex: 10 },
+  { top: '62%', left: '60%', rotate: -1, width: '36%', height: '28%', zIndex: 11 },
 ]
 
 const popupCities = [
@@ -228,7 +238,8 @@ export default function February2026Page() {
     <>
       <Nav />
       <div className="newsletter-fullpage">
-        <div className="scrapbook-container">
+        <div className="page-bg" />
+        <div className="scrapbook-container" style={{ position: 'relative', zIndex: 1 }}>
           {cards.map((card, index) => {
             const hub = hubs[card.hubId]
             const title = card.title || hub?.title
@@ -335,7 +346,7 @@ export default function February2026Page() {
                   </div>
                 )}
                 {!card.isFiller && !card.isPlaceholder && !card.isDacc && (
-                  <div className={`card-content ${(card.image || card.isBgImage) ? 'overlay' : ''}`}>
+                  <div className={`card-content ${(card.image || card.isBgImage) ? 'overlay' : ''} ${card.isCenterText ? 'center-text' : ''}`}>
                     <h3 className="card-title">{title}</h3>
                     {subtitle && <p className="card-subtitle">{subtitle}</p>}
                   </div>
@@ -436,15 +447,31 @@ export default function February2026Page() {
         .newsletter-fullpage {
           padding: 0;
           margin: 0;
+          min-height: 100vh;
+          width: 100%;
           background: #fafaf9;
+          position: relative;
+        }
+        
+        .page-bg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: url('/newsletters/images/2026-01-grid-collage.jpg');
+          background-size: cover;
+          background-position: center;
+          filter: blur(10px) brightness(0.35);
+          z-index: 0;
         }
 
         .scrapbook-container {
           position: relative;
           width: 100%;
-          height: calc(100vh - 160px);
-          min-height: 500px;
-          max-height: 800px;
+          height: calc(100vh - 120px);
+          min-height: 600px;
+          max-height: 900px;
           max-width: 1100px;
           margin: 0 auto;
           overflow: visible;
@@ -595,6 +622,20 @@ export default function February2026Page() {
           font-weight: 600;
           text-transform: uppercase;
           letter-spacing: 0.02em;
+        }
+
+        .card-content.center-text {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          padding: 1.5rem;
+        }
+
+        .card-content.center-text .card-title {
+          text-align: center;
+          font-size: 1.1rem;
         }
 
         .card.intro {

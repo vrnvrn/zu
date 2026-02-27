@@ -11,6 +11,12 @@ interface Announcement {
 
 const announcements: Announcement[] = [
   {
+    id: 'infinita',
+    title: 'Infinita City — Founders Cohort Applications Open',
+    fullContent: 'Infinita City is a seasonal proto-city in LATAM, focused on building the future of network states through technology, governance innovation, and community.\n\nOur next cohort runs February 1st - March 31st, 2026. We\'re looking for founders, builders, and visionaries who want to participate in building a new kind of city.\n\nApply now to join the founders cohort!',
+    link: { url: 'https://luma.com/founders_acc2026', text: 'Apply Now' },
+  },
+  {
     id: 'nomadlayer',
     title: 'Nomad Layer',
     fullContent: 'Nomad Layer has officially launched and is building a remote-first tax residency and legal home base for digital nomads and globally mobile founders, operating on top of Próspera in Honduras.\n\nThe focus is on simplifying tax residency into a clear lump-sum framework that works without relocation, lifestyle disruption, or complex offshore structures. Over the past months, we\'ve completed the legal and regulatory groundwork to make residency setup fully remote and operational.\n\nWe\'re now onboarding early participants and engaging with aligned communities interested in practical jurisdictional infrastructure for network states and pop-up cities.',

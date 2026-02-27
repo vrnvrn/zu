@@ -1,113 +1,172 @@
 'use client'
 
-import { useState } from 'react'
-import Image from 'next/image'
+import { useState, useEffect } from 'react'
+import Crossword from '@jaredreisinger/react-crossword'
 import Nav from '@/components/Nav'
 
-const answerKey: Record<string, string> = {
-  'down-1': 'MUSHANGHAI',
-  'down-2': 'EDGECITY',
-  'down-4': 'ZUITZERLAND',
-  'down-7': 'SHANHAIWOO',
-  'down-9': 'VIVACITY',
-  'down-11': 'INFINITACITY',
-  'down-12': 'IPEVILLAGE',
-  'down-13': 'ZUKAS',
-  'across-3': 'ZUBERLIN',
-  'across-5': 'ZUAFRIQUE',
-  'across-6': 'CRECIMIENTO',
-  'across-8': 'CHARTERCITY',
-  'across-10': 'INVISIBLEGARDEN',
-  'across-15': 'ZUGRAMA',
+interface Submission {
+  email: string
+  answers: Record<string, string>
+  submittedAt: string
 }
 
-interface Clue {
-  num: number
-  text: string
-  direction: 'down' | 'across'
+const crosswordData = {
+  across: {
+    3: {
+      row: 0,
+      col: 0,
+      clue: 'Two urban scales of belonging — a Kreuzberg hub and riverside vision. (8 letters)',
+      answer: 'ZUBERLIN',
+    },
+    5: {
+      row: 2,
+      col: 0,
+      clue: 'A distributed African ecosystem nurturing Web3 builders and local hubs. (9 letters)',
+      answer: 'ZUAFRIQUE',
+    },
+    6: {
+      row: 3,
+      col: 0,
+      clue: 'Turns regional growth into infrastructure through buildathons and startup pipelines. (12 letters)',
+      answer: 'CRECIMIENTO',
+    },
+    8: {
+      row: 5,
+      col: 0,
+      clue: 'A governance experiment where a ghost city becomes proof that coordination can scale. (12 letters)',
+      answer: 'CHARTERCITY',
+    },
+    10: {
+      row: 7,
+      col: 0,
+      clue: 'A residency where focus defeats frenzy and builders pursue truth and privacy. (16 letters)',
+      answer: 'INVISIBLEGARDEN',
+    },
+    15: {
+      row: 12,
+      col: 0,
+      clue: 'A programmable society with citizenship passports, AI agents, and land stewardship. (7 letters)',
+      answer: 'ZUGRAMA',
+    },
+  },
+  down: {
+    1: {
+      row: 0,
+      col: 0,
+      clue: 'A builder immersion revealing innovation at "China speed." (10 letters)',
+      answer: 'MUSHANGHAI',
+    },
+    2: {
+      row: 0,
+      col: 2,
+      clue: 'From container of serendipity to catalyst of emergence. (8 letters)',
+      answer: 'EDGECITY',
+    },
+    4: {
+      row: 0,
+      col: 4,
+      clue: 'A Swiss experiment coordinating capital through a hub accelerator model. (12 letters)',
+      answer: 'ZUITZERLAND',
+    },
+    7: {
+      row: 0,
+      col: 7,
+      clue: 'A residency accelerating Ethereum applications while its geography remains undecided. (10 letters)',
+      answer: 'SHANHAIWOO',
+    },
+    9: {
+      row: 2,
+      col: 9,
+      clue: 'A vertical village designing a permanent city for longevity and self-governance. (8 letters)',
+      answer: 'VIVACITY',
+    },
+    11: {
+      row: 4,
+      col: 11,
+      clue: 'Where governance, longevity science, and startup cities become a seasonal game. (13 letters)',
+      answer: 'INFINITACITY',
+    },
+    12: {
+      row: 5,
+      col: 13,
+      clue: 'A proto-city designed through hacker houses and AI-driven urban experiments. (10 letters)',
+      answer: 'IPEVILLAGE',
+    },
+    13: {
+      row: 6,
+      col: 0,
+      clue: 'A governance lab testing ranked voting and phygital commons. (5 letters)',
+      answer: 'ZUKAS',
+    },
+  },
 }
-
-const downClues: Clue[] = [
-  { num: 1, text: 'A builder immersion revealing innovation at "China speed."', direction: 'down' },
-  { num: 2, text: 'From container of serendipity to catalyst of emergence.', direction: 'down' },
-  { num: 4, text: 'A Swiss experiment coordinating capital through a hub accelerator model.', direction: 'down' },
-  { num: 7, text: 'A residency accelerating Ethereum applications while its geography remains undecided.', direction: 'down' },
-  { num: 9, text: 'A vertical village designing a permanent city for longevity and self-governance.', direction: 'down' },
-  { num: 11, text: 'Where governance, longevity science, and startup cities become a seasonal game.', direction: 'down' },
-  { num: 12, text: 'A proto-city designed through hacker houses and AI-driven urban experiments.', direction: 'down' },
-  { num: 13, text: 'A governance lab testing ranked voting and phygital commons.', direction: 'down' },
-]
-
-const acrossClues: Clue[] = [
-  { num: 3, text: 'Two urban scales of belonging — a Kreuzberg hub and riverside vision.', direction: 'across' },
-  { num: 5, text: 'A distributed African ecosystem nurturing Web3 builders and local hubs.', direction: 'across' },
-  { num: 6, text: 'Turns regional growth into infrastructure through buildathons and startup pipelines.', direction: 'across' },
-  { num: 8, text: 'A governance experiment where a ghost city becomes proof that coordination can scale.', direction: 'across' },
-  { num: 10, text: 'A residency where focus defeats frenzy and builders pursue truth and privacy.', direction: 'across' },
-  { num: 15, text: 'A programmable society with citizenship passports, AI agents, and land stewardship.', direction: 'across' },
-]
 
 export default function CrosswordPage() {
-  const [activeClue, setActiveClue] = useState<string | null>(null)
-  const [userInput, setUserInput] = useState('')
-  const [feedback, setFeedback] = useState<{ key: string; correct: boolean } | null>(null)
+  const [userAnswers, setUserAnswers] = useState<Record<string, string>>({})
+  const [email, setEmail] = useState('')
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [showSubmitForm, setShowSubmitForm] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
 
-  const handleClueClick = (clue: Clue) => {
-    const key = `${clue.direction}-${clue.num}`
-    if (activeClue === key) {
-      setActiveClue(null)
-      setUserInput('')
-      setFeedback(null)
-    } else {
-      setActiveClue(key)
-      setUserInput('')
-      setFeedback(null)
+  useEffect(() => {
+    const saved = localStorage.getItem('crossword_submission')
+    if (saved) {
+      setIsSubmitted(true)
     }
+    setIsLoaded(true)
+  }, [])
+
+  const handleCellChange = (row: number, col: number, value: string) => {
+    const key = `${row}-${col}`
+    setUserAnswers(prev => ({
+      ...prev,
+      [key]: value.toUpperCase()
+    }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!activeClue) return
+  const handleSubmit = async () => {
+    if (!email.trim() || !email.includes('@')) {
+      alert('Please enter a valid email address')
+      return
+    }
 
-    const correctAnswer = answerKey[activeClue]
-    const normalizedInput = userInput.toUpperCase().replace(/\s+/g, '')
-    const isCorrect = normalizedInput === correctAnswer
+    try {
+      const res = await fetch('/api/submit-crossword', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim(), answers: userAnswers }),
+      })
+      
+      if (!res.ok) {
+        console.error('Failed to submit')
+      }
+    } catch (error) {
+      console.error('Error submitting:', error)
+    }
 
-    setFeedback({ key: activeClue, correct: isCorrect })
+    const submission: Submission = {
+      email: email.trim(),
+      answers: userAnswers,
+      submittedAt: new Date().toISOString()
+    }
+
+    const existing = localStorage.getItem('crossword_submissions')
+    const submissions: Submission[] = existing ? JSON.parse(existing) : []
+    submissions.push(submission)
+    localStorage.setItem('crossword_submissions', JSON.stringify(submissions))
+    
+    localStorage.setItem('crossword_submission', JSON.stringify({ email: email.trim(), submittedAt: submission.submittedAt }))
+    
+    setIsSubmitted(true)
+    setShowSubmitForm(false)
   }
 
-  const renderClue = (clue: Clue) => {
-    const key = `${clue.direction}-${clue.num}`
-    const isActive = activeClue === key
-    const hasFeedback = feedback?.key === key
-
+  if (!isLoaded) {
     return (
-      <li
-        key={key}
-        className={`clue-item ${isActive ? 'active' : ''} ${hasFeedback ? (feedback.correct ? 'correct' : 'incorrect') : ''}`}
-        onClick={() => handleClueClick(clue)}
-      >
-        <span className="clue-number">{clue.num}.</span>
-        <span className="clue-text">{clue.text}</span>
-        {isActive && (
-          <form className="answer-form" onSubmit={handleSubmit} onClick={(e) => e.stopPropagation()}>
-            <input
-              type="text"
-              value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
-              placeholder="Type your answer..."
-              autoFocus
-              className="answer-input"
-            />
-            <button type="submit" className="answer-submit">Check</button>
-          </form>
-        )}
-        {hasFeedback && (
-          <div className={`feedback ${feedback.correct ? 'correct' : 'incorrect'}`}>
-            {feedback.correct ? 'Correct!' : 'Incorrect'}
-          </div>
-        )}
-      </li>
+      <>
+        <Nav />
+        <div className="loading">Loading...</div>
+      </>
     )
   }
 
@@ -115,34 +174,54 @@ export default function CrosswordPage() {
     <>
       <Nav />
       <div className="crossword-page">
-        <p className="crossword-instructions">Click on a question to check your answer</p>
+        <div className="crossword-header">
+          <h1 className="crossword-title">February 2026 Crossword</h1>
+          <p className="crossword-instructions">
+            Fill in the answers below. Click on a clue to focus on that cell.
+          </p>
+          {isSubmitted && (
+            <div className="submitted-notice">
+              ✓ Your answers have been submitted! Check back later to see how you did.
+            </div>
+          )}
+          {!isSubmitted && (
+            <button 
+              className="submit-btn"
+              onClick={() => setShowSubmitForm(true)}
+            >
+              Submit Answers
+            </button>
+          )}
+        </div>
+
         <div className="crossword-container">
           <div className="crossword-grid-wrapper">
-            <Image
-              src="/images/feb26crossword.png"
-              alt="February 2026 Crossword puzzle"
-              width={800}
-              height={800}
-              className="crossword-image"
-              priority
+            <Crossword 
+              data={crosswordData}
+              onCellChange={handleCellChange}
             />
           </div>
+        </div>
 
-          <div className="crossword-clues">
-            <div className="clues-column">
-              <h2 className="clues-heading">Down:</h2>
-              <ul className="clues-list">
-                {downClues.map(renderClue)}
-              </ul>
-            </div>
-            <div className="clues-column">
-              <h2 className="clues-heading">Across:</h2>
-              <ul className="clues-list">
-                {acrossClues.map(renderClue)}
-              </ul>
+        {showSubmitForm && (
+          <div className="submit-overlay">
+            <div className="submit-form">
+              <h3>Submit Your Answers</h3>
+              <p>Enter your email to submit your answers. We&apos;ll check them and let you know how you did!</p>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="your@email.com"
+                autoFocus
+              />
+              <div className="form-buttons">
+                <button onClick={handleSubmit} className="submit-btn-primary">Submit</button>
+                <button onClick={() => setShowSubmitForm(false)} className="cancel-btn">Cancel</button>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
 
       <style jsx global>{`
@@ -155,175 +234,156 @@ export default function CrosswordPage() {
           padding: 2rem 2rem 3rem;
         }
 
+        .loading {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: calc(100vh - 60px);
+          color: #6b7280;
+        }
+
+        .crossword-header {
+          text-align: center;
+          margin-bottom: 2rem;
+        }
+
+        .crossword-title {
+          font-size: 1.75rem;
+          font-weight: 700;
+          color: #1c1917;
+          margin: 0 0 0.5rem;
+        }
+
         .crossword-instructions {
           font-size: 0.9375rem;
-          color: var(--text-secondary);
-          margin: 0 0 1.5rem;
-          text-align: center;
+          color: #6b7280;
+          margin: 0 0 1rem;
+        }
+
+        .submitted-notice {
+          background: #dcfce7;
+          color: #166534;
+          padding: 0.75rem 1.5rem;
+          border-radius: 8px;
+          font-weight: 500;
+          margin-top: 1rem;
+        }
+
+        .submit-btn {
+          padding: 0.75rem 1.5rem;
+          background: #2d6b5d;
+          color: white;
+          border: none;
+          border-radius: 8px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background 0.15s;
+          margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+          background: #1a4a40;
         }
 
         .crossword-container {
           display: flex;
           align-items: flex-start;
           gap: 3rem;
-          max-width: 1400px;
+          max-width: 1200px;
           width: 100%;
+          justify-content: center;
         }
 
         .crossword-grid-wrapper {
-          flex-shrink: 0;
-          width: 800px;
-          height: 800px;
-          position: relative;
-        }
-
-        .crossword-image {
           width: 100%;
-          height: 100%;
-          display: block;
+          max-width: 600px;
         }
 
-        .crossword-clues {
-          flex: 1;
+        .submit-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0,0,0,0.5);
           display: flex;
-          gap: 3rem;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000;
         }
 
-        .clues-column {
-          flex: 1;
+        .submit-form {
+          background: white;
+          border-radius: 12px;
+          padding: 2rem;
+          max-width: 400px;
+          width: 90%;
+          text-align: center;
         }
 
-        .clues-heading {
-          font-size: 1rem;
-          font-weight: 600;
-          margin: 0 0 1rem;
-          color: var(--text-primary);
+        .submit-form h3 {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: #1c1917;
+          margin: 0 0 0.5rem;
         }
 
-        .clues-list {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-        }
-
-        .clue-item {
+        .submit-form p {
+          color: #6b7280;
+          margin: 0 0 1.5rem;
           font-size: 0.9375rem;
-          line-height: 1.6;
-          color: var(--text-secondary);
-          margin-bottom: 0.875rem;
-          padding: 0.75rem;
-          padding-left: 2.25rem;
-          position: relative;
-          cursor: pointer;
+        }
+
+        .submit-form input {
+          width: 100%;
+          padding: 0.75rem 1rem;
+          border: 2px solid #e5e7eb;
           border-radius: 8px;
-          transition: background 0.15s;
+          font-size: 1rem;
+          margin-bottom: 1rem;
+          box-sizing: border-box;
         }
 
-        .clue-item:hover {
-          background: #f5f5f4;
-        }
-
-        .clue-item.active {
-          background: #e8f5f1;
-        }
-
-        .clue-item.correct {
-          background: #dcfce7;
-        }
-
-        .clue-item.incorrect {
-          background: #fee2e2;
-        }
-
-        .clue-number {
-          position: absolute;
-          left: 0.75rem;
-          font-weight: 600;
-          color: var(--text-primary);
-        }
-
-        .clue-text {
-          display: block;
-        }
-
-        .answer-form {
-          display: flex;
-          gap: 0.5rem;
-          margin-top: 0.75rem;
-        }
-
-        .answer-input {
-          flex: 1;
-          padding: 0.5rem 0.75rem;
-          border: 2px solid #d6d3d1;
-          border-radius: 6px;
-          font-size: 0.875rem;
+        .submit-form input:focus {
           outline: none;
-          transition: border-color 0.15s;
-        }
-
-        .answer-input:focus {
           border-color: #2d6b5d;
         }
 
-        .answer-submit {
-          padding: 0.5rem 1rem;
+        .form-buttons {
+          display: flex;
+          gap: 0.75rem;
+        }
+
+        .submit-btn-primary {
+          flex: 1;
+          padding: 0.75rem;
           background: #2d6b5d;
           color: white;
           border: none;
-          border-radius: 6px;
+          border-radius: 8px;
           font-weight: 600;
-          font-size: 0.875rem;
           cursor: pointer;
-          transition: background 0.15s;
         }
 
-        .answer-submit:hover {
-          background: #1a4a40;
-        }
-
-        .feedback {
-          margin-top: 0.5rem;
+        .cancel-btn {
+          flex: 1;
+          padding: 0.75rem;
+          background: #e5e7eb;
+          color: #6b7280;
+          border: none;
+          border-radius: 8px;
           font-weight: 600;
-          font-size: 0.875rem;
+          cursor: pointer;
         }
 
-        .feedback.correct {
-          color: #16a34a;
-        }
-
-        .feedback.incorrect {
-          color: #dc2626;
-        }
-
-        @media (max-width: 1200px) {
+        @media (max-width: 768px) {
           .crossword-container {
             flex-direction: column;
             align-items: center;
-            gap: 2rem;
           }
 
           .crossword-grid-wrapper {
-            width: 600px;
-            height: 600px;
-          }
-
-          .crossword-clues {
-            width: 100%;
-          }
-        }
-
-        @media (max-width: 700px) {
-          .crossword-grid-wrapper {
-            width: 100%;
-            max-width: 500px;
-            height: auto;
-            aspect-ratio: 1;
-          }
-
-          .crossword-clues {
-            flex-direction: column;
-            gap: 2rem;
+            max-width: 100%;
           }
         }
       `}</style>

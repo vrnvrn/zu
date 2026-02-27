@@ -251,6 +251,32 @@ export default async function HomePage() {
             ))}
           </section>
         )}
+
+        <footer style={{ 
+          marginTop: '4rem', 
+          padding: '2rem 0',
+          borderTop: '1px solid var(--border)',
+          textAlign: 'center'
+        }}>
+          <p style={{ marginBottom: '0.75rem', color: 'var(--text-secondary)', fontSize: '0.9375rem' }}>
+            Follow us on X
+          </p>
+          <a 
+            href="https://x.com/zuzones" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{ 
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              fontSize: '1.125rem',
+              fontWeight: '600',
+              color: 'var(--accent)'
+            }}
+          >
+            @zuzones
+          </a>
+        </footer>
       </div>
     </>
   )

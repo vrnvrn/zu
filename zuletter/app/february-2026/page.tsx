@@ -214,6 +214,10 @@ function formatText(text: string) {
 export default function February2026Page() {
   const [selectedHub, setSelectedHub] = useState<Hub | null>(null)
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [scale, setScale] = useState(1)
+  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const [isDragging, setIsDragging] = useState(false)
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
 
   const handleCardClick = (card: Card) => {
     if (card.isPlaceholder || card.isCrossword || card.isComingSoon) {
@@ -221,6 +225,8 @@ export default function February2026Page() {
     }
     if (card.image && (card.isFadedImage || card.isFullImage)) {
       setSelectedImage(card.image)
+      setScale(1)
+      setPosition({ x: 0, y: 0 })
       return
     }
     setSelectedHub(hubs[card.hubId])
@@ -232,6 +238,50 @@ export default function February2026Page() {
 
   const closeImageModal = () => {
     setSelectedImage(null)
+    setScale(1)
+    setPosition({ x: 0, y: 0 })
+  }
+
+  const handleWheel = (e: React.WheelEvent) => {
+    e.preventDefault()
+    const delta = e.deltaY > 0 ? -0.15 : 0.15
+    setScale(prev => Math.max(0.5, Math.min(4, prev + delta)))
+  }
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true)
+    setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y })
+  }
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return
+    setPosition({
+      x: e.clientX - dragStart.x,
+      y: e.clientY - dragStart.y
+    })
+  }
+
+  const handleMouseUp = () => {
+    setIsDragging(false)
+  }
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    const touch = e.touches[0]
+    setIsDragging(true)
+    setDragStart({ x: touch.clientX - position.x, y: touch.clientY - position.y })
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging) return
+    const touch = e.touches[0]
+    setPosition({
+      x: touch.clientX - dragStart.x,
+      y: touch.clientY - dragStart.y
+    })
+  }
+
+  const handleTouchEnd = () => {
+    setIsDragging(false)
   }
 
   return (
@@ -431,8 +481,28 @@ export default function February2026Page() {
 
       {selectedImage && (
         <div className="image-modal-overlay" onClick={closeImageModal}>
-          <button className="image-modal-close" onClick={closeImageModal}>×</button>
-          <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+          <div className="image-modal-controls">
+            <button className="image-modal-close" onClick={closeImageModal}>×</button>
+            <div className="zoom-controls">
+              <button onClick={() => setScale(s => Math.min(4, s + 0.5))} title="Zoom in">+</button>
+              <span>{Math.round(scale * 100)}%</span>
+              <button onClick={() => setScale(s => Math.max(0.5, s - 0.5))} title="Zoom out">−</button>
+              <button onClick={() => { setScale(1); setPosition({ x: 0, y: 0 }) }} title="Reset">↺</button>
+            </div>
+          </div>
+          <div 
+            className="image-modal-content" 
+            onClick={(e) => e.stopPropagation()}
+            onWheel={handleWheel}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+          >
             <Image 
               src={selectedImage} 
               alt="Zuzalu 2026 Map" 
@@ -440,6 +510,11 @@ export default function February2026Page() {
               height={800}
               className="zoomable-image"
               priority
+              draggable={false}
+              style={{
+                transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
+                transition: isDragging ? 'none' : 'transform 0.15s ease-out',
+              }}
             />
           </div>
         </div>
@@ -1111,27 +1186,70 @@ export default function February2026Page() {
           padding: 2rem;
         }
 
+        .image-modal-controls {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem 2rem;
+          z-index: 2002;
+        }
+
+        .zoom-controls {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: rgba(255, 255, 255, 0.1);
+          padding: 0.5rem 1rem;
+          border-radius: 8px;
+        }
+
+        .zoom-controls button {
+          background: rgba(255, 255, 255, 0.2);
+          border: none;
+          color: white;
+          width: 32px;
+          height: 32px;
+          border-radius: 4px;
+          font-size: 1.25rem;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: background 0.15s;
+        }
+
+        .zoom-controls button:hover {
+          background: rgba(255, 255, 255, 0.3);
+        }
+
+        .zoom-controls span {
+          color: white;
+          font-size: 0.875rem;
+          min-width: 50px;
+          text-align: center;
+        }
+
         .image-modal-content {
           position: relative;
           width: 100%;
-          max-width: 1400px;
           height: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
+          overflow: hidden;
         }
 
         .zoomable-image {
           max-width: 100%;
-          max-height: calc(100vh - 4rem);
+          max-height: calc(100vh - 8rem);
           object-fit: contain;
           border-radius: 8px;
-          transition: transform 0.2s ease;
-          cursor: zoom-in;
-        }
-
-        .zoomable-image:hover {
-          transform: scale(1.5);
+          user-select: none;
+          -webkit-user-drag: none;
         }
 
         .image-modal-close {

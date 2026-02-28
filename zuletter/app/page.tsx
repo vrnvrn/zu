@@ -38,7 +38,7 @@ export default async function HomePage() {
               textTransform: 'uppercase',
               letterSpacing: '0.1em'
             }}>
-              Zuzalu Ecosystem
+              Ecosystem
             </span>
           </div>
           <h1 style={{ 

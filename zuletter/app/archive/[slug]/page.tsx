@@ -3,10 +3,58 @@ import { fetchLocalArchiveNewsletters } from '@/lib/github'
 import { Newsletter } from '@/lib/types'
 import MarkdownRenderer from './MarkdownRenderer'
 
+function getMonthName(month: string): string {
+  const months: Record<string, string> = {
+    '01': 'January',
+    '02': 'February',
+    '03': 'March',
+    '04': 'April',
+    '05': 'May',
+    '06': 'June',
+    '07': 'July',
+    '08': 'August',
+    '09': 'September',
+    '10': 'October',
+    '11': 'November',
+    '12': 'December',
+  }
+  return months[month] || month
+}
+
+function cycleToSlug(cycle: string): string {
+  const parts = cycle.split('-')
+  if (parts.length >= 2) {
+    const year = parts[0]
+    const monthNum = parts[1]
+    const monthName = getMonthName(monthNum)
+    return `${monthName.toLowerCase()}-${year}`
+  }
+  return cycle
+}
+
+function slugToCycle(slug: string): string | null {
+  const match = slug.match(/^([a-z]+)-(\d{4})$/i)
+  if (!match) return null
+  
+  const monthStr = match[1].toLowerCase()
+  const year = match[2]
+  
+  const monthMap: Record<string, string> = {
+    january: '01', february: '02', march: '03', april: '04',
+    may: '05', june: '06', july: '07', august: '08',
+    september: '09', october: '10', november: '11', december: '12'
+  }
+  
+  const month = monthMap[monthStr]
+  if (!month) return null
+  
+  return `${year}-${month}`
+}
+
 export function generateStaticParams() {
   const newsletters = fetchLocalArchiveNewsletters()
   return newsletters.map(n => ({
-    slug: n.cycle,
+    slug: cycleToSlug(n.cycle),
   }))
 }
 
@@ -29,7 +77,10 @@ function formatDate(date: string): string {
 
 export default function NewsletterPage({ params }: { params: { slug: string } }) {
   const newsletters = fetchLocalArchiveNewsletters()
-  const newsletter: Newsletter | undefined = newsletters.find(n => n.cycle === params.slug)
+  const cycle = slugToCycle(params.slug)
+  const newsletter: Newsletter | undefined = cycle 
+    ? newsletters.find(n => n.cycle.startsWith(cycle))
+    : newsletters.find(n => n.cycle === params.slug)
 
   if (!newsletter) {
     return (

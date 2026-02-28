@@ -19,6 +19,17 @@ function getMonthName(month: string): string {
   return months[month] || month
 }
 
+function cycleToSlug(cycle: string): string {
+  const parts = cycle.split('-')
+  if (parts.length >= 2) {
+    const year = parts[0]
+    const monthNum = parts[1]
+    const monthName = getMonthName(monthNum)
+    return `${monthName.toLowerCase()}-${year}`
+  }
+  return cycle
+}
+
 interface NewsletterItem {
   title: string
   cycle: string
@@ -165,7 +176,7 @@ export default function ArchivePage() {
                         {monthGroup.items.map(item => (
                           <a
                             key={item.cycle}
-                            href={`/${item.path}`}
+                            href={`/${cycleToSlug(item.cycle)}`}
                             className="archive-link"
                             style={{
                               display: 'flex',

@@ -150,7 +150,7 @@ export default async function HomePage() {
               marginBottom: '0.625rem',
               letterSpacing: '0.02em'
             }}>
-              January 2026 Edition
+              February 2026 Edition
             </h2>
             <p className="text-secondary" style={{ marginBottom: '1.5rem', maxWidth: '520px' }}>
               Updates from Edge City, Ârc Montenegro, ZuAfrique, Invisible Garden, 
@@ -158,7 +158,7 @@ export default async function HomePage() {
             </p>
             
             <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-              <Link href="/january-2026" className="btn btn-accent" style={{ 
+              <Link href="/february-2026" className="btn btn-accent" style={{ 
                 padding: '0.75rem 1.5rem',
                 fontSize: '0.9375rem'
               }}>

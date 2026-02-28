@@ -73,7 +73,7 @@ Cheaper, native batch verification strengthens decentralization and user soverei
   map: {
     id: 'map',
     title: 'Zuzalu 2026 Map',
-    image: '/images/zumap-2026.png',
+    image: '/images/zumap-2026.svg',
     fullContent: 'Explore the global network of Zuzalu hubs and pop-up cities for 2026.',
   },
   placeholder: {
@@ -144,7 +144,7 @@ const contentCards: Card[] = [
   { id: 'crossword', hubId: 'crossword', title: 'February Crossword', isCrossword: true, image: '/images/feb26crossword.png' },
   // Row 2
   { id: 'burns', hubId: 'burns', title: 'On Potentials, Pitfalls and Priorities in Zu2026', subtitle: 'by Burns', isCenterText: true },
-  { id: 'placeholder-center', hubId: 'map', title: '2026 Map', image: '/images/zumap-2026.png', isFullImage: true },
+  { id: 'placeholder-center', hubId: 'map', title: '2026 Map', image: '/images/zumap-2026.svg', isFullImage: true },
   { id: 'forum', hubId: 'forum', title: 'Winners of Crossword', subtitle: 'Announced next month' },
   // Row 3
   { id: 'twitter', hubId: 'placeholder', title: 'Follow our new X!', isExternalLink: true, externalUrl: 'https://x.com/zuzones' },
@@ -319,6 +319,7 @@ export default function February2026Page() {
                     >
                       + Add your popup city
                     </a>
+                    <span className="map-cta-subtext">Reach out to us at hi@zuzone.org</span>
                   </div>
                 </div>
               )
@@ -868,6 +869,12 @@ export default function February2026Page() {
 
         .map-cta-btn:hover {
           background: #1a4a40;
+        }
+
+        .map-cta-subtext {
+          color: rgba(255,255,255,0.7);
+          font-size: 0.625rem;
+          margin-top: 0.25rem;
         }
 
         /* Modal */

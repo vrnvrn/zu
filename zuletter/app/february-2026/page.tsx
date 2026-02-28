@@ -42,7 +42,7 @@ const hubs: Record<string, Hub> = {
   intro: {
     id: 'intro',
     title: 'Zuzone — February 2026',
-    fullContent: 'Welcome to the February 2026 edition of the Zuzone community newsletter! \n\nThen what is ZuZone actually? The simplest answer: it\'s the space where we try to make this sustainable. \n\nThank you, everyone, for the care you bring to this ecosystem. \nWishing you a March full of good builds and conversations.',
+    fullContent: 'Welcome to the February 2026 edition of the Zuzone community newsletter! \nThank you, everyone, for the care you bring to this ecosystem. \nWishing you a March full of good builds and conversations.',
   },
   dacc: {
     id: 'dacc',
@@ -50,7 +50,7 @@ const hubs: Record<string, Hub> = {
     image: '/images/ChrisMata.jpeg',
     fullContent: `**Project Spotlight: Multi KZG Point Evaluation Precompile**
 
-**The Build**
+**What are you building?**
 
 I'm building a new Ethereum precompile (EIP-8149) that makes it much more efficient to verify many KZG polynomial commitments at once. Right now, verifying each point (a KZG opening) from an EIP-4844 data blob costs a lot of gas because each has to be checked individually. This proposal adds a dedicated precompile that takes a blob commitment and a batch of point/value pairs and performs one cryptographic verification over all of them in a single call, lowering gas cost and overhead for workloads like fraud proofs or data availability checks that need multiple evaluation.
 
@@ -83,7 +83,7 @@ Cheaper, native batch verification strengthens decentralization and user soverei
   },
   addcity: {
     id: 'addcity',
-    title: 'Add Your Popup City or Village',
+    title: 'Add Your Popup City or Village to the Map',
     fullContent: 'Have a popup city or village you want to add to the Zuzone map? Want to introduce a new village to the community? Reach out to us at hi@zuzone.org',
   },
   crossword: {
@@ -128,7 +128,7 @@ It happened within Zuzalu as well, on many occasions – potentially out of econ
 
 The tech is ready, available as FOSS or ready to be built with less effort than ever. Are we ready as well? Our means to hold each other accountable towards high standards and integrity are more accessible and larger than ever. Now, it takes a collective effort of individual agency towards awareness and responsibility. If we can manage to achieve that in 2026, just imagine how Zuzalu can evolve in 2027: Scaling tools, not empires.
 
-Reach out to me if you have any comments.`,
+Reach out to me if you have any comments. - Burns`,
     links: [
       { url: 'mailto:0xburns@proton.me', text: '0xburns@proton.me' },
       { url: 'https://x.com/privacyburns', text: '@privacyburns' },
@@ -145,11 +145,11 @@ const contentCards: Card[] = [
   // Row 2
   { id: 'burns', hubId: 'burns', title: 'On Potentials, Pitfalls and Priorities in Zu2026', subtitle: 'by Burns', isCenterText: true },
   { id: 'placeholder-center', hubId: 'map', title: '2026 Map', image: '/images/zumap-2026.svg', isFullImage: true },
-  { id: 'forum', hubId: 'forum', title: 'Winners of Crossword', subtitle: 'Announced next month' },
+  { id: 'forum', hubId: 'forum', title: 'Winners of Crossword', subtitle: 'Announced next month', isCenterText: true },
   // Row 3
   { id: 'twitter', hubId: 'placeholder', title: 'Follow our new X!', isExternalLink: true, externalUrl: 'https://x.com/zuzones' },
   { id: 'amagi', hubId: 'amagi', title: 'Introducing New Villages', image: '/images/amagilife.jpeg', isBgImage: true },
-  { id: 'addcity', hubId: 'addcity', title: 'Add Your Popup City or Village', subtitle: 'Email: hi@zuzone.org', isExternalLink: true, externalUrl: 'mailto:hi@zuzone.org?subject=Add%20my%20popup%20city%20to%20the%20map' },
+  { id: 'addcity', hubId: 'addcity', title: 'Add Your Popup City or Village', subtitle: 'Share your details', isExternalLink: true, externalUrl: 'https://forms.gle/bNN44oXkYhBoCH4g7' },
 ]
 
 // Just the 9 content cards in a 3x3 layout
@@ -196,7 +196,7 @@ function formatText(text: string) {
   const parts = text.split(boldRegex)
   return parts.map((part, i) => {
     if (i % 2 === 1) {
-      return <strong key={i} style={{ display: 'block', fontSize: '1.0625rem', marginBottom: '0.25rem', color: '#1c1917' }}>{part}</strong>
+      return <strong key={i} style={{ display: 'block', fontSize: '1.0625rem', marginTop: '1.5rem', marginBottom: '0.25rem', color: '#1c1917', fontWeight: 700 }}>{part}</strong>
     }
     const urlParts = part.split(urlRegex)
     return urlParts.map((urlPart, j) =>
@@ -296,6 +296,7 @@ export default function February2026Page() {
                 >
                   <div className="card-content external-link-content">
                     <h3 className="external-link-title">{title}</h3>
+                    {card.subtitle && <p className="external-link-subtitle">{card.subtitle}</p>}
                   </div>
                 </a>
               )
@@ -788,6 +789,12 @@ export default function February2026Page() {
           margin: 0;
         }
 
+        .external-link-subtitle {
+          font-size: 0.75rem;
+          color: rgba(255,255,255,0.7);
+          margin: 0.25rem 0 0 0;
+        }
+
         .placeholder-content {
           display: flex;
           align-items: center;
@@ -917,7 +924,7 @@ export default function February2026Page() {
         .modal-content {
           background: white;
           border-radius: 12px;
-          max-width: 600px;
+          max-width: 720px;
           width: 100%;
           max-height: 85vh;
           overflow-y: auto;
@@ -1015,28 +1022,42 @@ export default function February2026Page() {
         }
 
         .modal-title {
-          font-size: 1.5rem;
+          font-size: 1.75rem;
           font-weight: 700;
-          margin: 1.5rem 1.5rem 0.5rem;
+          margin: 1.5rem 2rem 0.5rem;
           color: #1c1917;
+          line-height: 1.3;
         }
 
         .modal-date {
           font-size: 0.875rem;
           color: #2d6b5d;
-          margin: 0 1.5rem 1rem;
+          margin: 0 2rem 1rem;
           font-weight: 600;
         }
 
         .modal-body {
-          padding: 0 1.5rem 1.5rem;
-          font-size: 0.9375rem;
-          line-height: 1.7;
+          padding: 0 2rem 2rem;
+          font-size: 1rem;
+          line-height: 1.8;
           color: #44403c;
         }
 
         .modal-body p {
-          margin: 0 0 1rem;
+          margin: 0 0 1.25rem;
+        }
+
+        .modal-body strong {
+          display: block;
+          font-size: 1.125rem;
+          margin-top: 1.5rem;
+          margin-bottom: 0.5rem;
+          color: #1c1917;
+          font-weight: 700;
+        }
+
+        .modal-body strong:first-child {
+          margin-top: 0;
         }
 
         .modal-builder-image {
@@ -1056,7 +1077,7 @@ export default function February2026Page() {
         .modal-links {
           display: flex;
           gap: 0.75rem;
-          padding: 0 1.5rem 1.5rem;
+          padding: 0 2rem 2rem;
           flex-wrap: wrap;
         }
 

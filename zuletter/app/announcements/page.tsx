@@ -11,6 +11,12 @@ interface Announcement {
 
 const announcements: Announcement[] = [
   {
+    id: 'popupresearch',
+    title: 'Pop-up City Research Initiative',
+    fullContent: 'The Pop-Up City Research Initiative is producing the first systematic analysis of pop-up cities. We collect data from interviews and surveys with attendees, organizers, locals, contributors and sponsors on how the experience worked, as well as operational data on what actually happened — finances, governance, outputs.\n\nFindings will be published in a public good report at the end of April 2026. The report defines what pop-up cities are and aren\'t, classifies them into archetypes, compares them and integrates them with adjacent ecosystems and communities, identifies failure modes and delivers a practical reference for operators, funders, and host governments.\n\nTo date, we completed 71 interviews across 48 pop-up cities and organisations. Surveys are now open.\n\nIf you organise, fund, attend, or host pop-up cities, take the survey and get in touch!\n\nContact: Denisa & Jimin (Co-founders and research co-leads)',
+    link: { url: 'https://thouartofficial.com/research/popupcities', text: 'Learn More & Take Survey' },
+  },
+  {
     id: 'infinita',
     title: 'Infinita City — Founders Cohort Applications Open',
     fullContent: 'Infinita City is a seasonal proto-city in LATAM, focused on building the future of network states through technology, governance innovation, and community.\n\nOur next cohort runs February 1st - March 31st, 2026. We\'re looking for founders, builders, and visionaries who want to participate in building a new kind of city.\n\nApply now to join the founders cohort!',

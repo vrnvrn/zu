@@ -153,8 +153,7 @@ export default async function HomePage() {
               February 2026 Edition
             </h2>
             <p className="text-secondary" style={{ marginBottom: '1.5rem', maxWidth: '520px' }}>
-              Updates from Edge City, Ârc Montenegro, ZuAfrique, Invisible Garden, 
-              Valley of the Commons, and more from across our global network.
+             Exciting updates from around the Zuzalu ecosystem, including new hub launches, upcoming events, and ways to get involved and engage with the community.
             </p>
             
             <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
@@ -195,7 +194,7 @@ export default async function HomePage() {
             
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
               <iframe
-                src="https://luma.com/embed/calendar/cal-EYB4wNm2FHpKE2n/events?lt=light"
+                src="https://lu.ma/embed/calendar/cal-EYB4wNm2FHpKE2n/events?lt=light"
                 width="600"
                 height="450"
                 frameBorder="0"

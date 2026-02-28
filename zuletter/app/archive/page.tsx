@@ -30,6 +30,17 @@ function cycleToSlug(cycle: string): string {
   return cycle
 }
 
+function getArchiveLink(cycle: string): string {
+  const parts = cycle.split('-')
+  const year = parseInt(parts[0])
+  const month = parts[1]
+  
+  if (year >= 2026) {
+    return `/${cycleToSlug(cycle)}`
+  }
+  return `/archive/${year}-${month}`
+}
+
 interface NewsletterItem {
   title: string
   cycle: string
@@ -176,7 +187,7 @@ export default function ArchivePage() {
                         {monthGroup.items.map(item => (
                           <a
                             key={item.cycle}
-                            href={`/${cycleToSlug(item.cycle)}`}
+                            href={getArchiveLink(item.cycle)}
                             className="archive-link"
                             style={{
                               display: 'flex',

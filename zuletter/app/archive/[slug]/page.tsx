@@ -33,29 +33,50 @@ function cycleToSlug(cycle: string): string {
 }
 
 function slugToCycle(slug: string): string | null {
-  const match = slug.match(/^([a-z]+)-(\d{4})$/i)
-  if (!match) return null
-  
-  const monthStr = match[1].toLowerCase()
-  const year = match[2]
-  
-  const monthMap: Record<string, string> = {
-    january: '01', february: '02', march: '03', april: '04',
-    may: '05', june: '06', july: '07', august: '08',
-    september: '09', october: '10', november: '11', december: '12'
+  // New format: january-2026
+  const newFormatMatch = slug.match(/^([a-z]+)-(\d{4})$/i)
+  if (newFormatMatch) {
+    const monthStr = newFormatMatch[1].toLowerCase()
+    const year = newFormatMatch[2]
+    
+    const monthMap: Record<string, string> = {
+      january: '01', february: '02', march: '03', april: '04',
+      may: '05', june: '06', july: '07', august: '08',
+      september: '09', october: '10', november: '11', december: '12'
+    }
+    
+    const month = monthMap[monthStr]
+    if (!month) return null
+    
+    return `${year}-${month}`
   }
   
-  const month = monthMap[monthStr]
-  if (!month) return null
+  // Old format: 2024-10
+  const oldFormatMatch = slug.match(/^(\d{4})-(\d{2})$/)
+  if (oldFormatMatch) {
+    return slug
+  }
   
-  return `${year}-${month}`
+  return null
 }
 
 export function generateStaticParams() {
   const newsletters = fetchLocalArchiveNewsletters()
-  return newsletters.map(n => ({
-    slug: cycleToSlug(n.cycle),
-  }))
+  const params: { slug: string }[] = []
+  
+  for (const n of newsletters) {
+    const parts = n.cycle.split('-')
+    const year = parseInt(parts[0])
+    const month = parts[1]
+    
+    if (year >= 2026) {
+      params.push({ slug: cycleToSlug(n.cycle) })
+    } else {
+      params.push({ slug: `${year}-${month}` })
+    }
+  }
+  
+  return params
 }
 
 function formatDate(date: string): string {

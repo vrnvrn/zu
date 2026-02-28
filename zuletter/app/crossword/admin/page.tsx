@@ -62,7 +62,8 @@ export default function CrosswordAdminPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
-    if (password === 'zuzone2026') {
+    const validPassword = process.env.NEXT_PUBLIC_ADMIN_SECRET || 'zuzone2026'
+    if (password === validPassword) {
       setIsAuthenticated(true)
       sessionStorage.setItem('crossword_admin_auth', 'true')
       loadSubmissions()

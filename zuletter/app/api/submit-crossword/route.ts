@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { Resend } from 'resend'
+import { Redis } from '@upstash/redis'
 
 const correctAnswers: Record<string, string> = {
   '0-0': 'ZUBERLIN', '0-2': 'EDGECITY', '0-4': 'ZUITZERLAND', '0-7': 'SHANHAIWOO',
@@ -13,10 +15,17 @@ const ALL_ANSWERS = [
   'CRECIMIENTO', 'CHARTERCITY', 'INVISIBLEGARDEN', 'ZUGRAMA'
 ]
 
+function getRedis() {
+  const url = process.env.UPSTASH_REDIS_REST_URL
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN
+  if (!url || !token) return null
+  return new Redis({ url, token })
+}
+
 function calculateScore(userAnswers: Record<string, string>) {
   let correct = 0
   const results: Record<string, { user: string; correct: boolean }> = {}
-  
+
   Object.entries(correctAnswers).forEach(([key, answer]) => {
     const userAnswer = userAnswers[key]?.toUpperCase().trim()
     if (userAnswer === answer) {
@@ -26,7 +35,7 @@ function calculateScore(userAnswers: Record<string, string>) {
       results[key] = { user: userAnswer || '', correct: false }
     }
   })
-  
+
   return { correct, total: ALL_ANSWERS.length, results }
 }
 
@@ -43,71 +52,46 @@ export async function POST(request: NextRequest) {
     }
 
     const { correct, total, results } = calculateScore(answers)
+    const submittedAt = new Date().toISOString()
 
-    const token = process.env.GITHUB_TOKEN
-    if (!token) {
-      console.error('[submit-crossword] Missing GITHUB_TOKEN')
-      return NextResponse.json(
-        { error: 'Server configuration error' },
-        { status: 500 }
-      )
+    // Store in Redis
+    const redis = getRedis()
+    if (redis) {
+      const submission = { email, score: correct, total, answers, results, submittedAt }
+      const id = `crossword:${Date.now()}:${email.replace(/[^a-zA-Z0-9]/g, '_')}`
+      await redis.set(id, JSON.stringify(submission))
+      // Add to sorted set ranked by score for easy leaderboard queries
+      await redis.zadd('crossword:leaderboard', { score: correct, member: id })
+    } else {
+      console.warn('[submit-crossword] Redis not configured, skipping storage')
     }
 
-    const owner = process.env.NEXT_PUBLIC_GITHUB_OWNER || 'vrnvrn'
-    const repo = process.env.NEXT_PUBLIC_GITHUB_REPO || 'zu'
-
+    // Send email via Resend
     const resultsList = Object.entries(results)
       .map(([cell, { user, correct: isCorrect }]) => {
         const correctAnswer = correctAnswers[cell]
-        return `- Cell ${cell}: "${user}" ${isCorrect ? '✓' : `✗ (correct: ${correctAnswer})`}`
+        return `Cell ${cell}: "${user || '(empty)'}" ${isCorrect ? '✓' : `✗ (correct: ${correctAnswer})`}`
       })
       .join('\n')
 
-    const issueBody = `## Crossword Submission
-
-**Email:** ${email}
-
-**Score:** ${correct} / ${total}
-
-**Results:**
-${resultsList}
-
----
-*Submitted via Zuzone crossword*`
-
-    const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/issues`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Accept': 'application/vnd.github.v3+json',
-        'Content-Type': 'application/json',
-        'X-GitHub-Api-Version': '2022-11-28'
-      },
-      body: JSON.stringify({
-        title: `[Crossword] ${email} - ${correct}/${total}`,
-        body: issueBody,
-        labels: ['crossword']
+    const resendKey = process.env.RESEND_API_KEY
+    if (resendKey) {
+      const resend = new Resend(resendKey)
+      await resend.emails.send({
+        from: process.env.RESEND_FROM_EMAIL || 'crossword@zuzone.org',
+        to: 'hi@zuzone.org',
+        subject: `[Crossword] ${email} — ${correct}/${total}`,
+        text: `Crossword Submission\n\nEmail: ${email}\nScore: ${correct} / ${total}\nSubmitted: ${submittedAt}\n\nResults:\n${resultsList}`,
       })
-    })
-
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}))
-      console.error('[submit-crossword] GitHub API error:', response.status, errorData)
-      return NextResponse.json(
-        { error: 'Failed to submit' },
-        { status: 500 }
-      )
+    } else {
+      console.warn('[submit-crossword] RESEND_API_KEY not set, skipping email')
     }
-
-    const issue = await response.json()
 
     return NextResponse.json({
       success: true,
       score: correct,
-      total: total,
-      url: issue.html_url
+      total,
     })
-
   } catch (error) {
     console.error('[submit-crossword] Error:', error)
     return NextResponse.json(

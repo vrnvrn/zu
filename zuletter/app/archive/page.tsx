@@ -166,9 +166,10 @@ export default function ArchivePage() {
                           <a
                             key={item.cycle}
                             href={`/${item.path}`}
-                            style={{ 
-                              display: 'flex', 
-                              flexDirection: 'column', 
+                            className="archive-link"
+                            style={{
+                              display: 'flex',
+                              flexDirection: 'column',
                               gap: '0.25rem',
                               padding: '0.5rem',
                               borderRadius: '6px',
@@ -176,8 +177,6 @@ export default function ArchivePage() {
                               color: 'inherit',
                               transition: 'background 0.15s'
                             }}
-                            onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(45, 107, 93, 0.08)')}
-                            onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                           >
                             <span style={{ fontWeight: 600, fontSize: '0.9375rem', color: '#1c1917' }}>
                               {item.edition || item.title}
@@ -198,6 +197,11 @@ export default function ArchivePage() {
           </div>
         )}
       </div>
+      <style>{`
+        .archive-link:hover {
+          background: rgba(45, 107, 93, 0.08);
+        }
+      `}</style>
     </>
   )
 }

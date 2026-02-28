@@ -136,7 +136,7 @@ export default function CrosswordPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email.trim(), answers: userAnswers }),
       })
-      
+
       if (!res.ok) {
         console.error('Failed to submit')
       }
@@ -154,9 +154,9 @@ export default function CrosswordPage() {
     const submissions: Submission[] = existing ? JSON.parse(existing) : []
     submissions.push(submission)
     localStorage.setItem('crossword_submissions', JSON.stringify(submissions))
-    
+
     localStorage.setItem('crossword_submission', JSON.stringify({ email: email.trim(), submittedAt: submission.submittedAt }))
-    
+
     setIsSubmitted(true)
     setShowSubmitForm(false)
   }

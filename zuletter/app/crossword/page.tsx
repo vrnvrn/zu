@@ -4,12 +4,6 @@ import { useState, useEffect } from 'react'
 import Crossword from '@jaredreisinger/react-crossword'
 import Nav from '@/components/Nav'
 
-interface Submission {
-  email: string
-  answers: Record<string, string>
-  submittedAt: string
-}
-
 const crosswordData = {
   across: {
     3: {
@@ -104,15 +98,11 @@ const crosswordData = {
 export default function CrosswordPage() {
   const [userAnswers, setUserAnswers] = useState<Record<string, string>>({})
   const [email, setEmail] = useState('')
-  const [isSubmitted, setIsSubmitted] = useState(false)
   const [showSubmitForm, setShowSubmitForm] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<{ score: number; total: number } | null>(null)
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
-    const saved = localStorage.getItem('crossword_submission')
-    if (saved) {
-      setIsSubmitted(true)
-    }
     setIsLoaded(true)
   }, [])
 
@@ -138,27 +128,17 @@ export default function CrosswordPage() {
       })
 
       if (!res.ok) {
-        console.error('Failed to submit')
+        alert('Failed to submit. Please try again.')
+        return
       }
+
+      const data = await res.json()
+      setSubmitStatus({ score: data.score, total: data.total })
+      setShowSubmitForm(false)
     } catch (error) {
       console.error('Error submitting:', error)
+      alert('Failed to submit. Please try again.')
     }
-
-    const submission: Submission = {
-      email: email.trim(),
-      answers: userAnswers,
-      submittedAt: new Date().toISOString()
-    }
-
-    const existing = localStorage.getItem('crossword_submissions')
-    const submissions: Submission[] = existing ? JSON.parse(existing) : []
-    submissions.push(submission)
-    localStorage.setItem('crossword_submissions', JSON.stringify(submissions))
-
-    localStorage.setItem('crossword_submission', JSON.stringify({ email: email.trim(), submittedAt: submission.submittedAt }))
-
-    setIsSubmitted(true)
-    setShowSubmitForm(false)
   }
 
   if (!isLoaded) {
@@ -179,19 +159,17 @@ export default function CrosswordPage() {
           <p className="crossword-instructions">
             Fill in the answers below. Click on a clue to focus on that cell.
           </p>
-          {isSubmitted && (
+          {submitStatus && (
             <div className="submitted-notice">
-              ✓ Your answers have been submitted! Check back later to see how you did.
+              ✓ Submitted! You scored {submitStatus.score} / {submitStatus.total}. You can update your answers and resubmit.
             </div>
           )}
-          {!isSubmitted && (
-            <button 
-              className="submit-btn"
-              onClick={() => setShowSubmitForm(true)}
-            >
-              Submit Answers
-            </button>
-          )}
+          <button
+            className="submit-btn"
+            onClick={() => setShowSubmitForm(true)}
+          >
+            {submitStatus ? 'Resubmit Answers' : 'Submit Answers'}
+          </button>
         </div>
 
         <div className="crossword-container">

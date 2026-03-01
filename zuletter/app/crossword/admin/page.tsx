@@ -43,32 +43,53 @@ export default function CrosswordAdminPage() {
   const [submissions, setSubmissions] = useState<Submission[]>([])
   const [password, setPassword] = useState('')
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
 
-  useEffect(() => {
-    const saved = sessionStorage.getItem('crossword_admin_auth')
-    if (saved === 'true') {
-      setIsAuthenticated(true)
-      loadSubmissions()
-    }
-  }, [])
-
-  const loadSubmissions = () => {
-    const saved = localStorage.getItem('crossword_submissions')
-    if (saved) {
-      setSubmissions(JSON.parse(saved))
+  const loadSubmissions = async (secret: string) => {
+    setIsLoading(true)
+    try {
+      const res = await fetch(`/api/crossword-submissions?secret=${encodeURIComponent(secret)}`)
+      if (!res.ok) {
+        setError('Failed to load submissions from database')
+        return
+      }
+      const data = await res.json()
+      setSubmissions(data.submissions || [])
+    } catch (err) {
+      console.error('Error loading submissions:', err)
+      setError('Failed to connect to database')
+    } finally {
+      setIsLoading(false)
     }
   }
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault()
-    const validPassword = process.env.NEXT_PUBLIC_ADMIN_SECRET || 'zuzone2026'
-    if (password === validPassword) {
+  useEffect(() => {
+    const saved = sessionStorage.getItem('crossword_admin_auth')
+    if (saved) {
       setIsAuthenticated(true)
-      sessionStorage.setItem('crossword_admin_auth', 'true')
-      loadSubmissions()
-    } else {
-      setError('Incorrect password')
+      loadSubmissions(saved)
+    }
+  }, [])
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setError('')
+    setIsLoading(true)
+    try {
+      const res = await fetch(`/api/crossword-submissions?secret=${encodeURIComponent(password)}`)
+      if (res.ok) {
+        const data = await res.json()
+        setIsAuthenticated(true)
+        sessionStorage.setItem('crossword_admin_auth', password)
+        setSubmissions(data.submissions || [])
+      } else {
+        setError('Incorrect password')
+      }
+    } catch {
+      setError('Failed to connect to server')
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -161,7 +182,9 @@ export default function CrosswordAdminPage() {
       <Nav />
       <div className="admin-page">
         <h1>Crossword Submissions</h1>
-        <p className="subtitle">{submissions.length} total submissions</p>
+        <p className="subtitle">
+          {isLoading ? 'Loading from database...' : `${submissions.length} total submissions`}
+        </p>
 
         <div className="leaderboard">
           <h2>Leaderboard</h2>
@@ -278,9 +301,9 @@ export default function CrosswordAdminPage() {
         }
         .submission-header {
           display: flex;
-          justify-content: space-between: center;
-         ;
-          align-items margin-bottom: 0.5rem;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 0.5rem;
         }
         .email {
           font-weight: 600;

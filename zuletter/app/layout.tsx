@@ -2,8 +2,19 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'ZuLetter — Zuzalu Community Newsletter',
-  description: 'A transparent, community-driven newsletter for the Zuzalu ecosystem',
+  title: 'Zuzone - Helping hubs build, grow sustainably, and collaborate across the ecosystem',
+  description: 'Helping hubs build, grow sustainably, and collaborate across the ecosystem',
+  metadataBase: new URL('https://zuzone.org'),
+  openGraph: {
+    title: 'Zuzone - Helping hubs build, grow sustainably, and collaborate across the ecosystem',
+    description: 'Helping hubs build, grow sustainably, and collaborate across the ecosystem',
+    type: 'website',
+    url: 'https://zuzone.org',
+    siteName: 'Zuzone',
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
 }
 
 export default function RootLayout({

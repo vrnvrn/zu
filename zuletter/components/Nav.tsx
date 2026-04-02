@@ -55,11 +55,11 @@ export default function Nav() {
             </span>
           </Link>
           <div className="nav-links">
-            <Link href="/february-2026" className="nav-link" style={{ fontWeight: 500 }}>
-              February 2026
+            <Link href="/march-2026" className="nav-link" style={{ fontWeight: 500 }}>
+              March 2026
             </Link>
-            <Link href="/january-2026" className="nav-link">
-              January 2026
+            <Link href="/february-2026" className="nav-link">
+              February 2026
             </Link>
             <Link href="/crossword" className="nav-link">
               Crossword

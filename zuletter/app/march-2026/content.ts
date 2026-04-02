@@ -51,14 +51,14 @@ Are you an open source builder working on something that defends against central
   nsvszu: {
     id: 'nsvszu',
     title: 'NS & Zu: Learning From Each Other',
-    fullContent: `[V's article on what Network State residencies and Zu pop-up cities can learn from each other will be added here once submitted.]
+    fullContent: `[Veronica's article on what Network State residencies and Zu pop-up cities can learn from each other will be added here once submitted.]
 
-V is a long-time participant in both the NS and Zu ecosystems and thinks about these questions constantly.`,
+Reach out to Veronica at [Email]`,
   },
   xspaces: {
     id: 'xspaces',
     title: 'X Spaces: Roads to Devcon',
-    fullContent: `On March 25th, ZuZone co-hosted an X Spaces with Invisible Garden, Valley of the Commons, and ProtoVille — a conversation about the road to Devcon rooted in d/acc and cosmolocalism.
+    fullContent: `On March 25th, ZuZone co-hosted an X Spaces with Invisible Garden, Valley of the Commons, and ProtoVille, a conversation about the road to Devcon rooted in d/acc and cosmolocalism.
 
 **Who was there?**
 
@@ -69,7 +69,7 @@ V is a long-time participant in both the NS and Zu ecosystems and thinks about t
 
 **The thread**
 
-The conversation followed the narrative of "touching grass at value-aligned spaces" — the idea that Devcon and the pop-up city movement share a common purpose: building the social and technical infrastructure for a more decentralized, resilient world.
+The conversation followed the narrative of "touching grass at value-aligned spaces",the idea that Devcon and the pop-up city movement share a common purpose: building the social and technical infrastructure for a more decentralized, resilient world.
 
 This is the first in what Koss is planning as a recurring series. ZuZone will co-host future conversations as the ecosystem grows.
 
@@ -78,7 +78,7 @@ Follow us on X @zuzones to catch future spaces.`,
   },
   crossword: {
     id: 'crossword',
-    title: 'March Crossword',
+    title: 'Crossword',
     fullContent: 'The March 2026 crossword is here! Test your knowledge of the Zuzalu ecosystem. February answers are now revealed on the crossword page.',
   },
   map: {
@@ -97,7 +97,7 @@ export const cards: Card[] = [
   // Row 2
   { id: 'dacc', hubId: 'dacc', title: 'd/acc in Practice', isDacc: true },
   { id: 'poll', hubId: 'poll', title: 'Ecosystem Poll', subtitle: 'Where is the ecosystem headed?', isPoll: true },
-  { id: 'nsvszu', hubId: 'nsvszu', title: 'NS & Zu: Learning From Each Other', subtitle: 'by V', isCenterText: true },
+  { id: 'nsvszu', hubId: 'nsvszu', title: 'NS & Zu: Learning From Each Other', subtitle: 'by Vrn.eth', isCenterText: true },
   // Row 3
   { id: 'xspaces', hubId: 'xspaces', title: 'X Spaces: Roads to Devcon', isCenterText: true },
   { id: 'map', hubId: 'map', title: '2026 Map', image: '/images/zumap-2026.svg', isFullImage: true },

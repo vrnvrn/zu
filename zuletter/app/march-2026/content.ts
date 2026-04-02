@@ -101,7 +101,7 @@ export const cards: Card[] = [
   // Row 3
   { id: 'xspaces', hubId: 'xspaces', title: 'X Spaces: Roads to Devcon', isCenterText: true },
   { id: 'map', hubId: 'map', title: '2026 Map', image: '/images/zumap-2026.svg', isFullImage: true },
-  { id: 'crossword', hubId: 'crossword', title: 'March Crossword', isCrossword: true, image: '/images/feb26crossword.png' },
+  { id: 'crossword', hubId: 'crossword', title: 'March Crossword', isCrossword: true, image: '/images/mar26crossword.svg' },
 ]
 
 // Standard 3×3 scrapbook grid — same positions as February

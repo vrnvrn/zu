@@ -157,7 +157,7 @@ export default async function HomePage() {
             </p>
             
             <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-              <Link href="/february-2026" className="btn btn-accent" style={{ 
+              <Link href="/march-2026" className="btn btn-accent" style={{
                 padding: '0.75rem 1.5rem',
                 fontSize: '0.9375rem'
               }}>

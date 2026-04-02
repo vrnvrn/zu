@@ -1,19 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { Redis } from '@upstash/redis'
+import { CROSSWORD_ANSWERS, ALL_CROSSWORD_ANSWERS } from '@/lib/crossword-data'
 
-const correctAnswers: Record<string, string> = {
-  '0-0': 'ZUBERLIN', '0-2': 'EDGECITY', '0-4': 'ZUITZERLAND', '0-7': 'SHANHAIWOO',
-  '2-0': 'ZUAFRIQUE', '2-9': 'VIVACITY', '3-0': 'CRECIMIENTO',
-  '5-0': 'CHARTERCITY', '5-13': 'IPEVILLAGE', '7-0': 'INVISIBLEGARDEN',
-  '12-0': 'ZUGRAMA', '4-11': 'INFINITACITY', '6-0': 'ZUKAS',
-}
-
-const ALL_ANSWERS = [
-  'MUSHANGHAI', 'EDGECITY', 'ZUITZERLAND', 'SHANHAIWOO', 'VIVACITY',
-  'INFINITACITY', 'IPEVILLAGE', 'ZUKAS', 'ZUBERLIN', 'ZUAFRIQUE',
-  'CRECIMIENTO', 'CHARTERCITY', 'INVISIBLEGARDEN', 'ZUGRAMA'
-]
+const correctAnswers = CROSSWORD_ANSWERS
+const ALL_ANSWERS = ALL_CROSSWORD_ANSWERS
 
 function getRedis() {
   const url = process.env.UPSTASH_REDIS_REST_URL

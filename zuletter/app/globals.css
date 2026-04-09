@@ -337,6 +337,8 @@ p {
   border-bottom: 1px solid var(--border);
   padding: 1rem 0;
   margin-bottom: 3rem;
+  position: relative;
+  z-index: 100;
 }
 
 .nav-content {

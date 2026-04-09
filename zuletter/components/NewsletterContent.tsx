@@ -185,7 +185,7 @@ export default function NewsletterContent({ hubs, cards, cardPositions, popupCit
   return (
     <>
       <Nav />
-      <div className="newsletter-fullpage">
+      <div className={`newsletter-fullpage ${backgroundImage ? 'has-page-bg' : ''}`}>
         {backgroundImage && <div className="page-bg" style={{ backgroundImage: `url('${backgroundImage}')` }} />}
         <div className="scrapbook-container" style={{ position: 'relative', zIndex: 1 }}>
           {cards.map((card, index) => {
@@ -444,8 +444,11 @@ export default function NewsletterContent({ hubs, cards, cardPositions, popupCit
           margin: 0;
           min-height: 100vh;
           width: 100%;
-          background: #fafaf9;
           position: relative;
+        }
+
+        .newsletter-fullpage.has-page-bg {
+          background: #fafaf9;
         }
 
         .page-bg {

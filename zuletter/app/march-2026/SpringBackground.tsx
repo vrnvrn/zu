@@ -17,14 +17,10 @@ export default function SpringBackground() {
 
     const resize = () => {
       w = canvas.width = window.innerWidth
-      h = canvas.height = Math.max(document.body.scrollHeight, window.innerHeight)
-      canvas.style.height = `${h}px`
+      h = canvas.height = window.innerHeight
     }
     resize()
     window.addEventListener('resize', resize)
-
-    // Recheck page height periodically (content may load async)
-    const heightInterval = setInterval(resize, 1000)
 
     // Ethereum diamond shape
     const drawDiamond = (cx: number, cy: number, size: number, alpha: number) => {
@@ -127,14 +123,6 @@ export default function SpringBackground() {
     const animate = () => {
       time += 0.01
 
-      // Re-measure in case page grew
-      const pageH = Math.max(document.body.scrollHeight, window.innerHeight)
-      if (Math.abs(pageH - h) > 50) {
-        h = canvas.height = pageH
-        w = canvas.width = window.innerWidth
-        canvas.style.height = `${h}px`
-      }
-
       ctx.clearRect(0, 0, w, h)
 
       // Bright animated gradient — vivid spring + Ethereum colors
@@ -220,7 +208,6 @@ export default function SpringBackground() {
 
     return () => {
       cancelAnimationFrame(animId)
-      clearInterval(heightInterval)
       window.removeEventListener('resize', resize)
     }
   }, [])
@@ -229,11 +216,11 @@ export default function SpringBackground() {
     <canvas
       ref={canvasRef}
       style={{
-        position: 'absolute',
+        position: 'fixed',
         top: 0,
         left: 0,
-        width: '100%',
-        height: '100%',
+        width: '100vw',
+        height: '100vh',
         zIndex: 0,
         pointerEvents: 'none',
       }}

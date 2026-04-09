@@ -440,17 +440,24 @@ export default function NewsletterContent({ hubs, cards, cardPositions, popupCit
                   {poll.options.map((option) => (
                       <button
                         key={option}
-                        className={`poll-option ${poll.voted ? 'voted' : ''}`}
+                        className={`poll-option ${poll.voted ? 'voted' : ''} ${poll.voted && votedOption === option ? 'selected' : ''}`}
                         onClick={() => !poll.voted && handleVote(option)}
                         disabled={poll.voted || poll.loading}
                       >
                         <span className="poll-option-label">{option}</span>
+                        {poll.voted && votedOption === option && <span className="poll-check">&#10003;</span>}
                       </button>
                     )
                   )}
                 </div>
                 {poll.voted && (
-                  <p className="poll-total">Thank you for your response!</p>
+                  <div className="poll-confirmed">
+                    <span className="poll-confirmed-icon">&#10003;</span>
+                    <div>
+                      <p className="poll-confirmed-title">Response recorded</p>
+                      <p className="poll-confirmed-sub">Your vote is anonymous and has been saved. Thank you for sharing your perspective.</p>
+                    </div>
+                  </div>
                 )}
                 {poll.voted && votedOption === 'Yes, we want to be more connected!' && (
                   <div className="poll-connect-cta">
@@ -809,7 +816,57 @@ export default function NewsletterContent({ hubs, cards, cardPositions, popupCit
 
         .poll-pct { font-size: 0.875rem; font-weight: 700; color: #166534; }
 
-        .poll-total { text-align: center; font-size: 0.8125rem; color: #9ca3af; margin-top: 1rem; }
+        .poll-option.selected {
+          background: #f0fdf4;
+          border-color: #2d6b5d;
+          border-width: 2px;
+        }
+        .poll-option.selected .poll-option-label { color: #166534; font-weight: 600; }
+        .poll-check {
+          color: #2d6b5d;
+          font-size: 1rem;
+          font-weight: 700;
+          margin-left: auto;
+          flex-shrink: 0;
+        }
+
+        .poll-confirmed {
+          display: flex;
+          align-items: flex-start;
+          gap: 0.75rem;
+          margin-top: 1.25rem;
+          padding: 1rem 1.25rem;
+          background: #f0fdf4;
+          border: 1px solid #bbf7d0;
+          border-radius: 10px;
+        }
+        .poll-confirmed-icon {
+          flex-shrink: 0;
+          width: 28px;
+          height: 28px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #2d6b5d;
+          color: white;
+          border-radius: 50%;
+          font-size: 0.875rem;
+          font-weight: 700;
+          margin-top: 2px;
+        }
+        .poll-confirmed-title {
+          font-weight: 700;
+          color: #166534;
+          font-size: 0.9375rem;
+          margin: 0 0 0.25rem;
+        }
+        .poll-confirmed-sub {
+          color: #3d5c54;
+          font-size: 0.8125rem;
+          margin: 0;
+          line-height: 1.5;
+        }
+
         .poll-prompt { text-align: center; font-size: 0.8125rem; color: #9ca3af; margin-top: 1rem; }
 
         .poll-connect-cta {

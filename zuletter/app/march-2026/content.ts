@@ -72,21 +72,44 @@ Reach out to Burns at 0xburns@proton.me or @privacyburns on X.`,
   },
   zucityjapan: {
     id: 'zucityjapan',
-    title: 'ZuCity Japan: App Launch',
-    fullContent: `ZuCity Japan has launched their new app — a coordination tool built for the pop-up city context, designed to help residents navigate, connect, and participate in the life of the city.
+    title: 'Connecting the Global Nomad to Rural Japan',
+    fullContent: `**Connecting the Global Nomad to Rural Japan: The Launch of the ZuCity Japan App**
 
-**What is ZuCity Japan?**
+In a major step toward its mission of rural revitalization and social innovation, ZuCity Japan has launched its dedicated mobile application. What started as a "community experiment" to build a vertically-integrated, community-owned neighborhood in rural Japan has now expanded into a platform designed to connect global digital nomads with the "real Japan".
 
-ZuCity Japan ran through March 2026, bringing together builders, thinkers, and community members in Japan in a month-long residency. Their new app emerged from the real friction of running the city — a tool designed by people living in it.
+**A Centralized Hub for Decentralized Living**
 
-**Exploring Emerging Coordinations**
+The ZuCity Japan App functions as a "rural Japan promotion distribution app," specifically designed to solve the logistical hurdles of finding and staying in off-the-beaten-path communities. The app's creator, Kiba Gateaux, developed the tool after realizing there was no single platform capable of managing room bookings, car rentals, and event tickets simultaneously.
 
-The app focuses on coordination at the neighborhood scale: who is working on what, where to find resources, how decisions get made. It's a live experiment in the kind of lightweight governance tooling that pop-up cities need.
+Key features of the app include:
 
-**What's next?**
+- Map-Based Exploration: A worldwide map interface that highlights rural Japanese communities, specifically focusing on energetic hubs in Nagano, Hokkaido, and Kyushu.
+- A Comprehensive Aggregator: Rather than competing with existing services, the app scrapes and aggregates data from major Japanese platforms like Address and event sites like Luma, allowing users to find over 150 rooms and events across the country in one place.
+- Integrated Google Calendar Support: A calendar component that allows users to import specific community schedules directly into their Google Calendars, ensuring they never miss a local event or a friend's gathering.
 
-Kiba and the ZuCity Japan team are continuing to develop the app beyond the residency. If you're building a pop-up city and want to pilot it, reach out.`,
-    link: { url: 'https://nootype.substack.com/p/exploring-emerging-coordinations', text: 'Read: Exploring Emerging Coordinations' },
+**Innovative Tech: The "Time-Free" Calendar**
+
+At the heart of the app is a sophisticated on-chain "bitmap calendar" built on blockchain technology. This structure is uniquely efficient, managing all bookings for roughly four cents per transaction. Interestingly, the smart contract doesn't use standard years; instead, it is indexed to "Zuzalu years," with 2026 being "Year 3" following the original Zuzalu gathering in 2023.
+
+**Fostering a "Lifestyle," Not Just an Event**
+
+The core philosophy behind the app is that living in Japan should be a lifestyle, not a temporary event. The app aims to move foreigners away from the tourist traps of Tokyo and into rural areas where they can truly integrate, learn the Japanese language, and practice local traditions.
+
+To support this, the app includes built-in trust networks:
+
+- Vouching System: Community members can vouch for and buy tickets on behalf of others, ensuring that new arrivals are vetted through existing social circles.
+- Community Discounts: Users can receive tiered discounts on stays and events based on their participation in allied "CoordiNations" or token holdings.
+- QR Check-ins: A seamless system for managers to verify guests and manage the lifecycle of a visitor's stay.
+
+**Expanding the Rural Network**
+
+While the app serves as the management tool for ZuCity's own properties in Nagano — which currently includes four homes and a growing fleet of vehicles, it is also a gateway to partner communities like the Hokkaido Art Collective (LA) and startup hubs like Kola Fukuoka. By providing a simplified distribution layer, the ZuCity Japan App is building the infrastructure necessary for a "Modern Meiji Restoration," betting on a future where high-trust, rural societies become the primary hubs for global innovation.
+
+Come for a month. Stay for the lifestyle.`,
+    links: [
+      { url: 'https://zucity.org/en/apply', text: 'Apply to ZuCity Japan' },
+      { url: 'https://nootype.substack.com/p/exploring-emerging-coordinations', text: 'Read: Exploring Emerging Coordinations' },
+    ],
   },
   dacc: {
     id: 'dacc',
@@ -216,7 +239,7 @@ export const cards: Card[] = [
   // Row 1
   { id: 'intro', hubId: 'intro', title: "Editor's Corner", subtitle: 'March 2026 — by Yami', isIntro: true },
   { id: 'burns', hubId: 'burns', title: 'Burns — March 2026', isCenterText: true },
-  { id: 'zucityjapan', hubId: 'zucityjapan', title: 'ZuCity Japan: App Launch', isCenterText: true },
+  { id: 'zucityjapan', hubId: 'zucityjapan', title: 'Connecting the Global Nomad to Rural Japan', isCenterText: true },
   // Row 2
   { id: 'dacc', hubId: 'dacc', title: 'd/acc in Practice', subtitle: 'Privote — by Shashank Trivedi', image: '/articles/dacc/dacc march 2026 builder pfp.jpeg', isDacc: true },
   { id: 'map', hubId: 'map', title: '2026 Map', image: '/images/zumap-2026.svg', isFullImage: true },

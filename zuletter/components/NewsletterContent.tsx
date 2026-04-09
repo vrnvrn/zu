@@ -259,7 +259,7 @@ export default function NewsletterContent({ hubs, cards, cardPositions, popupCit
                 onClick={() => handleCardClick(card)}
               >
                 {card.image && !card.isDacc && !card.isBgImage && (
-                  <Image className="card-image" src={card.image} alt={card.isFiller ? '' : (title || '')} fill sizes="25vw" />
+                  <Image className="card-image" src={card.image} alt={card.isFiller ? '' : (title || '')} fill sizes="25vw" priority={card.isFullImage} />
                 )}
                 {card.isBgImage && card.image && (
                   <Image className="card-bg-image" src={card.image} alt="" fill sizes="25vw" />

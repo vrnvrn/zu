@@ -471,7 +471,7 @@ export default function NewsletterContent({ hubs, cards, cardPositions, popupCit
                       </div>
                       <div className="poll-connect-row">
                         <span className="poll-connect-icon">Signal</span>
-                        <span className="poll-connect-handle">YamiDeutsch.32</span>
+                        <a href="https://signal.me/#eu/EiiSWw3u1pgigYZ6cdOb1NAlXeWL8_r_p93Idp9rMGXQNo4MOk9MUogENKcoFQDi" target="_blank" rel="noopener noreferrer" className="poll-connect-handle">YamiDeutsch.32</a>
                       </div>
                     </div>
                   </div>

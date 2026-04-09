@@ -39,6 +39,7 @@ People create spaces. Ethereum helps make those spaces resilient and durable. Sa
 This is the shift ahead. Moving from tools to systems, from systems to environments, and from environments to reality.
 
 Sanctuary needs technology. It also needs a place.`,
+    link: { url: 'mailto:hi@zuzone.org', text: 'Share your thoughts — hi@zuzone.org' },
   },
   burns: {
     id: 'burns',
@@ -246,7 +247,7 @@ export const popupCities: PopupCity[] = [
   { name: 'Infinita City', date: 'Feb 1 – Mar 31', url: 'https://infinita.city/' },
   { name: 'ZuCity Japan', date: 'Mar 1 – 30', url: 'https://zucity.org/' },
   { name: 'Ipê Village', date: 'Apr 6 – May 1', url: 'https://ipe.city/' },
-  { name: 'Ârc Montenegro', date: 'Apr 3 – May 29', url: 'https://luma.com/montenegro' },
+  { name: 'Ârc Montenegro', date: 'May 1 – 30', url: 'https://luma.com/montenegro' },
   { name: 'ZuAfrique', date: 'Apr 12 – May 3', url: 'https://zuafrique.com/' },
   { name: 'ZuKas Turkey', date: 'September (TBD)', url: 'https://zukas.city/' },
   { name: 'ProtoVille Korea', date: 'April', url: 'https://x.com/zuzones' },

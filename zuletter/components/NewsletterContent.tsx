@@ -813,7 +813,8 @@ export default function NewsletterContent({ hubs, cards, cardPositions, popupCit
           transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
         }
 
-        .modal-link:hover { background: #1a4a40; transform: translateY(-1px); box-shadow: 0 2px 8px rgba(45,107,93,0.4); }
+        .modal-link:hover, .modal-link:visited:hover { background: #1a4a40; color: #d4ece5; transform: translateY(-1px); box-shadow: 0 2px 8px rgba(45,107,93,0.4); }
+        .modal-link:visited { color: white; }
 
         /* ---- Poll modal ---- */
         .poll-modal { max-width: 480px; }

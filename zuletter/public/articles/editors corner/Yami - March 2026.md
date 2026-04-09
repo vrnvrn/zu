@@ -12,8 +12,6 @@ Hubs begin to address this.
 
 They create environments where sanctuary becomes tangible and operational in practice, where coordination happens through decentralized tools, value flows through crypto native systems, and governance is tested in real conditions. They turn abstract capabilities into lived systems.
 
-
-
 At the same time, sanctuary is not a single form. It does not resolve into one model or one unified alternative. 
 The hubs come in all types and forms. 
 
@@ -25,9 +23,7 @@ This is why hubs take many forms.
 
 They are built on shared technological foundations, yet they express different priorities, constraints, and cultural directions. In ZuBerlin, experiments in co living, coordination, and shared infrastructure are becoming more persistent. In ZuAfrique, the work takes shape under tighter constraints, where access, funding, and local ecosystems require these systems to prove their usefulness in practice, beyond their elegance.
 
-These are early stages. They point toward sanctuary as something people can actually depend on in practice, shaped differently across contexts rather than converging into a single blueprint.
-
-At the same time, hubs are still fragmented. Each one is experimenting. Learnings do not compound and systems do not connect. Sanctuary technology can be understood as a stack, and a stack only works when its layers are aligned and interoperable.
+These are early stages. They point toward sanctuary as something people can actually depend on in practice, shaped differently across contexts rather than converging into a single blueprint. At the same time, hubs are still fragmented. Each one is experimenting. Learnings do not compound and systems do not connect. Sanctuary technology can be understood as a stack, and a stack only works when its layers are aligned and interoperable.
 
 Coordination is what enables that.
 

@@ -49,9 +49,7 @@ Sanctuary needs technology. It also needs a place.
   burns: {
     id: 'burns',
     title: 'The EF Mandate and Zuzalu',
-    fullContent: `**The teleological connection between the EF Mandate and Zuzalu**
-
-The recent publication of the EF mandate can be seen as a cultural milestone in Ethereum: it cleared up a lot of vagueness that accumulated, and set the teleological course and tone of an overarching mission: A world computer, providing individual users with the means to coordinate in a self-sovereign way without unnecessary risks or barriers, towards individual autonomy and collective efficiency. This is huge in many ways, providing the much needed clarity about the bigger picture and preemptively naming dead-ends to avoid, and identifying required sanctuary technologies in order to enable humanity to unfold in this direction. The phenomenon of Zuzalu in many ways reassembles a mirror-image of Ethereum. Ethereum, manifested in a unified digital form first by its nature, growing manifold branches on what it enables. Substantially, Order directed towards allowing chaos to happen along its scaling. Zuzalu, manifested through manifold individual occurrences first in the physical realm, free of reinforced unifications by its nature. Chaos allowing for order to arise along its iterations.
+    fullContent: `The recent publication of the EF mandate can be seen as a cultural milestone in Ethereum: it cleared up a lot of vagueness that accumulated, and set the teleological course and tone of an overarching mission: A world computer, providing individual users with the means to coordinate in a self-sovereign way without unnecessary risks or barriers, towards individual autonomy and collective efficiency. This is huge in many ways, providing the much needed clarity about the bigger picture and preemptively naming dead-ends to avoid, and identifying required sanctuary technologies in order to enable humanity to unfold in this direction. The phenomenon of Zuzalu in many ways reassembles a mirror-image of Ethereum. Ethereum, manifested in a unified digital form first by its nature, growing manifold branches on what it enables. Substantially, Order directed towards allowing chaos to happen along its scaling. Zuzalu, manifested through manifold individual occurrences first in the physical realm, free of reinforced unifications by its nature. Chaos allowing for order to arise along its iterations.
 
 One of the most powerful statements of the EF mandate holds a special relevance for Zuzalu:
 
@@ -78,9 +76,7 @@ Reach out to Burns at 0xburns@proton.me or @privacyburns on X.`,
   zucityjapan: {
     id: 'zucityjapan',
     title: 'Connecting the Global Nomad to Rural Japan',
-    fullContent: `**Connecting the Global Nomad to Rural Japan: The Launch of the ZuCity Japan App**
-
-In a major step toward its mission of rural revitalization and social innovation, ZuCity Japan has launched its dedicated mobile application. What started as a "community experiment" to build a vertically-integrated, community-owned neighborhood in rural Japan has now expanded into a platform designed to connect global digital nomads with the "real Japan".
+    fullContent: `In a major step toward its mission of rural revitalization and social innovation, ZuCity Japan has launched its dedicated mobile application. What started as a "community experiment" to build a vertically-integrated, community-owned neighborhood in rural Japan has now expanded into a platform designed to connect global digital nomads with the "real Japan".
 
 **A Centralized Hub for Decentralized Living**
 
@@ -120,9 +116,7 @@ Come for a month. Stay for the lifestyle.`,
     id: 'dacc',
     title: 'd/acc in Practice',
     image: '/articles/dacc/dacc march 2026 builder pfp.jpeg',
-    fullContent: `**Privote — Zuzalu News Project Spotlight**
-
-**Privote** — Private, trustless on-chain voting designed to prevent collusion and ensure true voter privacy. Explore it at privote.live.
+    fullContent: `**Privote** — Private, trustless on-chain voting designed to prevent collusion and ensure true voter privacy. Explore it at privote.live.
 
 **The Build**
 
@@ -173,10 +167,7 @@ Are you an open source builder working on something that defends against central
   nsvszu: {
     id: 'nsvszu',
     title: 'Lessons in Permanence from Network School',
-    fullContent: `**Lessons in Permanence from Network School**
-*by vrn.eth*
-
-With intertwined philosophical and practical ancestries, Zuzalu and Network School have much overlap; if I had to put it in one sentence: techno-optimistic intentional communities experimenting with building parallel systems, with heavy focuses on cryptographic and decentralized technologies (and often health).
+    fullContent: `With intertwined philosophical and practical ancestries, Zuzalu and Network School have much overlap; if I had to put it in one sentence: techno-optimistic intentional communities experimenting with building parallel systems, with heavy focuses on cryptographic and decentralized technologies (and often health).
 
 Zuzalu began with an ephemeral 2-month experiment in 2023, and since then has had dozens if not hundreds of subsequent "pop-up" city experiments around the world. It is by no means a monolith, and my experience is colored by the fraction that I participated in or organized.
 

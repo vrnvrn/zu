@@ -68,7 +68,7 @@ interface Props {
   cards: Card[]
   cardPositions: CardPosition[]
   popupCities: PopupCity[]
-  backgroundImage: string
+  backgroundImage?: string
   pollId?: string
 }
 
@@ -106,6 +106,7 @@ export default function NewsletterContent({ hubs, cards, cardPositions, popupCit
   const [isDragging, setIsDragging] = useState(false)
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
   const [showPoll, setShowPoll] = useState(false)
+  const [votedOption, setVotedOption] = useState<string | null>(null)
   const [poll, setPoll] = useState<PollState>({
     question: '',
     options: [],
@@ -140,6 +141,7 @@ export default function NewsletterContent({ hubs, cards, cardPositions, popupCit
       if (!res.ok) throw new Error('failed')
       const data = await res.json()
       sessionStorage.setItem(`poll_${pollId}_voted`, '1')
+      setVotedOption(option)
       setPoll(p => ({ ...p, votes: data.votes, voted: true, loading: false }))
     } catch {
       setPoll(p => ({ ...p, loading: false, error: 'Could not record vote. Please try again.' }))
@@ -184,7 +186,7 @@ export default function NewsletterContent({ hubs, cards, cardPositions, popupCit
     <>
       <Nav />
       <div className="newsletter-fullpage">
-        <div className="page-bg" style={{ backgroundImage: `url('${backgroundImage}')` }} />
+        {backgroundImage && <div className="page-bg" style={{ backgroundImage: `url('${backgroundImage}')` }} />}
         <div className="scrapbook-container" style={{ position: 'relative', zIndex: 1 }}>
           {cards.map((card, index) => {
             const hub = hubs[card.hubId]
@@ -264,6 +266,11 @@ export default function NewsletterContent({ hubs, cards, cardPositions, popupCit
                 )}
                 {card.isDacc && (
                   <div className="card-content dacc-content">
+                    {card.image && (
+                      <div className="dacc-pfp-wrapper">
+                        <Image className="dacc-pfp" src={card.image} alt="" width={64} height={64} />
+                      </div>
+                    )}
                     <div className="dacc-header">
                       <h3 className="card-title">{title}</h3>
                       <span className="dacc-subtitle">{card.subtitle || 'Project Spotlight'}</span>
@@ -407,6 +414,21 @@ export default function NewsletterContent({ hubs, cards, cardPositions, popupCit
                 {poll.voted && (
                   <p className="poll-total">{totalVotes} {totalVotes === 1 ? 'response' : 'responses'}</p>
                 )}
+                {poll.voted && votedOption === 'Yes, we want to be more connected!' && (
+                  <div className="poll-connect-cta">
+                    <p className="poll-connect-title">Let&apos;s connect! Reach out to Yami:</p>
+                    <div className="poll-connect-channels">
+                      <div className="poll-connect-row">
+                        <span className="poll-connect-icon">TG</span>
+                        <a href="https://t.me/YamiDeutsch" target="_blank" rel="noopener noreferrer" className="poll-connect-handle">@YamiDeutsch</a>
+                      </div>
+                      <div className="poll-connect-row">
+                        <span className="poll-connect-icon">Signal</span>
+                        <span className="poll-connect-handle">YamiDeutsch.32</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
                 {!poll.voted && (
                   <p className="poll-prompt">Click an option to vote — anonymous, one response per session.</p>
                 )}
@@ -497,7 +519,7 @@ export default function NewsletterContent({ hubs, cards, cardPositions, popupCit
         }
 
         .card.full-image .card-image {
-          object-fit: contain;
+          object-fit: cover;
           position: relative;
           width: 100%;
           height: 100%;
@@ -579,6 +601,8 @@ export default function NewsletterContent({ hubs, cards, cardPositions, popupCit
           justify-content: flex-end;
         }
 
+        .dacc-pfp-wrapper { display: flex; justify-content: center; margin-bottom: 0.5rem; }
+        .dacc-pfp { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 2px solid #e8d556; }
         .dacc-header .card-title { color: #f5f5f0; font-size: 0.9375rem; }
         .dacc-subtitle { color: #e8d556; font-size: 0.6875rem; font-weight: 600; margin-top: 0.25rem; display: block; }
 
@@ -744,6 +768,58 @@ export default function NewsletterContent({ hubs, cards, cardPositions, popupCit
 
         .poll-total { text-align: center; font-size: 0.8125rem; color: #9ca3af; margin-top: 1rem; }
         .poll-prompt { text-align: center; font-size: 0.8125rem; color: #9ca3af; margin-top: 1rem; }
+
+        .poll-connect-cta {
+          margin-top: 1.25rem;
+          padding: 1rem 1.25rem;
+          background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+          border: 1px solid #bbf7d0;
+          border-radius: 10px;
+          text-align: center;
+        }
+        .poll-connect-title {
+          font-weight: 600;
+          color: #166534;
+          font-size: 0.9375rem;
+          margin: 0 0 0.75rem;
+        }
+        .poll-connect-channels {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          align-items: center;
+        }
+        .poll-connect-row {
+          display: flex;
+          align-items: center;
+          gap: 0.625rem;
+        }
+        .poll-connect-icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: #2d6b5d;
+          color: white;
+          font-size: 0.6875rem;
+          font-weight: 700;
+          padding: 0.25rem 0.5rem;
+          border-radius: 4px;
+          min-width: 48px;
+          text-transform: uppercase;
+          letter-spacing: 0.03em;
+        }
+        .poll-connect-handle {
+          font-weight: 600;
+          font-size: 0.9375rem;
+          color: #1c1917;
+        }
+        a.poll-connect-handle {
+          color: #2d6b5d;
+          text-decoration: none;
+        }
+        a.poll-connect-handle:hover {
+          text-decoration: underline;
+        }
 
         /* ---- Map zoom modal ---- */
         .image-modal-overlay {

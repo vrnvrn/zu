@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import NewsletterContent from '@/components/NewsletterContent'
 import { hubs, cards, cardPositions, popupCities } from './content'
+import SpringBackground from './SpringBackground'
 
 export const metadata: Metadata = {
   title: 'ZuZone — March 2026 | ZuCity Japan Launch, Ecosystem Poll',
@@ -19,13 +20,15 @@ export const metadata: Metadata = {
 
 export default function March2026Page() {
   return (
-    <NewsletterContent
-      hubs={hubs}
-      cards={cards}
-      cardPositions={cardPositions}
-      popupCities={popupCities}
-      backgroundImage="/newsletters/images/2026-01-grid-collage.jpg"
-      pollId="march-2026"
-    />
+    <>
+      <SpringBackground />
+      <NewsletterContent
+        hubs={hubs}
+        cards={cards}
+        cardPositions={cardPositions}
+        popupCities={popupCities}
+        pollId="march-2026"
+      />
+    </>
   )
 }

@@ -6,12 +6,13 @@ type PollId = typeof VALID_POLL_IDS[number]
 
 const POLL_CONFIGS: Record<PollId, { question: string; options: string[] }> = {
   'march-2026': {
-    question: 'Where do you see the pop-up city ecosystem heading in the next 2 years?',
+    question: 'How connected do you feel to other hubs in the ecosystem?',
     options: [
-      'More permanent hubs & long-term spaces',
-      'Greater geographic diversity',
-      'Deeper governance experiments',
-      'Broader mainstream awareness',
+      'Very connected (active collaboration)',
+      'Somewhat connected',
+      'Aware but not connected',
+      'Not connected at all',
+      'Yes, we want to be more connected!',
     ],
   },
 }

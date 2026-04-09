@@ -3,13 +3,65 @@ import type { Hub, Card, CardPosition, PopupCity } from '@/components/Newsletter
 export const hubs: Record<string, Hub> = {
   intro: {
     id: 'intro',
-    title: 'Zuzone — March 2026',
-    fullContent: 'Welcome to the March 2026 edition of the Zuzone community newsletter.\n\nThank you to everyone contributing to this ecosystem — builders, writers, organizers, and connectors. This month we spotlight ZuCity Japan\'s app launch, hear from Burns and V, share our first ecosystem poll, and recap ZuZone\'s first X Spaces co-hosting.\n\nWishing you a great April ahead.',
+    title: "Editor's Corner — March 2026",
+    fullContent: `Over the past year, we've gotten very good at naming what's broken: surveillance, centralization, fragile systems. We are much less effective at building what comes next.
+
+In his recent post, Vitalik reframes Ethereum's role, focusing on contributing to an ecosystem of sanctuary technologies rather than attempting to fix the world. These are tools that allow people to live, coordinate, and build with resilience under pressure.
+
+That shift matters. Sanctuary technology is more than a set of tools. It is the ability to function end to end. It means communicating without surveillance, coordinating without gatekeepers, moving value without permission, and building systems that persist beyond individuals. These capabilities already exist. They are fragmented, rarely used together, and still disconnected from daily life.
+
+This is the gap.
+
+We have Signal. We have crypto. We have local AI. What we lack are environments where these systems are used together in practice, where people rely on them in everyday use rather than treating them as experiments. When systems remain optional, they tend to fail under pressure.
+
+Hubs begin to address this.
+
+They create environments where sanctuary becomes tangible and operational in practice, where coordination happens through decentralized tools, value flows through crypto native systems, and governance is tested in real conditions. They turn abstract capabilities into lived systems. At the same time, sanctuary is not a single form. It does not resolve into one model or one unified alternative. The hubs come in all types and forms. They are all built on sanctuary tech but they are different imaginations.
+
+At its core, sanctuary is the ability for people, families, and communities to imagine the lives they want to live and to create the conditions for those lives to emerge.
+
+This is why hubs take many forms.
+
+They are built on shared technological foundations, yet they express different priorities, constraints, and cultural directions. In ZuBerlin, experiments in co living, coordination, and shared infrastructure are becoming more persistent. In ZuAfrique, the work takes shape under tighter constraints, where access, funding, and local ecosystems require these systems to prove their usefulness in practice, beyond their elegance.
+
+These are early stages. They point toward sanctuary as something people can actually depend on in practice, shaped differently across contexts rather than converging into a single blueprint.
+
+At the same time, hubs are still fragmented. Each one is experimenting. Learnings do not compound and systems do not connect. Sanctuary technology can be understood as a stack, and a stack only works when its layers are aligned and interoperable.
+
+Coordination is what enables that.
+
+It is the layer that connects isolated efforts into a system. It allows patterns to emerge, knowledge to travel, and infrastructure choices to converge over time. It reduces repeated mistakes, surfaces early signals, and creates continuity across hubs that would otherwise remain disconnected.
+
+Without coordination, progress stays local. With it, an ecosystem begins to take shape.
+
+People create spaces. Ethereum helps make those spaces resilient and durable. Sanctuary technology strengthens that resilience. A place where people can live, build, and depend on these systems still needs to be formed.
+
+This is the shift ahead. Moving from tools to systems, from systems to environments, and from environments to reality.
+
+Sanctuary needs technology. It also needs a place.`,
   },
   burns: {
     id: 'burns',
     title: 'Burns — March 2026',
-    fullContent: `[Burns' March article will be added here once received.]
+    fullContent: `**The teleological connection between the EF Mandate and Zuzalu**
+
+The recent publication of the EF mandate can be seen as a cultural milestone in Ethereum: it cleared up a lot of vagueness that accumulated, and set the teleological course and tone of an overarching mission: A world computer, providing individual users with the means to coordinate in a self-sovereign way without unnecessary risks or barriers, towards individual autonomy and collective efficiency. This is huge in many ways, providing the much needed clarity about the bigger picture and preemptively naming dead-ends to avoid, and identifying required sanctuary technologies in order to enable humanity to unfold in this direction. The phenomenon of Zuzalu in many ways reassembles a mirror-image of Ethereum. Ethereum, manifested in a unified digital form first by its nature, growing manifold branches on what it enables. Substantially, Order directed towards allowing chaos to happen along its scaling. Zuzalu, manifested through manifold individual occurrences first in the physical realm, free of reinforced unifications by its nature. Chaos allowing for order to arise along its iterations.
+
+One of the most powerful statements of the EF mandate holds a special relevance for Zuzalu:
+
+> "We are here to uncapture the individual, and to entrench their freedoms of association."
+
+To a certain degree, Zuzalu comes with these factors as prerequisites to unfold: Uncaptured individuals, which execute their freedoms of association. At the same time, these factors can be defended, refined and fortified by the application of such sanctuary technologies, as long as they are implemented in a way that equally aims in the same direction as stated in the EF mandate. This, on the other side, also allows for the sanctuary technologies to refine and scale, by creating environments of real-world use-cases which might not easily occur in the centralized world otherwise, but could initiate their wider adoption by proofing the concept. The up-following statement in the EF mandate already hints that way:
+
+> "We are here to provide the infrastructure that enables a voice for those forms of cooperation, organization, and community that go unrecognized within existing hierarchies and systems."
+
+The symbiotic potential of Zuzalu imo becomes obvious at this point: Applying the infrastructure and principles, by creating and living these forms of cooperation, organization and community – without copying existing hierarchies and systems. The non-negotiable CROPS-framework and the social pillar of the mandate provides a sufficient basis for a decentralized Zuzalu to thrive without collapsing and without vulnerabilities for global capture. While following the CROPS framework can ensure shared functional guarantees and standards among all Zuzalu iterations and hubs, the application of the social pillar requires specific manifestations in the light of the unique project:
+
+The unique iterations and hubs do not share the same circumstances, specifications, opinions, morals and communities – but at the same time, it is important to be principled and disciplined, to associate with the right people and projects, and to stay aware of a bigger picture beyond the own niche. A shared effort and alignment towards a CROPS-native network of autonomous projects and self-sovereign users can create shared leverage on the centralized world on many different technological, subcultural and geopolitical fronts.
+
+Zuzalu, by being de-totalized and without a "main node", reassembles some ideals that Ethereum is striving towards: The rejection of the idea that there is no alternative is a lived reality. Along the evolution of the Zuzalu movement, whenever there was a step towards a CROPS-principled ecosystem, the movement became more functional. Whenever CROPS-principles were violated, it usually opened doors for corruption. Whenever self-sovereign minds were able to authentically identify their alignment towards a project, because its principles were clearly communicated and upheld in discipline, it provided a trustworthy ground for coordination. Whenever the capture-resistance of a project and the autonomy of the individual were prioritized over creating unnecessary dependencies and pushing global narratives, the movement became stronger.
+
+In the near future, it is likely that we will witness a huge demand for local communal coordination in nearly all parts of the world – and it will happen by digital means. Will it become a world where individual human agency can unfold its search for truth and beauty also against consensus, protected by a CROPS-native digital and physical landscape? Zuzalu is, what could make the difference.
 
 Reach out to Burns at 0xburns@proton.me or @privacyburns on X.`,
     links: [
@@ -38,22 +90,92 @@ Kiba and the ZuCity Japan team are continuing to develop the app beyond the resi
   dacc: {
     id: 'dacc',
     title: 'd/acc in Practice',
-    fullContent: `[This month's d/acc in Practice builder spotlight will be added here.]
+    image: '/articles/dacc/dacc march 2026 builder pfp.jpeg',
+    fullContent: `**Privote — Zuzalu News Project Spotlight**
+
+**Privote** — Private, trustless on-chain voting designed to prevent collusion and ensure true voter privacy. Explore it at privote.live.
+
+**The Build**
+
+Privote is a framework for deploying private, anti-collusion voting polls on-chain, built on MACI (Minimal Anti-Collusion Infrastructure).
+
+**The problem:** Traditional voting systems are closed-source — even in high-stakes situations like elections, you're trusting opaque infrastructure. Blockchain fixes transparency and trustlessness, but introduces a new problem: since everything is public, anyone can see who voted for whom. This enables verifiable bribery — a vote buyer can cryptographically confirm someone voted as instructed — making public-ledger voting worse than paper ballots for real-world use.
+
+**How Privote solves it:** Votes are encrypted on the client before being published on-chain. Voters never reveal individual votes to public — instead, they generate zk-SNARK proofs that the final tally was computed correctly. You get blockchain's transparency for the process while keeping individual votes completely private.
+
+**Anti-collusion mechanism:** Voters can silently change their vote after casting. Even under coercion, a voter can always override their previous ballot. Since only the latest valid message counts, bribers can never verify compliance. Vote buying becomes economically irrational.
+
+**UX as a first-class concern:** Privacy tools are useless if nobody can use them. Privote integrates Porto for a fully wallet-less flow — users can connect with just an email or passkey, no browser extension or seed phrase required. Gas requirements are abstracted away for Porto users. A non-crypto user can cast a private, anti-collusion vote in under a minute.
+
+**Key features:**
+
+- Multiple voting modes — Quadratic Voting, 1-person-1-vote, and single-choice
+- 10+ authentication policies — Token-gating, Zupass tickets, Semaphore groups, AnonAadhaar, Gitcoin Passport, EAS attestations, Merkle whitelists, and more
+- Self-service — Anyone can create and deploy a private poll in minutes
+- Zupass integration — Gate polls to event ticket holders via zero-knowledge proofs
+- Battle-tested — Privote powered the GG24 Privacy Round, distributing 35+ wETH to privacy-focused public goods through Gitcoin
+
+**Meet the Builder**
+
+Shashank Trivedi (@0xlord_forever) — a blockchain developer and builder based in India. An Ethereum Foundation (PSE) grantee for Privote, a Summer of Bitcoin 2024 scholar, and a Protocol Labs Dev Guild Fellow. He's an active open-source contributor to projects like MACI, rust-bitcoin, and Filecoin's reference FVM, with multiple hackathon wins including EthSingapore, EthforAll, ETHGlobal NYC, and EthOnline.
+
+**What This Defends Against (the d/acc angle)**
+
+Threat: Verifiable bribery and voter coercion in on-chain governance.
+
+Blockchain governance today has an ironic flaw: the transparency that makes it trustless also makes it corruptible. When votes are public, anyone can verify that a bribe was honored. If your vote can be bought or coerced, decentralization is theater.
+
+Privote defends against bribery (MACI's key-change mechanism makes vote buying economically irrational), against coercion (voters cannot produce a receipt proving how they voted), against surveillance (individual votes are encrypted, only the final tally is published via zk-SNARK proofs), and against plutocracy (Quadratic Voting mode ensures concentrated wealth can't dominate outcomes).
+
+Private voting is a prerequisite for legitimate self-governance. Privote gives any community the ability to hold votes that are simultaneously transparent and private — the foundation self-sovereign communities need to govern themselves without capture.
 
 Are you an open source builder working on something that defends against centralization, surveillance, or infrastructure fragility? We'd love to feature you. Reach out at hi@zuzone.org`,
-    link: { url: 'mailto:hi@zuzone.org', text: 'hi@zuzone.org' },
+    links: [
+      { url: 'https://privote.live', text: 'Explore Privote' },
+      { url: 'https://x.com/0xlord_forever', text: '@0xlord_forever' },
+      { url: 'mailto:hi@zuzone.org', text: 'hi@zuzone.org' },
+    ],
   },
   poll: {
     id: 'poll',
     title: 'Ecosystem Poll',
-    fullContent: 'Where do you see the pop-up city ecosystem heading in the next 2 years? Cast your vote — results shared next month.',
+    fullContent: 'How connected do you feel to other hubs in the ecosystem? Cast your vote — results shared next month.',
   },
   nsvszu: {
     id: 'nsvszu',
-    title: 'NS & Zu: Learning From Each Other',
-    fullContent: `[Veronica's article on what Network State residencies and Zu pop-up cities can learn from each other will be added here once submitted.]
+    title: 'Lessons in Permanence from Network School',
+    fullContent: `**Lessons in Permanence from Network School**
+*by vrn.eth*
 
-Reach out to Veronica at [Email]`,
+With intertwined philosophical and practical ancestries, Zuzalu and Network School have much overlap; if I had to put it in one sentence: techno-optimistic intentional communities experimenting with building parallel systems, with heavy focuses on cryptographic and decentralized technologies (and often health).
+
+Zuzalu began with an ephemeral 2-month experiment in 2023, and since then has had dozens if not hundreds of subsequent "pop-up" city experiments around the world. It is by no means a monolith, and my experience is colored by the fraction that I participated in or organized.
+
+Network School distinguishes itself most in its permanence. It opened in September 2024 for three months, re-opened in March 2025 and has been open ever since, now over a year in operation.
+
+Most of the Zuzalu residencies continue to be ephemeral, with a few exceptions that include permanent coworking spaces, and even fewer that maintain coliving as part of a permanent project. Since 2025, however, many Zuzalu projects have been working toward putting down roots in their respective jurisdictions to build a permanent crypto city.
+
+---
+
+A permanent coliving project yields opportunities and complications of a different kind.
+
+Most importantly, the stakes are higher for a permanent project. You need healthy, long-term relationships with your neighbors, with the government, with the landowners and business owners you are living with. You need fair and trusted, let alone trustless, systems within your community to handle all the colors of life and human coordination. Therefore your freedom to experiment is necessarily limited, and every step taken (whether app, promise, or process) ought to be done cautiously.
+
+Ephemeral Zuzalu residencies are often thriving with experiments in technology and society only possible in aligned techno-optimistic communities. By being temporary, the dice can be re-rolled constantly, which enables rapid iteration and lower stakes. I would argue that even temporary pop-up crypto city experiments, as well as short conferences, should think seriously about the long-term effects of their presence in localities. But if you seek to grow something for years, let alone generations, the local connections and impacts ought to be one of the first and most important priorities for a project.
+
+---
+
+Interestingly, Network School has maintained an element of "pop-up" in its structure. In addition to the growing long-term community of residents who commit to a full-year, several hundred join each month for monthly cohorts. Analogous to tourists, some choose to stay longer, permanently, while others choose to move onto their next destination. Infinita in Prospéra first proved to me the value of extended pop-up residencies in seeding and growing population in permanent projects, and experiencing it at Network School deepens my conclusion that any permanent project ought to include extended residencies in its programming, especially at the start.
+
+It is a significant decision to choose to move somewhere, and being able to try a place and its community helps people make such a decision. It also enables breadth for the long-term residents while they build depth in their connections with one another.
+
+As Zuzalu projects put down roots in permanent spaces, hosting extended residencies is a good strategy for bringing people to the space initially, and providing variety as people stay long-term. It also enables high concentrations for specific fields and interests, such as the upcoming Ethereum Month at Network School this May or the Valley of the Commons pop-up at the Commons Hub in Austria this fall.
+
+---
+
+Finally, I've already written in depth about the necessity to "make it somewhere people want to live." If you seek to build a coliving project, regardless of the technological or societal innovations, it must be a place people want to live. Temporary projects can provide novelty once, maybe twice, but unless it is a good place to live, and people feel they get their money's worth, it will be difficult to replicate let alone grow something permanently.
+
+Of course, living at the "frontier" necessitates a level of sacrifice of convenience or preference that existing cities and communities offer. But I have been impressed with Network School's rapid improvements and refinements in the living experience since I first visited on Opening Day in 2024. Every time I have returned to NS, it has been markedly better than my previous visit; growth of this kind I think is only possible when a project puts down roots permanently and focuses its efforts on building a city.`,
   },
   xspaces: {
     id: 'xspaces',
@@ -91,16 +213,16 @@ Follow us on X @zuzones to catch future spaces.`,
 
 export const cards: Card[] = [
   // Row 1
-  { id: 'intro', hubId: 'intro', title: 'Zuzone', subtitle: 'March 2026', isIntro: true },
+  { id: 'intro', hubId: 'intro', title: "Editor's Corner", subtitle: 'March 2026 — by Yami', isIntro: true },
   { id: 'burns', hubId: 'burns', title: 'Burns — March 2026', isCenterText: true },
   { id: 'zucityjapan', hubId: 'zucityjapan', title: 'ZuCity Japan: App Launch', isCenterText: true },
   // Row 2
-  { id: 'dacc', hubId: 'dacc', title: 'd/acc in Practice', isDacc: true },
-  { id: 'poll', hubId: 'poll', title: 'Ecosystem Poll', subtitle: 'Where is the ecosystem headed?', isPoll: true },
-  { id: 'nsvszu', hubId: 'nsvszu', title: 'NS & Zu: Learning From Each Other', subtitle: 'by Vrn.eth', isCenterText: true },
+  { id: 'dacc', hubId: 'dacc', title: 'd/acc in Practice', subtitle: 'Privote — by Shashank Trivedi', image: '/articles/dacc/dacc march 2026 builder pfp.jpeg', isDacc: true },
+  { id: 'map', hubId: 'map', title: '2026 Map', image: '/images/zumap-2026.svg', isFullImage: true },
+  { id: 'nsvszu', hubId: 'nsvszu', title: 'Lessons in Permanence from Network School', subtitle: 'by vrn.eth', isCenterText: true },
   // Row 3
   { id: 'xspaces', hubId: 'xspaces', title: 'X Spaces: Roads to Devcon', isCenterText: true },
-  { id: 'map', hubId: 'map', title: '2026 Map', image: '/images/zumap-2026.svg', isFullImage: true },
+  { id: 'poll', hubId: 'poll', title: 'Ecosystem Poll', subtitle: 'Are hubs actually connected?', isPoll: true },
   { id: 'crossword', hubId: 'crossword', title: 'March Crossword', isCrossword: true, image: '/images/mar26crossword.svg' },
 ]
 
@@ -126,14 +248,14 @@ export const popupCities: PopupCity[] = [
   { name: 'Ipê Village', date: 'Apr 6 – May 1', url: 'https://ipe.city/' },
   { name: 'Ârc Montenegro', date: 'Apr 3 – May 29', url: 'https://luma.com/montenegro' },
   { name: 'ZuAfrique', date: 'Apr 12 – May 3', url: 'https://zuafrique.com/' },
-  { name: 'ZuKas Turkey', date: 'Apr 10 – May 10', url: 'https://zukas.city/' },
+  { name: 'ZuKas Turkey', date: 'September (TBD)', url: 'https://zukas.city/' },
   { name: 'ProtoVille Korea', date: 'April', url: 'https://x.com/zuzones' },
   { name: 'muShanghai', date: 'May 10 – Jun 6', url: 'https://www.mushanghai.xyz/' },
   { name: 'Edge Esmeralda', date: 'May 30 – Jun 27', url: 'https://www.edgecity.live/' },
   { name: 'Zanzalu', date: 'Jul 25 – Aug 14', url: 'https://zanzalu.org/' },
   { name: 'Valley of the Commons', date: 'Aug 24 – Sep 20', url: 'https://www.valleyofthecommons.com/' },
   { name: 'ShanHaiWoo', date: 'H2 2026', url: 'https://www.shanhaiwoo.com/' },
-  { name: 'Invisible Garden', date: 'October', url: 'https://invisible.garden/' },
+  { name: 'Invisible Garden', date: 'Jun 13 – 21 (Berlin)', url: 'https://invisible.garden/' },
   { name: 'Edge City India', date: 'Q4', url: 'https://www.edgecity.live/' },
   { name: 'ZuGrama India', date: 'From Feb 2026', url: 'https://zugrama.org/' },
 ]

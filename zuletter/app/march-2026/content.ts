@@ -4,7 +4,7 @@ export const hubs: Record<string, Hub> = {
   intro: {
     id: 'intro',
     title: 'March 2026',
-    fullContent: `Welcome to the March 2026 edition of the ZuZone newsletter. The Editor's Corner will return next month — stay tuned for updates from across the ecosystem.`,
+    fullContent: `Welcome to the March 2026 edition of the ZuZone newsletter.`,
   },
   burns: {
     id: 'burns',

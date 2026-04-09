@@ -197,7 +197,7 @@ Follow us on X @zuzones to catch future spaces.`,
 
 export const cards: Card[] = [
   // Row 1
-  { id: 'intro', hubId: 'intro', title: 'March 2026', subtitle: 'Newsletter Placeholder', isIntro: true },
+  { id: 'intro', hubId: 'intro', title: 'March 2026', subtitle: 'ZuZone Newsletter', isIntro: true },
   { id: 'burns', hubId: 'burns', title: 'The EF Mandate and Zuzalu', subtitle: 'by Burns', isCenterText: true },
   { id: 'zucityjapan', hubId: 'zucityjapan', title: 'Connecting the Global Nomad to Rural Japan', isCenterText: true },
   // Row 2

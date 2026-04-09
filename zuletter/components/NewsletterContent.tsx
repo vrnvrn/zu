@@ -437,10 +437,7 @@ export default function NewsletterContent({ hubs, cards, cardPositions, popupCit
               <>
                 <h2 className="modal-title">{poll.question}</h2>
                 <div className="poll-options">
-                  {poll.options.map((option) => {
-                    const voteCount = poll.votes[option] ?? 0
-                    const pct = totalVotes > 0 ? Math.round((voteCount / totalVotes) * 100) : 0
-                    return (
+                  {poll.options.map((option) => (
                       <button
                         key={option}
                         className={`poll-option ${poll.voted ? 'voted' : ''}`}
@@ -448,18 +445,12 @@ export default function NewsletterContent({ hubs, cards, cardPositions, popupCit
                         disabled={poll.voted || poll.loading}
                       >
                         <span className="poll-option-label">{option}</span>
-                        {poll.voted && (
-                          <span className="poll-option-result">
-                            <span className="poll-bar" style={{ width: `${pct}%` }} />
-                            <span className="poll-pct">{pct}%</span>
-                          </span>
-                        )}
                       </button>
                     )
-                  })}
+                  )}
                 </div>
                 {poll.voted && (
-                  <p className="poll-total">{totalVotes} {totalVotes === 1 ? 'response' : 'responses'}</p>
+                  <p className="poll-total">Thank you for your response!</p>
                 )}
                 {poll.voted && votedOption === 'Yes, we want to be more connected!' && (
                   <div className="poll-connect-cta">

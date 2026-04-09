@@ -200,6 +200,7 @@ As Zuzalu projects put down roots in permanent spaces, hosting extended residenc
 Finally, I've already written in depth about the necessity to "make it somewhere people want to live." If you seek to build a coliving project, regardless of the technological or societal innovations, it must be a place people want to live. Temporary projects can provide novelty once, maybe twice, but unless it is a good place to live, and people feel they get their money's worth, it will be difficult to replicate let alone grow something permanently.
 
 Of course, living at the "frontier" necessitates a level of sacrifice of convenience or preference that existing cities and communities offer. But I have been impressed with Network School's rapid improvements and refinements in the living experience since I first visited on Opening Day in 2024. Every time I have returned to NS, it has been markedly better than my previous visit; growth of this kind I think is only possible when a project puts down roots permanently and focuses its efforts on building a city.`,
+    link: { url: 'https://x.com/vrneth', text: 'Reach out to vrn.eth on X' },
   },
   xspaces: {
     id: 'xspaces',

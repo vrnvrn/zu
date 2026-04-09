@@ -76,30 +76,43 @@ export default function SpringBackground() {
       ctx.restore()
     }
 
+    // Small unicorn — rendered as emoji at low opacity, on-brand tint
+    const drawUnicorn = (cx: number, cy: number, size: number, alpha: number) => {
+      ctx.save()
+      ctx.globalAlpha = alpha
+      ctx.font = `${size}px serif`
+      ctx.textAlign = 'center'
+      ctx.textBaseline = 'middle'
+      ctx.fillText('\u{1F984}', cx, cy)
+      ctx.restore()
+    }
+
     interface Particle {
       x: number
       y: number
       vx: number
       vy: number
-      type: 'eth' | 'dot-teal' | 'dot-yellow' | 'dot-blue'
+      type: 'eth' | 'unicorn' | 'dot-teal' | 'dot-yellow' | 'dot-blue'
       size: number
       alpha: number
       phase: number
+      bounceSpeed: number
     }
 
     const particles: Particle[] = []
-    const count = 30
+    const count = 35
     for (let i = 0; i < count; i++) {
-      const types: Particle['type'][] = ['eth', 'dot-teal', 'dot-teal', 'dot-yellow', 'dot-blue']
+      const types: Particle['type'][] = ['eth', 'eth', 'unicorn', 'dot-teal', 'dot-teal', 'dot-yellow', 'dot-blue']
       particles.push({
         x: Math.random() * 2000,
         y: Math.random() * 1200,
-        vx: (Math.random() - 0.5) * 0.15,
-        vy: (Math.random() - 0.5) * 0.1,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.15,
         type: types[Math.floor(Math.random() * types.length)],
-        size: 8 + Math.random() * 16,
-        alpha: 0.08 + Math.random() * 0.15,
+        size: 10 + Math.random() * 18,
+        alpha: 0.1 + Math.random() * 0.18,
         phase: Math.random() * Math.PI * 2,
+        bounceSpeed: 0.8 + Math.random() * 0.6,
       })
     }
 
@@ -147,10 +160,10 @@ export default function SpringBackground() {
       ctx.fillStyle = glow3
       ctx.fillRect(0, 0, w, h)
 
-      // Move particles
+      // Move particles with gentle bounce
       for (const p of particles) {
-        p.x += p.vx + Math.sin(time + p.phase) * 0.08
-        p.y += p.vy + Math.cos(time * 0.8 + p.phase) * 0.06
+        p.x += p.vx + Math.sin(time * 0.8 + p.phase) * 0.12
+        p.y += p.vy + Math.sin(time * p.bounceSpeed + p.phase) * 0.25
 
         if (p.x < -60) p.x = w + 60
         if (p.x > w + 60) p.x = -60
@@ -175,9 +188,15 @@ export default function SpringBackground() {
       for (const p of particles) {
         const pulseAlpha = p.alpha * (0.7 + 0.3 * Math.sin(time * 1.5 + p.phase))
 
+        // Bounce offset for eth + unicorn
+        const bounceY = Math.sin(time * p.bounceSpeed * 2 + p.phase) * 4
+
         switch (p.type) {
           case 'eth':
-            drawEthDiamond(p.x, p.y, p.size, pulseAlpha, Math.sin(time * 0.2 + p.phase) * 0.1)
+            drawEthDiamond(p.x, p.y + bounceY, p.size * 1.1, pulseAlpha * 1.2, Math.sin(time * 0.2 + p.phase) * 0.15)
+            break
+          case 'unicorn':
+            drawUnicorn(p.x, p.y + bounceY, p.size * 0.9, pulseAlpha * 0.7)
             break
           case 'dot-teal':
             drawDot(p.x, p.y, p.size * 0.15, pulseAlpha, TEAL)

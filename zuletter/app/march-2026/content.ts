@@ -16,7 +16,9 @@ We have Signal. We have crypto. We have local AI. What we lack are environments 
 
 Hubs begin to address this.
 
-They create environments where sanctuary becomes tangible and operational in practice, where coordination happens through decentralized tools, value flows through crypto native systems, and governance is tested in real conditions. They turn abstract capabilities into lived systems. At the same time, sanctuary is not a single form. It does not resolve into one model or one unified alternative. The hubs come in all types and forms. They are all built on sanctuary tech but they are different imaginations.
+They create environments where sanctuary becomes tangible and operational in practice, where coordination happens through decentralized tools, value flows through crypto native systems, and governance is tested in real conditions. They turn abstract capabilities into lived systems.
+
+At the same time, sanctuary is not a single form. It does not resolve into one model or one unified alternative. The hubs come in all types and forms. They are all built on sanctuary tech but they are different imaginations.
 
 At its core, sanctuary is the ability for people, families, and communities to imagine the lives they want to live and to create the conditions for those lives to emerge.
 

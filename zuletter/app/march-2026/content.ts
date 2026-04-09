@@ -3,7 +3,7 @@ import type { Hub, Card, CardPosition, PopupCity } from '@/components/Newsletter
 export const hubs: Record<string, Hub> = {
   intro: {
     id: 'intro',
-    title: "Editor's Corner — March 2026",
+    title: 'Sanctuary Needs a Place',
     fullContent: `Over the past year, we've gotten very good at naming what's broken: surveillance, centralization, fragile systems. We are much less effective at building what comes next.
 
 In his recent post, Vitalik reframes Ethereum's role, focusing on contributing to an ecosystem of sanctuary technologies rather than attempting to fix the world. These are tools that allow people to live, coordinate, and build with resilience under pressure.
@@ -43,7 +43,7 @@ Sanctuary needs technology. It also needs a place.`,
   },
   burns: {
     id: 'burns',
-    title: 'Burns — March 2026',
+    title: 'The EF Mandate and Zuzalu',
     fullContent: `**The teleological connection between the EF Mandate and Zuzalu**
 
 The recent publication of the EF mandate can be seen as a cultural milestone in Ethereum: it cleared up a lot of vagueness that accumulated, and set the teleological course and tone of an overarching mission: A world computer, providing individual users with the means to coordinate in a self-sovereign way without unnecessary risks or barriers, towards individual autonomy and collective efficiency. This is huge in many ways, providing the much needed clarity about the bigger picture and preemptively naming dead-ends to avoid, and identifying required sanctuary technologies in order to enable humanity to unfold in this direction. The phenomenon of Zuzalu in many ways reassembles a mirror-image of Ethereum. Ethereum, manifested in a unified digital form first by its nature, growing manifold branches on what it enables. Substantially, Order directed towards allowing chaos to happen along its scaling. Zuzalu, manifested through manifold individual occurrences first in the physical realm, free of reinforced unifications by its nature. Chaos allowing for order to arise along its iterations.
@@ -237,8 +237,8 @@ Follow us on X @zuzones to catch future spaces.`,
 
 export const cards: Card[] = [
   // Row 1
-  { id: 'intro', hubId: 'intro', title: "Editor's Corner", subtitle: 'March 2026 — by Yami', isIntro: true },
-  { id: 'burns', hubId: 'burns', title: 'Burns — March 2026', isCenterText: true },
+  { id: 'intro', hubId: 'intro', title: 'Sanctuary Needs a Place', subtitle: 'March 2026 — by Yami', isIntro: true },
+  { id: 'burns', hubId: 'burns', title: 'The EF Mandate and Zuzalu', subtitle: 'by Burns', isCenterText: true },
   { id: 'zucityjapan', hubId: 'zucityjapan', title: 'Connecting the Global Nomad to Rural Japan', isCenterText: true },
   // Row 2
   { id: 'dacc', hubId: 'dacc', title: 'd/acc in Practice', subtitle: 'Privote — by Shashank Trivedi', image: '/articles/dacc/dacc march 2026 builder pfp.jpeg', isDacc: true },

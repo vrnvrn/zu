@@ -72,28 +72,87 @@ interface Props {
   pollId?: string
 }
 
-function formatText(text: string) {
-  const boldRegex = /\*\*(.+?)\*\*/g
-  const urlRegex = /(https?:\/\/[^\s,)]+)/g
+function formatInline(text: string) {
+  // Handle **bold**, *italic*, and URLs
+  const tokenRegex = /(\*\*(.+?)\*\*|\*(.+?)\*|(https?:\/\/[^\s,)]+))/g
+  const result: React.ReactNode[] = []
+  let lastIndex = 0
+  let match: RegExpExecArray | null
 
-  const parts = text.split(boldRegex)
-  return parts.map((part, i) => {
-    if (i % 2 === 1) {
+  while ((match = tokenRegex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      result.push(<span key={`t-${lastIndex}`}>{text.slice(lastIndex, match.index)}</span>)
+    }
+    if (match[2]) {
+      // **bold**
+      result.push(<strong key={`b-${match.index}`}>{match[2]}</strong>)
+    } else if (match[3]) {
+      // *italic*
+      result.push(<em key={`i-${match.index}`}>{match[3]}</em>)
+    } else if (match[4]) {
+      // URL
+      result.push(<a key={`u-${match.index}`} href={match[4]} target="_blank" rel="noopener noreferrer" style={{ color: '#2d6b5d', wordBreak: 'break-all' }}>{match[4]}</a>)
+    }
+    lastIndex = match.index + match[0].length
+  }
+  if (lastIndex < text.length) {
+    result.push(<span key={`t-${lastIndex}`}>{text.slice(lastIndex)}</span>)
+  }
+  return result.length > 0 ? result : [<span key="empty">{text}</span>]
+}
+
+function renderMarkdown(content: string) {
+  const blocks = content.split('\n\n')
+  return blocks.map((block, i) => {
+    const trimmed = block.trim()
+
+    // Horizontal rule
+    if (trimmed === '---' || trimmed === '***') {
+      return <hr key={i} style={{ border: 'none', borderTop: '1px solid #e5e7eb', margin: '1.25rem 0' }} />
+    }
+
+    // Blockquote
+    if (trimmed.startsWith('> ')) {
+      const quoteText = trimmed.replace(/^>\s?/gm, '')
       return (
-        <strong key={i} style={{ display: 'block', fontSize: '1.0625rem', marginTop: '1.5rem', marginBottom: '0.25rem', color: '#1c1917', fontWeight: 700 }}>
-          {part}
-        </strong>
+        <blockquote key={i} style={{ borderLeft: '3px solid #2d6b5d', paddingLeft: '1rem', margin: '1rem 0', color: '#3d5c54', fontStyle: 'italic' }}>
+          {quoteText.split('\n').map((line, j) => (
+            <span key={j}>{j > 0 && <br />}{formatInline(line)}</span>
+          ))}
+        </blockquote>
       )
     }
-    const urlParts = part.split(urlRegex)
-    return urlParts.map((urlPart, j) =>
-      urlRegex.test(urlPart) ? (
-        <a key={`${i}-${j}`} href={urlPart} target="_blank" rel="noopener noreferrer" style={{ color: '#2d6b5d', wordBreak: 'break-all' }}>
-          {urlPart}
-        </a>
-      ) : (
-        <span key={`${i}-${j}`}>{urlPart}</span>
+
+    // Heading-like bold line (standalone **Title**)
+    if (/^\*\*[^*]+\*\*$/.test(trimmed) && trimmed.length < 120) {
+      const title = trimmed.replace(/^\*\*|\*\*$/g, '')
+      return (
+        <h3 key={i} style={{ fontSize: '1.0625rem', marginTop: '1.5rem', marginBottom: '0.25rem', color: '#1c1917', fontWeight: 700 }}>
+          {title}
+        </h3>
       )
+    }
+
+    // Unordered list block
+    if (trimmed.split('\n').every(line => line.trim().startsWith('- '))) {
+      return (
+        <ul key={i} style={{ paddingLeft: '1.25rem', margin: '0.75rem 0' }}>
+          {trimmed.split('\n').map((line, j) => (
+            <li key={j} style={{ marginBottom: '0.375rem', lineHeight: 1.6 }}>
+              {formatInline(line.trim().replace(/^-\s+/, ''))}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+    // Regular paragraph
+    return (
+      <p key={i}>
+        {trimmed.split('\n').map((line, j) => (
+          <span key={j}>{j > 0 && <br />}{formatInline(line)}</span>
+        ))}
+      </p>
     )
   })
 }
@@ -322,26 +381,14 @@ export default function NewsletterContent({ hubs, cards, cardPositions, popupCit
             <h2 className="modal-title">{selectedHub.title}</h2>
             {selectedHub.date && <p className="modal-date">{selectedHub.date}</p>}
             <div className="modal-body">
-              {selectedHub.fullContent.split('\n\n').map((para, i) => {
-                const isMeetBuilder = para.includes('**Meet the Builder**')
-                return (
-                  <div key={i}>
-                    {isMeetBuilder && selectedHub.image && (
-                      <div className="modal-builder-image">
-                        <Image src={selectedHub.image} alt="" width={100} height={100} className="builder-avatar" />
-                      </div>
-                    )}
-                    <p>
-                      {para.split('\n').map((line, j) => (
-                        <span key={j}>
-                          {j > 0 && <br />}
-                          {formatText(line)}
-                        </span>
-                      ))}
-                    </p>
-                  </div>
-                )
-              })}
+              {selectedHub.fullContent.includes('**Meet the Builder**') && selectedHub.image && (
+                <div className="modal-builder-image">
+                  <Image src={selectedHub.image} alt="" width={100} height={100} className="builder-avatar" />
+                </div>
+              )}
+              {renderMarkdown(selectedHub.fullContent).map((el, i) => (
+                <div key={i}>{el}</div>
+              ))}
             </div>
             {(selectedHub.link || selectedHub.links) && (
               <div className="modal-links">

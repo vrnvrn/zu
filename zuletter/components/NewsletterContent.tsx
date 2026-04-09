@@ -106,6 +106,43 @@ function renderMarkdown(content: string) {
   return blocks.map((block, i) => {
     const trimmed = block.trim()
 
+    // Personal message banner (:::personal ... :::)
+    if (trimmed.startsWith(':::personal')) {
+      const inner = trimmed.replace(/^:::personal\n?/, '').replace(/\n?:::$/, '')
+      const lines = inner.split('\n')
+      const signoff = lines.length > 1 ? lines[lines.length - 1] : null
+      const message = signoff ? lines.slice(0, -1).join('\n') : inner
+      return (
+        <div key={i} style={{
+          margin: '1.5rem 0 0.5rem',
+          padding: '1.25rem 1.5rem',
+          background: 'linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 50%, #f7fee7 100%)',
+          border: '1px solid #bbf7d0',
+          borderRadius: '12px',
+        }}>
+          <p style={{
+            fontSize: '0.9375rem',
+            color: '#166534',
+            lineHeight: 1.7,
+            margin: 0,
+            fontStyle: 'italic',
+          }}>
+            {message}
+          </p>
+          {signoff && (
+            <p style={{
+              fontSize: '0.875rem',
+              color: '#2d6b5d',
+              fontWeight: 700,
+              margin: '0.75rem 0 0',
+            }}>
+              {signoff}
+            </p>
+          )}
+        </div>
+      )
+    }
+
     // Horizontal rule
     if (trimmed === '---' || trimmed === '***') {
       return <hr key={i} style={{ border: 'none', borderTop: '1px solid #e5e7eb', margin: '1.25rem 0' }} />

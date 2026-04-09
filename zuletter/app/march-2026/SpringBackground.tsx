@@ -100,12 +100,12 @@ export default function SpringBackground() {
     }
 
     const particles: Particle[] = []
-    const count = 40
+    const count = 50
     for (let i = 0; i < count; i++) {
-      const types: Particle['type'][] = ['eth', 'eth', 'eth', 'unicorn', 'unicorn', 'dot-teal', 'dot-yellow', 'dot-blue']
+      const types: Particle['type'][] = ['eth', 'eth', 'eth', 'eth', 'eth', 'unicorn', 'unicorn', 'dot-teal', 'dot-yellow', 'dot-blue']
       particles.push({
-        x: Math.random() * 2000,
-        y: Math.random() * 1200,
+        x: Math.random() * (w || 1400),
+        y: Math.random() * (h || 800),
         vx: (Math.random() - 0.5) * 0.2,
         vy: (Math.random() - 0.5) * 0.15,
         type: types[Math.floor(Math.random() * types.length)],

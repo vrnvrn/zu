@@ -38,7 +38,12 @@ People create spaces. Ethereum helps make those spaces resilient and durable. Sa
 
 This is the shift ahead. Moving from tools to systems, from systems to environments, and from environments to reality.
 
-Sanctuary needs technology. It also needs a place.`,
+Sanctuary needs technology. It also needs a place.
+
+:::personal
+🌱 Wishing you a strong April of collaborations, shared learning, and deeper connections across hubs. Looking forward to continuing to support and connect along the way 🍃
+— Yami
+:::`,
     link: { url: 'mailto:hi@zuzone.org', text: 'Share your thoughts — hi@zuzone.org' },
   },
   burns: {

@@ -36,13 +36,13 @@ The core philosophy behind the app is that living in Japan should be a lifestyle
 
 ## Expanding the Rural Network
 
-While the app serves as the management tool for ZuCity's own properties in Nagano — which currently includes four homes and a growing fleet of vehicles — it is also a gateway to partner communities like the Hokkaido Art Collective (LA) and startup hubs like Kola Fukuoka. By providing a simplified distribution layer, the ZuCity Japan App is building the infrastructure necessary for a "Modern Meiji Restoration," betting on a future where high-trust, rural societies become the primary hubs for global innovation.
+While the app serves as the management tool for ZuCity's own properties in Nagano — which currently includes four homes and a growing fleet of vehicles, it is also a gateway to partner communities like the Hokkaido Art Collective (LA) and startup hubs like Kola Fukuoka. By providing a simplified distribution layer, the ZuCity Japan App is building the infrastructure necessary for a "Modern Meiji Restoration," betting on a future where high-trust, rural societies become the primary hubs for global innovation.
 
 ---
 
-## Ready to Join the Movement?
+## Ready to experience it ?
 
-If rural Japan feels like the frontier you've been looking for — a place to build, belong, and live differently — ZuCity Japan is accepting applications now.
+If rural Japan feels like the frontier you've been looking for, a place to build, belong, and live differently, ZuCity Japan is accepting applications now.
 
 **[Apply to ZuCity Japan →](https://zucity.org/en/apply)**
 

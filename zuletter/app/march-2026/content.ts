@@ -225,7 +225,7 @@ Follow us on X @zuzones to catch future spaces.`,
   crossword: {
     id: 'crossword',
     title: 'Crossword',
-    fullContent: 'The March 2026 crossword is here! Test your knowledge of the Zuzalu ecosystem. February answers are now revealed on the crossword page.',
+    fullContent: 'The March 2026 crossword is here! Clues are based on the February 2026 newsletter — read it first for the best chance. February answers are now revealed on the crossword page.',
   },
   map: {
     id: 'map',

@@ -154,7 +154,8 @@ export default function CrosswordPage() {
         <div className="crossword-header">
           <h1 className="crossword-title">March 2026 Crossword</h1>
           <p className="crossword-instructions">
-            Fill in the answers below. Click on a clue to focus on that cell.
+            Fill in the answers below. Click on a clue to focus on that cell.<br />
+            Clues are based on the <a href="/february-2026" style={{ color: '#2d6b5d', fontWeight: 600 }}>February 2026 newsletter</a>.
           </p>
           {submitStatus && (
             <div className="submitted-notice">

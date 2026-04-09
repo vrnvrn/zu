@@ -663,6 +663,7 @@ export default function NewsletterContent({ hubs, cards, cardPositions, popupCit
           color: rgba(255,255,255,0.7);
           text-decoration: none;
           white-space: nowrap;
+          padding: 0.375rem 0;
         }
 
         .popup-city:hover { color: white; }

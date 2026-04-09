@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import NewsletterContent from '@/components/NewsletterContent'
 import { hubs, cards, cardPositions, popupCities } from './content'
 import SpringBackground from './SpringBackground'
+import PasswordGate from './PasswordGate'
 
 export const metadata: Metadata = {
   title: 'ZuZone — March 2026 | ZuCity Japan Launch, Ecosystem Poll',
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function March2026Page() {
   return (
-    <>
+    <PasswordGate>
       <SpringBackground />
       <NewsletterContent
         hubs={hubs}
@@ -29,6 +30,6 @@ export default function March2026Page() {
         popupCities={popupCities}
         pollId="march-2026"
       />
-    </>
+    </PasswordGate>
   )
 }

@@ -34,8 +34,8 @@ export default function SpringBackground() {
       ctx.globalAlpha = alpha
       ctx.translate(cx, cy)
       ctx.rotate(rotation)
-      ctx.strokeStyle = `rgba(${ETH_BLUE.r}, ${ETH_BLUE.g}, ${ETH_BLUE.b}, 0.6)`
-      ctx.lineWidth = 1
+      ctx.strokeStyle = `rgba(${ETH_BLUE.r}, ${ETH_BLUE.g}, ${ETH_BLUE.b}, 0.8)`
+      ctx.lineWidth = 1.5
       // Outer diamond
       ctx.beginPath()
       ctx.moveTo(0, -size)
@@ -100,17 +100,17 @@ export default function SpringBackground() {
     }
 
     const particles: Particle[] = []
-    const count = 35
+    const count = 40
     for (let i = 0; i < count; i++) {
-      const types: Particle['type'][] = ['eth', 'eth', 'unicorn', 'dot-teal', 'dot-teal', 'dot-yellow', 'dot-blue']
+      const types: Particle['type'][] = ['eth', 'eth', 'eth', 'unicorn', 'unicorn', 'dot-teal', 'dot-yellow', 'dot-blue']
       particles.push({
         x: Math.random() * 2000,
         y: Math.random() * 1200,
         vx: (Math.random() - 0.5) * 0.2,
         vy: (Math.random() - 0.5) * 0.15,
         type: types[Math.floor(Math.random() * types.length)],
-        size: 10 + Math.random() * 18,
-        alpha: 0.1 + Math.random() * 0.18,
+        size: 14 + Math.random() * 22,
+        alpha: 0.2 + Math.random() * 0.25,
         phase: Math.random() * Math.PI * 2,
         bounceSpeed: 0.8 + Math.random() * 0.6,
       })
@@ -193,10 +193,10 @@ export default function SpringBackground() {
 
         switch (p.type) {
           case 'eth':
-            drawEthDiamond(p.x, p.y + bounceY, p.size * 1.1, pulseAlpha * 1.2, Math.sin(time * 0.2 + p.phase) * 0.15)
+            drawEthDiamond(p.x, p.y + bounceY, p.size * 1.4, pulseAlpha * 1.5, Math.sin(time * 0.2 + p.phase) * 0.15)
             break
           case 'unicorn':
-            drawUnicorn(p.x, p.y + bounceY, p.size * 0.9, pulseAlpha * 0.7)
+            drawUnicorn(p.x, p.y + bounceY, p.size * 1.2, pulseAlpha * 1.2)
             break
           case 'dot-teal':
             drawDot(p.x, p.y, p.size * 0.15, pulseAlpha, TEAL)

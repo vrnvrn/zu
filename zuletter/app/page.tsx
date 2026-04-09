@@ -144,16 +144,16 @@ export default async function HomePage() {
                 Community Newsletter
               </span>
             </div>
-            <h2 style={{ 
-              fontSize: '1.75rem', 
-              marginTop: 0, 
+            <h2 style={{
+              fontSize: '1.75rem',
+              marginTop: 0,
               marginBottom: '0.625rem',
               letterSpacing: '0.02em'
             }}>
-              February 2026 Edition
+              March 2026 Edition
             </h2>
             <p className="text-secondary" style={{ marginBottom: '1.5rem', maxWidth: '520px' }}>
-             Exciting updates from around the Zuzalu ecosystem, including new hub launches, upcoming events, and ways to get involved and engage with the community.
+              Burns on the EF Mandate and Zuzalu, ZuCity Japan&apos;s app launch connecting nomads to rural Japan, vrn.eth on lessons in permanence from Network School, our first ecosystem poll, and the d/acc spotlight on Privote.
             </p>
             
             <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>

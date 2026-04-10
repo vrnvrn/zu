@@ -47,10 +47,7 @@ Sanctuary technology makes it possible to build the places of the future. These 
 We think these places can only be built this way. Through hubs, we are beginning to show what they can look like in practice, inviting people to discover communities that reflect their values.
 
 The invitation is open. Find your hub!`,
-    links: [
-      { url: 'https://t.me/yamideutsch', text: 'Reach out to Yami on Telegram' },
-      { url: 'https://signal.me/#eu/EiiSWw3u1pgigYZ6cdOb1NAlXeWL8_r_p93Idp9rMGXQNo4MOk9MUogENKcoFQDi', text: 'Reach out to Yami on Signal' },
-    ],
+    link: { url: 'mailto:hi@zuzone.org', text: 'Share your thoughts — hi@zuzone.org' },
   },
   burns: {
     id: 'burns',

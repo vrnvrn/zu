@@ -604,7 +604,7 @@ export default function NewsletterContent({ hubs, cards, cardPositions, popupCit
         }
 
         .card.full-image .card-image {
-          object-fit: cover;
+          object-fit: contain;
           position: relative;
           width: 100%;
           height: 100%;

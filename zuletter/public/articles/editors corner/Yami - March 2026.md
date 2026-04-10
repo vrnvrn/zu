@@ -29,7 +29,7 @@ At the same time, hubs are evolving in their own ways. Each one is experimenting
 
 Coordination is what enables that.
 
-It is the layer that connects isolated efforts into the ecosystem. It allows patterns to emerge, knowledge to travel, and infrastructure choices to converge over time. It reduces repeated mistakes, surfaces early signals, and creates continuity across hubs that would otherwise remain disconnected.
+It is the layer that connects isolated efforts into the ecosystem. It allows patterns to emerge, knowledge to travel, and best practices to be shared over time. It reduces repeated mistakes, surfaces early signals, and creates continuity across hubs that would otherwise remain disconnected.
 
 Our version of sanctuary prizes the sharing of knowledge, so our own progress can't stay local. Coordination lets that knowledge be shared, so our community becomes an ecosystem.
 

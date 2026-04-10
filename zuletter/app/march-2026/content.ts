@@ -37,6 +37,7 @@ Our version of sanctuary prizes the sharing of knowledge, so our own progress ca
 
 People create spaces. Sanctuary technologies strengthen those spaces. Ethereum is one of those technologies which strengthens them by bridging the digital and real worlds.
 At its core, sanctuary is simple:
+
 > A physical place + a resilient digital environment = a sanctuary where people can live, build, and depend on one another. A clean digital environment for the community, one that allows it to grow, express itself, and thrive.
 
 This is the shift ahead. Moving from tools to systems, from systems to environments, and from environments to reality.

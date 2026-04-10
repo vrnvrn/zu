@@ -193,7 +193,7 @@ Client-side only. Remove the wrapper when the edition goes live.
 The map SVG is 3600x2050 (~1.76:1). The card position height should be large enough to prevent text cutoff. Current March 2026 values:
 
 ```ts
-{ top: '28%', left: '30%', rotate: -1, width: '38%', height: '36%', zIndex: 13 }
+{ top: '28%', left: '30%', rotate: -1, width: '38%', height: '34%', zIndex: 13 }
 ```
 
 ---

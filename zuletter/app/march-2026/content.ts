@@ -264,7 +264,7 @@ export const cardPositions: CardPosition[] = [
   { top: '2%', left: '66%', rotate: -1, width: '30%', height: '28%', zIndex: 10 },
   // Row 2
   { top: '32%', left: '2%', rotate: 2, width: '26%', height: '28%', zIndex: 12 },
-  { top: '28%', left: '30%', rotate: -1, width: '38%', height: '36%', zIndex: 13 },
+  { top: '28%', left: '30%', rotate: -1, width: '38%', height: '34%', zIndex: 13 },
   { top: '32%', left: '70%', rotate: 1, width: '26%', height: '28%', zIndex: 12 },
   // Row 3
   { top: '62%', left: '2%', rotate: -2, width: '26%', height: '28%', zIndex: 11 },

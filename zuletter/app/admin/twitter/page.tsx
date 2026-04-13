@@ -238,7 +238,7 @@ function TwitterContent() {
           Pre-written tweet threads for each newsletter edition. Copy individual tweets or the full thread.
         </p>
 
-        {threads.map((thread) => (
+        {[...threads].reverse().map((thread) => (
           <div key={thread.month} style={{
             marginBottom: '2.5rem',
             background: '#fff',

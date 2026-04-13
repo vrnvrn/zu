@@ -244,3 +244,36 @@ vercel          # Deploy to Vercel
 ```
 
 The site uses Next.js with ISR. Newsletter pages are static with client-side modals.
+
+---
+
+## Twitter Thread Protocol
+
+Each newsletter edition gets a pre-written tweet thread at `/admin/twitter` (password-gated).
+
+### Thread Writing Rules
+
+1. **No em dashes.** Use commas, periods, or line breaks instead.
+2. **Tone:** Excited, community-welcoming, engaging. Write like you're sharing good news with friends.
+3. **Thread structure:**
+   - Tweet 1: Edition announcement + theme/hook
+   - Middle tweets: One highlight per tweet (article, builder, feature)
+   - Final tweet: CTA with link to the full newsletter
+4. **Character limit:** Each tweet must be under 280 characters. The page shows a counter.
+5. **Quotes:** Pull one strong quote from the edition as its own tweet.
+6. **Tag people:** Use @ handles where available (authors, builders, hubs).
+7. **No hashtags** unless they're community-specific (avoid generic ones like #web3).
+
+### Adding a Thread for a New Edition
+
+1. Open `app/admin/twitter/page.tsx`
+2. Add a new entry to the `threads` array with `month`, `url`, and `tweets`
+3. Each tweet is `{ text: '...' }`
+4. Verify character counts on the page (red = over 280)
+5. Use "Copy Entire Thread" to paste into Twitter/X
+
+### Access
+
+- URL: `/admin/twitter`
+- Password: same as the newsletter preview password
+- The page uses `components/PasswordGate.tsx`

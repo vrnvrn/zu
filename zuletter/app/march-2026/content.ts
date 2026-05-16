@@ -285,4 +285,5 @@ export const popupCities: PopupCity[] = [
   { name: 'Invisible Garden', date: 'Jun 13 – 21 (Berlin)', url: 'https://invisible.garden/' },
   { name: 'Edge City India', date: 'Q4', url: 'https://www.edgecity.live/' },
   { name: 'ZuGrama India', date: 'From Feb 2026', url: 'https://zugrama.org/' },
+  { name: 'ETH Chiang Mai', date: 'Nov 11 – Jan 5, 2027', url: 'https://www.ethchiangmai.com/' },
 ]

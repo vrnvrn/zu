@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@jaredreisinger/react-crossword": "^5.2.0",
+    "@supabase/supabase-js": "^2.112.0",
     "@upstash/redis": "^1.36.3",
     "date-fns": "^3.0.0",
+    "mapbox-gl": "^3.27.0",
     "next": "^14.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -20,6 +22,7 @@
     "resend": "^6.9.2"
   },
   "devDependencies": {
+    "@types/mapbox-gl": "^3.4.1",
     "@types/node": "^20.0.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",

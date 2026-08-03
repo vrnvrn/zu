@@ -61,6 +61,9 @@ export default function Nav() {
             <Link href="/february-2026" className="nav-link">
               February 2026
             </Link>
+            <Link href="/map" className="nav-link">
+              Pop Cities Map
+            </Link>
             <Link href="/crossword" className="nav-link">
               Crossword
             </Link>

@@ -58,9 +58,6 @@ export default function Nav() {
             <Link href="/march-2026" className="nav-link" style={{ fontWeight: 500 }}>
               March 2026
             </Link>
-            <Link href="/february-2026" className="nav-link">
-              February 2026
-            </Link>
             <Link href="/map" className="nav-link">
               Pop Cities Map
             </Link>
